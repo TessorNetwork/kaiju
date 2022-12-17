@@ -1,4 +1,4 @@
-module github.com/ixofoundation/ixo-blockchain
+module github.com/xcohub/xco-blockchain
 
 go 1.18
 
