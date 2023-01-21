@@ -26,9 +26,9 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
-	"github.com/ixofoundation/ixo-blockchain/app"
-	"github.com/ixofoundation/ixo-blockchain/app/params"
-	"github.com/ixofoundation/ixo-blockchain/cmd/ixod/cmd/didsign"
+	"github.com/petrinetwork/xco-blockchain/app"
+	"github.com/petrinetwork/xco-blockchain/app/params"
+	"github.com/petrinetwork/xco-blockchain/cmd/xcod/cmd/didsign"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 	tmcli "github.com/tendermint/tendermint/libs/cli"
@@ -59,8 +59,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithHomeDir(app.DefaultNodeHome)
 
 	rootCmd := &cobra.Command{
-		Use:   "ixod",
-		Short: "ixod app",
+		Use:   "xcod",
+		Short: "xcod app",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			if err := client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
 				return err
@@ -82,7 +82,7 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	rootCmd.AddCommand(
 		genutilcli.InitCmd(app.ModuleBasics, app.DefaultNodeHome),
 		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, app.DefaultNodeHome),
-		genutilcli.MigrateGenesisCmd(), //TODO create a custom function which calls our genesis migrating script to also migrate ixo specific modules
+		genutilcli.MigrateGenesisCmd(), //TODO create a custom function which calls our genesis migrating script to also migrate xco specific modules
 		genutilcli.GenTxCmd(app.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, app.DefaultNodeHome),
 		ValidateGenesisCmd(app.ModuleBasics), //, encodingConfig.TxConfig),
 		AddGenesisAccountCmd(app.DefaultNodeHome),
@@ -194,7 +194,7 @@ func (a appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, a
 		wasmOpts = append(wasmOpts, wasmkeeper.WithVMCacheMetrics(prometheus.DefaultRegisterer))
 	}
 
-	return app.NewIxoApp(logger, db, traceStore, true, skipUpgradeHeights,
+	return app.NewXcoApp(logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
 		app.MakeTestEncodingConfig(), // Ideally, we would reuse the one created by NewRootCmd.)
@@ -226,19 +226,19 @@ func (a appCreator) appExport(
 		return servertypes.ExportedApp{}, errors.New("application home not set")
 	}
 
-	//var ixoApp *app.ixoApp
+	//var xcoApp *app.xcoApp
 	var emptyWasmOpts []wasm.Option
 	if height != -1 {
-		ixoApp := app.NewIxoApp(logger, db, traceStore, false, map[int64]bool{}, homePath, uint(1), a.encCfg, app.GetEnabledProposals(), appOpts, emptyWasmOpts)
+		xcoApp := app.NewXcoApp(logger, db, traceStore, false, map[int64]bool{}, homePath, uint(1), a.encCfg, app.GetEnabledProposals(), appOpts, emptyWasmOpts)
 
-		if err := ixoApp.LoadHeight(height); err != nil {
+		if err := xcoApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 
-		return ixoApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+		return xcoApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 	} else {
-		ixoApp := app.NewIxoApp(logger, db, traceStore, true, map[int64]bool{}, homePath, uint(1), a.encCfg, app.GetEnabledProposals(), appOpts, emptyWasmOpts)
+		xcoApp := app.NewXcoApp(logger, db, traceStore, true, map[int64]bool{}, homePath, uint(1), a.encCfg, app.GetEnabledProposals(), appOpts, emptyWasmOpts)
 
-		return ixoApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+		return xcoApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 	}
 }

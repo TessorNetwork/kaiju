@@ -1,11 +1,11 @@
 syntax = "proto3";
-package ixo.bonds.v1beta1;
+package xco.bonds.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "ixo/bonds/v1beta1/bonds.proto";
+import "xco/bonds/v1beta1/bonds.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/bonds/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/bonds/types";
 
 // Msg defines the bonds Msg service.
 service Msg {
@@ -47,10 +47,10 @@ message MsgCreateBond {
   string name                                             = 3 [(gogoproto.moretags) = "yaml:\"name\""];
   string description                                      = 4 [(gogoproto.moretags) = "yaml:\"description\""];
   string function_type                                    = 5 [(gogoproto.moretags) = "yaml:\"function_type\""];
-  repeated ixo.bonds.v1beta1.FunctionParam function_parameters              = 6 [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "FunctionParams", (gogoproto.moretags) = "yaml:\"function_parameters\""];
-  string creator_did                                      = 7 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"creator_did\""];
-  string controller_did                                   = 8 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"controller_did\""];
-  string oracle_did                                       = 9 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"oracle_did\""];
+  repeated xco.bonds.v1beta1.FunctionParam function_parameters              = 6 [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "FunctionParams", (gogoproto.moretags) = "yaml:\"function_parameters\""];
+  string creator_did                                      = 7 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"creator_did\""];
+  string controller_did                                   = 8 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"controller_did\""];
+  string oracle_did                                       = 9 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"oracle_did\""];
   repeated string reserve_tokens                          = 10 [(gogoproto.moretags) = "yaml:\"reserve_tokens\""];
   string tx_fee_percentage                                = 11 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"tx_fee_percentage\""];
   string exit_fee_percentage                              = 12 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"exit_fee_percentage\""];
@@ -79,7 +79,7 @@ message MsgEditBond {
   string order_quantity_limits    = 4 [(gogoproto.moretags) = "yaml:\"order_quantity_limits\""];
   string sanity_rate              = 5 [(gogoproto.moretags) = "yaml:\"sanity_rate\""];
   string sanity_margin_percentage = 6 [(gogoproto.moretags) = "yaml:\"sanity_margin_percentage\""];
-  string editor_did               = 7 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"editor_did\""];
+  string editor_did               = 7 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"editor_did\""];
   string editor_address           = 8 [(gogoproto.jsontag) = "editor_address", (gogoproto.moretags) = "yaml:\"editor_address\""];
 }
 
@@ -91,7 +91,7 @@ message MsgSetNextAlpha {
   string bond_did   = 1 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   string alpha      = 2 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"alpha\""];
   string delta      = 3 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = true, (gogoproto.moretags) = "yaml:\"delta\""];
-  string oracle_did = 4 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"editor_did\""];
+  string oracle_did = 4 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"editor_did\""];
   string oracle_address  = 5 [(gogoproto.jsontag) = "editor_address", (gogoproto.moretags) = "yaml:\"editor_address\""];
 }
 
@@ -101,7 +101,7 @@ message MsgSetNextAlphaResponse {}
 message MsgUpdateBondState {
   string bond_did      = 1 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   string state         = 2 [(gogoproto.moretags) = "yaml:\"state\""];
-  string editor_did    = 3 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"oracle_did\""];
+  string editor_did    = 3 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"oracle_did\""];
   string editor_address  = 4 [(gogoproto.jsontag) = "oracle_address", (gogoproto.moretags) = "yaml:\"oracle_address\""];
 }
 
@@ -110,7 +110,7 @@ message MsgUpdateBondStateResponse {}
 
 // MsgBuy defines a message for buying from a bond.
 message MsgBuy {
-  string buyer_did                             = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"buyer_did\""];
+  string buyer_did                             = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"buyer_did\""];
   cosmos.base.v1beta1.Coin amount              = 2 [(gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"amount\""];
   repeated cosmos.base.v1beta1.Coin max_prices = 3 [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (gogoproto.moretags) = "yaml:\"max_prices\""];
   string bond_did                              = 4 [(gogoproto.moretags) = "yaml:\"bond_did\""];
@@ -122,7 +122,7 @@ message MsgBuyResponse {}
 
 // MsgSell defines a message for selling from a bond.
 message MsgSell {
-  string seller_did               = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"seller_did\""];
+  string seller_did               = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"seller_did\""];
   cosmos.base.v1beta1.Coin amount = 2 [(gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"amount\""];
   string bond_did                 = 3 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   string seller_address           = 4 [(gogoproto.jsontag) = "seller_address", (gogoproto.moretags) = "yaml:\"seller_address\""];
@@ -134,7 +134,7 @@ message MsgSellResponse {}
 
 // MsgSwap defines a message for swapping from one reserve bond token to another.
 message MsgSwap {
-  string swapper_did            = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"swapper_did\""];
+  string swapper_did            = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"swapper_did\""];
   string bond_did               = 2 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   cosmos.base.v1beta1.Coin from = 3 [(gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"from\""];
   string to_token               = 4 [(gogoproto.moretags) = "yaml:\"to_token\""];
@@ -146,7 +146,7 @@ message MsgSwapResponse {}
 
 // MsgMakeOutcomePayment defines a message for making an outcome payment to a bond.
 message MsgMakeOutcomePayment {
-  string sender_did = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"sender_did\""];
+  string sender_did = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"sender_did\""];
   string amount     = 2 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int", (gogoproto.nullable) = false, (gogoproto.moretags) = "yaml:\"amount\""];
   string bond_did   = 3 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   string sender_address = 4 [(gogoproto.jsontag) = "sender_address", (gogoproto.moretags) = "yaml:\"sender_address\""];
@@ -157,7 +157,7 @@ message MsgMakeOutcomePaymentResponse {}
 
 // MsgWithdrawShare defines a message for withdrawing a share from a bond that is in the SETTLE stage.
 message MsgWithdrawShare {
-  string recipient_did = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"recipient_did\""];
+  string recipient_did = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"recipient_did\""];
   string bond_did      = 2 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   string recipient_address = 3 [(gogoproto.jsontag) = "recipient_address", (gogoproto.moretags) = "yaml:\"recipient_address\""];
 }
@@ -167,7 +167,7 @@ message MsgWithdrawShareResponse {}
 
 // MsgWithdrawReserve defines a message for withdrawing reserve from a bond.
 message MsgWithdrawReserve {
-  string withdrawer_did                    = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"withdrawer_did\""];
+  string withdrawer_did                    = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.moretags) = "yaml:\"withdrawer_did\""];
   repeated cosmos.base.v1beta1.Coin amount = 2 [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins", (gogoproto.moretags) = "yaml:\"amount\""];
   string bond_did                          = 3 [(gogoproto.moretags) = "yaml:\"bond_did\""];
   string withdrawer_address                = 4 [(gogoproto.jsontag) = "withdrawer_address", (gogoproto.moretags) = "yaml:\"withdrawer_address\""];

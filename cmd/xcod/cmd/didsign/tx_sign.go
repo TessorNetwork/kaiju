@@ -20,7 +20,7 @@ import (
 	// authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	// bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	didtypes "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
+	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
 )
 
 const (
@@ -110,9 +110,9 @@ func preSignCmd(cmd *cobra.Command, _ []string) {
 	}
 }
 
-func sign(txf tx.Factory, clientCtx client.Context, txBuilder client.TxBuilder, overwriteSig bool, ixoDid didtypes.IxoDid) error {
+func sign(txf tx.Factory, clientCtx client.Context, txBuilder client.TxBuilder, overwriteSig bool, xcoDid didtypes.XcoDid) error {
 	var privateKey ed25519.PrivKey
-	privateKey.Key = append(base58.Decode(ixoDid.Secret.SignKey), base58.Decode(ixoDid.VerifyKey)...)
+	privateKey.Key = append(base58.Decode(xcoDid.Secret.SignKey), base58.Decode(xcoDid.VerifyKey)...)
 
 	signMode := txf.SignMode()
 	if signMode == signing.SignMode_SIGN_MODE_UNSPECIFIED {
@@ -190,7 +190,7 @@ func sign(txf tx.Factory, clientCtx client.Context, txBuilder client.TxBuilder, 
 func makeSignCmd() func(cmd *cobra.Command, args []string) error {
 	return func(cmd *cobra.Command, args []string) (err error) {
 
-		singerDid, err := didtypes.UnmarshalIxoDid(args[0])
+		singerDid, err := didtypes.UnmarshalXcoDid(args[0])
 		if err != nil {
 			return err
 		}

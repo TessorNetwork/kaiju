@@ -2,8 +2,8 @@ package token
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ixofoundation/ixo-blockchain/x/token/keeper"
-	"github.com/ixofoundation/ixo-blockchain/x/token/types"
+	"github.com/petrinetwork/xco-blockchain/x/token/keeper"
+	"github.com/petrinetwork/xco-blockchain/x/token/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

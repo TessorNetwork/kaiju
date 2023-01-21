@@ -3,9 +3,9 @@ package legacydid;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/lib/legacydid";
+option go_package = "github.com/petrinetwork/xco-blockchain/lib/legacydid";
 
-// Digital identity credential issued to an ixo DID
+// Digital identity credential issued to an xco DID
 message DidCredential {
   repeated string cred_type = 1 [(gogoproto.jsontag) = "type", (gogoproto.moretags) = "yaml:\"type\""];
   string issuer             = 2 [(gogoproto.moretags) = "yaml:\"issuer\""];
@@ -19,15 +19,15 @@ message Claim {
   bool KYC_validated = 2 [(gogoproto.jsontag) = "KYCValidated", (gogoproto.moretags) = "yaml:\"KYCValidated\""];
 }
 
-// An ixo DID with public and private keys, based on the Sovrin DID spec
-message IxoDid {
+// An xco DID with public and private keys, based on the Sovrin DID spec
+message XcoDid {
   string did                   = 1 [(gogoproto.moretags) = "yaml:\"did\""];
   string verify_key            = 2 [(gogoproto.jsontag) = "verifyKey", (gogoproto.moretags) = "yaml:\"verifyKey\""];
   string encryption_public_key = 3 [(gogoproto.jsontag) = "encryptionPublicKey", (gogoproto.moretags) = "yaml:\"encryptionPublicKey\""];
   Secret secret                = 4 [(gogoproto.moretags) = "yaml:\"secret\""];
 }
 
-// The private section of an ixo DID, based on the Sovrin DID spec
+// The private section of an xco DID, based on the Sovrin DID spec
 message Secret {
   string seed                   = 1 [(gogoproto.moretags) = "yaml:\"seed\""];
   string sign_key               = 2 [(gogoproto.jsontag) = "signKey", (gogoproto.moretags) = "yaml:\"signKey\""];

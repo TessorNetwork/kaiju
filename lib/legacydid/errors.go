@@ -3,7 +3,7 @@ package legacydid
 import sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
 const (
-	DefaultCodespace = "ixo.lib.legacydid"
+	DefaultCodespace = "xco.lib.legacydid"
 )
 
 var (

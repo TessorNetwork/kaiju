@@ -31,18 +31,18 @@ var DefaultConsensusParams = &abci.ConsensusParams{
 	},
 }
 
-func setup(withGenesis bool, invCheckPeriod uint) (*IxoApp, GenesisState) {
+func setup(withGenesis bool, invCheckPeriod uint) (*XcoApp, GenesisState) {
 	db := dbm.NewMemDB()
 	encCdc := MakeTestEncodingConfig()
-	app := NewIxoApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, DefaultNodeHome, invCheckPeriod, encCdc, EmptyAppOptions{})
+	app := NewXcoApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, DefaultNodeHome, invCheckPeriod, encCdc, EmptyAppOptions{})
 	if withGenesis {
 		return app, NewDefaultGenesisState(encCdc.Marshaler)
 	}
 	return app, GenesisState{}
 }
 
-func Setup(isCheckTx bool) *IxoApp {
-	ixoApp, genesisState := setup(!isCheckTx, 5)
+func Setup(isCheckTx bool) *XcoApp {
+	xcoApp, genesisState := setup(!isCheckTx, 5)
 	if !isCheckTx {
 		// init chain must be called to stop deliverState from being nil
 		stateBytes, err := json.MarshalIndent(genesisState, "", " ")
@@ -51,7 +51,7 @@ func Setup(isCheckTx bool) *IxoApp {
 		}
 
 		// Initialize the chain
-		ixoApp.InitChain(
+		xcoApp.InitChain(
 			abci.RequestInitChain{
 				Validators:      []abci.ValidatorUpdate{},
 				ConsensusParams: DefaultConsensusParams,
@@ -60,10 +60,10 @@ func Setup(isCheckTx bool) *IxoApp {
 		)
 	}
 
-	return ixoApp
+	return xcoApp
 }
 
-func createTestApp(isCheckTx bool) (*IxoApp, sdk.Context) {
+func createTestApp(isCheckTx bool) (*XcoApp, sdk.Context) {
 	app := Setup(isCheckTx)
 
 	ctx := app.BaseApp.NewContext(isCheckTx, tmproto.Header{})

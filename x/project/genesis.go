@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ixofoundation/ixo-blockchain/x/project/keeper"
-	"github.com/ixofoundation/ixo-blockchain/x/project/types"
+	"github.com/petrinetwork/xco-blockchain/x/project/keeper"
+	"github.com/petrinetwork/xco-blockchain/x/project/types"
 )
 
 func InitGenesis(ctx sdk.Context, keeper keeper.Keeper, data types.GenesisState) {

@@ -69,7 +69,7 @@ jobs:
           - name: Build docker image
             os: ubuntu-latest
             enabled: true
-            artifact: ixo-chain
+            artifact: xco-chain
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: dist-stable
@@ -80,27 +80,27 @@ jobs:
 
           - name: Build debian package
             os: ubuntu-latest
-            artifact: "ixod_linux_amd64"
+            artifact: "xcod_linux_amd64"
             enabled: true
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: build-binary
             outputs:
               type: file
-              path: /dist/app/ixo-blockchain_linux_amd64.tar.gz
+              path: /dist/app/xco-blockchain_linux_amd64.tar.gz
             # post-build:
             #   enabled: false
 
           - name: Build darwin binary
             os: ubuntu-latest
-            artifact: "ixod_darwin_amd64"
+            artifact: "xcod_darwin_amd64"
             enabled: true
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: build-binary
             outputs:
               type: file
-              path: /dist/app/ixo-blockchain_darwin_amd64.tar.gz
+              path: /dist/app/xco-blockchain_darwin_amd64.tar.gz
 
         exclude:
           - build:
@@ -167,14 +167,14 @@ jobs:
         test:
           - name: Scan Docker image (Security)
             os: ubuntu-latest
-            artifact: ixo-chain
+            artifact: xco-chain
             enabled: true
             experimental: true
-            command: docker scan --file .infra/dockerfiles/Dockerfile ixo-chain:tmp
+            command: docker scan --file .infra/dockerfiles/Dockerfile xco-chain:tmp
 
           - name: Integration Tests (Quality)
             os: ubuntu-latest
-            artifact: ixo-chain
+            artifact: xco-chain
             enabled: false
             experimental: true
 
@@ -243,7 +243,7 @@ jobs:
         artifact:
           - name: Publish Docker Image
             os: ubuntu-latest
-            artifact: ixo-chain
+            artifact: xco-chain
             enabled: true
             type: docker
             docker: 
@@ -256,20 +256,20 @@ jobs:
 
           - name: Publish Linux Binary
             os: ubuntu-latest
-            artifact: "ixod_linux_amd64"
+            artifact: "xcod_linux_amd64"
             enabled: true
             type: file
             file: 
-              path: ixo-blockchain_linux_amd64.tar.gz
+              path: xco-blockchain_linux_amd64.tar.gz
               extention: .tar.gz
             
           - name: Publish Darwin Binary
             os: ubuntu-latest
-            artifact: "ixod_darwin_amd64"
+            artifact: "xcod_darwin_amd64"
             enabled: true
             type: file
             file: 
-              path: ixo-blockchain_darwin_amd64.tar.gz
+              path: xco-blockchain_darwin_amd64.tar.gz
               extention: .tar.gz
 
         exclude:

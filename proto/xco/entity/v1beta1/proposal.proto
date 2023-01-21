@@ -1,9 +1,9 @@
 syntax = "proto3";
-package ixo.entity.v1beta1;
+package xco.entity.v1beta1;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/entity/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/entity/types";
 
 message InitializeNftContract {
   uint64 NftContractCodeId = 1 [(gogoproto.jsontag) = "NftCotractCodeId", (gogoproto.moretags) = "yaml:\"NftCotractCodeId\""];

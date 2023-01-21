@@ -16,7 +16,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/spf13/cobra"
 
-	"github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	"github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 // request send a json http request

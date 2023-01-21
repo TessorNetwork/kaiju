@@ -4,8 +4,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/ixofoundation/ixo-blockchain/x/bonds/client"
-	"github.com/ixofoundation/ixo-blockchain/x/bonds/types"
+	"github.com/petrinetwork/xco-blockchain/x/bonds/client"
+	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

@@ -1,24 +1,24 @@
 syntax = "proto3";
-package ixo.entity.v1beta1;
+package xco.entity.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
-import "ixo/entity/v1beta1/entity.proto";
+import "xco/entity/v1beta1/entity.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/entity/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/entity/types";
 
 // Query defines the gRPC querier service.
 service Query {
   rpc EntityList(QueryEntityListRequest) returns (QueryEntityListResponse){
-    option (google.api.http).get = "/ixo/entity";
+    option (google.api.http).get = "/xco/entity";
   }
 
   rpc EntityDoc(QueryEntityDocRequest) returns (QueryEntityDocResponse){
-    option (google.api.http).get = "/ixo/entity/{entity_did}";
+    option (google.api.http).get = "/xco/entity/{entity_did}";
   }
 
   rpc EntityConfig(QueryEntityConfigRequest) returns (QueryEntityConfigResponse){
-    option (google.api.http).get = "/ixo/entity/config";
+    option (google.api.http).get = "/xco/entity/config";
   }
 }
 

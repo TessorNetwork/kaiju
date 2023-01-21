@@ -10,7 +10,7 @@ package ante
 // 	authante "github.com/cosmos/cosmos-sdk/x/auth/ante"
 // 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 // 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-// 	iidkeeper "github.com/ixofoundation/ixo-blockchain/x/iid/keeper"
+// 	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
 // )
 
 // type CheckTxForIncompatibleMsgsDecorator struct {
@@ -21,9 +21,9 @@ package ante
 // }
 
 // func (dec CheckTxForIncompatibleMsgsDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
-// 	// feeTx, ok := tx.(IxoFeeTx)
+// 	// feeTx, ok := tx.(XcoFeeTx)
 
-// 	//Check if feegranter is set. or if not ixoFeeTx
+// 	//Check if feegranter is set. or if not xcoFeeTx
 // 	// if !ok || feeTx.FeeGranter() != nil {
 // 	// 	// return ctx, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a IIDTx")
 // 	// 	panic("")
@@ -37,15 +37,15 @@ package ante
 // 	return next(ctx, tx, simulate)
 // }
 
-// type IxoFeeHandlerDecorator struct {
+// type XcoFeeHandlerDecorator struct {
 // 	iidKeeper         iidkeeper.Keeper
 // 	accountKeeper     authante.AccountKeeper
 // 	bankKeeper        bankkeeper.Keeper
 // 	defaultFeeHandler authante.DeductFeeDecorator
 // }
 
-// func NewIxoFeeHandlerDecorator(iidKeeper iidkeeper.Keeper, accountKeeper authante.AccountKeeper, bankKeeper bankkeeper.Keeper, defaultFeeHandler authante.DeductFeeDecorator) sdk.AnteDecorator {
-// 	return IxoFeeHandlerDecorator{
+// func NewXcoFeeHandlerDecorator(iidKeeper iidkeeper.Keeper, accountKeeper authante.AccountKeeper, bankKeeper bankkeeper.Keeper, defaultFeeHandler authante.DeductFeeDecorator) sdk.AnteDecorator {
+// 	return XcoFeeHandlerDecorator{
 // 		iidKeeper:         iidKeeper,
 // 		accountKeeper:     accountKeeper,
 // 		bankKeeper:        bankKeeper,
@@ -53,10 +53,10 @@ package ante
 // 	}
 // }
 
-// func (dec IxoFeeHandlerDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
-// 	feeTx, ok := tx.(IxoFeeTx)
+// func (dec XcoFeeHandlerDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
+// 	feeTx, ok := tx.(XcoFeeTx)
 
-// 	//Check if feegranter is set. or if not ixoFeeTx
+// 	//Check if feegranter is set. or if not xcoFeeTx
 // 	if !ok || feeTx.FeeGranter() != nil {
 // 		// return ctx, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a IIDTx")
 // 		return dec.defaultFeeHandler.AnteHandle(ctx, tx, simulate, next)
@@ -66,14 +66,14 @@ package ante
 // 		return ctx, fmt.Errorf("fee collector module account (%s) has not been set", authtypes.FeeCollectorName)
 // 	}
 
-// 	ixoFeeMsgs := feeTx.GetFeePayerMsgs()
+// 	xcoFeeMsgs := feeTx.GetFeePayerMsgs()
 
-// 	ixoMsgCount := len(ixoFeeMsgs)
-// 	if len(feeTx.GetMsgs()) != ixoMsgCount && ixoMsgCount == 1 {
-// 		return ctx, sdkerrors.Wrapf(errors.New("only one custom fee handler msg allowed per transaction"), "expted 1 and got %d", ixoMsgCount)
+// 	xcoMsgCount := len(xcoFeeMsgs)
+// 	if len(feeTx.GetMsgs()) != xcoMsgCount && xcoMsgCount == 1 {
+// 		return ctx, sdkerrors.Wrapf(errors.New("only one custom fee handler msg allowed per transaction"), "expted 1 and got %d", xcoMsgCount)
 // 	}
 
-// 	feePayer, err := ixoFeeMsgs[0].FeePayerFromIid(ctx, dec.accountKeeper, dec.iidKeeper)
+// 	feePayer, err := xcoFeeMsgs[0].FeePayerFromIid(ctx, dec.accountKeeper, dec.iidKeeper)
 // 	if err != nil {
 // 		return ctx, sdkerrors.Wrap(sdkerrors.ErrUnknownAddress, "fee payer does not exist")
 // 	}

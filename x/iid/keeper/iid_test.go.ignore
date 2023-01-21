@@ -3,7 +3,7 @@ package keeper
 import (
 	"fmt"
 
-	"github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	"github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 func (suite *KeeperTestSuite) TestDidDocumentKeeperSetAndGet() {

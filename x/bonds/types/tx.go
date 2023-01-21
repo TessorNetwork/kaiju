@@ -5,10 +5,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	didexported "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
-	didtypes "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
-	iidante "github.com/ixofoundation/ixo-blockchain/x/iid/ante"
-	iidtypes "github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	iidante "github.com/petrinetwork/xco-blockchain/x/iid/ante"
+	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 const (

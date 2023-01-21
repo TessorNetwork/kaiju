@@ -10,11 +10,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	ixotypes "github.com/ixofoundation/ixo-blockchain/lib/ixo"
-	didtypes "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
-	bondsclient "github.com/ixofoundation/ixo-blockchain/x/bonds/client"
-	"github.com/ixofoundation/ixo-blockchain/x/bonds/types"
-	iidtypes "github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
+	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	bondsclient "github.com/petrinetwork/xco-blockchain/x/bonds/client"
+	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
+	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 func NewTxCmd() *cobra.Command {
@@ -134,8 +134,8 @@ func NewCmdCreateBond() *cobra.Command {
 				return sdkerrors.Wrap(types.ErrArgumentMissingOrNonUInteger, "max batch blocks")
 			}
 
-			// Parse creator's ixo DID
-			creatorDid, err := didtypes.UnmarshalIxoDid(_creatorDid)
+			// Parse creator's xco DID
+			creatorDid, err := didtypes.UnmarshalXcoDid(_creatorDid)
 			if err != nil {
 				return err
 			}
@@ -169,7 +169,7 @@ func NewCmdCreateBond() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), creatorDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), creatorDid, msg)
 		},
 	}
 
@@ -214,8 +214,8 @@ func NewCmdEditBond() *cobra.Command {
 			_bondDid, _ := cmd.Flags().GetString(FlagBondDid)
 			_editorDid, _ := cmd.Flags().GetString(FlagEditorDid)
 
-			// Parse editor's ixo DID
-			editorDid, err := didtypes.UnmarshalIxoDid(_editorDid)
+			// Parse editor's xco DID
+			editorDid, err := didtypes.UnmarshalXcoDid(_editorDid)
 			if err != nil {
 				return err
 			}
@@ -233,7 +233,7 @@ func NewCmdEditBond() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), editorDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), editorDid, msg)
 		},
 	}
 
@@ -249,7 +249,7 @@ func NewCmdEditBond() *cobra.Command {
 func NewCmdSetNextAlpha() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "set-next-alpha [new-alpha] [bond-did] [editor-did]",
-		Example: "set-next-alpha 0.5 U7GK8p8rVhJMKhBVRCJJ8c <editor-ixo-did>",
+		Example: "set-next-alpha 0.5 U7GK8p8rVhJMKhBVRCJJ8c <editor-xco-did>",
 		Short:   "Edit a bond's alpha parameter",
 		Args:    cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -263,8 +263,8 @@ func NewCmdSetNextAlpha() *cobra.Command {
 				return sdkerrors.Wrap(types.ErrArgumentMissingOrNonFloat, "alpha")
 			}
 
-			// Parse editor's ixo DID
-			editorDid, err := didtypes.UnmarshalIxoDid(_editorDid)
+			// Parse editor's xco DID
+			editorDid, err := didtypes.UnmarshalXcoDid(_editorDid)
 			if err != nil {
 				return err
 			}
@@ -281,7 +281,7 @@ func NewCmdSetNextAlpha() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), editorDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), editorDid, msg)
 		},
 	}
 
@@ -292,7 +292,7 @@ func NewCmdSetNextAlpha() *cobra.Command {
 func NewCmdUpdateBondState() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "update-bond-state [new-state] [bond-did] [editor-did]",
-		Example: "update-bond-state SETTLE U7GK8p8rVhJMKhBVRCJJ8c <editor-ixo-did>",
+		Example: "update-bond-state SETTLE U7GK8p8rVhJMKhBVRCJJ8c <editor-xco-did>",
 		Short:   "Edit a bond's current state",
 		Args:    cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -300,8 +300,8 @@ func NewCmdUpdateBondState() *cobra.Command {
 			_bondDid := args[1]
 			_editorDid := args[2]
 
-			// Parse editor's ixo DID
-			editorDid, err := didtypes.UnmarshalIxoDid(_editorDid)
+			// Parse editor's xco DID
+			editorDid, err := didtypes.UnmarshalXcoDid(_editorDid)
 			if err != nil {
 				return err
 			}
@@ -318,7 +318,7 @@ func NewCmdUpdateBondState() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), editorDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), editorDid, msg)
 		},
 	}
 
@@ -330,8 +330,8 @@ func NewCmdBuy() *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "buy [bond-token-with-amount] [max-prices] [bond-did] [buyer-did]",
 		Example: "" +
-			"buy 10abc 1000res1 U7GK8p8rVhJMKhBVRCJJ8c <buyer-ixo-did>\n" +
-			"buy 10abc 1000res1,1000res2 U7GK8p8rVhJMKhBVRCJJ8c <buyer-ixo-did>",
+			"buy 10abc 1000res1 U7GK8p8rVhJMKhBVRCJJ8c <buyer-xco-did>\n" +
+			"buy 10abc 1000res1,1000res2 U7GK8p8rVhJMKhBVRCJJ8c <buyer-xco-did>",
 		Short: "Buy from a bond",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -346,8 +346,8 @@ func NewCmdBuy() *cobra.Command {
 				return err
 			}
 
-			// Parse buyer's ixo DID
-			buyerDid, err := didtypes.UnmarshalIxoDid(args[3])
+			// Parse buyer's xco DID
+			buyerDid, err := didtypes.UnmarshalXcoDid(args[3])
 			if err != nil {
 				return err
 			}
@@ -365,7 +365,7 @@ func NewCmdBuy() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), buyerDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), buyerDid, msg)
 		},
 	}
 
@@ -376,7 +376,7 @@ func NewCmdBuy() *cobra.Command {
 func NewCmdSell() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "sell [bond-token-with-amount] [bond-did] [seller-did]",
-		Example: "sell 10abc U7GK8p8rVhJMKhBVRCJJ8c <seller-ixo-did>",
+		Example: "sell 10abc U7GK8p8rVhJMKhBVRCJJ8c <seller-xco-did>",
 		Short:   "Sell from a bond",
 		Args:    cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -386,8 +386,8 @@ func NewCmdSell() *cobra.Command {
 				return err
 			}
 
-			// Parse seller's ixo DID
-			sellerDid, err := didtypes.UnmarshalIxoDid(args[2])
+			// Parse seller's xco DID
+			sellerDid, err := didtypes.UnmarshalXcoDid(args[2])
 			if err != nil {
 				return err
 			}
@@ -404,7 +404,7 @@ func NewCmdSell() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), sellerDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), sellerDid, msg)
 		},
 	}
 
@@ -416,8 +416,8 @@ func NewCmdSwap() *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "swap [from-amount] [from-token] [to-token] [bond-did] [swapper-did]",
 		Example: "" +
-			"swap 100 res1 res2 U7GK8p8rVhJMKhBVRCJJ8c <swapper-ixo-did>\n" +
-			"swap 100 res2 res1 U7GK8p8rVhJMKhBVRCJJ8c <swapper-ixo-did>",
+			"swap 100 res1 res2 U7GK8p8rVhJMKhBVRCJJ8c <swapper-xco-did>\n" +
+			"swap 100 res2 res1 U7GK8p8rVhJMKhBVRCJJ8c <swapper-xco-did>",
 		Short: "Perform a swap between two tokens",
 		Args:  cobra.ExactArgs(5),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -428,8 +428,8 @@ func NewCmdSwap() *cobra.Command {
 				return err
 			}
 
-			// Parse swapper's ixo DID
-			swapperDid, err := didtypes.UnmarshalIxoDid(args[4])
+			// Parse swapper's xco DID
+			swapperDid, err := didtypes.UnmarshalXcoDid(args[4])
 			if err != nil {
 				return err
 			}
@@ -446,7 +446,7 @@ func NewCmdSwap() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), swapperDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), swapperDid, msg)
 		},
 	}
 
@@ -457,7 +457,7 @@ func NewCmdSwap() *cobra.Command {
 func NewCmdMakeOutcomePayment() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "make-outcome-payment [bond-did] [amount] [sender-did]",
-		Example: "make-outcome-payment U7GK8p8rVhJMKhBVRCJJ8c 100 <sender-ixo-did>",
+		Example: "make-outcome-payment U7GK8p8rVhJMKhBVRCJJ8c 100 <sender-xco-did>",
 		Short:   "Make an outcome payment to a bond",
 		Args:    cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -467,8 +467,8 @@ func NewCmdMakeOutcomePayment() *cobra.Command {
 				return sdkerrors.Wrap(types.ErrArgumentMustBeInteger, "outcome payment")
 			}
 
-			// Parse sender's ixo DID
-			sender, err := didtypes.UnmarshalIxoDid(args[2])
+			// Parse sender's xco DID
+			sender, err := didtypes.UnmarshalXcoDid(args[2])
 			if err != nil {
 				return err
 			}
@@ -485,7 +485,7 @@ func NewCmdMakeOutcomePayment() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), sender, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), sender, msg)
 		},
 	}
 
@@ -496,13 +496,13 @@ func NewCmdMakeOutcomePayment() *cobra.Command {
 func NewCmdWithdrawShare() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "withdraw-share [bond-did] [recipient-did]",
-		Example: "withdraw-share U7GK8p8rVhJMKhBVRCJJ8c <recipient-ixo-did>",
+		Example: "withdraw-share U7GK8p8rVhJMKhBVRCJJ8c <recipient-xco-did>",
 		Short:   "Withdraw share from a bond that is in settlement state",
 		Args:    cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 
-			// Parse recipient's ixo DID
-			recipientDid, err := didtypes.UnmarshalIxoDid(args[1])
+			// Parse recipient's xco DID
+			recipientDid, err := didtypes.UnmarshalXcoDid(args[1])
 			if err != nil {
 				return err
 			}
@@ -519,7 +519,7 @@ func NewCmdWithdrawShare() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), recipientDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), recipientDid, msg)
 		},
 	}
 
@@ -530,7 +530,7 @@ func NewCmdWithdrawShare() *cobra.Command {
 func NewCmdWithdrawReserve() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "withdraw-reserve [bond-did] [amount] [withdrawer-did]",
-		Example: "withdraw-reserve U7GK8p8rVhJMKhBVRCJJ8c 1000res <withdrawer-ixo-did>",
+		Example: "withdraw-reserve U7GK8p8rVhJMKhBVRCJJ8c 1000res <withdrawer-xco-did>",
 		Short:   "Withdraw reserve from a bond",
 		Args:    cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -540,8 +540,8 @@ func NewCmdWithdrawReserve() *cobra.Command {
 				return err
 			}
 
-			// Parse withdrawer's ixo DID
-			withdrawerDid, err := didtypes.UnmarshalIxoDid(args[2])
+			// Parse withdrawer's xco DID
+			withdrawerDid, err := didtypes.UnmarshalXcoDid(args[2])
 			if err != nil {
 				return err
 			}
@@ -558,7 +558,7 @@ func NewCmdWithdrawReserve() *cobra.Command {
 				return err
 			}
 
-			return ixotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), withdrawerDid, msg)
+			return xcotypes.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), withdrawerDid, msg)
 		},
 	}
 

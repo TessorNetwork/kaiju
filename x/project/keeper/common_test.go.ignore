@@ -7,14 +7,14 @@ import (
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/ixofoundation/ixo-blockchain/app"
-	"github.com/ixofoundation/ixo-blockchain/cmd"
+	"github.com/petrinetwork/xco-blockchain/app"
+	"github.com/petrinetwork/xco-blockchain/cmd"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )
 
-func CreateTestInput() (*codec.LegacyAmino, *app.IxoApp, sdk.Context) {
+func CreateTestInput() (*codec.LegacyAmino, *app.XcoApp, sdk.Context) {
 	appl := cmd.Setup(false)
 	ctx := appl.BaseApp.NewContext(false, tmproto.Header{})
 	ctx = ctx.WithConsensusParams(

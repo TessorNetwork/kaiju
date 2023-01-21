@@ -1,4 +1,4 @@
-package ixo1155
+package xco1155
 
 import (
 	"bytes"

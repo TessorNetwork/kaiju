@@ -3,7 +3,7 @@
 wait() {
   echo "Waiting for chain to start..."
   while :; do
-    RET=$(ixod status 2>&1)
+    RET=$(xcod status 2>&1)
     if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
       sleep 1
     else
@@ -14,28 +14,28 @@ wait() {
   done
 }
 
-RET=$(ixod status 2>&1)
+RET=$(xcod status 2>&1)
 if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
   wait
 fi
 
 PASSWORD="12345678"
-GAS_PRICES="0.025uixo"
+GAS_PRICES="0.025uxco"
 CHAIN_ID="pandora-4"
-FEE=$(yes $PASSWORD | ixod keys show fee -a)
-RESERVE_OUT=$(yes $PASSWORD | ixod keys show reserveOut -a)
+FEE=$(yes $PASSWORD | xcod keys show fee -a)
+RESERVE_OUT=$(yes $PASSWORD | xcod keys show reserveOut -a)
 
-ixod_tx() {
+xcod_tx() {
   # This function first approximates the gas (adjusted to 105%) and then
   # supplies this for the actual transaction broadcasting as the --gas.
   # This might fail sometimes: https://github.com/cosmos/cosmos-sdk/issues/4938
   cmd="$1 $2"
   shift
   shift
-  APPROX=$(ixod tx $cmd --gas=auto --gas-adjustment=1.05 --fees=1uixo --chain-id="$CHAIN_ID" --dry-run "$@" 2>&1)
+  APPROX=$(xcod tx $cmd --gas=auto --gas-adjustment=1.05 --fees=1uxco --chain-id="$CHAIN_ID" --dry-run "$@" 2>&1)
   APPROX=${APPROX//gas estimate: /}
   echo "Gas estimate: $APPROX"
-  ixod tx $cmd \
+  xcod tx $cmd \
     --gas="$APPROX" \
     --gas-prices="$GAS_PRICES" \
     --chain-id="$CHAIN_ID" \
@@ -43,13 +43,13 @@ ixod_tx() {
     # The $@ adds any extra arguments to the end
 }
 
-ixod_q() {
-  ixod q "$@" --output=json | jq .
+xcod_q() {
+  xcod q "$@" --output=json | jq .
 }
 
-BOND_DID="did:ixo:U7GK8p8rVhJMKhBVRCJJ8c"
+BOND_DID="did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
 #BOND_DID_FULL='{
-#  "did":"did:ixo:U7GK8p8rVhJMKhBVRCJJ8c",
+#  "did":"did:xco:U7GK8p8rVhJMKhBVRCJJ8c",
 #  "verifyKey":"FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW",
 #  "encryptionPublicKey":"domKpTpjrHQtKUnaFLjCuDLe2oHeS4b1sKt7yU9cq7m",
 #  "secret":{
@@ -60,7 +60,7 @@ BOND_DID="did:ixo:U7GK8p8rVhJMKhBVRCJJ8c"
 #}'
 
 MIGUEL_DID_FULL='{
-  "did":"did:ixo:4XJLBfGtWSGKSz4BeRxdun",
+  "did":"did:xco:4XJLBfGtWSGKSz4BeRxdun",
   "verifyKey":"2vMHhssdhrBCRFiq9vj7TxGYDybW4yYdrYh9JG56RaAt",
   "encryptionPublicKey":"6GBp8qYgjE3ducksUa9Ar26ganhDFcmYfbZE9ezFx5xS",
   "secret":{
@@ -70,9 +70,9 @@ MIGUEL_DID_FULL='{
   }
 }'
 
-FRANCESCO_DID="did:ixo:UKzkhVSHc3qEFva5EY2XHt"
+FRANCESCO_DID="did:xco:UKzkhVSHc3qEFva5EY2XHt"
 FRANCESCO_DID_FULL='{
-  "did":"did:ixo:UKzkhVSHc3qEFva5EY2XHt",
+  "did":"did:xco:UKzkhVSHc3qEFva5EY2XHt",
   "verifyKey":"Ftsqjc2pEvGLqBtgvVx69VXLe1dj2mFzoi4kqQNGo3Ej",
   "encryptionPublicKey":"8YScf3mY4eeHoxDT9MRxiuGX5Fw7edWFnwHpgWYSn1si",
   "secret":{
@@ -84,12 +84,12 @@ FRANCESCO_DID_FULL='{
 
 # Ledger DIDs
 echo "Ledgering DID 1/2..."
-ixod_tx did add-did-doc "$MIGUEL_DID_FULL" --broadcast-mode block -y
+xcod_tx did add-did-doc "$MIGUEL_DID_FULL" --broadcast-mode block -y
 echo "Ledgering DID 2/2..."
-ixod_tx did add-did-doc "$FRANCESCO_DID_FULL" --broadcast-mode block -y
+xcod_tx did add-did-doc "$FRANCESCO_DID_FULL" --broadcast-mode block -y
 
 echo "Creating bond..."
-ixod_tx bonds create-bond \
+xcod_tx bonds create-bond \
   --token=abc \
   --name="A B C" \
   --description="Description about A B C" \
@@ -112,20 +112,20 @@ ixod_tx bonds create-bond \
   --broadcast-mode block -y
 
 echo "Editing bond..."
-ixod_tx bonds edit-bond \
+xcod_tx bonds edit-bond \
   --name="New A B C" \
   --bond-did="$BOND_DID" \
   --editor-did="$MIGUEL_DID_FULL" \
   --broadcast-mode block -y
 
 echo "Miguel buys 10abc..."
-ixod_tx bonds buy 10abc 1000000res "$BOND_DID" "$MIGUEL_DID_FULL" --broadcast-mode block -y
+xcod_tx bonds buy 10abc 1000000res "$BOND_DID" "$MIGUEL_DID_FULL" --broadcast-mode block -y
 
 echo "Francesco buys 10abc..."
-ixod_tx bonds buy 10abc 1000000res "$BOND_DID" "$FRANCESCO_DID_FULL" --broadcast-mode block -y
+xcod_tx bonds buy 10abc 1000000res "$BOND_DID" "$FRANCESCO_DID_FULL" --broadcast-mode block -y
 
 echo "Miguel sells 10abc..."
-ixod_tx bonds sell 10abc "$BOND_DID" "$MIGUEL_DID_FULL" --broadcast-mode block -y
+xcod_tx bonds sell 10abc "$BOND_DID" "$MIGUEL_DID_FULL" --broadcast-mode block -y
 
 echo "Francesco sells 10abc..."
-ixod_tx bonds sell 10abc "$BOND_DID" "$FRANCESCO_DID_FULL" --broadcast-mode block -y
+xcod_tx bonds sell 10abc "$BOND_DID" "$FRANCESCO_DID_FULL" --broadcast-mode block -y

@@ -3,8 +3,8 @@ package bonds
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/ixofoundation/ixo-blockchain/x/bonds/keeper"
-	"github.com/ixofoundation/ixo-blockchain/x/bonds/types"
+	"github.com/petrinetwork/xco-blockchain/x/bonds/keeper"
+	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

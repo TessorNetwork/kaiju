@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 
-	"github.com/ixofoundation/ixo-blockchain/x/entity/types"
+	"github.com/petrinetwork/xco-blockchain/x/entity/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

@@ -4,7 +4,7 @@ import (
 	"context"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ixofoundation/ixo-blockchain/x/entity/types"
+	"github.com/petrinetwork/xco-blockchain/x/entity/types"
 )
 
 type msgServer struct {

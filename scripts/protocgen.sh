@@ -39,5 +39,5 @@ go mod tidy
 # Mgoogle/protobuf/any.proto=github.com/cosmos/cosmos-sdk/codec/types:. ./testutil/testdata/*.proto
 
 # move proto files to the right places
-cp -r github.com/ixofoundation/ixo-blockchain/* ./
+cp -r github.com/petrinetwork/xco-blockchain/* ./
 rm -rf github.com

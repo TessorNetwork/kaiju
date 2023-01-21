@@ -8,8 +8,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	didexported "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
-	iidtypes "github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 type (

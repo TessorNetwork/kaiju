@@ -2,8 +2,8 @@ package payments
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ixofoundation/ixo-blockchain/x/payments/keeper"
-	"github.com/ixofoundation/ixo-blockchain/x/payments/types"
+	"github.com/petrinetwork/xco-blockchain/x/payments/keeper"
+	"github.com/petrinetwork/xco-blockchain/x/payments/types"
 )
 
 // InitGenesis new payments genesis

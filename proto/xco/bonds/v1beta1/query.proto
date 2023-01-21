@@ -1,87 +1,87 @@
 syntax = "proto3";
-package ixo.bonds.v1beta1;
+package xco.bonds.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "ixo/bonds/v1beta1/bonds.proto";
+import "xco/bonds/v1beta1/bonds.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/bonds/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/bonds/types";
 
 // Query defines the gRPC querier service.
 service Query {
   // Bonds returns all existing bonds.
   rpc Bonds(QueryBondsRequest) returns (QueryBondsResponse){
-    option (google.api.http).get = "/ixo/bonds"; //this is a REST endpoint - see Query service here https://docs.cosmos.network/master/migrations/app_and_modules.html
+    option (google.api.http).get = "/xco/bonds"; //this is a REST endpoint - see Query service here https://docs.cosmos.network/master/migrations/app_and_modules.html
   }
 
   // BondsDetailed returns a list of all existing bonds with some details about their current state.
   rpc BondsDetailed(QueryBondsDetailedRequest) returns (QueryBondsDetailedResponse) {
-    option (google.api.http).get = "/ixo/bonds_detailed";
+    option (google.api.http).get = "/xco/bonds_detailed";
   }
 
   // Params queries the paramaters of x/bonds module.
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
-    option (google.api.http).get = "/ixo/bonds/params";
+    option (google.api.http).get = "/xco/bonds/params";
   }
 
   // Bond queries info of a specific bond.
   rpc Bond(QueryBondRequest) returns (QueryBondResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}";
+    option (google.api.http).get = "/xco/bonds/{bond_did}";
   }
 
   // Batch queries info of a specific bond's current batch.
   rpc Batch(QueryBatchRequest) returns (QueryBatchResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/batch";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/batch";
   }
 
   // LastBatch queries info of a specific bond's last batch.
   rpc LastBatch(QueryLastBatchRequest) returns (QueryLastBatchResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/last_batch";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/last_batch";
   }
 
   // CurrentPrice queries the current price/s of a specific bond.
   rpc CurrentPrice(QueryCurrentPriceRequest) returns (QueryCurrentPriceResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/current_price";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/current_price";
   }
 
   // CurrentReserve queries the current balance/s of the reserve pool for a specific bond.
   rpc CurrentReserve(QueryCurrentReserveRequest) returns (QueryCurrentReserveResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/current_reserve";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/current_reserve";
   }
 
   // AvailableReserve queries current available balance/s of the reserve pool for a specific bond.
   rpc AvailableReserve(QueryAvailableReserveRequest) returns (QueryAvailableReserveResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/available_reserve";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/available_reserve";
   }
 
   // CustomPrice queries price/s of a specific bond at a specific supply.
   rpc CustomPrice (QueryCustomPriceRequest) returns (QueryCustomPriceResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/price/{bond_amount}";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/price/{bond_amount}";
   }
 
   // BuyPrice queries price/s of buying an amount of tokens from a specific bond.
   rpc BuyPrice(QueryBuyPriceRequest) returns (QueryBuyPriceResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/buy_price/{bond_amount}";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/buy_price/{bond_amount}";
   }
 
   // SellReturn queries return/s on selling an amount of tokens of a specific bond.
   rpc SellReturn(QuerySellReturnRequest) returns (QuerySellReturnResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/sell_return/{bond_amount}";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/sell_return/{bond_amount}";
   }
 
   // SwapReturn queries return/s on swapping an amount of tokens to another token of a specific bond.
   rpc SwapReturn(QuerySwapReturnRequest) returns (QuerySwapReturnResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}";
   }
 
   // AlphaMaximums queries alpha maximums for a specific augmented bonding curve.
   rpc AlphaMaximums(QueryAlphaMaximumsRequest) returns (QueryAlphaMaximumsResponse) {
-    option (google.api.http).get = "/ixo/bonds/{bond_did}/alpha_maximums";
+    option (google.api.http).get = "/xco/bonds/{bond_did}/alpha_maximums";
   }
 
   // rpc BondAccountDetails(QueryAlphaMaximumsRequest) returns (QueryBondAccountDetailsResponse) {
-  //   option (google.api.http).get = "/ixo/bonds/{bond_did}/bond_account_details";
+  //   option (google.api.http).get = "/xco/bonds/{bond_did}/bond_account_details";
   // }
 }
 
@@ -98,7 +98,7 @@ message QueryBondsDetailedRequest {}
 
 // QueryBondsDetailedResponse is the response type for the Query/BondsDetailed RPC method.
 message QueryBondsDetailedResponse {
-  repeated ixo.bonds.v1beta1.BondDetails bonds_detailed = 1 [(gogoproto.moretags) = "yaml:\"bonds_detailed\""];
+  repeated xco.bonds.v1beta1.BondDetails bonds_detailed = 1 [(gogoproto.moretags) = "yaml:\"bonds_detailed\""];
 }
 
 // QueryBondRequest is the request type for the Query/Bond RPC method.
@@ -108,7 +108,7 @@ message QueryBondRequest {
 
 // QueryBondResponse is the response type for the Query/Bond RPC method.
 message QueryBondResponse {
-  ixo.bonds.v1beta1.Bond bond = 1 [(gogoproto.moretags) = "yaml:\"bond\""];
+  xco.bonds.v1beta1.Bond bond = 1 [(gogoproto.moretags) = "yaml:\"bond\""];
 }
 
 // QueryBatchRequest is the request type for the Query/Batch RPC method.
@@ -118,7 +118,7 @@ message QueryBatchRequest{
 
 // QueryBatchResponse is the response type for the Query/Batch RPC method.
 message QueryBatchResponse {
-  ixo.bonds.v1beta1.Batch batch = 1 [(gogoproto.moretags) = "yaml:\"batch\""];
+  xco.bonds.v1beta1.Batch batch = 1 [(gogoproto.moretags) = "yaml:\"batch\""];
 }
 
 // QueryLastBatchRequest is the request type for the Query/LastBatch RPC method.
@@ -128,7 +128,7 @@ message QueryLastBatchRequest{
 
 // QueryLastBatchResponse is the response type for the Query/LastBatch RPC method.
 message QueryLastBatchResponse {
-  ixo.bonds.v1beta1.Batch last_batch = 1 [(gogoproto.moretags) = "yaml:\"last_batch\""];
+  xco.bonds.v1beta1.Batch last_batch = 1 [(gogoproto.moretags) = "yaml:\"last_batch\""];
 }
 
 // QueryCurrentPriceRequest is the request type for the Query/CurrentPrice RPC method.
@@ -245,5 +245,5 @@ message QueryParamsRequest {}
 
 // QueryParamsResponse is the response type for the Query/Params RPC method.
 message QueryParamsResponse {
-  ixo.bonds.v1beta1.Params params = 1 [(gogoproto.moretags) = "yaml:\"params\""];
+  xco.bonds.v1beta1.Params params = 1 [(gogoproto.moretags) = "yaml:\"params\""];
 }

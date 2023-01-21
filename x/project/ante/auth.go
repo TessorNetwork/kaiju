@@ -21,8 +21,8 @@ func init() {
 	simEd25519Pubkey.Key = bz
 }
 
-// func NewDefaultPubKeyGetter(keeper keeper.Keeper) ixotypes.PubKeyGetter {
-// 	return func(ctx sdk.Context, msg ixotypes.IxoMsg) (pubKey cryptotypes.PubKey, err error) {
+// func NewDefaultPubKeyGetter(keeper keeper.Keeper) xcotypes.PubKeyGetter {
+// 	return func(ctx sdk.Context, msg xcotypes.XcoMsg) (pubKey cryptotypes.PubKey, err error) {
 
 // 		projectDidDoc, err := keeper.GetProjectDoc(ctx, msg.GetSignerDid())
 // 		if err != nil {
@@ -35,8 +35,8 @@ func init() {
 // 	}
 // }
 
-// func NewModulePubKeyGetter(keeper keeper.Keeper, didKeeper didkeeper.Keeper) ixotypes.PubKeyGetter {
-// 	return func(ctx sdk.Context, msg ixotypes.IxoMsg) (pubKey cryptotypes.PubKey, err error) {
+// func NewModulePubKeyGetter(keeper keeper.Keeper, didKeeper didkeeper.Keeper) xcotypes.PubKeyGetter {
+// 	return func(ctx sdk.Context, msg xcotypes.XcoMsg) (pubKey cryptotypes.PubKey, err error) {
 
 // 		// MsgCreateProject: pubkey from msg since project does not exist yet
 // 		// MsgWithdrawFunds: signer is user DID, so get pubkey from did module
@@ -101,12 +101,12 @@ func deductProjectFundingFees(bankKeeper bankkeeper.Keeper, ctx sdk.Context,
 
 // func NewProjectCreationAnteHandler(
 // 	ak authkeeper.AccountKeeper, bk bankkeeper.Keeper, didKeeper didkeeper.Keeper, signModeHandler signing.SignModeHandler,
-// 	pubKeyGetter ixotypes.PubKeyGetter) sdk.AnteHandler {
+// 	pubKeyGetter xcotypes.PubKeyGetter) sdk.AnteHandler {
 
 // 	// Refer to inline documentation in app/app.go for introduction to why we
-// 	// need a custom ixo AnteHandler, and especially a custom AnteHandler for
+// 	// need a custom xco AnteHandler, and especially a custom AnteHandler for
 // 	// project creation. Below, we will discuss the differences between the
-// 	// custom ixo AnteHandler and the project creation AnteHandler.
+// 	// custom xco AnteHandler and the project creation AnteHandler.
 // 	//
 // 	// It is clear below that our custom AnteHandler is not completely custom.
 // 	// It uses various functions from the Cosmos ante module. However, it also
@@ -117,7 +117,7 @@ func deductProjectFundingFees(bankKeeper bankkeeper.Keeper, ctx sdk.Context,
 // 	//   if the decorator specifically needs to use the project creator DID.
 // 	//
 // 	// NewSetUpContextDecorator:
-// 	// (Note: default ixo AnteHandler uses the Cosmos NewSetUpContextDecorator)
+// 	// (Note: default xco AnteHandler uses the Cosmos NewSetUpContextDecorator)
 // 	// - Uses an infinite gas meter since we do not care about gas limits. This
 // 	//   reduces the likelihood that a project creation message fails.
 // 	//
@@ -127,7 +127,7 @@ func deductProjectFundingFees(bankKeeper bankkeeper.Keeper, ctx sdk.Context,
 // 	//
 // 	// NewSetPubKeyDecorator:
 // 	// - Enforces that the signer's account (the project) does not exist yet.
-// 	// - Creates the signer's account (in the default ixo AnteHandler, this is
+// 	// - Creates the signer's account (in the default xco AnteHandler, this is
 // 	//   only done if the signer does not yet exist, such as during MsgAddDid)
 // 	//
 // 	// NewDeductFeeDecorator:
@@ -163,8 +163,8 @@ func deductProjectFundingFees(bankKeeper bankkeeper.Keeper, ctx sdk.Context,
 // 	// 	NewSetPubKeyDecorator(ak, pubKeyGetter), // SetPubKeyDecorator must be called before all signature verification decorators
 // 	// 	ante.NewValidateSigCountDecorator(ak),
 // 	// 	NewDeductFeeDecorator(ak, bk, didKeeper, pubKeyGetter),
-// 	// 	//ixo.NewSigGasConsumeDecorator(ak, sigGasConsumer, pubKeyGetter),
+// 	// 	//xco.NewSigGasConsumeDecorator(ak, sigGasConsumer, pubKeyGetter),
 // 	// 	NewSigVerificationDecorator(ak, signModeHandler, pubKeyGetter),
-// 	// 	ixotypes.NewIncrementSequenceDecorator(ak, pubKeyGetter), // innermost AnteDecorator
+// 	// 	xcotypes.NewIncrementSequenceDecorator(ak, pubKeyGetter), // innermost AnteDecorator
 // 	// )
 // }

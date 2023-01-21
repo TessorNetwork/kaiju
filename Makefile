@@ -31,11 +31,11 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 # process linker flags
 
 ldflags = \
-    -X github.com/cosmos/cosmos-sdk/version.Name=ixo \
-    -X github.com/cosmos/cosmos-sdk/version.AppName=ixod \
+    -X github.com/cosmos/cosmos-sdk/version.Name=xco \
+    -X github.com/cosmos/cosmos-sdk/version.AppName=xcod \
     -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
     -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-    -X "github.com/ixofoundation/ixo-blockchain/version.BuildTags=$(build_tags_comma_sep)" \
+    -X "github.com/petrinetwork/xco-blockchain/version.BuildTags=$(build_tags_comma_sep)" \
     -X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TM_VERSION)
 
 ifeq ($(WITH_CLEVELDB),yes)
@@ -50,13 +50,13 @@ all: lint install
 
 build: go.sum
 ifeq ($(OS),Windows_NT)
-	go build -mod=readonly $(BUILD_FLAGS) -o build/ixod.exe ./cmd/ixod
+	go build -mod=readonly $(BUILD_FLAGS) -o build/xcod.exe ./cmd/xcod
 else
-	go build -mod=readonly $(BUILD_FLAGS) -o build/ixod ./cmd/ixod
+	go build -mod=readonly $(BUILD_FLAGS) -o build/xcod ./cmd/xcod
 endif
 
 install: go.sum
-	go install -mod=readonly $(BUILD_FLAGS) ./cmd/ixod
+	go install -mod=readonly $(BUILD_FLAGS) ./cmd/xcod
 
 ########################################
 ### Tools & dependencies
@@ -72,7 +72,7 @@ go.sum: go.mod
 draw-deps:
 	@# requires brew install graphviz or apt-get install graphviz
 	go get github.com/RobotsAndPencils/goviz
-	@goviz -i github.com/ixofoundation/ixo-blockchain/cmd/ixod -d 2 | dot -Tpng -o dependency-graph.png
+	@goviz -i github.com/petrinetwork/xco-blockchain/cmd/xcod -d 2 | dot -Tpng -o dependency-graph.png
 
 .PHONY: all install go-mod-cache draw-deps build
 

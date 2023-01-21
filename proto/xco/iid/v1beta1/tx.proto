@@ -1,11 +1,11 @@
 syntax = "proto3";
-package ixo.iid.v1beta1;
+package xco.iid.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "ixo/iid/v1beta1/iid.proto";
+import "xco/iid/v1beta1/iid.proto";
 import "google/api/annotations.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/iid/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/iid/types";
 
 // Msg defines the identity Msg service.
 service Msg {

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Ixo Chain Installer"
+echo "Xco Chain Installer"
 echo -e "-------------------------\n\n"
 sleep 2
 
@@ -9,7 +9,7 @@ if [ "$USER" != "root" ]; then
         exit 0;
 fi
 
-echo "Starting IXO based install"
+echo "Starting XCO based install"
 sleep 1
 echo "Fetching Genisis Config"
 apt-get update -y
@@ -19,14 +19,14 @@ cd ~
 
 
 git clone 
-mkdir /home/ixo/.ixod
-mkdir /home/ixo/.ixod/config
+mkdir /home/xco/.xcod
+mkdir /home/xco/.xcod/config
 
-cp /root/genesis/pandora-4/genesis.json /home/ixo/.ixod/config/genesis.json
+cp /root/genesis/pandora-4/genesis.json /home/xco/.xcod/config/genesis.json
 
-chown -R ixo:ixo /home/ixo/.$DAEMONNAME
-chown -R ixo:ixo /home/ixo/.$DAEMONNAME/config/
-chown -R ixo:ixo /home/ixo/.$DAEMONNAME/config/genesis.json
+chown -R xco:xco /home/xco/.$DAEMONNAME
+chown -R xco:xco /home/xco/.$DAEMONNAME/config/
+chown -R xco:xco /home/xco/.$DAEMONNAME/config/genesis.json
 
 
 su $USERNAME <<EOSU
@@ -35,9 +35,9 @@ EOSU
 
 sleep 5
 
-cp /root/genesis/pandora-4/genesis.json /home/ixo/.ixod/config/genesis.json
+cp /root/genesis/pandora-4/genesis.json /home/xco/.xcod/config/genesis.json
 
-chown -R ixo:ixo /home/ixo/.$DAEMONNAME/config/genesis.json
+chown -R xco:xco /home/xco/.$DAEMONNAME/config/genesis.json
 
 
 echo "---"

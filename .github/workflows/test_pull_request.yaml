@@ -66,7 +66,7 @@ jobs:
           - name: Build docker image
             os: ubuntu-latest
             enabled: true
-            artifact: ixo-chain
+            artifact: xco-chain
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: dist-stable
@@ -77,7 +77,7 @@ jobs:
 
           - name: Build debian package
             os: ubuntu-latest
-            artifact: "ixod"
+            artifact: "xcod"
             enabled: false
             docker:
               file: .infra/dockerfiles/Dockerfile
@@ -134,14 +134,14 @@ jobs:
         test:
           - name: Scan Docker image (Security)
             os: ubuntu-latest
-            artifact: ixo-chain
+            artifact: xco-chain
             enabled: true
             experimental: true
-            command: docker scan --file .infra/dockerfiles/Dockerfile ixo-chain:tmp
+            command: docker scan --file .infra/dockerfiles/Dockerfile xco-chain:tmp
 
           - name: Integration Tests (Quality)
             os: ubuntu-latest
-            artifact: ixo-chain
+            artifact: xco-chain
             enabled: false
             experimental: true
 

@@ -15,17 +15,17 @@ template: |
   ## Quick Start
   ### Homebrew
   ```
-  brew tap ixofoundation/ixo
-  brew install ixo-blockchain@$MAJOR.$MINOR
+  brew tap petrinetwork/xco
+  brew install xco-blockchain@$MAJOR.$MINOR
   ```
 
   ### Docker
   ```
   docker run \
-    --name ixo-blockchain \
+    --name xco-blockchain \
     -p 1317:1317 \
     -p 26657:26657 \
-    ghcr.io/ixofoundation/ixo-blockchain:v$RESOLVED_VERSION \
+    ghcr.io/petrinetwork/xco-blockchain:v$RESOLVED_VERSION \
     start
   ```
 #   Release Candidate see changelog

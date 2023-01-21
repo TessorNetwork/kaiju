@@ -1,14 +1,14 @@
 syntax = "proto3";
-package ixo.token.v1beta1;
+package xco.token.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "ixo/iid/v1beta1/iid.proto";
-import "ixo/iid/v1beta1/tx.proto";
-import "ixo/token/v1beta1/token.proto";
+import "xco/iid/v1beta1/iid.proto";
+import "xco/iid/v1beta1/tx.proto";
+import "xco/token/v1beta1/token.proto";
 import "google/protobuf/timestamp.proto";
 
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/token/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/token/types";
 
 // Msg defines the project Msg service.
 service Msg {
@@ -30,7 +30,7 @@ service Msg {
 //   option (gogoproto.goproto_getters)  = false;
 
 //   // An Token Type as defined by the implementer
-//   string minterDid        = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""]; // Owner of the Token NFT | The ownersdid used to sign this transaction.
+//   string minterDid        = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""]; // Owner of the Token NFT | The ownersdid used to sign this transaction.
 //   string minterAddress    = 2 [(gogoproto.jsontag) = "minter_address", (gogoproto.moretags) = "yaml:\"minter_address\""]; // Owner of the Token NFT | The ownersdid used to sign this transaction.
 
 // }
@@ -76,7 +76,7 @@ message MsgSetupMinter {
   option (gogoproto.equal)            = false;
   option (gogoproto.goproto_getters)  = false;
 
-  string minterDid = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
+  string minterDid = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
   string minterAddress = 2 [(gogoproto.jsontag) = "minter_address", (gogoproto.moretags) = "yaml:\"minter_address\""];
   string name = 4 [(gogoproto.jsontag) = "name", (gogoproto.moretags) = "yaml:\"name\""];
   string description = 5 [(gogoproto.jsontag) = "description", (gogoproto.moretags) = "yaml:\"description\""];
@@ -117,10 +117,10 @@ message MsgMint {
 
   
 
-  string minterDid = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
+  string minterDid = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
   string minterAddress = 2 [(gogoproto.jsontag) = "minter_address", (gogoproto.moretags) = "yaml:\"minter_address\""];
   string contractAddress = 3 [(gogoproto.jsontag) = "contract_address", (gogoproto.moretags) = "yaml:\"contract_address\""];
-  string ownerDid = 4 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
+  string ownerDid = 4 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
 
   oneof mint_contract {
     MintCw20 cw20 = 5 [(gogoproto.jsontag) = "cw20", (gogoproto.moretags) = "yaml:\"cw20\""];

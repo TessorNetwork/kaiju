@@ -27,8 +27,8 @@ project creator's DID, the project's public key (associated with the project's
 DID), the project's current status, and other user-specified data associated to
 the project.
 
-**TxHash**: a value usually set by ixo-cellnode if it is the component that is
-creating the project. If creating a project using `ixod`, the value of this
+**TxHash**: a value usually set by xco-cellnode if it is the component that is
+creating the project. If creating a project using `xcod`, the value of this
 field is not very relevant.
 
 **Status**: indicates the project's current status, which in turn dictates the
@@ -117,8 +117,8 @@ type GenesisAccountMap struct {
 ```
 
 A genesis account map maps a project's account names to the accounts' addresses.
-It keeps track of the addresses for the `InitiatingNodePayFees`, `IxoPayFees`,
-and `IxoFees` accounts, as well as the accounts of the project's agents. For
+It keeps track of the addresses for the `InitiatingNodePayFees`, `XcoPayFees`,
+and `XcoFees` accounts, as well as the accounts of the project's agents. For
 more detail on project accounts, refer to the
 [Entity Accounts page](05_entity_accounts.md) of this module's spec.
 
@@ -167,7 +167,7 @@ project.
 
 **TemplateId**: indicates the ID of the claim template that the claim is based
 on. More information about schema templates (and specifically claim templates)
-in [this repository](https://github.com/ixofoundation/schema).
+in [this repository](https://github.com/xcofoundation/schema).
 
 **Status**: indicates the claim's current status, which can be one of three:
 

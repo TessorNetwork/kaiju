@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/ixofoundation/ixo-blockchain/x/payments/types"
+	"github.com/petrinetwork/xco-blockchain/x/payments/types"
 )
 
 var _ types.QueryServer = Keeper{}

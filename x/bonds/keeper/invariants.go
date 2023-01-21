@@ -5,7 +5,7 @@ package keeper
 import (
 	"fmt"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ixofoundation/ixo-blockchain/x/bonds/types"
+	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
 )
 
 // RegisterInvariants registers all supply invariants

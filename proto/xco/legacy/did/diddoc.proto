@@ -2,9 +2,9 @@ syntax = "proto3";
 package legacydid;
 
 import "gogoproto/gogo.proto";
-import "ixo/legacy/did/did.proto";
+import "xco/legacy/did/did.proto";
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/lib/legacydid";
+option go_package = "github.com/petrinetwork/xco-blockchain/lib/legacydid";
 
 // BaseDidDoc defines a base DID document type. It implements the DidDoc interface.
 message BaseDidDoc {

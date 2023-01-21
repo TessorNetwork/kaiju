@@ -1,12 +1,12 @@
 syntax = "proto3";
-package ixo.iid.v1beta1;
+package xco.iid.v1beta1;
 
 import "google/api/annotations.proto";
-import "ixo/iid/v1beta1/iid.proto";
+import "xco/iid/v1beta1/iid.proto";
 import "gogoproto/gogo.proto";
 // this line is used by starport scaffolding # 1
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/iid/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/iid/types";
 
 // this line is used by starport scaffolding # 1
 
@@ -14,16 +14,16 @@ option go_package = "github.com/ixofoundation/ixo-blockchain/x/iid/types";
 service Query {
   // IidDocuments queries all iid documents that match the given status.
   rpc IidDocuments(QueryIidDocumentsRequest) returns (QueryIidDocumentsResponse) {
-    option (google.api.http).get = "/ixo/did/dids";
+    option (google.api.http).get = "/xco/did/dids";
   }
   // IidDocument queries a iid documents with an id.
   rpc IidDocument(QueryIidDocumentRequest) returns (QueryIidDocumentResponse) {
-    option (google.api.http).get = "/ixo/did/dids/{id}";
+    option (google.api.http).get = "/xco/did/dids/{id}";
   }
 
   // MetaData queries a iid documents with an id.
   rpc MetaData(QueryIidMetaDataRequest) returns (QueryIidMetaDataResponse) {
-    option (google.api.http).get = "/ixo/did/dids/{id}";
+    option (google.api.http).get = "/xco/did/dids/{id}";
   }
 }
 

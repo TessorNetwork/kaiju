@@ -4,7 +4,7 @@ info:
   name: ''
   description: ''
 paths:
-  /ixo/bonds:
+  /xco/bonds:
     get:
       summary: Bonds returns all existing bonds.
       operationId: BondsBonds
@@ -41,7 +41,7 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
-  /ixo/bonds/params:
+  /xco/bonds/params:
     get:
       summary: Params queries the paramaters of x/bonds module.
       operationId: BondsParams
@@ -82,7 +82,7 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
-  '/ixo/bonds/{bondDid}':
+  '/xco/bonds/{bondDid}':
     get:
       summary: Bond queries info of a specific bond.
       operationId: BondsBond
@@ -278,7 +278,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/alpha_maximums':
+  '/xco/bonds/{bondDid}/alpha_maximums':
     get:
       summary: >-
         AlphaMaximums queries alpha maximums for a specific augmented bonding
@@ -322,7 +322,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/available_reserve':
+  '/xco/bonds/{bondDid}/available_reserve':
     get:
       summary: >-
         AvailableReserve queries current available balance/s of the reserve pool
@@ -379,7 +379,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/batch':
+  '/xco/bonds/{bondDid}/batch':
     get:
       summary: Batch queries info of a specific bond's current batch.
       operationId: BondsBatch
@@ -634,7 +634,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/buy_price/{bondAmount}':
+  '/xco/bonds/{bondDid}/buy_price/{bondAmount}':
     get:
       summary: >-
         BuyPrice queries price/s of buying an amount of tokens from a specific
@@ -761,7 +761,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/current_price':
+  '/xco/bonds/{bondDid}/current_price':
     get:
       summary: CurrentPrice queries the current price/s of a specific bond.
       operationId: BondsCurrentPrice
@@ -817,7 +817,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/current_reserve':
+  '/xco/bonds/{bondDid}/current_reserve':
     get:
       summary: >-
         CurrentReserve queries the current balance/s of the reserve pool for a
@@ -874,7 +874,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/last_batch':
+  '/xco/bonds/{bondDid}/last_batch':
     get:
       summary: LastBatch queries info of a specific bond's last batch.
       operationId: BondsLastBatch
@@ -1129,7 +1129,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/price/{bondAmount}':
+  '/xco/bonds/{bondDid}/price/{bondAmount}':
     get:
       summary: CustomPrice queries price/s of a specific bond at a specific supply.
       operationId: BondsCustomPrice
@@ -1189,7 +1189,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/sell_return/{bondAmount}':
+  '/xco/bonds/{bondDid}/sell_return/{bondAmount}':
     get:
       summary: >-
         SellReturn queries return/s on selling an amount of tokens of a specific
@@ -1333,7 +1333,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/bonds/{bondDid}/swap_return/{fromTokenWithAmount}/{toToken}':
+  '/xco/bonds/{bondDid}/swap_return/{fromTokenWithAmount}/{toToken}':
     get:
       summary: >-
         SwapReturn queries return/s on swapping an amount of tokens to another
@@ -1415,7 +1415,7 @@ paths:
           type: string
       tags:
         - Query
-  /ixo/bonds_detailed:
+  /xco/bonds_detailed:
     get:
       summary: >-
         BondsDetailed returns a list of all existing bonds with some details
@@ -13349,7 +13349,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /ixo/allDidDocs:
+  /xco/allDidDocs:
     get:
       summary: >-
         AllDidDocs returns a list of all existing DidDocs (i.e. all DIDs along
@@ -13726,7 +13726,7 @@ paths:
                         }
       tags:
         - Query
-  /ixo/did:
+  /xco/did:
     get:
       summary: AllDids returns a list of all existing DIDs.
       operationId: DidAllDids
@@ -13930,7 +13930,7 @@ paths:
                         }
       tags:
         - Query
-  '/ixo/did/{did}':
+  '/xco/did/{did}':
     get:
       summary: DidDoc queries info of a specific DID's DidDoc.
       operationId: DidDidDoc
@@ -14304,9 +14304,9 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/didToAddr/{did}':
+  '/xco/didToAddr/{did}':
     get:
-      summary: AddressFromDid retrieves the cosmos address associated to an ixo DID.
+      summary: AddressFromDid retrieves the cosmos address associated to an xco DID.
       operationId: DidAddressFromDid
       responses:
         '200':
@@ -14512,11 +14512,11 @@ paths:
           pattern: .+
       tags:
         - Query
-  '/ixo/pubKeyToAddr/{pubKey}':
+  '/xco/pubKeyToAddr/{pubKey}':
     get:
       summary: >-
         AddressFromBase58EncodedPubkey retrieves the cosmos address associated
-        to an ixo DID's pubkey.
+        to an xco DID's pubkey.
       operationId: DidAddressFromBase58EncodedPubkey
       responses:
         '200':
@@ -15453,7 +15453,7 @@ paths:
                         }
       tags:
         - Query
-  '/ixo/payments/contracts/{paymentContractId}':
+  '/xco/payments/contracts/{paymentContractId}':
     get:
       summary: PaymentContract queries info of a specific payment contract.
       operationId: PaymentsPaymentContract
@@ -15726,7 +15726,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/payments/contracts_by_id_prefix/{paymentContractsIdPrefix}':
+  '/xco/payments/contracts_by_id_prefix/{paymentContractsIdPrefix}':
     get:
       summary: >-
         PaymentContractsByIdPrefix lists all payment contracts having an id with
@@ -16005,7 +16005,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/payments/subscriptions/{subscriptionId}':
+  '/xco/payments/subscriptions/{subscriptionId}':
     get:
       summary: Subscription queries info of a specific Subscription.
       operationId: PaymentsSubscription
@@ -16399,7 +16399,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/payments/templates/{paymentTemplateId}':
+  '/xco/payments/templates/{paymentTemplateId}':
     get:
       summary: PaymentTemplate queries info of a specific payment template.
       operationId: PaymentsPaymentTemplate
@@ -16675,7 +16675,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/project/{projectDid}':
+  '/xco/project/{projectDid}':
     get:
       summary: ProjectDoc queries info of a specific project.
       operationId: ProjectProjectDoc
@@ -16732,7 +16732,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ixo/projectAccounts/{projectDid}':
+  '/xco/projectAccounts/{projectDid}':
     get:
       summary: ProjectAccounts lists a specific project's accounts.
       operationId: ProjectProjectAccounts
@@ -16780,7 +16780,7 @@ paths:
           type: string
       tags:
         - Query
-  /ixo/projectParams:
+  /xco/projectParams:
     get:
       summary: Params queries the paramaters of x/project module.
       operationId: ProjectParams
@@ -16793,7 +16793,7 @@ paths:
               params:
                 type: object
                 properties:
-                  ixoDid:
+                  xcoDid:
                     type: string
                   projectMinimumInitialFunding:
                     type: array
@@ -16840,7 +16840,7 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
-  '/ixo/projectTxs/{projectDid}':
+  '/xco/projectTxs/{projectDid}':
     get:
       summary: ProjectTx lists a specific project's transactions.
       operationId: ProjectProjectTx
@@ -25656,7 +25656,7 @@ definitions:
         title: >-
           The claim section of a credential, indicating if the DID is KYC
           validated
-    title: Digital identity credential issued to an ixo DID
+    title: Digital identity credential issued to an xco DID
   did.MsgAddCredentialResponse:
     type: object
     description: MsgAddCredentialResponse defines the Msg/AddCredential response type.
@@ -27006,7 +27006,7 @@ definitions:
   project.Params:
     type: object
     properties:
-      ixoDid:
+      xcoDid:
         type: string
       projectMinimumInitialFunding:
         type: array
@@ -27050,7 +27050,7 @@ definitions:
       params:
         type: object
         properties:
-          ixoDid:
+          xcoDid:
             type: string
           projectMinimumInitialFunding:
             type: array

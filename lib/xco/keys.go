@@ -1,5 +1,5 @@
-package ixo
+package xco
 
 const (
-	ModuleName = "ixo"
+	ModuleName = "xco"
 )

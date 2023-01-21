@@ -12,15 +12,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/cosmos/cosmos-sdk/x/auth/legacy/legacytx"
 	"github.com/gorilla/mux"
-	"github.com/ixofoundation/ixo-blockchain/compatibility"
-	ixotypes "github.com/ixofoundation/ixo-blockchain/lib/ixo"
-	didexported "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
-	projecttypes "github.com/ixofoundation/ixo-blockchain/x/project/types"
+	"github.com/petrinetwork/xco-blockchain/compatibility"
+	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
+	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	projecttypes "github.com/petrinetwork/xco-blockchain/x/project/types"
 )
 
 var (
 	approximationGasAdjustment = float64(1.5)
-	expectedMinGasPrices       = "0.025" + ixotypes.IxoNativeToken
+	expectedMinGasPrices       = "0.025" + xcotypes.XcoNativeToken
 )
 
 func RegisterTxRoutes(clientCtx client.Context, r *mux.Router) {
@@ -64,19 +64,19 @@ func SignDataRequest(clientCtx client.Context) http.HandlerFunc {
 			return
 		}
 
-		// all messages must be of type ixo.IxoMsg
-		ixoMsg, ok := msg.(ixotypes.IxoMsg)
+		// all messages must be of type xco.XcoMsg
+		xcoMsg, ok := msg.(xcotypes.XcoMsg)
 		if !ok {
-			rest.WriteErrorResponse(w, http.StatusBadRequest, "msg must be ixo.IxoMsg")
+			rest.WriteErrorResponse(w, http.StatusBadRequest, "msg must be xco.XcoMsg")
 			return
 		}
 
 		output := SignDataResponse{}
 
-		switch ixoMsg.Type() {
+		switch xcoMsg.Type() {
 		case projecttypes.TypeMsgCreateProject:
 			var stdSignMsg legacytx.StdSignMsg
-			stdSignMsg = ixoMsg.(*projecttypes.MsgCreateProject).ToStdSignMsg(
+			stdSignMsg = xcoMsg.(*projecttypes.MsgCreateProject).ToStdSignMsg(
 				projecttypes.MsgCreateProjectTotalFee)
 			stdSignMsg.ChainID = clientCtx.ChainID
 
@@ -89,7 +89,7 @@ func SignDataRequest(clientCtx client.Context) http.HandlerFunc {
 
 			// Set gas adjustment and fees
 			gasAdjustment := approximationGasAdjustment
-			fees := sdk.NewCoins(sdk.NewCoin(ixotypes.IxoNativeToken, sdk.OneInt()))
+			fees := sdk.NewCoins(sdk.NewCoin(xcotypes.XcoNativeToken, sdk.OneInt()))
 
 			chainId := clientCtx.ChainID
 			txf := clienttx.Factory{}.

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-ixod start --pruning "nothing"
+xcod start --pruning "nothing"

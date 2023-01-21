@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	didexported "github.com/ixofoundation/ixo-blockchain/lib/legacydid"
-	iidtypes "github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 type (

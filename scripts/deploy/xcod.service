@@ -1,14 +1,14 @@
-# /etc/systemd/system/ixod.service
+# /etc/systemd/system/xcod.service
 
 [Unit]
-Description=ixod Node
+Description=xcod Node
 After=network.target
 
 [Service]
 Type=simple
-User=ixo
-WorkingDirectory=/home/ixo
-ExecStart=/home/ixo/go/bin/ixod start
+User=xco
+WorkingDirectory=/home/xco
+ExecStart=/home/xco/go/bin/xcod start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096

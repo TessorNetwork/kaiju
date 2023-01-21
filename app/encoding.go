@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/cosmos/cosmos-sdk/std"
-	"github.com/ixofoundation/ixo-blockchain/app/params"
+	"github.com/petrinetwork/xco-blockchain/app/params"
 )
 
 // MakeTestEncodingConfig creates an EncodingConfig for testing

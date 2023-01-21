@@ -13,7 +13,7 @@ A verification message represent a combination of a verification method and a se
 
 
 #### Source 
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L32
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L32
 
 
 
@@ -33,7 +33,7 @@ A `MsgCreateIidDocument` is used to create a new iid document, sit has the follo
 
 #### Source
 
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L64
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L64
 
 ### MsgUpdateIidDocument
 
@@ -44,7 +44,7 @@ The `MsgUpdateIidDocument` is used to update a iid document. It has the followin
 - `signer` - a string containing the cosmos address of the private key signing the transaction 
 
 #### Source
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L58
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L58
 ### MsgAddVerification
 
 The `MsgAddVerification` is used to add new [verification methods](https://w3c.github.io/did-core/#verification-methods) and [verification relationships](https://w3c.github.io/did-core/#verification-relationships) to a iid document. It has the following fields:
@@ -54,7 +54,7 @@ The `MsgAddVerification` is used to add new [verification methods](https://w3c.g
 - `signer` - a string containing the cosmos address of the private key signing the transaction 
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L73
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L73
 
 ### MsgSetVerificationRelationships
 
@@ -66,7 +66,7 @@ The `MsgSetVerificationRelationships` is used to overwrite the [verification rel
 - `signer` - a string containing the cosmos address of the private key signing the transaction 
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L84
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L84
 ### MsgRevokeVerification
 
 The `MsgRevokeVerification` is used to remove a [verification method](https://w3c.github.io/did-core/#verification-methods) and related [verification relationships](https://w3c.github.io/did-core/#verification-relationships) from a iid document. It has the following fields:
@@ -76,7 +76,7 @@ The `MsgRevokeVerification` is used to remove a [verification method](https://w3
 - `signer` - a string containing the cosmos address of the private key signing the transaction 
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L96
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L96
 ### MsgAddService
 
 The `MsgAddService` is used to add a [service](https://w3c.github.io/did-core/#services) to a iid document. It has the following fields:
@@ -86,7 +86,7 @@ The `MsgAddService` is used to add a [service](https://w3c.github.io/did-core/#s
 - `signer` - a string containing the cosmos address of the private key signing the transaction 
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L111
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L111
 ### MsgDeleteService
 
 The `MsgDeleteService` is used to remove a [service](https://w3c.github.io/did-core/#services) from a iid document. It has the following fields:
@@ -96,7 +96,7 @@ The `MsgDeleteService` is used to remove a [service](https://w3c.github.io/did-c
 - `signer` - a string containing the cosmos address of the private key signing the transaction 
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L122
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L122
 
 ### MsgAddAccordedRight
 
@@ -107,7 +107,7 @@ The `MsgAddAccordedRight` is used to add an [AccordedRight](#) to a iid document
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L223
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L223
 ### MsgDeleteAccordedRight
 
 The `MsgDeleteAccordedRight` is used to remove a [AccordedRight](#) from a iid document. It has the following fields:
@@ -117,7 +117,7 @@ The `MsgDeleteAccordedRight` is used to remove a [AccordedRight](#) from a iid d
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L231
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L231
 
 ### MsgAddLinkedEntity
 
@@ -128,7 +128,7 @@ The `MsgAddLinkedEntity` is used to add a [LinkedEntity](#) to a iid document. I
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L205
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L205
 ### MsgDeleteLinkedEntity
 
 The `MsgDeleteLinkedEntity` is used to remove a [LinkedEntity](#) from a iid document. It has the following fields:
@@ -138,7 +138,7 @@ The `MsgDeleteLinkedEntity` is used to remove a [LinkedEntity](#) from a iid doc
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L214
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L214
 
 ### MsgAddLinkedResource
 
@@ -149,7 +149,7 @@ The `MsgAddLinkedResource` is used to add a [LinkedResource](#) to a iid documen
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L187
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L187
 ### MsgDeleteLinkedResource
 
 The `MsgDeleteLinkedResource` is used to remove a [LinkedResource](#) from a iid document. It has the following fields:
@@ -159,7 +159,7 @@ The `MsgDeleteLinkedResource` is used to remove a [LinkedResource](#) from a iid
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L196
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L196
 
 ### MsgAddIidContext
 
@@ -170,7 +170,7 @@ The `MsgAddIidContext` is used to add a [service](02_state.md#Iid Context) to a 
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L240
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L240
 ### MsgDeleteIidContext
 
 The `MsgDeleteIidContext` is used to remove a [IidContext](02_state.md#Iid Context) from a iid document. It has the following fields:
@@ -180,7 +180,7 @@ The `MsgDeleteIidContext` is used to remove a [IidContext](02_state.md#Iid Conte
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L248
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L248
 ### MsgDeleteIidContext
 
 The `MsgUpdateIidMeta ` is used to REPLACE the [IidMetadata](02_state.md#IidMetadata) in an iid document. It has the following fields:
@@ -190,7 +190,7 @@ The `MsgUpdateIidMeta ` is used to REPLACE the [IidMetadata](02_state.md#IidMeta
 - `signer` - a string containing the cosmos address of the private key signing the transaction
 
 #### Source:
-https://github.com/ixofoundation/ixo-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L257
+https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L257
 
 ### QueryIidDocumentRequest
 

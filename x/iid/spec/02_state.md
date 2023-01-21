@@ -68,7 +68,7 @@ type IidDocument struct {
 ```
 
 #### Source 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L22
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L22
 
 ### Verification Method
 
@@ -85,7 +85,7 @@ A verification method has the following fields:
   - `publicKeyMultibase` - a string representing a public key encoded according to the Multibase Data Format [Hexadecimal upper-case encoding](https://datatracker.ietf.org/doc/html/draft-multiformats-multibase#appendix-B.1)
   
 #### Source 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L103
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L103
 
 
 ### Service
@@ -99,7 +99,7 @@ A service has the following fields:
 
 #### Source 
 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L118
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L118
 
 ### Accorded Right
 An Accorded Right is stored as a slice within a IidDocument data structure. Accorded Right are used to - shaun to provide
@@ -114,7 +114,7 @@ An Accorded Right has the following fields:
 
 #### Source
 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L74
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L74
 
 ### Linked Resource
 A Service is stored as a slice within a IidDocument data structure. Services are used to describe communication interfaces for an IID as described in the [W3C DID recommendations](https://w3c.github.io/did-core/#services)
@@ -132,7 +132,7 @@ A service has the following fields:
 
 #### Source
 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L84
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L84
 
 ### Linked Entity
 A Service is stored as a slice within a IidDocument data structure. Services are used to describe communication interfaces for an IID as described in the [W3C DID recommendations](https://w3c.github.io/did-core/#services)
@@ -144,7 +144,7 @@ A service has the following fields:
 
 #### Source
 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L96
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L96
 
 ### Controller
 A Controller is stored as a slice within a IidDocument data structure. Controllers are used to describe communication interfaces for an IID as described in the [W3C DID recommendations](https://w3c.github.io/did-core/#services)
@@ -155,7 +155,7 @@ A Controller has the following fields:
 
 #### Source
 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L96
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L96
 
 ### Iid Context
 A Context is stored as a slice within a IidDocument data structure. Controllers are used to describe communication interfaces for an IID as described in the [W3C DID recommendations](https://w3c.github.io/did-core/#services)
@@ -167,7 +167,7 @@ A Context has the following fields:
 
 #### Source
 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L96
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L96
 
 ## IidMetadata
 
@@ -186,6 +186,6 @@ A IidMetadata stores information relative to a DID document. The implementation 
 - `verifiableCredential ` - a string (shaun to provide)
 - `credentials ` - a repeated string of (shaun to provide)
 #### Source 
-+++ https://github.com/ixofoundation/ixo-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L129
++++ https://github.com/petrinetwork/xco-blockchain/blob/devel/entity-module/proto/iid/iid.proto#L129
 
 

@@ -1,4 +1,4 @@
-module github.com/xcohub/xco-blockchain
+module github.com/petrinetwork/xco-blockchain
 
 go 1.18
 

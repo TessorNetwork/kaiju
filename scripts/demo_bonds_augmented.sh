@@ -3,7 +3,7 @@
 wait() {
   echo "Waiting for chain to start..."
   while :; do
-    RET=$(ixod status 2>&1)
+    RET=$(xcod status 2>&1)
     if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
       sleep 1
     else
@@ -14,18 +14,18 @@ wait() {
   done
 }
 
-RET=$(ixod status 2>&1)
+RET=$(xcod status 2>&1)
 if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
   wait
 fi
 
 PASSWORD="12345678"
-GAS_PRICES="0.025uixo"
+GAS_PRICES="0.025uxco"
 CHAIN_ID="pandora-4"
-FEE=$(yes $PASSWORD | ixod keys show fee -a)
-RESERVE_OUT=$(yes $PASSWORD | ixod keys show reserveOut -a)
+FEE=$(yes $PASSWORD | xcod keys show fee -a)
+RESERVE_OUT=$(yes $PASSWORD | xcod keys show reserveOut -a)
 
-ixod_tx() {
+xcod_tx() {
   # Helper function to broadcast a transaction and supply the necessary args
 
   # Get module ($1) and specific tx ($1), which forms the tx command
@@ -34,7 +34,7 @@ ixod_tx() {
   shift
 
   # Broadcast the transaction
-  ixod tx $cmd \
+  xcod tx $cmd \
     --gas-prices="$GAS_PRICES" \
     --chain-id="$CHAIN_ID" \
     --broadcast-mode block \
@@ -43,13 +43,13 @@ ixod_tx() {
     # The $@ adds any extra arguments to the end
 }
 
-ixod_q() {
-  ixod q "$@" --output=json | jq .
+xcod_q() {
+  xcod q "$@" --output=json | jq .
 }
 
-BOND_DID="did:ixo:U7GK8p8rVhJMKhBVRCJJ8c"
+BOND_DID="did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
 #BOND_DID_FULL='{
-#  "did":"did:ixo:U7GK8p8rVhJMKhBVRCJJ8c",
+#  "did":"did:xco:U7GK8p8rVhJMKhBVRCJJ8c",
 #  "verifyKey":"FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW",
 #  "encryptionPublicKey":"domKpTpjrHQtKUnaFLjCuDLe2oHeS4b1sKt7yU9cq7m",
 #  "secret":{
@@ -59,11 +59,11 @@ BOND_DID="did:ixo:U7GK8p8rVhJMKhBVRCJJ8c"
 #  }
 #}'
 
-MIGUEL_ADDR="ixo107pmtx9wyndup8f9lgj6d7dnfq5kuf3sapg0vx"
-FRANCESCO_ADDR="ixo1cpa6w2wnqyxpxm4rryfjwjnx75kn4xt372dp3y"
-SHAUN_ADDR="ixo1d5u5ta7np7vefxa7ttpuy5aurg7q5regm0t2un"
+MIGUEL_ADDR="xco1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"
+FRANCESCO_ADDR="xco1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes"
+SHAUN_ADDR="xco10uqnjz60h3lkxxsgnlvxql3yfpkgv6gc6wuz4c"
 MIGUEL_DID_FULL='{
-  "did":"did:ixo:4XJLBfGtWSGKSz4BeRxdun",
+  "did":"did:xco:4XJLBfGtWSGKSz4BeRxdun",
   "verifyKey":"2vMHhssdhrBCRFiq9vj7TxGYDybW4yYdrYh9JG56RaAt",
   "encryptionPublicKey":"6GBp8qYgjE3ducksUa9Ar26ganhDFcmYfbZE9ezFx5xS",
   "secret":{
@@ -73,7 +73,7 @@ MIGUEL_DID_FULL='{
   }
 }'
 FRANCESCO_DID_FULL='{
-  "did":"did:ixo:UKzkhVSHc3qEFva5EY2XHt",
+  "did":"did:xco:UKzkhVSHc3qEFva5EY2XHt",
   "verifyKey":"Ftsqjc2pEvGLqBtgvVx69VXLe1dj2mFzoi4kqQNGo3Ej",
   "encryptionPublicKey":"8YScf3mY4eeHoxDT9MRxiuGX5Fw7edWFnwHpgWYSn1si",
   "secret":{
@@ -82,9 +82,9 @@ FRANCESCO_DID_FULL='{
     "encryptionPrivateKey":"B2Svs8GoQnUJHg8W2Ch7J53Goq36AaF6C6W4PD2MCPrM"
   }
 }'
-FRANCESCO_DID="did:ixo:UKzkhVSHc3qEFva5EY2XHt"
+FRANCESCO_DID="did:xco:UKzkhVSHc3qEFva5EY2XHt"
 SHAUN_DID_FULL='{
-  "did":"did:ixo:U4tSpzzv91HHqWW1YmFkHJ",
+  "did":"did:xco:U4tSpzzv91HHqWW1YmFkHJ",
   "verifyKey":"FkeDue5it82taeheMprdaPrctfK3DeVV9NnEPYDgwwRG",
   "encryptionPublicKey":"DtdGbZB2nSQvwhs6QoN5Cd8JTxWgfVRAGVKfxj8LA15i",
   "secret":{
@@ -96,11 +96,11 @@ SHAUN_DID_FULL='{
 
 # Ledger DIDs
 echo "Ledgering DID 1/3..."
-ixod_tx did add-did-doc "$MIGUEL_DID_FULL"
+xcod_tx did add-did-doc "$MIGUEL_DID_FULL"
 echo "Ledgering DID 2/3..."
-ixod_tx did add-did-doc "$FRANCESCO_DID_FULL"
+xcod_tx did add-did-doc "$FRANCESCO_DID_FULL"
 echo "Ledgering DID 3/3..."
-ixod_tx did add-did-doc "$SHAUN_DID_FULL"
+xcod_tx did add-did-doc "$SHAUN_DID_FULL"
 
 # d0 := 200000000000  // initial raise (reserve)
 # p0 := 1000000       // initial price (reserve per token)
@@ -112,7 +112,7 @@ ixod_tx did add-did-doc "$SHAUN_DID_FULL"
 # V0 = 0.000005246623176922  // invariant
 
 echo "Creating bond..."
-ixod_tx bonds create-bond \
+xcod_tx bonds create-bond \
   --token=abc \
   --name="A B C" \
   --description="Description about A B C" \
@@ -134,56 +134,56 @@ ixod_tx bonds create-bond \
   --creator-did="$MIGUEL_DID_FULL" \
   --controller-did="$FRANCESCO_DID"
 echo "Created bond..."
-ixod_q bonds bond "$BOND_DID"
+xcod_q bonds bond "$BOND_DID"
 
 echo "Miguel buys 100000abc..."
-ixod_tx bonds buy 100000abc 100000000000res "$BOND_DID" "$MIGUEL_DID_FULL"
+xcod_tx bonds buy 100000abc 100000000000res "$BOND_DID" "$MIGUEL_DID_FULL"
 echo "Miguel's account..."
-ixod_q bank balances "$MIGUEL_ADDR"
+xcod_q bank balances "$MIGUEL_ADDR"
 
 echo "Francesco buys 100000abc..."
-ixod_tx bonds buy 100000abc 100000000000res "$BOND_DID" "$FRANCESCO_DID_FULL"
+xcod_tx bonds buy 100000abc 100000000000res "$BOND_DID" "$FRANCESCO_DID_FULL"
 echo "Francesco's account..."
-ixod_q bank balances "$FRANCESCO_ADDR"
+xcod_q bank balances "$FRANCESCO_ADDR"
 
 echo "Bond state is now open..."  # since 200000 (S0) reached
-ixod_q bonds bond "$BOND_DID"
+xcod_q bonds bond "$BOND_DID"
 
 echo "Current price is approx 1135800..."
-ixod_q bonds current-price "$BOND_DID"
+xcod_q bonds current-price "$BOND_DID"
 
 echo "Miguel buys 100000abc..."
-ixod_tx bonds buy 100000abc 200000000000res "$BOND_DID" "$MIGUEL_DID_FULL"
+xcod_tx bonds buy 100000abc 200000000000res "$BOND_DID" "$MIGUEL_DID_FULL"
 echo "Miguel's account..."
-ixod_q bank balances "$MIGUEL_ADDR"
+xcod_q bank balances "$MIGUEL_ADDR"
 
 echo "Current price is approx 1200100..."
-ixod_q bonds current-price "$BOND_DID"
+xcod_q bonds current-price "$BOND_DID"
 
 echo "Max supply reached, buying tokens fails..."
-ixod_tx bonds buy 1abc 2000000res "$BOND_DID" "$MIGUEL_DID_FULL"
+xcod_tx bonds buy 1abc 2000000res "$BOND_DID" "$MIGUEL_DID_FULL"
 
 echo "Francesco makes outcome payment of 60000000000..."
-ixod_tx bonds make-outcome-payment "$BOND_DID" "60000000000" "$FRANCESCO_DID_FULL"
+xcod_tx bonds make-outcome-payment "$BOND_DID" "60000000000" "$FRANCESCO_DID_FULL"
 echo "Francesco's account..."
-ixod_q bank balances "$FRANCESCO_ADDR"
+xcod_q bank balances "$FRANCESCO_ADDR"
 echo "Bond outcome payment reserve is now 60000000000..."
-ixod_q bonds bond "$BOND_DID"
+xcod_q bonds bond "$BOND_DID"
 
 echo "Francesco updates the bond state to SETTLE"
-ixod_tx bonds update-bond-state "SETTLE" "$BOND_DID" "$FRANCESCO_DID_FULL"
+xcod_tx bonds update-bond-state "SETTLE" "$BOND_DID" "$FRANCESCO_DID_FULL"
 echo "Bond outcome payment reserve is now empty (moved to main reserve)..."
-ixod_q bonds bond "$BOND_DID"
+xcod_q bonds bond "$BOND_DID"
 
 echo "Miguel withdraws share..."
-ixod_tx bonds withdraw-share "$BOND_DID" "$MIGUEL_DID_FULL"
+xcod_tx bonds withdraw-share "$BOND_DID" "$MIGUEL_DID_FULL"
 echo "Miguel's account..."
-ixod_q bank balances "$MIGUEL_ADDR"
+xcod_q bank balances "$MIGUEL_ADDR"
 
 echo "Francesco withdraws share..."
-ixod_tx bonds withdraw-share "$BOND_DID" "$FRANCESCO_DID_FULL"
+xcod_tx bonds withdraw-share "$BOND_DID" "$FRANCESCO_DID_FULL"
 echo "Francesco's account..."
-ixod_q bank balances "$FRANCESCO_ADDR"
+xcod_q bank balances "$FRANCESCO_ADDR"
 
 echo "Bond reserve is now empty and supply is 0..."
-ixod_q bonds bond "$BOND_DID"
+xcod_q bonds bond "$BOND_DID"

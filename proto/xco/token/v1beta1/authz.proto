@@ -1,15 +1,15 @@
 syntax = "proto3";
-package ixo.token.v1beta1;
+package xco.token.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "ixo/iid/v1beta1/iid.proto";
-import "ixo/iid/v1beta1/tx.proto";
-import "ixo/token/v1beta1/token.proto";
+import "xco/iid/v1beta1/iid.proto";
+import "xco/iid/v1beta1/tx.proto";
+import "xco/token/v1beta1/token.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos_proto/cosmos.proto";
 
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/token/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/token/types";
 
 
 message Cw20Constraints {
@@ -35,6 +35,6 @@ message MintConstraints {
 message MintAuthorization {
   option (cosmos_proto.implements_interface) = "Authorization";
 
-  string minterDid = 1 [(gogoproto.casttype) = "github.com/ixofoundation/ixo-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
+  string minterDid = 1 [(gogoproto.casttype) = "github.com/petrinetwork/xco-blockchain/x/iid/types.DIDFragment", (gogoproto.jsontag) = "minter_did", (gogoproto.moretags) = "yaml:\"minter_did\""];
   repeated MintConstraints constraints = 2 [(gogoproto.jsontag) = "cw20_limits", (gogoproto.moretags) = "yaml:\"cw20_limits\""];
 }

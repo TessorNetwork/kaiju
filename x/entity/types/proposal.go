@@ -4,7 +4,7 @@ import (
 	fmt "fmt"
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	types "github.com/ixofoundation/ixo-blockchain/x/iid/types"
+	types "github.com/petrinetwork/xco-blockchain/x/iid/types"
 )
 
 var (
@@ -36,5 +36,5 @@ func (sup *InitializeNftContract) ValidateBasic() error { return nil }
 
 func init() {
 	govtypes.RegisterProposalType(ProposalTypeInitializeNftContract)
-	govtypes.RegisterProposalTypeCodec(&InitializeNftContract{}, "entity.ixo.entity.v1beta1.InitializeNftContract")
+	govtypes.RegisterProposalTypeCodec(&InitializeNftContract{}, "entity.xco.entity.v1beta1.InitializeNftContract")
 }

@@ -1,7 +1,7 @@
 syntax = "proto3";
-package ixo.iid.v1beta1;
+package xco.iid.v1beta1;
 
-option go_package = "github.com/ixofoundation/ixo-blockchain/x/iid/types";
+option go_package = "github.com/petrinetwork/xco-blockchain/x/iid/types";
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
@@ -23,7 +23,7 @@ message IidDocument {
   option (gogoproto.equal) = true;
   option (gogoproto.goproto_getters) = false;
   // @context is spec for did document.
-  repeated ixo.iid.v1beta1.Context context = 1 [(gogoproto.jsontag) = "@context,omitempty"];
+  repeated xco.iid.v1beta1.Context context = 1 [(gogoproto.jsontag) = "@context,omitempty"];
   // id represents the id for the did document.
   string id = 2;
   // A DID controller is an entity that is authorized to make changes to a DID document.
@@ -33,11 +33,11 @@ message IidDocument {
   // such as cryptographic public keys, which can be used 
   // to authenticate or authorize interactions with the DID subject or associated parties.
   // https://www.w3.org/TR/did-core/#verification-methods
-  repeated ixo.iid.v1beta1.VerificationMethod verificationMethod = 4;
+  repeated xco.iid.v1beta1.VerificationMethod verificationMethod = 4;
   // Services are used in DID documents to express ways of communicating 
   // with the DID subject or associated entities.
   // https://www.w3.org/TR/did-core/#services
-  repeated ixo.iid.v1beta1.Service service = 5;
+  repeated xco.iid.v1beta1.Service service = 5;
   // NOTE: below this line there are the relationships
   // Authentication represents public key associated with the did document.
   // cfr. https://www.w3.org/TR/did-core/#authentication
@@ -59,9 +59,9 @@ message IidDocument {
   // to delegate a cryptographic capability to another party.
   // https://www.w3.org/TR/did-core/#capability-delegation
   repeated string capabilityDelegation = 10;
-  repeated ixo.iid.v1beta1.LinkedResource linkedResource = 11;
-  repeated ixo.iid.v1beta1.AccordedRight accordedRight = 12;
-  repeated ixo.iid.v1beta1.LinkedEntity linkedEntity = 13;
+  repeated xco.iid.v1beta1.LinkedResource linkedResource = 11;
+  repeated xco.iid.v1beta1.AccordedRight accordedRight = 12;
+  repeated xco.iid.v1beta1.LinkedEntity linkedEntity = 13;
   string alsoKnownAs = 14;
 }
 

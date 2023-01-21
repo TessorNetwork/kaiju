@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/ixofoundation/ixo-blockchain/x/token/keeper"
-	"github.com/ixofoundation/ixo-blockchain/x/token/types"
+	"github.com/petrinetwork/xco-blockchain/x/token/keeper"
+	"github.com/petrinetwork/xco-blockchain/x/token/types"
 )
 
 const (
@@ -34,7 +34,7 @@ func handleTokenParameterChangeProposal(ctx sdk.Context, k keeper.Keeper, p *typ
 
 	xx.Cw20ContractCode = strconv.FormatUint(p.Cw20ContractCode, 10)
 	xx.Cw721ContractCode = strconv.FormatUint(p.Cw721ContractCode, 10)
-	xx.Ixo1155ContractCode = strconv.FormatUint(p.Ixo1155ContractCode, 10)
+	xx.Xco1155ContractCode = strconv.FormatUint(p.Xco1155ContractCode, 10)
 
 	k.ParamSpace.SetParamSet(ctx, &xx)
 
