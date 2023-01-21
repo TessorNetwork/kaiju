@@ -10,7 +10,7 @@ import (
 var (
 	KeyCw20ContractCode    = []byte("Cw20ContractCode")
 	KeyCw721ContractCode   = []byte("Cw721ContractCode")
-	KeyXco1155ContractCode = []byte("Xco1155ContractCode")
+	KeyKaiju1155ContractCode = []byte("Kaiju1155ContractCode")
 )
 
 func parseCode(stringCode string) (uint64, error) {
@@ -48,7 +48,7 @@ func NewParams(nftContractAddress string, nftContractMinter string) Params {
 	return Params{
 		Cw20ContractCode:    "0",
 		Cw721ContractCode:   "0",
-		Xco1155ContractCode: "0",
+		Kaiju1155ContractCode: "0",
 	}
 }
 
@@ -61,7 +61,7 @@ func DefaultParams() Params {
 	return Params{
 		Cw20ContractCode:    "0",
 		Cw721ContractCode:   "0",
-		Xco1155ContractCode: "0",
+		Kaiju1155ContractCode: "0",
 	}
 }
 
@@ -79,8 +79,8 @@ func (p *Params) GetCw721ContractCode() uint64 {
 	}
 	return code
 }
-func (p *Params) GetXco1155ContractCode() uint64 {
-	code, err := parseCode(p.Xco1155ContractCode)
+func (p *Params) GetKaiju1155ContractCode() uint64 {
+	code, err := parseCode(p.Kaiju1155ContractCode)
 	if err != nil {
 		panic(err)
 	}
@@ -92,6 +92,6 @@ func (p *Params) ParamSetPairs() paramstypes.ParamSetPairs {
 	return paramstypes.ParamSetPairs{
 		{KeyCw20ContractCode, &p.Cw20ContractCode, validateContractCode},
 		{KeyCw721ContractCode, &p.Cw721ContractCode, validateContractCode},
-		{KeyXco1155ContractCode, &p.Xco1155ContractCode, validateContractCode},
+		{KeyKaiju1155ContractCode, &p.Kaiju1155ContractCode, validateContractCode},
 	}
 }

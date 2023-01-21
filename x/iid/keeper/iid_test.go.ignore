@@ -3,7 +3,7 @@ package keeper
 import (
 	"fmt"
 
-	"github.com/petrinetwork/xco-blockchain/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 func (suite *KeeperTestSuite) TestDidDocumentKeeperSetAndGet() {

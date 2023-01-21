@@ -4,8 +4,8 @@ import (
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	tokenkeeper "github.com/petrinetwork/xco-blockchain/x/token/keeper"
-	tokentypes "github.com/petrinetwork/xco-blockchain/x/token/types"
+	tokenkeeper "github.com/tessornetwork/kaiju/x/token/keeper"
+	tokentypes "github.com/tessornetwork/kaiju/x/token/types"
 )
 
 type BlockNftContractTransferForTokenDecorator struct {

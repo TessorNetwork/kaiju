@@ -45,8 +45,8 @@ func NewParams(nftContractAddress string, nftContractMinter string) Params {
 // default project module parameters
 func DefaultParams() Params {
 	return Params{
-		NftContractAddress: "xco14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sqa3vn7",
-		NftContractMinter:  "xco14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sqa3vn7",
+		NftContractAddress: "kaiju14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sqa3vn7",
+		NftContractMinter:  "kaiju14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sqa3vn7",
 	}
 }
 

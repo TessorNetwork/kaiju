@@ -11,7 +11,7 @@ A [IidMetadata](02_state.md#iidmetadata) lifecycle follows the lifecycle of a  [
 
 ### Create
 
-[IidDocument](02_state.md#IidDocument) are created via the rpc method [CreateIidDocument](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L64) that accepts a [MsgCreateIidDocument](./04_messages.md#MsgCreateIidDocument) messages as parameter.
+[IidDocument](02_state.md#IidDocument) are created via the rpc method [CreateIidDocument](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L64) that accepts a [MsgCreateIidDocument](./04_messages.md#MsgCreateIidDocument) messages as parameter.
 
 The operation will fail if:
 - the signer account has insufficient funds 
@@ -40,14 +40,14 @@ cosmos-cashd tx iid create-iid \
 /* gRPC message */
 CreateIidDocument(
     MsgCreateIidDocument(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         [], // controller
         [   // verifications
             {
                 "relationships": ["authentication"],
                 {
-                    "controller": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
-                    "id": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0",
+                    "controller": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+                    "id": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0",
                     "publicKeyHex": "0248a5178d7a90ec187b3c3d533a4385db905f6fcdaac5026859ca5ef7b0b1c3b5",
                     "type": "EcdsaSecp256k1VerificationKey2019"
                 },
@@ -58,7 +58,7 @@ CreateIidDocument(
         [], // Accorded rights
         [], // linked resources
         [], // linked entities       
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -68,12 +68,12 @@ CreateIidDocument(
     "context": [
       "https://www.w3.org/ns/iid/v1"
     ],
-    "id": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+    "id": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
     "controller": [],
     "verificationMethod": [
       {
-        "controller": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
-        "id": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0",
+        "controller": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "id": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0",
         "publicKeyHex": "0248a5178d7a90ec187b3c3d533a4385db905f6fcdaac5026859ca5ef7b0b1c3b5",
         "type": "EcdsaSecp256k1VerificationKey2019"
       }
@@ -83,7 +83,7 @@ CreateIidDocument(
     "LinkedResource": [],
     "LinkedEntity": [],      
     "authentication": [
-      "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0"
+      "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0"
     ],
     "assertionMethod": [],
     "keyAgreement": [],
@@ -102,12 +102,12 @@ CreateIidDocument(
 
 ##### Implementation Source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L28
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L68
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L28
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L68
 
 ### Resolve
 
-[IidDocument](02_state.md#iiddocument) are resolved via the rpc method [QueryIidDocument](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/query.proto#L31) that accepts a [QueryIidDocumentRequest](./04_messages.md#QueryIidDocumentRequest) messages as parameter.
+[IidDocument](02_state.md#iiddocument) are resolved via the rpc method [QueryIidDocument](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/query.proto#L31) that accepts a [QueryIidDocumentRequest](./04_messages.md#QueryIidDocumentRequest) messages as parameter.
 
 
 The operation will fail if:
@@ -118,7 +118,7 @@ The operation will fail if:
 /* gRPC message */
 QueryIidDocument(
     QueryIidDocumentRequest(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e"
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e"
     )
 )
 
@@ -126,27 +126,27 @@ QueryIidDocument(
 
 ##### Implementation Source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/grpc_query.go#L28
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/query.go#L69
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/grpc_query.go#L28
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/query.go#L69
 
 ### Update
 
 [IidDocument](02_state.md#iiddocument) are updated via the rpc methods:
 
-- [UpdateIidDocument](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L82)
-- [AddVerification](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L96)
-- [RevokeVerification](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L119)
-- [SetVerificationRelationships](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L107)
-- [AddService](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L134)
-- [DeleteService](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L145)
-- [AddController](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L161)
-- [DeleteController](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L172)
-- [AddLinkedResource](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L134)
-- [DeleteLinkedResource](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L145)
-- [AddLinkedEntity](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L134)
-- [DeleteLinkedEntity](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L145)
-- [AddAccordedRight](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L134)
-- [DeleteAccordedRight](https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/proto/iid/tx.proto#L145)
+- [UpdateIidDocument](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L82)
+- [AddVerification](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L96)
+- [RevokeVerification](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L119)
+- [SetVerificationRelationships](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L107)
+- [AddService](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L134)
+- [DeleteService](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L145)
+- [AddController](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L161)
+- [DeleteController](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L172)
+- [AddLinkedResource](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L134)
+- [DeleteLinkedResource](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L145)
+- [AddLinkedEntity](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L134)
+- [DeleteLinkedEntity](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L145)
+- [AddAccordedRight](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L134)
+- [DeleteAccordedRight](https://github.com/tessornetwork/kaiju/blob/devel/iid-module/proto/iid/tx.proto#L145)
 
 
 All the operations will fail if:
@@ -169,17 +169,17 @@ The operation will fail if:
 /* gRPC message */
 UpdateIidDocument(
     MsgUpdateIidDocument(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
-        ["xco:key:xco1sl48sj2jjed7enrv3lzzplr9wc2f5js5tzjph8"],
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0"
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        ["kaiju:key:kaiju1sl48sj2jjed7enrv3lzzplr9wc2f5js5tzjph8"],
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0"
     )
 )
 ```
 
 ##### Implementation Source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L65
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L277
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L65
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L277
 
 #### AddVerification
 
@@ -196,18 +196,18 @@ The operation will fail if:
 /* gRPC message */
 AddVerification(
     MsgAddVerification(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         {
             "relationships": ["authentication"],
             {
-                "controller": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
-                "id": "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#cosmos1lvl2s8x4pta5f96appxrwn3mypsvumukvk7ck2",
+                "controller": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+                "id": "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#cosmos1lvl2s8x4pta5f96appxrwn3mypsvumukvk7ck2",
                 "publicKeyHex": "03786095e15eb228f4e15692eda6e0607a313cc081ad54d69aadd15d515e304590",
                 "type": "EcdsaSecp256k1VerificationKey2019"
             },
             [],
         },
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -215,8 +215,8 @@ AddVerification(
 
 ##### Implementation Source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L98
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L131
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L98
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L131
 
 #### RevokeVerification
 
@@ -231,9 +231,9 @@ The operation will fail if:
 /* gRPC message */
 RevokeVerification(
     MsgRevokeVerification(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#cosmos1lvl2s8x4pta5f96appxrwn3mypsvumukvk7ck2",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#cosmos1lvl2s8x4pta5f96appxrwn3mypsvumukvk7ck2",
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -241,8 +241,8 @@ RevokeVerification(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L304
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L233
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L304
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L233
 
 
 #### SetVerificationRelationships
@@ -261,10 +261,10 @@ The operation will fail if:
 /* gRPC message */
 SetVerificationRelationships(
     MsgSetVerificationRelationships(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e#kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0",
         ["authentication", "capabilityInvocation"]
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -272,8 +272,8 @@ SetVerificationRelationships(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L348
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L390
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L348
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L390
 
 
 #### AddService
@@ -290,13 +290,13 @@ The operation will fail if:
 /* gRPC message */
 AddService(
     MsgAddService(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         {
             "agent:xyz",
             "iidCommMessaging",
             "https://agent.xyz/1234",
         }
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -304,8 +304,8 @@ AddService(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L116
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L193
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L116
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L193
 
 #### DeleteService
 
@@ -320,9 +320,9 @@ The operation will fail if:
 /* gRPC message */
 DeleteService(
     MsgDeleteService(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         "agent:xyz",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -330,8 +330,8 @@ DeleteService(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L323
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L274
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L323
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L274
 
 #### AddLinkedResource
 
@@ -347,9 +347,9 @@ The operation will fail if:
 /* gRPC message */
 AddLinkedResource(
     MsgAddLinkedResource(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
             {
-            "xco:entity:abc123#****",
+            "kaiju:entity:abc123#****",
             "entityProfile",
             "Test Clean Cooking Collection",
             "application/json",
@@ -358,7 +358,7 @@ AddLinkedResource(
             "false",
             "right",
             },
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -366,8 +366,8 @@ AddLinkedResource(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L134
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L445
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L134
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L445
 
 #### DeleteLinkedResource
 
@@ -382,9 +382,9 @@ The operation will fail if:
 /* gRPC message */
 DeleteLinkedResource(
     MsgDeleteLinkedResource(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         "resource id",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -392,8 +392,8 @@ DeleteLinkedResource(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L152
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L490
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L152
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L490
 
 #### AddAccordedRight
 
@@ -409,15 +409,15 @@ The operation will fail if:
 /* gRPC message */
 AddAccordedRight(
     MsgAddAccordedRight(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
             {
-                "xco:entity:abc123#mintNFT",
+                "kaiju:entity:abc123#mintNFT",
                 "mint",
                 "cw721",
                 "msgMintNFT",
-                "#xco"
+                "#kaiju"
             },
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -425,8 +425,8 @@ AddAccordedRight(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L218
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L527
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L218
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L527
 
 #### DeleteAccordedRight
 
@@ -441,9 +441,9 @@ The operation will fail if:
 /* gRPC message */
 DeleteAccordedRight(
     MsgDeleteAccordedRight(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         "right id",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -451,8 +451,8 @@ DeleteAccordedRight(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L236
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L569
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L236
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L569
 
 
 #### AddLinkedEntity
@@ -469,12 +469,12 @@ The operation will fail if:
 /* gRPC message */
 AddLinkedEntity(
     MsgAddLinkedEntity(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
             {
-                "xco:entity:abc123#123",
+                "kaiju:entity:abc123#123",
                 "relationship",
             },
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -482,8 +482,8 @@ AddLinkedEntity(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L176
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L726
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L176
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L726
 
 #### DeleteLinkedEntity
 
@@ -498,9 +498,9 @@ The operation will fail if:
 /* gRPC message */
 DeleteLinkedEntity(
     MsgDeleteLinkedEntity(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         "enitiy id",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -508,8 +508,8 @@ DeleteLinkedEntity(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L194
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L765
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L194
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L765
 
 #### AddController
 
@@ -525,11 +525,11 @@ The operation will fail if:
 /* gRPC message */
 AddController(
     MsgAddController(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
             {
-                "xco:entity:abc123#123",
+                "kaiju:entity:abc123#123",
             },
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -537,8 +537,8 @@ AddController(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L367
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L312
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L367
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L312
 
 #### DeleteDeleteController
 
@@ -553,9 +553,9 @@ The operation will fail if:
 /* gRPC message */
 DeleteController(
     MsgDeleteController(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         "Controller id",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -563,8 +563,8 @@ DeleteController(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L385
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L351
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L385
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L351
 
 #### AddController
 
@@ -580,12 +580,12 @@ The operation will fail if:
 /* gRPC message */
 AddIidContext(
     MsgAddIidContext(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
             {
-                "xco",
+                "kaiju",
                 "context string"
             },
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -593,8 +593,8 @@ AddIidContext(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L267
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L606
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L267
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L606
 
 #### DeleteDeleteController
 
@@ -609,9 +609,9 @@ The operation will fail if:
 /* gRPC message */
 DeleteIidContext(
     MsgDeleteIidContext(
-        "xco:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
+        "kaiju:impacthub-3:900d82bc2bfe45a7ab22a8d11773568e",
         "Context Key",
-        "xco1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
+        "kaiju1x5hrv0hngmg8gls5cft7nphqs83njj25pwxpt0" // signer
     )
 )
 
@@ -619,5 +619,5 @@ DeleteIidContext(
 
 ##### Implementation source
 
-- server: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/keeper/msg_server.go#L279
-- client: https://github.com/petrinetwork/xco-blockchain/blob/devel/iid-module/x/iid/client/cli/tx.go#L647
+- server: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/keeper/msg_server.go#L279
+- client: https://github.com/tessornetwork/kaiju/blob/devel/iid-module/x/iid/client/cli/tx.go#L647

@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	"github.com/tessornetwork/kaiju/x/bonds/types"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
 	"github.com/tendermint/go-amino"
 )
 

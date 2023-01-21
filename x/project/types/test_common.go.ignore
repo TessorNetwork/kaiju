@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
+	kaijutypes "github.com/tessornetwork/kaiju/lib/kaiju"
 )
 
 var (
-	ProjectDid    = "did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
-	UserDid       = "did:xco:4XJLBfGtWSGKSz4BeRxdun"
+	ProjectDid    = "did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c"
+	UserDid       = "did:kaiju:4XJLBfGtWSGKSz4BeRxdun"
 	ProjectPubKey = "FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW"
 
 	ValidAddress1, _ = sdk.AccAddressFromHex("0F6A8D732716BA24B213D7C28984FBE1248D009D")
@@ -60,7 +60,7 @@ var ValidCreateProjectMsg = MsgCreateProject{
 var ValidWithdrawalInfo = WithdrawalInfoDoc{
 	ProjectDid:   ProjectDid,
 	RecipientDid: UserDid,
-	Amount:       sdk.NewCoin(xcotypes.XcoNativeToken, sdk.NewInt(10)),
+	Amount:       sdk.NewCoin(kaijutypes.KaijuNativeToken, sdk.NewInt(10)),
 }
 
 func MustMarshalJson(v interface{}) []byte {

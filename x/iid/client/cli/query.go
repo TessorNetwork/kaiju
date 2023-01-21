@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 
-	"github.com/petrinetwork/xco-blockchain/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module

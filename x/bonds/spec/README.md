@@ -10,7 +10,7 @@ The bonds module can be deployed through Cosmos Hubs and Zones to deliver applic
 * Automated market-makers (like [Uniswap](https://uniswap.io))
 * Decentralised exchanges (like [Bancor](https://bancor.network))
 * Curation markets (like [Relevant](https://github.com/relevant-community/contracts/tree/bondingCurves/contracts))
-* Development Impact Bonds (like xco alpha-Bonds)
+* Development Impact Bonds (like kaiju alpha-Bonds)
 * Continuous organisations (like [Moloch DAO](https://molochdao.com/))
 
 Any Cosmos application chain that implements the Bonds module is able to perform functions such as:

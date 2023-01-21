@@ -1,9 +1,9 @@
 swagger: '2.0'
 info:
-  title: xco modules - legacy endpoints docs
+  title: kaiju modules - legacy endpoints docs
   description: A REST interface for state queries
   version: 1.0.0
-host: testnet.xco.world
+host: testnet.kaiju.world
 basePath: /rest
 schemes:
   - https
@@ -3786,7 +3786,7 @@ paths:
               result:
                 type: object
                 properties:
-                  xco_did:
+                  kaiju_did:
                     type: string
                   project_minimum_initial_funding:
                     type: array
@@ -3867,7 +3867,7 @@ definitions:
     properties:
       sign_bytes:
         type: string
-        example: "{\"account_number\":\"5\",\"chain_id\":\"pandora-4\",\"fee\":{\"amount\":[{\"amount\":\"2319\",\"denom\":\"uxco\"}],\"gas\":\"92757\"},\"memo\":\"\",\"msgs\":[{\"type\":\"did/AddDid\",\"value\":{\"did\":\"did:xco:U4tSpzzv91HHqWW1YmFkHJ\",\"pubKey\":\"FkeDue5it82taeheMprdaPrctfK3DeVV9NnEPYDgwwRG\"}}],\"sequence\":\"0\"}"
+        example: "{\"account_number\":\"5\",\"chain_id\":\"pandora-4\",\"fee\":{\"amount\":[{\"amount\":\"2319\",\"denom\":\"ukaiju\"}],\"gas\":\"92757\"},\"memo\":\"\",\"msgs\":[{\"type\":\"did/AddDid\",\"value\":{\"did\":\"did:kaiju:U4tSpzzv91HHqWW1YmFkHJ\",\"pubKey\":\"FkeDue5it82taeheMprdaPrctfK3DeVV9NnEPYDgwwRG\"}}],\"sequence\":\"0\"}"
       fee:
         type: object
         properties:
@@ -3878,7 +3878,7 @@ definitions:
               properties:
                 denom:
                   type: string
-                  example: "uxco"
+                  example: "ukaiju"
                 amount:
                   type: string
                   example: "2319"

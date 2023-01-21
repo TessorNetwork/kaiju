@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"encoding/json"
-	"github.com/petrinetwork/xco-blockchain/app"
+	"github.com/tessornetwork/kaiju/app"
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -16,7 +16,7 @@ import (
 // Functions copied from Cosmos SDK
 
 // DefaultConsensusParams defines the default Tendermint consensus params used in
-// XcoApp testing.
+// KaijuApp testing.
 var DefaultConsensusParams = &abci.ConsensusParams{
 	Block: &abci.BlockParams{
 		MaxBytes: 200000,
@@ -34,18 +34,18 @@ var DefaultConsensusParams = &abci.ConsensusParams{
 	},
 }
 
-func setup(withGenesis bool, invCheckPeriod uint) (*app.XcoApp, app.GenesisState) {
+func setup(withGenesis bool, invCheckPeriod uint) (*app.KaijuApp, app.GenesisState) {
 	db := dbm.NewMemDB()
 	encCdc := app.MakeTestEncodingConfig()
-	appl := app.NewXcoApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, app.DefaultNodeHome, invCheckPeriod, encCdc, EmptyAppOptions{})
+	appl := app.NewKaijuApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, app.DefaultNodeHome, invCheckPeriod, encCdc, EmptyAppOptions{})
 	if withGenesis {
 		return appl, app.NewDefaultGenesisState(encCdc.Marshaler)
 	}
 	return appl, app.GenesisState{}
 }
 
-// Setup initializes a new XcoApp. A Nop logger is set in XcoApp.
-func Setup(isCheckTx bool) *app.XcoApp {
+// Setup initializes a new KaijuApp. A Nop logger is set in KaijuApp.
+func Setup(isCheckTx bool) *app.KaijuApp {
 	app, genesisState := setup(!isCheckTx, 5)
 	if !isCheckTx {
 		// init chain must be called to stop deliverState from being nil

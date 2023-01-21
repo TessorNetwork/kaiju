@@ -12,15 +12,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/cosmos/cosmos-sdk/x/auth/legacy/legacytx"
 	"github.com/gorilla/mux"
-	"github.com/petrinetwork/xco-blockchain/compatibility"
-	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	projecttypes "github.com/petrinetwork/xco-blockchain/x/project/types"
+	"github.com/tessornetwork/kaiju/compatibility"
+	kaijutypes "github.com/tessornetwork/kaiju/lib/kaiju"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
+	projecttypes "github.com/tessornetwork/kaiju/x/project/types"
 )
 
 var (
 	approximationGasAdjustment = float64(1.5)
-	expectedMinGasPrices       = "0.025" + xcotypes.XcoNativeToken
+	expectedMinGasPrices       = "0.025" + kaijutypes.KaijuNativeToken
 )
 
 func RegisterTxRoutes(clientCtx client.Context, r *mux.Router) {
@@ -64,19 +64,19 @@ func SignDataRequest(clientCtx client.Context) http.HandlerFunc {
 			return
 		}
 
-		// all messages must be of type xco.XcoMsg
-		xcoMsg, ok := msg.(xcotypes.XcoMsg)
+		// all messages must be of type kaiju.KaijuMsg
+		kaijuMsg, ok := msg.(kaijutypes.KaijuMsg)
 		if !ok {
-			rest.WriteErrorResponse(w, http.StatusBadRequest, "msg must be xco.XcoMsg")
+			rest.WriteErrorResponse(w, http.StatusBadRequest, "msg must be kaiju.KaijuMsg")
 			return
 		}
 
 		output := SignDataResponse{}
 
-		switch xcoMsg.Type() {
+		switch kaijuMsg.Type() {
 		case projecttypes.TypeMsgCreateProject:
 			var stdSignMsg legacytx.StdSignMsg
-			stdSignMsg = xcoMsg.(*projecttypes.MsgCreateProject).ToStdSignMsg(
+			stdSignMsg = kaijuMsg.(*projecttypes.MsgCreateProject).ToStdSignMsg(
 				projecttypes.MsgCreateProjectTotalFee)
 			stdSignMsg.ChainID = clientCtx.ChainID
 
@@ -89,7 +89,7 @@ func SignDataRequest(clientCtx client.Context) http.HandlerFunc {
 
 			// Set gas adjustment and fees
 			gasAdjustment := approximationGasAdjustment
-			fees := sdk.NewCoins(sdk.NewCoin(xcotypes.XcoNativeToken, sdk.OneInt()))
+			fees := sdk.NewCoins(sdk.NewCoin(kaijutypes.KaijuNativeToken, sdk.OneInt()))
 
 			chainId := clientCtx.ChainID
 			txf := clienttx.Factory{}.

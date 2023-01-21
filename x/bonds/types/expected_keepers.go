@@ -2,7 +2,7 @@ package types
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	did "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	did "github.com/tessornetwork/kaiju/lib/legacydid"
 )
 
 type IidKeeper interface {

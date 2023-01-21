@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/payments/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/payments/types"
+	"github.com/tessornetwork/kaiju/x/payments/keeper"
+	"github.com/tessornetwork/kaiju/x/payments/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

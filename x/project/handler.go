@@ -4,9 +4,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	paymentskeeper "github.com/petrinetwork/xco-blockchain/x/payments/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/project/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	paymentskeeper "github.com/tessornetwork/kaiju/x/payments/keeper"
+	"github.com/tessornetwork/kaiju/x/project/keeper"
+	"github.com/tessornetwork/kaiju/x/project/types"
 )
 
 func NewHandler(k keeper.Keeper, pk paymentskeeper.Keeper, bk bankkeeper.Keeper) sdk.Handler {

@@ -4,9 +4,9 @@ import (
 	"github.com/btcsuite/btcutil/base58"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	libxco "github.com/petrinetwork/xco-blockchain/lib/xco"
-	"github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	"github.com/petrinetwork/xco-blockchain/x/iid/types"
+	libkaiju "github.com/tessornetwork/kaiju/lib/kaiju"
+	"github.com/tessornetwork/kaiju/lib/legacydid"
+	"github.com/tessornetwork/kaiju/x/iid/types"
 	"github.com/spf13/cobra"
 )
 
@@ -22,7 +22,7 @@ func NewCreateIidDocumentFormLegacyDidCmd() *cobra.Command {
 				return err
 			}
 
-			xcoDid, err := legacydid.UnmarshalXcoDid(args[0])
+			kaijuDid, err := legacydid.UnmarshalKaijuDid(args[0])
 			if err != nil {
 				return err
 			}
@@ -32,20 +32,20 @@ func NewCreateIidDocumentFormLegacyDidCmd() *cobra.Command {
 			// 	return err
 			// }
 			// did
-			did := types.DID(xcoDid.Did)
+			did := types.DID(kaijuDid.Did)
 			// verification
 			// signer := clientCtx.GetFromAddress()
 			// pubkey
 
-			pubKey := xcoDid.VerifyKey
+			pubKey := kaijuDid.VerifyKey
 
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
 			// understand the vmType
 
 			auth := types.NewVerification(
 				types.NewVerificationMethod(
-					xcoDid.Did,
+					kaijuDid.Did,
 					did,
 					types.NewPublicKeyMultibase(base58.Decode(pubKey), types.DIDVMethodTypeEd25519VerificationKey2018),
 				),
@@ -60,7 +60,7 @@ func NewCreateIidDocumentFormLegacyDidCmd() *cobra.Command {
 				types.AccordedRights{},
 				types.LinkedResources{},
 				types.LinkedEntities{},
-				xcoDid.Address().String(),
+				kaijuDid.Address().String(),
 				types.Contexts{},
 			)
 			// validate
@@ -68,7 +68,7 @@ func NewCreateIidDocumentFormLegacyDidCmd() *cobra.Command {
 				return err
 			}
 			// execute
-			return libxco.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return libkaiju.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 

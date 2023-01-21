@@ -5,9 +5,9 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/petrinetwork/xco-blockchain/x/entity/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/entity/types"
-	entitycontracts "github.com/petrinetwork/xco-blockchain/x/entity/types/contracts"
+	"github.com/tessornetwork/kaiju/x/entity/keeper"
+	"github.com/tessornetwork/kaiju/x/entity/types"
+	entitycontracts "github.com/tessornetwork/kaiju/x/entity/types/contracts"
 )
 
 const (
@@ -50,7 +50,7 @@ func handleTokenParameterChangeProposal(ctx sdk.Context, k keeper.Keeper, p *typ
 		return err
 	}
 
-	deposit := sdk.NewCoins(sdk.NewCoin("uxco", sdk.ZeroInt()))
+	deposit := sdk.NewCoins(sdk.NewCoin("ukaiju", sdk.ZeroInt()))
 
 	contractAddr, _, err := k.WasmKeeper.Instantiate(ctx, p.NftContractCodeId, senderAddr, adminAddr, encodedInitiateNftContractMsg, "initiate_entity_nft_contract", deposit)
 	if err != nil {

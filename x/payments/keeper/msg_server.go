@@ -8,7 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/payments/types"
+	"github.com/tessornetwork/kaiju/x/payments/types"
 )
 
 type msgServer struct {

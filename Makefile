@@ -31,11 +31,11 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 # process linker flags
 
 ldflags = \
-    -X github.com/cosmos/cosmos-sdk/version.Name=xco \
-    -X github.com/cosmos/cosmos-sdk/version.AppName=xcod \
+    -X github.com/cosmos/cosmos-sdk/version.Name=kaiju \
+    -X github.com/cosmos/cosmos-sdk/version.AppName=kaijud \
     -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
     -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-    -X "github.com/petrinetwork/xco-blockchain/version.BuildTags=$(build_tags_comma_sep)" \
+    -X "github.com/tessornetwork/kaiju/version.BuildTags=$(build_tags_comma_sep)" \
     -X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TM_VERSION)
 
 ifeq ($(WITH_CLEVELDB),yes)
@@ -50,13 +50,13 @@ all: lint install
 
 build: go.sum
 ifeq ($(OS),Windows_NT)
-	go build -mod=readonly $(BUILD_FLAGS) -o build/xcod.exe ./cmd/xcod
+	go build -mod=readonly $(BUILD_FLAGS) -o build/kaijud.exe ./cmd/kaijud
 else
-	go build -mod=readonly $(BUILD_FLAGS) -o build/xcod ./cmd/xcod
+	go build -mod=readonly $(BUILD_FLAGS) -o build/kaijud ./cmd/kaijud
 endif
 
 install: go.sum
-	go install -mod=readonly $(BUILD_FLAGS) ./cmd/xcod
+	go install -mod=readonly $(BUILD_FLAGS) ./cmd/kaijud
 
 ########################################
 ### Tools & dependencies
@@ -72,7 +72,7 @@ go.sum: go.mod
 draw-deps:
 	@# requires brew install graphviz or apt-get install graphviz
 	go get github.com/RobotsAndPencils/goviz
-	@goviz -i github.com/petrinetwork/xco-blockchain/cmd/xcod -d 2 | dot -Tpng -o dependency-graph.png
+	@goviz -i github.com/tessornetwork/kaiju/cmd/kaijud -d 2 | dot -Tpng -o dependency-graph.png
 
 .PHONY: all install go-mod-cache draw-deps build
 

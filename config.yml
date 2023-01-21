@@ -1,6 +1,6 @@
 version: 1
 build:
-  main: cmd/xcod
+  main: cmd/kaijud
   proto:
     path: proto
     third_party_paths:
@@ -9,13 +9,13 @@ build:
 accounts:
 - name: alice
   coins:
-  - 1000000000uxco
+  - 1000000000ukaiju
   mnemonic: clutch script morning bacon knock unique impact update aisle morning okay
     outer witness liquid ordinary direct mention dove arrow witness speed satisfy
     work any
 - name: bob
   coins:
-  - 1000000000uxco
+  - 1000000000ukaiju
   mnemonic: salmon vivid library slow organ flag card check moment venture hip album
     vehicle write curtain often inquiry bid oven charge catch erosion voice unfold
 faucet:
@@ -26,10 +26,10 @@ genesis:
   app_state:
     staking:
       params:
-        bond_denom: uxco
+        bond_denom: ukaiju
   chain_id: pandora-4
 validators:
 - name: alice
-  bonded: 100000000uxco
+  bonded: 100000000ukaiju
   app:
-    minimum-gas-prices: 0.025uxco
+    minimum-gas-prices: 0.025ukaiju

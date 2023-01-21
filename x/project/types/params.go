@@ -3,16 +3,16 @@ package types
 import (
 	"fmt"
 
-	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
+	kaijutypes "github.com/tessornetwork/kaiju/lib/kaiju"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	params "github.com/cosmos/cosmos-sdk/x/params/types"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
 )
 
 // Parameter store keys
 var (
-	KeyXcoDid                       = []byte("XcoDid")
+	KeyKaijuDid                       = []byte("KaijuDid")
 	KeyProjectMinimumInitialFunding = []byte("ProjectMinimumInitialFunding")
 	KeyOracleFeePercentage          = []byte("OracleFeePercentage")
 	KeyNodeFeePercentage            = []byte("NodeFeePercentage")
@@ -23,10 +23,10 @@ func ParamKeyTable() params.KeyTable {
 	return params.NewKeyTable().RegisterParamSet(&Params{})
 }
 
-func NewParams(projectMinimumInitialFunding sdk.Coins, xcoDid didexported.Did,
+func NewParams(projectMinimumInitialFunding sdk.Coins, kaijuDid didexported.Did,
 	oracleFeePercentage, nodeFeePercentage sdk.Dec) Params {
 	return Params{
-		XcoDid:                       xcoDid,
+		KaijuDid:                       kaijuDid,
 		ProjectMinimumInitialFunding: projectMinimumInitialFunding,
 		OracleFeePercentage:          oracleFeePercentage,
 		NodeFeePercentage:            nodeFeePercentage,
@@ -36,27 +36,27 @@ func NewParams(projectMinimumInitialFunding sdk.Coins, xcoDid didexported.Did,
 
 // default project module parameters
 func DefaultParams() Params {
-	defaultXcoDid := didexported.Did("did:xco:U4tSpzzv91HHqWW1YmFkHJ")
+	defaultKaijuDid := didexported.Did("did:kaiju:U4tSpzzv91HHqWW1YmFkHJ")
 	defaultMinInitFunding := sdk.NewCoins(sdk.NewCoin(
-		xcotypes.XcoNativeToken, sdk.OneInt()))
+		kaijutypes.KaijuNativeToken, sdk.OneInt()))
 	tenPercentFee := sdk.NewDec(10)
 
 	return Params{
-		XcoDid:                       defaultXcoDid,         // invalid blank
-		ProjectMinimumInitialFunding: defaultMinInitFunding, // 1uxco
+		KaijuDid:                       defaultKaijuDid,         // invalid blank
+		ProjectMinimumInitialFunding: defaultMinInitFunding, // 1ukaiju
 		OracleFeePercentage:          tenPercentFee,         // 10.0 (10%)
 		NodeFeePercentage:            tenPercentFee,         // 10.0 (10%)
 	}
 }
 
-func validateXcoDid(i interface{}) error {
+func validateKaijuDid(i interface{}) error {
 	v, ok := i.(didexported.Did)
 	if !ok {
 		return fmt.Errorf("invalid parameter type: %T", i)
 	}
 
 	if len(v) == 0 {
-		return fmt.Errorf("xco did cannot be empty")
+		return fmt.Errorf("kaiju did cannot be empty")
 	}
 
 	return nil
@@ -109,7 +109,7 @@ func validateNodeFeePercentage(i interface{}) error {
 // Implements params.ParamSet
 func (p *Params) ParamSetPairs() params.ParamSetPairs {
 	return params.ParamSetPairs{
-		{KeyXcoDid, &p.XcoDid, validateXcoDid},
+		{KeyKaijuDid, &p.KaijuDid, validateKaijuDid},
 		{KeyProjectMinimumInitialFunding, &p.ProjectMinimumInitialFunding, validateProjectMinimumInitialFunding},
 		{KeyOracleFeePercentage, &p.OracleFeePercentage, validateOracleFeePercentage},
 		{KeyNodeFeePercentage, &p.NodeFeePercentage, validateNodeFeePercentage},

@@ -1,21 +1,21 @@
 accounts:
   - name: alice
-    coins: [ "1000000000uxco" ]
+    coins: [ "1000000000ukaiju" ]
     mnemonic: clutch script morning bacon knock unique impact update aisle morning okay outer witness liquid ordinary direct mention dove arrow witness speed satisfy work any
-    # address: xco1gp04jgaqvpa5pwndra6a78e05glgllw99k74mm
+    # address: kaiju1gp04jgaqvpa5pwndra6a78e05glgllw99k74mm
   - name: bob
-    coins: [ "1000000000uxco" ]
+    coins: [ "1000000000ukaiju" ]
     mnemonic: salmon vivid library slow organ flag card check moment venture hip album vehicle write curtain often inquiry bid oven charge catch erosion voice unfold
-    # address: xco1ra5anxz5tpvll3td822ecf7v4aa88at3nd339j
+    # address: kaiju1ra5anxz5tpvll3td822ecf7v4aa88at3nd339j
 validator:
   name: alice
-  staked: "100000000uxco"
+  staked: "100000000ukaiju"
 faucet:
   name: bob
-  coins: [ "100000uxco" ]
+  coins: [ "100000ukaiju" ]
   port: 4500
 build:
-  binary: "xcod1"
+  binary: "kaijud1"
 host:
   rpc: ":26659"
   p2p: ":26658"
@@ -24,10 +24,10 @@ host:
   api: ":1318"
 init:
   app:
-    minimum-gas-prices: "0.025uxco"
+    minimum-gas-prices: "0.025ukaiju"
 genesis:
   chain_id: "pandora-4.1"
   app_state:
     staking:
       params:
-        bond_denom: "uxco"
+        bond_denom: "ukaiju"

@@ -3,7 +3,7 @@
 wait() {
   echo "Waiting for chain to start..."
   while :; do
-    RET=$(xcod status 2>&1)
+    RET=$(kaijud status 2>&1)
     if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
       sleep 1
     else
@@ -14,16 +14,16 @@ wait() {
   done
 }
 
-RET=$(xcod status 2>&1)
+RET=$(kaijud status 2>&1)
 if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
   wait
 fi
 
-GAS_PRICES="0.025uxco"
+GAS_PRICES="0.025ukaiju"
 PASSWORD="12345678"
 CHAIN_ID="pandora-4"
 
-xcod_tx() {
+kaijud_tx() {
   # Helper function to broadcast a transaction and supply the necessary args
 
   # Get module ($1) and specific tx ($1), which forms the tx command
@@ -32,7 +32,7 @@ xcod_tx() {
   shift
 
   # Broadcast the transaction
-  xcod tx $cmd \
+  kaijud tx $cmd \
     --gas-prices="$GAS_PRICES" \
     --chain-id="$CHAIN_ID" \
     --broadcast-mode block \
@@ -41,16 +41,16 @@ xcod_tx() {
     # The $@ adds any extra arguments to the end
 }
 
-xcod_q() {
-  xcod q "$@" --output=json | jq .
+kaijud_q() {
+  kaijud q "$@" --output=json | jq .
 }
 
-MIGUEL_DID="did:xco:4XJLBfGtWSGKSz4BeRxdun"
-FRANCESCO_DID="did:xco:UKzkhVSHc3qEFva5EY2XHt"
-SHAUN_DID="did:xco:U4tSpzzv91HHqWW1YmFkHJ"
+MIGUEL_DID="did:kaiju:4XJLBfGtWSGKSz4BeRxdun"
+FRANCESCO_DID="did:kaiju:UKzkhVSHc3qEFva5EY2XHt"
+SHAUN_DID="did:kaiju:U4tSpzzv91HHqWW1YmFkHJ"
 
 MIGUEL_DID_FULL='{
-  "did":"did:xco:4XJLBfGtWSGKSz4BeRxdun",
+  "did":"did:kaiju:4XJLBfGtWSGKSz4BeRxdun",
   "verifyKey":"2vMHhssdhrBCRFiq9vj7TxGYDybW4yYdrYh9JG56RaAt",
   "encryptionPublicKey":"6GBp8qYgjE3ducksUa9Ar26ganhDFcmYfbZE9ezFx5xS",
   "secret":{
@@ -60,7 +60,7 @@ MIGUEL_DID_FULL='{
   }
 }'
 FRANCESCO_DID_FULL='{
-  "did":"did:xco:UKzkhVSHc3qEFva5EY2XHt",
+  "did":"did:kaiju:UKzkhVSHc3qEFva5EY2XHt",
   "verifyKey":"Ftsqjc2pEvGLqBtgvVx69VXLe1dj2mFzoi4kqQNGo3Ej",
   "encryptionPublicKey":"8YScf3mY4eeHoxDT9MRxiuGX5Fw7edWFnwHpgWYSn1si",
   "secret":{
@@ -70,7 +70,7 @@ FRANCESCO_DID_FULL='{
   }
 }'
 SHAUN_DID_FULL='{
-  "did":"did:xco:U4tSpzzv91HHqWW1YmFkHJ",
+  "did":"did:kaiju:U4tSpzzv91HHqWW1YmFkHJ",
   "verifyKey":"FkeDue5it82taeheMprdaPrctfK3DeVV9NnEPYDgwwRG",
   "encryptionPublicKey":"DtdGbZB2nSQvwhs6QoN5Cd8JTxWgfVRAGVKfxj8LA15i",
   "secret":{
@@ -81,18 +81,18 @@ SHAUN_DID_FULL='{
 }'
 PAYMENT_RECIPIENTS='[
   {
-    "address": "xco1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0",
+    "address": "kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0",
     "percentage": "100"
   }
 ]'
 
 # Ledger DIDs
 echo "Ledgering Miguel DID..."
-xcod_tx did add-did-doc "$MIGUEL_DID_FULL"
+kaijud_tx did add-did-doc "$MIGUEL_DID_FULL"
 echo "Ledgering Francesco DID..."
-xcod_tx did add-did-doc "$FRANCESCO_DID_FULL"
+kaijud_tx did add-did-doc "$FRANCESCO_DID_FULL"
 echo "Ledgering Shaun DID..."
-xcod_tx did add-did-doc "$SHAUN_DID_FULL"
+kaijud_tx did add-did-doc "$SHAUN_DID_FULL"
 
 # Create payment template
 echo "Creating payment template..."
@@ -100,7 +100,7 @@ PAYMENT_TEMPLATE='{
   "id": "payment:template:template1",
   "payment_amount": [
     {
-      "denom": "uxco",
+      "denom": "ukaiju",
       "amount": "10"
     }
   ],
@@ -109,7 +109,7 @@ PAYMENT_TEMPLATE='{
   "discounts": []
 }'
 CREATOR="$MIGUEL_DID_FULL"
-xcod_tx payments create-payment-template "$PAYMENT_TEMPLATE" "$CREATOR"
+kaijud_tx payments create-payment-template "$PAYMENT_TEMPLATE" "$CREATOR"
 
 # Create payment contract
 echo "Creating payment contract..."
@@ -117,15 +117,15 @@ PAYMENT_TEMPLATE_ID="payment:template:template1" # from PAYMENT_TEMPLATE
 PAYMENT_CONTRACT_ID="payment:contract:contract1"
 DISCOUNT_ID=0
 CREATOR="$SHAUN_DID_FULL"
-FULL_PAYER_ADDR="$(xcod q did get-address-from-did $FRANCESCO_DID)"
+FULL_PAYER_ADDR="$(kaijud q did get-address-from-did $FRANCESCO_DID)"
 # Delete longest match of pattern ': ' from the beginning
 PAYER_ADDR=${FULL_PAYER_ADDR##*: }
-xcod_tx payments create-payment-contract "$PAYMENT_CONTRACT_ID" "$PAYMENT_TEMPLATE_ID" "$PAYER_ADDR" "$PAYMENT_RECIPIENTS" True "$DISCOUNT_ID" "$CREATOR"
+kaijud_tx payments create-payment-contract "$PAYMENT_CONTRACT_ID" "$PAYMENT_TEMPLATE_ID" "$PAYER_ADDR" "$PAYMENT_RECIPIENTS" True "$DISCOUNT_ID" "$CREATOR"
 
 # Authorise payment contract
 echo "Authorising payment contract..."
 PAYER="$FRANCESCO_DID_FULL"
-xcod_tx payments set-payment-contract-authorisation "$PAYMENT_CONTRACT_ID" True "$PAYER"
+kaijud_tx payments set-payment-contract-authorisation "$PAYMENT_CONTRACT_ID" True "$PAYER"
 
 # Create subscription (with block period)
 echo "Creating subscription 1/2 (with block period)..."
@@ -139,7 +139,7 @@ PERIOD='{
 }'
 MAX_PERIODS=3
 CREATOR="$SHAUN_DID_FULL"
-xcod_tx payments create-subscription "$SUBSCRIPTION_ID" "$PAYMENT_CONTRACT_ID" "$MAX_PERIODS" "$PERIOD" "$CREATOR"
+kaijud_tx payments create-subscription "$SUBSCRIPTION_ID" "$PAYMENT_CONTRACT_ID" "$MAX_PERIODS" "$PERIOD" "$CREATOR"
 
 echo "Wait a few seconds for the subscription to get effected..."
 sleep 6
@@ -147,7 +147,7 @@ sleep 6
 # Deauthorise payment contract
 echo "Deauthorising payment contract..."
 PAYER="$FRANCESCO_DID_FULL"
-xcod_tx payments set-payment-contract-authorisation "$PAYMENT_CONTRACT_ID" False "$PAYER"
+kaijud_tx payments set-payment-contract-authorisation "$PAYMENT_CONTRACT_ID" False "$PAYER"
 
 echo "Now the subscription (block-period) will just accumulate periods and not charge anything."
 echo ""
@@ -164,6 +164,6 @@ PERIOD='{
 }'
 MAX_PERIODS=3
 CREATOR="$SHAUN_DID_FULL"
-xcod_tx payments create-subscription "$SUBSCRIPTION_ID" "$PAYMENT_CONTRACT_ID" "$MAX_PERIODS" "$PERIOD" "$CREATOR"
+kaijud_tx payments create-subscription "$SUBSCRIPTION_ID" "$PAYMENT_CONTRACT_ID" "$MAX_PERIODS" "$PERIOD" "$CREATOR"
 
 echo "The subscription (time-period) will just accumulate periods and not charge anything."

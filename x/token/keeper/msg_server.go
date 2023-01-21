@@ -7,11 +7,11 @@ import (
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/token/types"
-	"github.com/petrinetwork/xco-blockchain/x/token/types/contracts/cw20"
-	"github.com/petrinetwork/xco-blockchain/x/token/types/contracts/cw721"
-	"github.com/petrinetwork/xco-blockchain/x/token/types/contracts/xco1155"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	"github.com/tessornetwork/kaiju/x/token/types"
+	"github.com/tessornetwork/kaiju/x/token/types/contracts/cw20"
+	"github.com/tessornetwork/kaiju/x/token/types/contracts/cw721"
+	"github.com/tessornetwork/kaiju/x/token/types/contracts/kaiju1155"
 )
 
 type msgServer struct {
@@ -81,10 +81,10 @@ func (s msgServer) SetupMinter(goCtx context.Context, msg *types.MsgSetupMinter)
 		}.Marshal()
 
 	case *types.MsgSetupMinter_Cw1155:
-		codeId = params.GetXco1155ContractCode()
+		codeId = params.GetKaiju1155ContractCode()
 		label = fmt.Sprintf("%s-cw1155-contract", msg.MinterDid.String())
-		contractType = types.ContractType_XCO1155
-		encodedInitiateMessage, err = xco1155.InstantiateMsg{
+		contractType = types.ContractType_KAIJU1155
+		encodedInitiateMessage, err = kaiju1155.InstantiateMsg{
 			Minter: minterAddress.String(),
 		}.Marshal()
 	default:
@@ -103,7 +103,7 @@ func (s msgServer) SetupMinter(goCtx context.Context, msg *types.MsgSetupMinter)
 		minterAddress,
 		encodedInitiateMessage,
 		label,
-		sdk.NewCoins(sdk.NewCoin("uxco", sdk.ZeroInt())),
+		sdk.NewCoins(sdk.NewCoin("ukaiju", sdk.ZeroInt())),
 	)
 
 	if err != nil {
@@ -192,12 +192,12 @@ func (s msgServer) MintToken(goCtx context.Context, msg *types.MsgMint) (*types.
 		}.Marshal()
 
 	case *types.MsgMint_Cw1155:
-		if tokenMinter.ContractType != types.ContractType_XCO1155 {
+		if tokenMinter.ContractType != types.ContractType_KAIJU1155 {
 			return &types.MsgMintResponse{}, sdkerrors.ErrInvalidType.Wrap("selected contract is not a cw1155 contract type")
 		}
-		encodedMintMessage, err = xco1155.Mint{
+		encodedMintMessage, err = kaiju1155.Mint{
 			To:      ownerAddress.String(),
-			TokenId: xco1155.TokenId(msg.OwnerDid.Did()),
+			TokenId: kaiju1155.TokenId(msg.OwnerDid.Did()),
 			Value:   mintInfo.Cw1155.Value,
 			Msg:     []byte{},
 		}.Marshal()
@@ -221,7 +221,7 @@ func (s msgServer) MintToken(goCtx context.Context, msg *types.MsgMint) (*types.
 		contractAddressBytes,
 		minterAddress,
 		encodedMintMessage,
-		sdk.NewCoins(sdk.NewCoin("uxco", sdk.ZeroInt())),
+		sdk.NewCoins(sdk.NewCoin("ukaiju", sdk.ZeroInt())),
 	)
 
 	return &types.MsgMintResponse{}, nil

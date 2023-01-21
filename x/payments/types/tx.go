@@ -8,12 +8,12 @@ import (
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/gogo/protobuf/proto"
-	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+	didtypes "github.com/tessornetwork/kaiju/lib/legacydid"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	iidante "github.com/petrinetwork/xco-blockchain/x/iid/ante"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
+	iidante "github.com/tessornetwork/kaiju/x/iid/ante"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 const (

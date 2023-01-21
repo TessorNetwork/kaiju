@@ -9,17 +9,17 @@ import (
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/petrinetwork/xco-blockchain/app"
-	"github.com/petrinetwork/xco-blockchain/cmd"
-	"github.com/petrinetwork/xco-blockchain/x/project/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	"github.com/tessornetwork/kaiju/app"
+	"github.com/tessornetwork/kaiju/cmd"
+	"github.com/tessornetwork/kaiju/x/project/keeper"
+	"github.com/tessornetwork/kaiju/x/project/types"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 )
 
-func CreateTestInput() (*codec.LegacyAmino, *app.XcoApp, sdk.Context) {
+func CreateTestInput() (*codec.LegacyAmino, *app.KaijuApp, sdk.Context) {
 	appl := cmd.Setup(false)
 	ctx := appl.BaseApp.NewContext(false, tmproto.Header{})
 	ctx = ctx.WithConsensusParams(
@@ -91,7 +91,7 @@ func TestHandler_CreateEvaluation(t *testing.T) {
 	msgServer := keeper.NewMsgServerImpl(appl.ProjectKeeper, appl.BankKeeper, appl.PaymentsKeeper)
 
 	params := types.DefaultParams()
-	params.XcoDid = "blank"
+	params.KaijuDid = "blank"
 	params.OracleFeePercentage = sdk.ZeroDec()
 	params.NodeFeePercentage = sdk.NewDecWithPrec(5, 1)
 	appl.ProjectKeeper.SetParams(ctx, params)

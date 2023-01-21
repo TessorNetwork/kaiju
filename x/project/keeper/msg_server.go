@@ -9,14 +9,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
-	paymentskeeper "github.com/petrinetwork/xco-blockchain/x/payments/keeper"
-	paymentstypes "github.com/petrinetwork/xco-blockchain/x/payments/types"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	kaijutypes "github.com/tessornetwork/kaiju/lib/kaiju"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
+	didtypes "github.com/tessornetwork/kaiju/lib/legacydid"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
+	paymentskeeper "github.com/tessornetwork/kaiju/x/payments/keeper"
+	paymentstypes "github.com/tessornetwork/kaiju/x/payments/types"
+	"github.com/tessornetwork/kaiju/x/project/types"
 )
 
 type msgServer struct {
@@ -26,8 +26,8 @@ type msgServer struct {
 }
 
 const (
-	XcoAccountFeesId               types.InternalAccountID = "XcoFees"
-	XcoAccountPayFeesId            types.InternalAccountID = "XcoPayFees"
+	KaijuAccountFeesId               types.InternalAccountID = "KaijuFees"
+	KaijuAccountPayFeesId            types.InternalAccountID = "KaijuPayFees"
 	InitiatingNodeAccountPayFeesId types.InternalAccountID = "InitiatingNodePayFees"
 )
 
@@ -61,10 +61,10 @@ func (s msgServer) CreateProject(goCtx context.Context, msg *types.MsgCreateProj
 	}
 
 	// Create all necessary initial project accounts
-	if _, err = createAccountInProjectAccounts(ctx, k, msg.ProjectDid, XcoAccountFeesId); err != nil {
+	if _, err = createAccountInProjectAccounts(ctx, k, msg.ProjectDid, KaijuAccountFeesId); err != nil {
 		return nil, err
 	}
-	if _, err = createAccountInProjectAccounts(ctx, k, msg.ProjectDid, XcoAccountPayFeesId); err != nil {
+	if _, err = createAccountInProjectAccounts(ctx, k, msg.ProjectDid, KaijuAccountPayFeesId); err != nil {
 		return nil, err
 	}
 	if _, err = createAccountInProjectAccounts(ctx, k, msg.ProjectDid, InitiatingNodeAccountPayFeesId); err != nil {
@@ -202,19 +202,19 @@ func (s msgServer) UpdateProjectStatus(goCtx context.Context, msg *types.MsgUpda
 
 func payoutFees(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projectDid didexported.Did) error {
 
-	_, err := payAllFeesToAddress(ctx, k, bk, projectDid, XcoAccountPayFeesId, XcoAccountFeesId)
+	_, err := payAllFeesToAddress(ctx, k, bk, projectDid, KaijuAccountPayFeesId, KaijuAccountFeesId)
 	if err != nil {
 		return err
 	}
 
-	_, err = payAllFeesToAddress(ctx, k, bk, projectDid, InitiatingNodeAccountPayFeesId, XcoAccountFeesId)
+	_, err = payAllFeesToAddress(ctx, k, bk, projectDid, InitiatingNodeAccountPayFeesId, KaijuAccountFeesId)
 	if err != nil {
 		return err
 	}
 
-	xcoDid := k.GetParams(ctx).XcoDid
-	amount := getXcoAmount(ctx, k, bk, projectDid, XcoAccountFeesId)
-	err = payoutAndRecon(ctx, k, bk, projectDid, XcoAccountFeesId, iidtypes.DIDFragment(xcoDid), amount)
+	kaijuDid := k.GetParams(ctx).KaijuDid
+	amount := getKaijuAmount(ctx, k, bk, projectDid, KaijuAccountFeesId)
+	err = payoutAndRecon(ctx, k, bk, projectDid, KaijuAccountFeesId, iidtypes.DIDFragment(kaijuDid), amount)
 	if err != nil {
 		return err
 	}
@@ -224,7 +224,7 @@ func payoutFees(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projectDid dide
 
 func payAllFeesToAddress(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projectDid didexported.Did,
 	sendingAddress types.InternalAccountID, receivingAddress types.InternalAccountID) (*sdk.Result, error) {
-	feesToPay := getXcoAmount(ctx, k, bk, projectDid, sendingAddress)
+	feesToPay := getKaijuAmount(ctx, k, bk, projectDid, sendingAddress)
 
 	if feesToPay.Amount.LT(sdk.ZeroInt()) {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidCoins, "negative fee to pay")
@@ -242,14 +242,14 @@ func payAllFeesToAddress(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projec
 	return nil, bk.SendCoins(ctx, sendingAccount, receivingAccount, sdk.Coins{feesToPay})
 }
 
-func getXcoAmount(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projectDid didexported.Did, accountID types.InternalAccountID) sdk.Coin {
+func getKaijuAmount(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projectDid didexported.Did, accountID types.InternalAccountID) sdk.Coin {
 	found := checkAccountInProjectAccounts(ctx, k, projectDid, accountID)
 	if found {
 		accAddr, _ := getAccountInProjectAccounts(ctx, k, projectDid, accountID)
 		coins := bk.GetAllBalances(ctx, accAddr)
-		return sdk.NewCoin(xcotypes.XcoNativeToken, coins.AmountOf(xcotypes.XcoNativeToken))
+		return sdk.NewCoin(kaijutypes.KaijuNativeToken, coins.AmountOf(kaijutypes.KaijuNativeToken))
 	}
-	return sdk.NewCoin(xcotypes.XcoNativeToken, sdk.ZeroInt())
+	return sdk.NewCoin(kaijutypes.KaijuNativeToken, sdk.ZeroInt())
 }
 
 func (s msgServer) CreateAgent(goCtx context.Context, msg *types.MsgCreateAgent) (*types.MsgCreateAgentResponse, error) {
@@ -405,9 +405,9 @@ func (s msgServer) CreateEvaluation(goCtx context.Context, msg *types.MsgCreateE
 	// If oracle fee present in project fees map, proceed with oracle pay
 	templateId, err := feesMap.GetPayTemplateId(types.OracleFee)
 	if err == nil {
-		// Get xco address
-		xcoAddr, err := getAccountInProjectAccounts(ctx, k, msg.ProjectDid,
-			XcoAccountPayFeesId)
+		// Get kaiju address
+		kaijuAddr, err := getAccountInProjectAccounts(ctx, k, msg.ProjectDid,
+			KaijuAccountPayFeesId)
 		if err != nil {
 			return nil, err
 		}
@@ -428,13 +428,13 @@ func (s msgServer) CreateEvaluation(goCtx context.Context, msg *types.MsgCreateE
 		if err != nil {
 			return nil, sdkerrors.Wrap(err, "Address not found in iid doc")
 		}
-		// Calculate evaluator pay share (totals to 100) for xco, node, and oracle
+		// Calculate evaluator pay share (totals to 100) for kaiju, node, and oracle
 		feePercentage := k.GetParams(ctx).OracleFeePercentage
 		nodeFeeShare := feePercentage.Mul(k.GetParams(ctx).NodeFeePercentage.QuoInt64(100))
-		xcoFeeShare := feePercentage.Sub(nodeFeeShare)
+		kaijuFeeShare := feePercentage.Sub(nodeFeeShare)
 		oracleShareLessFees := sdk.NewDec(100).Sub(feePercentage)
 		oraclePayRecipients := paymentstypes.NewDistribution(
-			paymentstypes.NewDistributionShare(xcoAddr, xcoFeeShare),
+			paymentstypes.NewDistributionShare(kaijuAddr, kaijuFeeShare),
 			paymentstypes.NewDistributionShare(nodeAddr, nodeFeeShare),
 			paymentstypes.NewDistributionShare(senderAddr, oracleShareLessFees))
 
@@ -527,7 +527,7 @@ func (s msgServer) WithdrawFunds(goCtx context.Context, msg *types.MsgWithdrawFu
 		fromAccountId = types.InternalAccountID(recipientDid)
 	}
 
-	amountCoin := sdk.NewCoin(xcotypes.XcoNativeToken, amount)
+	amountCoin := sdk.NewCoin(kaijutypes.KaijuNativeToken, amount)
 	err = payoutAndRecon(ctx, k, bk, projectDid, fromAccountId, recipientDid, amountCoin)
 	if err != nil {
 		return nil, err
@@ -606,8 +606,8 @@ func payoutAndRecon(ctx sdk.Context, k Keeper, bk bankkeeper.Keeper, projectDid 
 		return nil
 	}
 
-	xcoBalance := getXcoAmount(ctx, k, bk, projectDid, fromAccountId)
-	if xcoBalance.IsLT(amount) {
+	kaijuBalance := getKaijuAmount(ctx, k, bk, projectDid, fromAccountId)
+	if kaijuBalance.IsLT(amount) {
 		return sdkerrors.Wrap(sdkerrors.ErrInsufficientFunds, "insufficient funds in specified account")
 	}
 

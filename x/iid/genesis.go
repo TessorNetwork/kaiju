@@ -2,8 +2,8 @@ package iid
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/iid/keeper"
+	"github.com/tessornetwork/kaiju/x/iid/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

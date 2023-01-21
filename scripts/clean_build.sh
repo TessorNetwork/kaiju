@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-#rm -rf "$HOME"/.xcod
+#rm -rf "$HOME"/.kaijud
 
 make install # assumes currently in project directory

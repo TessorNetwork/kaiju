@@ -1,25 +1,25 @@
-# xco Blockchain SDK
+# kaiju Blockchain SDK
 
-[![version](https://img.shields.io/github/tag/petrinetwork/xco-blockchain.svg)](https://github.com/petrinetwork/xco-blockchain/releases/latest)
-[![Go Report Card](https://goreportcard.com/badge/github.com/petrinetwork/xco-blockchain)](https://goreportcard.com/report/github.com/petrinetwork/xco-blockchain)
-[![LoC](https://tokei.rs/b1/github/petrinetwork/xco-blockchain)](https://github.com/petrinetwork/xco-blockchain)
+[![version](https://img.shields.io/github/tag/tessornetwork/kaiju.svg)](https://github.com/tessornetwork/kaiju/releases/latest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/tessornetwork/kaiju)](https://goreportcard.com/report/github.com/tessornetwork/kaiju)
+[![LoC](https://tokei.rs/b1/github/tessornetwork/kaiju)](https://github.com/tessornetwork/kaiju)
 
 This is the official repository for the Impact Hub (ImpactHub)
 
 ## Notice
-The XCO team is in the process of upgrading this repository better align with our new standards and goals. Exciting things will soon come, but not without first making some fundamental and overdue changes.
+The KAIJU team is in the process of upgrading this repository better align with our new standards and goals. Exciting things will soon come, but not without first making some fundamental and overdue changes.
 
 ## Hosted Blockchain endpoints
-- Testnet RPC:https://testnet.xco.world/rpc/
-- Testnet Rest:https://testnet.xco.world/rest/
-- Mainnet RPC:https://impacthub.xco.world/rpc/
-- Mainnet Rest:https://impacthub.xco.world/rest/
+- Testnet RPC:https://testnet.kaiju.world/rpc/
+- Testnet Rest:https://testnet.kaiju.world/rest/
+- Mainnet RPC:https://impacthub.kaiju.world/rpc/
+- Mainnet Rest:https://impacthub.kaiju.world/rest/
 
 ### Mini Changelog
 - Upgraded to cosmos-sdk 0.45
 - Introduction of github actions to help automate some tasks. (Note this will be improved as we get more functionality in place)
 - The `master` branch was renamed to `main` and will no longer represent the latest stable version but rather the next feature release. 
-- As the project is still in active developmet, we thought it best to rename all are releases from version `v1.x.x` to `v0.x.x`. This would make [`v0.17.0`](https://github.com/petrinetwork/xco-blockchain/releases/v0.17.0) our last stable version.
+- As the project is still in active developmet, we thought it best to rename all are releases from version `v1.x.x` to `v0.x.x`. This would make [`v0.17.0`](https://github.com/tessornetwork/kaiju/releases/v0.17.0) our last stable version.
 - Going forward all releases will follow clear samantic versioning guidelines and all stable releases will have a release branch dedicated to it. For example the release `v0.17.0` will associated with the branch `release/v0.17.x` and all bugfixes related to this release should be made against this branch as well as all upstream branches if deemed relevant.
 
 ---
@@ -27,9 +27,9 @@ The XCO team is in the process of upgrading this repository better align with ou
 > This document will have all details necessary to help getting started with ImpactHub
 
 ## Documentation
-- Guide for setting up a Validator on the Pandora test network and Internet of Impact Hub main network: [here](https://github.com/xcofoundation/genesis)
-- Swagger API documentation for xco modules gRPC endpoints can be found at [client/docs/swagger-ui/swagger.yaml](client/docs/swagger-ui/swagger.yaml)
-- Swagger API documentation for xco modules legacy endpoints can be found at [client/docs/swagger-ui-legacy/swagger.yaml](client/docs/swagger-ui-legacy/swagger.yaml)
+- Guide for setting up a Validator on the Pandora test network and Internet of Impact Hub main network: [here](https://github.com/kaijufoundation/genesis)
+- Swagger API documentation for kaiju modules gRPC endpoints can be found at [client/docs/swagger-ui/swagger.yaml](client/docs/swagger-ui/swagger.yaml)
+- Swagger API documentation for kaiju modules legacy endpoints can be found at [client/docs/swagger-ui-legacy/swagger.yaml](client/docs/swagger-ui-legacy/swagger.yaml)
 - Blockchain Module Specifications can be found under `x/<module>/spec`
 
 ## Building and Running
@@ -76,8 +76,8 @@ make proto-swagger-gen
 ```
 
 - To build and run the application using Starport (demos will not work if the
-  blockchain is started using this method, and the `./cmd/xcod` package has to
-  be refactored to `./cmd/xco-blockchaind`):
+  blockchain is started using this method, and the `./cmd/kaijud` package has to
+  be refactored to `./cmd/kaijud`):
 
 ```bash
 starport serve

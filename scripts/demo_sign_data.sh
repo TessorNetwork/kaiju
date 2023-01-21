@@ -9,7 +9,7 @@ curl -X POST localhost:1317/txs/sign_data --iid-binary "$REQ"
 #   "msg": {
 #     "type": "did/AddDid",
 #     "value": {
-#       "did": "did:xco:U4tSpzzv91HHqWW1YmFkHJ",
+#       "did": "did:kaiju:U4tSpzzv91HHqWW1YmFkHJ",
 #       "pubKey": "FkeDue5it82taeheMprdaPrctfK3DeVV9NnEPYDgwwRG"
 #     }
 #   },
@@ -47,8 +47,8 @@ curl -X POST localhost:1317/txs/sign_data --iid-binary "$REQ"
 #        }
 #      },
 #      "txHash": "aaaa",
-#      "senderDid": "did:xco:U7GK8p8rVhJMKhBVRCJJ8c",
-#      "projectDid": "did:xco:RYLHkfNpbA8Losy68jt4yF",
+#      "senderDid": "did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c",
+#      "projectDid": "did:kaiju:RYLHkfNpbA8Losy68jt4yF",
 #      "pubKey": "ENmMCsfNmjYoTRhNgnwXbQAw6p8JKH9DCJfGTPXNfsxW"
 #    }
 #  },

@@ -1,4 +1,4 @@
-package xco1155
+package kaiju1155
 
 import (
 	"bytes"

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-xcod start --pruning "nothing"
+kaijud start --pruning "nothing"

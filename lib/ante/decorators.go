@@ -10,7 +10,7 @@ package ante
 // 	authante "github.com/cosmos/cosmos-sdk/x/auth/ante"
 // 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 // 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-// 	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
+// 	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
 // )
 
 // type CheckTxForIncompatibleMsgsDecorator struct {
@@ -21,9 +21,9 @@ package ante
 // }
 
 // func (dec CheckTxForIncompatibleMsgsDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
-// 	// feeTx, ok := tx.(XcoFeeTx)
+// 	// feeTx, ok := tx.(KaijuFeeTx)
 
-// 	//Check if feegranter is set. or if not xcoFeeTx
+// 	//Check if feegranter is set. or if not kaijuFeeTx
 // 	// if !ok || feeTx.FeeGranter() != nil {
 // 	// 	// return ctx, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a IIDTx")
 // 	// 	panic("")
@@ -37,15 +37,15 @@ package ante
 // 	return next(ctx, tx, simulate)
 // }
 
-// type XcoFeeHandlerDecorator struct {
+// type KaijuFeeHandlerDecorator struct {
 // 	iidKeeper         iidkeeper.Keeper
 // 	accountKeeper     authante.AccountKeeper
 // 	bankKeeper        bankkeeper.Keeper
 // 	defaultFeeHandler authante.DeductFeeDecorator
 // }
 
-// func NewXcoFeeHandlerDecorator(iidKeeper iidkeeper.Keeper, accountKeeper authante.AccountKeeper, bankKeeper bankkeeper.Keeper, defaultFeeHandler authante.DeductFeeDecorator) sdk.AnteDecorator {
-// 	return XcoFeeHandlerDecorator{
+// func NewKaijuFeeHandlerDecorator(iidKeeper iidkeeper.Keeper, accountKeeper authante.AccountKeeper, bankKeeper bankkeeper.Keeper, defaultFeeHandler authante.DeductFeeDecorator) sdk.AnteDecorator {
+// 	return KaijuFeeHandlerDecorator{
 // 		iidKeeper:         iidKeeper,
 // 		accountKeeper:     accountKeeper,
 // 		bankKeeper:        bankKeeper,
@@ -53,10 +53,10 @@ package ante
 // 	}
 // }
 
-// func (dec XcoFeeHandlerDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
-// 	feeTx, ok := tx.(XcoFeeTx)
+// func (dec KaijuFeeHandlerDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
+// 	feeTx, ok := tx.(KaijuFeeTx)
 
-// 	//Check if feegranter is set. or if not xcoFeeTx
+// 	//Check if feegranter is set. or if not kaijuFeeTx
 // 	if !ok || feeTx.FeeGranter() != nil {
 // 		// return ctx, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a IIDTx")
 // 		return dec.defaultFeeHandler.AnteHandle(ctx, tx, simulate, next)
@@ -66,14 +66,14 @@ package ante
 // 		return ctx, fmt.Errorf("fee collector module account (%s) has not been set", authtypes.FeeCollectorName)
 // 	}
 
-// 	xcoFeeMsgs := feeTx.GetFeePayerMsgs()
+// 	kaijuFeeMsgs := feeTx.GetFeePayerMsgs()
 
-// 	xcoMsgCount := len(xcoFeeMsgs)
-// 	if len(feeTx.GetMsgs()) != xcoMsgCount && xcoMsgCount == 1 {
-// 		return ctx, sdkerrors.Wrapf(errors.New("only one custom fee handler msg allowed per transaction"), "expted 1 and got %d", xcoMsgCount)
+// 	kaijuMsgCount := len(kaijuFeeMsgs)
+// 	if len(feeTx.GetMsgs()) != kaijuMsgCount && kaijuMsgCount == 1 {
+// 		return ctx, sdkerrors.Wrapf(errors.New("only one custom fee handler msg allowed per transaction"), "expted 1 and got %d", kaijuMsgCount)
 // 	}
 
-// 	feePayer, err := xcoFeeMsgs[0].FeePayerFromIid(ctx, dec.accountKeeper, dec.iidKeeper)
+// 	feePayer, err := kaijuFeeMsgs[0].FeePayerFromIid(ctx, dec.accountKeeper, dec.iidKeeper)
 // 	if err != nil {
 // 		return ctx, sdkerrors.Wrap(sdkerrors.ErrUnknownAddress, "fee payer does not exist")
 // 	}

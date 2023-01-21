@@ -17,13 +17,13 @@ import (
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	"github.com/tessornetwork/kaiju/x/project/types"
 
-	libxco "github.com/petrinetwork/xco-blockchain/lib/xco"
+	libkaiju "github.com/tessornetwork/kaiju/lib/kaiju"
 
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	iidutil "github.com/petrinetwork/xco-blockchain/x/iid/util"
-	projectkeeper "github.com/petrinetwork/xco-blockchain/x/project/keeper"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	iidutil "github.com/tessornetwork/kaiju/x/iid/util"
+	projectkeeper "github.com/tessornetwork/kaiju/x/project/keeper"
 	// issuerante "github.com/allinbits/cosmos-cash/v3/x/issuer/ante"
 	// issuerkeeper "github.com/allinbits/cosmos-cash/v3/x/issuer/keeper"
 	// vcskeeper "github.com/allinbits/cosmos-cash/v3/x/verifiable-credential/keeper"
@@ -42,8 +42,8 @@ func checkAllMsgs(tx sdk.Tx) (*types.MsgCreateProject, error) {
 	return msg, nil
 }
 
-func pubKeyGetter(keeper projectkeeper.Keeper, iidKeeper iidkeeper.Keeper) libxco.PubKeyGetter {
-	return func(ctx sdk.Context, msg libxco.XcoMsg, sigs []signing.SignatureV2) (pubKey cryptotypes.PubKey, err error) {
+func pubKeyGetter(keeper projectkeeper.Keeper, iidKeeper iidkeeper.Keeper) libkaiju.PubKeyGetter {
+	return func(ctx sdk.Context, msg libkaiju.KaijuMsg, sigs []signing.SignatureV2) (pubKey cryptotypes.PubKey, err error) {
 
 		// MsgCreateProject: pubkey from msg since project does not exist yet
 		// MsgWithdrawFunds: signer is user DID, so get pubkey from did module
@@ -268,14 +268,14 @@ func (dfd DeductFeeDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bo
 
 	// confirm that fee is the exact amount expected
 	expectedTotalFee := sdk.NewCoins(sdk.NewCoin(
-		libxco.XcoNativeToken, sdk.NewInt(types.MsgCreateProjectTotalFee)))
+		libkaiju.KaijuNativeToken, sdk.NewInt(types.MsgCreateProjectTotalFee)))
 	if !feeTx.GetFee().IsEqual(expectedTotalFee) {
 		return ctx, sdkerrors.Wrap(sdkerrors.ErrInvalidCoins, "invalid fee")
 	}
 
 	// Calculate transaction fee and project funding
 	transactionFee := sdk.NewCoins(sdk.NewCoin(
-		libxco.XcoNativeToken, sdk.NewInt(types.MsgCreateProjectTransactionFee)))
+		libkaiju.KaijuNativeToken, sdk.NewInt(types.MsgCreateProjectTransactionFee)))
 	projectFunding := expectedTotalFee.Sub(transactionFee) // panics if negative result
 
 	// deduct the fees

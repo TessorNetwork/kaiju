@@ -9,11 +9,11 @@ var (
 	_                                 govtypes.Content = &SetTokenContractCodes{}
 )
 
-func NewSetTokenContract(cw20Code, cw721Code, xco1155Code uint64) SetTokenContractCodes {
+func NewSetTokenContract(cw20Code, cw721Code, kaiju1155Code uint64) SetTokenContractCodes {
 	return SetTokenContractCodes{
 		Cw20ContractCode:    cw20Code,
 		Cw721ContractCode:   cw721Code,
-		Xco1155ContractCode: xco1155Code,
+		Kaiju1155ContractCode: kaiju1155Code,
 	}
 }
 
@@ -32,5 +32,5 @@ func (sup *SetTokenContractCodes) ValidateBasic() error { return nil }
 
 func init() {
 	govtypes.RegisterProposalType(ProposalTypeSetTokenContractCodes)
-	govtypes.RegisterProposalTypeCodec(&SetTokenContractCodes{}, "token.xco.token.v1beta1.SetTokenContractCodes")
+	govtypes.RegisterProposalTypeCodec(&SetTokenContractCodes{}, "token.kaiju.token.v1beta1.SetTokenContractCodes")
 }

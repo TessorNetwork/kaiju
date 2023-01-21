@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/petrinetwork/xco-blockchain/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 var _ types.QueryServer = Keeper{}

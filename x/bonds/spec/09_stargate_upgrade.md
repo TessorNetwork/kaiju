@@ -21,17 +21,17 @@ defined in a Protobuf service, the SDK offers a REST equivalent, which is define
 `query.proto` we have the following.
 ```
 rpc Bond(QueryBondRequest) returns (QueryBondResponse) {
-    option (google.api.http).get = "/xco/bonds/{bond_did}";
+    option (google.api.http).get = "/kaiju/bonds/{bond_did}";
 }
 ```
-To query the bond `did:xco:U7GK8p8rVhJMKhBVRCJJ8c` using the legacy Amino REST endpoint, use 
-`/bonds/did:xco:U7GK8p8rVhJMKhBVRCJJ8c`. To query the bond using the new gRPC-gateway REST 
-endpoint, use `/xco/bonds/did:xco:U7GK8p8rVhJMKhBVRCJJ8c`.
+To query the bond `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c` using the legacy Amino REST endpoint, use 
+`/bonds/did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`. To query the bond using the new gRPC-gateway REST 
+endpoint, use `/kaiju/bonds/did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`.
 
 ## Single application binary
-xco-blockchain now compiles to a single application binary, as opposed to separate binaries for running a node and one 
-for the CLI & REST server. In practice, this means we no longer have an `xcocli` command and now only use `xcod`. 
+kaiju now compiles to a single application binary, as opposed to separate binaries for running a node and one 
+for the CLI & REST server. In practice, this means we no longer have an `kaijucli` command and now only use `kaijud`. 
 
-Note: There is currently no way of configuring the `xcod` command, which means we have to add flags such as the chain 
-ID every time we use `xcod`. This has been reported and (at the time of writing) is an open issue, available here: 
+Note: There is currently no way of configuring the `kaijud` command, which means we have to add flags such as the chain 
+ID every time we use `kaijud`. This has been reported and (at the time of writing) is an open issue, available here: 
 https://github.com/cosmos/cosmos-sdk/issues/8529. 

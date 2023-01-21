@@ -8,9 +8,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/project/types"
 )
 
 func registerTxHandlers(clientCtx client.Context, r *mux.Router) {

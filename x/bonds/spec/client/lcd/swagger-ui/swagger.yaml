@@ -55,7 +55,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
       responses:
@@ -76,7 +76,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
       responses:
@@ -97,7 +97,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
       responses:
@@ -118,7 +118,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
       responses:
@@ -139,7 +139,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
       responses:
@@ -160,7 +160,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
         - in: path
@@ -188,7 +188,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
         - in: path
@@ -216,7 +216,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
         - in: path
@@ -244,7 +244,7 @@ paths:
           name: bond_did
           description: Bond DID
           required: true
-          example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+          example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
           schema:
             type: string
         - in: path
@@ -472,7 +472,7 @@ components:
   schemas:
     Did:
       type: string
-      example: did:xco:48PVm1uyF6QVDSPdGRWw4T
+      example: did:kaiju:48PVm1uyF6QVDSPdGRWw4T
     StakeCoin:
       type: object
       properties:

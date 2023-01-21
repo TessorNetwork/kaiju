@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 func NewProjectDoc(txHash string, projectDid string, senderDid iidtypes.DIDFragment,

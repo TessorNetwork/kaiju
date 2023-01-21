@@ -1,10 +1,10 @@
 swagger: '2.0'
 info:
-  title: xco modules - gRPC Gateway docs
+  title: kaiju modules - gRPC Gateway docs
   description: A REST interface for state queries
   version: 1.0.0
 paths:
-  /xco/bonds:
+  /kaiju/bonds:
     get:
       summary: Bonds returns all existing bonds.
       operationId: Bonds
@@ -45,7 +45,7 @@ paths:
                       format: byte
       tags:
         - Query
-  /xco/bonds/params:
+  /kaiju/bonds/params:
     get:
       summary: Params queries the paramaters of x/bonds module.
       operationId: BondsParams
@@ -90,7 +90,7 @@ paths:
                       format: byte
       tags:
         - Query
-  '/xco/bonds/{bond_did}':
+  '/kaiju/bonds/{bond_did}':
     get:
       summary: Bond queries info of a specific bond.
       operationId: Bond
@@ -293,7 +293,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/alpha_maximums':
+  '/kaiju/bonds/{bond_did}/alpha_maximums':
     get:
       summary: >-
         AlphaMaximums queries alpha maximums for a specific augmented bonding
@@ -341,7 +341,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/available_reserve':
+  '/kaiju/bonds/{bond_did}/available_reserve':
     get:
       summary: >-
         AvailableReserve queries current available balance/s of the reserve pool
@@ -402,7 +402,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/batch':
+  '/kaiju/bonds/{bond_did}/batch':
     get:
       summary: Batch queries info of a specific bond's current batch.
       operationId: Batch
@@ -664,7 +664,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/buy_price/{bond_amount}':
+  '/kaiju/bonds/{bond_did}/buy_price/{bond_amount}':
     get:
       summary: >-
         BuyPrice queries price/s of buying an amount of tokens from a specific
@@ -795,7 +795,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/current_price':
+  '/kaiju/bonds/{bond_did}/current_price':
     get:
       summary: CurrentPrice queries the current price/s of a specific bond.
       operationId: CurrentPrice
@@ -855,7 +855,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/current_reserve':
+  '/kaiju/bonds/{bond_did}/current_reserve':
     get:
       summary: >-
         CurrentReserve queries the current balance/s of the reserve pool for a
@@ -916,7 +916,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/last_batch':
+  '/kaiju/bonds/{bond_did}/last_batch':
     get:
       summary: LastBatch queries info of a specific bond's last batch.
       operationId: LastBatch
@@ -1178,7 +1178,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/price/{bond_amount}':
+  '/kaiju/bonds/{bond_did}/price/{bond_amount}':
     get:
       summary: CustomPrice queries price/s of a specific bond at a specific supply.
       operationId: CustomPrice
@@ -1242,7 +1242,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/sell_return/{bond_amount}':
+  '/kaiju/bonds/{bond_did}/sell_return/{bond_amount}':
     get:
       summary: >-
         SellReturn queries return/s on selling an amount of tokens of a specific
@@ -1390,7 +1390,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}':
+  '/kaiju/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}':
     get:
       summary: >-
         SwapReturn queries return/s on swapping an amount of tokens to another
@@ -1476,7 +1476,7 @@ paths:
           type: string
       tags:
         - Query
-  /xco/bonds_detailed:
+  /kaiju/bonds_detailed:
     get:
       summary: >-
         BondsDetailed returns a list of all existing bonds with some details
@@ -1576,7 +1576,7 @@ paths:
                       format: byte
       tags:
         - Query
-  /xco/allDidDocs:
+  /kaiju/allDidDocs:
     get:
       summary: >-
         AllDidDocs returns a list of all existing DidDocs (i.e. all DIDs along
@@ -1959,7 +1959,7 @@ paths:
                         }
       tags:
         - Query
-  /xco/did:
+  /kaiju/did:
     get:
       summary: AllDids returns a list of all existing DIDs.
       operationId: AllDids
@@ -2167,7 +2167,7 @@ paths:
                         }
       tags:
         - Query
-  '/xco/did/{did}':
+  '/kaiju/did/{did}':
     get:
       summary: DidDoc queries info of a specific DID's DidDoc.
       operationId: DidDoc
@@ -2547,9 +2547,9 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/didToAddr/{did}':
+  '/kaiju/didToAddr/{did}':
     get:
-      summary: AddressFromDid retrieves the cosmos address associated to an xco DID.
+      summary: AddressFromDid retrieves the cosmos address associated to an kaiju DID.
       operationId: AddressFromDid
       responses:
         '200':
@@ -2758,11 +2758,11 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/pubKeyToAddr/{pubKey}':
+  '/kaiju/pubKeyToAddr/{pubKey}':
     get:
       summary: >-
         AddressFromBase58EncodedPubkey retrieves the cosmos address associated
-        to an xco DID's pubkey.
+        to an kaiju DID's pubkey.
       operationId: AddressFromBase58EncodedPubkey
       responses:
         '200':
@@ -2971,7 +2971,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/payments/contracts/{payment_contract_id}':
+  '/kaiju/payments/contracts/{payment_contract_id}':
     get:
       summary: PaymentContract queries info of a specific payment contract.
       operationId: PaymentContract
@@ -3250,7 +3250,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/payments/contracts_by_id_prefix/{payment_contracts_id_prefix}':
+  '/kaiju/payments/contracts_by_id_prefix/{payment_contracts_id_prefix}':
     get:
       summary: >-
         PaymentContractsByIdPrefix lists all payment contracts having an id with
@@ -3535,7 +3535,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/payments/subscriptions/{subscription_id}':
+  '/kaiju/payments/subscriptions/{subscription_id}':
     get:
       summary: Subscription queries info of a specific Subscription.
       operationId: Subscription
@@ -3935,7 +3935,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/payments/templates/{payment_template_id}':
+  '/kaiju/payments/templates/{payment_template_id}':
     get:
       summary: PaymentTemplate queries info of a specific payment template.
       operationId: PaymentTemplate
@@ -4215,7 +4215,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/project/{project_did}':
+  '/kaiju/project/{project_did}':
     get:
       summary: ProjectDoc queries info of a specific project.
       operationId: ProjectDoc
@@ -4276,7 +4276,7 @@ paths:
           type: string
       tags:
         - Query
-  '/xco/projectAccounts/{project_did}':
+  '/kaiju/projectAccounts/{project_did}':
     get:
       summary: ProjectAccounts lists a specific project's accounts.
       operationId: ProjectAccounts
@@ -4328,7 +4328,7 @@ paths:
           type: string
       tags:
         - Query
-  /xco/projectParams:
+  /kaiju/projectParams:
     get:
       summary: Params queries the paramaters of x/project module.
       operationId: ProjectParams
@@ -4341,7 +4341,7 @@ paths:
               params:
                 type: object
                 properties:
-                  xco_did:
+                  kaiju_did:
                     type: string
                   project_minimum_initial_funding:
                     type: array
@@ -4392,7 +4392,7 @@ paths:
                       format: byte
       tags:
         - Query
-  '/xco/projectTxs/{project_did}':
+  '/kaiju/projectTxs/{project_did}':
     get:
       summary: ProjectTx lists a specific project's transactions.
       operationId: ProjectTx
@@ -7447,7 +7447,7 @@ definitions:
   project.Params:
     type: object
     properties:
-      xco_did:
+      kaiju_did:
         type: string
       project_minimum_initial_funding:
         type: array
@@ -7491,7 +7491,7 @@ definitions:
       params:
         type: object
         properties:
-          xco_did:
+          kaiju_did:
             type: string
           project_minimum_initial_funding:
             type: array

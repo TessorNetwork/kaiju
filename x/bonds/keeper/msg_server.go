@@ -10,7 +10,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
+	"github.com/tessornetwork/kaiju/x/bonds/types"
 )
 
 type msgServer struct {

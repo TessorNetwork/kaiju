@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 // type IidTx struct {

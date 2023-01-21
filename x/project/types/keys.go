@@ -1,6 +1,6 @@
 package types
 
-import didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
+import didexported "github.com/tessornetwork/kaiju/lib/legacydid"
 
 const (
 	ModuleName        = "project"

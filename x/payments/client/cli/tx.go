@@ -10,10 +10,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
-	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
-	"github.com/petrinetwork/xco-blockchain/x/payments/types"
+	kaijutypes "github.com/tessornetwork/kaiju/lib/kaiju"
+	didtypes "github.com/tessornetwork/kaiju/lib/legacydid"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/payments/types"
 	"github.com/spf13/cobra"
 )
 
@@ -79,14 +79,14 @@ func NewTxCmd() *cobra.Command {
 
 func NewCmdCreatePaymentTemplate() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-payment-template [payment-template-json] [creator-xco-did]",
+		Use:   "create-payment-template [payment-template-json] [creator-kaiju-did]",
 		Short: "Create and sign a create-payment-template tx using DIDs",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			templateJsonStr := args[0]
-			xcoDidStr := args[1]
+			kaijuDidStr := args[1]
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -101,12 +101,12 @@ func NewCmdCreatePaymentTemplate() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-			msg := types.NewMsgCreatePaymentTemplate(template, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.CreatorAddress = xcoDid.Address().String()
+			msg := types.NewMsgCreatePaymentTemplate(template, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.CreatorAddress = kaijuDid.Address().String()
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 
@@ -117,7 +117,7 @@ func NewCmdCreatePaymentTemplate() *cobra.Command {
 func NewCmdCreatePaymentContract() *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "create-payment-contract [payment-contract-id] [payment-template-id] " +
-			"[payer-addr] [recipients] [can-deauthorise] [discount-id] [creator-xco-did]",
+			"[payer-addr] [recipients] [can-deauthorise] [discount-id] [creator-kaiju-did]",
 		Short: "Create and sign a create-payment-contract tx using DIDs",
 		Args:  cobra.ExactArgs(7),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -127,7 +127,7 @@ func NewCmdCreatePaymentContract() *cobra.Command {
 			recipientsStr := args[3]
 			canDeauthoriseStr := args[4]
 			discountIdStr := args[5]
-			xcoDidStr := args[6]
+			kaijuDidStr := args[6]
 
 			payerAddr, err := sdk.AccAddressFromBech32(payerAddrStr)
 			if err != nil {
@@ -144,7 +144,7 @@ func NewCmdCreatePaymentContract() *cobra.Command {
 				return err
 			}
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -159,14 +159,14 @@ func NewCmdCreatePaymentContract() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
 			msg := types.NewMsgCreatePaymentContract(templateIdStr,
 				contractIdStr, payerAddr, recipients, canDeauthorise,
-				discountId, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.CreatorAddress = xcoDid.Address().String()
+				discountId, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.CreatorAddress = kaijuDid.Address().String()
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 
@@ -177,7 +177,7 @@ func NewCmdCreatePaymentContract() *cobra.Command {
 func NewCmdCreateSubscription() *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "create-subscription [subscription-id] [payment-contract-id] " +
-			"[max-periods] [period-json] [creator-xco-did]",
+			"[max-periods] [period-json] [creator-kaiju-did]",
 		Short: "Create and sign a create-subscription tx using DIDs",
 		Args:  cobra.ExactArgs(5),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -185,14 +185,14 @@ func NewCmdCreateSubscription() *cobra.Command {
 			contractIdStr := args[1]
 			maxPeriodsStr := args[2]
 			periodStr := args[3]
-			xcoDidStr := args[4]
+			kaijuDidStr := args[4]
 
 			maxPeriods, err := sdk.ParseUint(maxPeriodsStr)
 			if err != nil {
 				return err
 			}
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -218,18 +218,18 @@ func NewCmdCreateSubscription() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
 			msg := types.NewMsgCreateSubscription(subIdStr,
-				contractIdStr, maxPeriods, period, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.CreatorAddress = xcoDid.Address().String()
+				contractIdStr, maxPeriods, period, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.CreatorAddress = kaijuDid.Address().String()
 
 			err = msg.ValidateBasic()
 			if err != nil {
 				return err
 			}
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 
@@ -240,20 +240,20 @@ func NewCmdCreateSubscription() *cobra.Command {
 func NewCmdSetPaymentContractAuthorisation() *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "set-payment-contract-authorisation [payment-contract-id] " +
-			"[authorised] [payer-xco-did]",
+			"[authorised] [payer-kaiju-did]",
 		Short: "Create and sign a set-payment-contract-authorisation tx using DIDs",
 		Args:  cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			contractIdStr := args[0]
 			authorisedStr := args[1]
-			xcoDidStr := args[2]
+			kaijuDidStr := args[2]
 
 			authorised, err := parseBool(authorisedStr, "authorised")
 			if err != nil {
 				return err
 			}
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -262,13 +262,13 @@ func NewCmdSetPaymentContractAuthorisation() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
 			msg := types.NewMsgSetPaymentContractAuthorisation(
-				contractIdStr, authorised, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.PayerAddress = xcoDid.Address().String()
+				contractIdStr, authorised, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.PayerAddress = kaijuDid.Address().String()
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 
@@ -279,14 +279,14 @@ func NewCmdSetPaymentContractAuthorisation() *cobra.Command {
 func NewCmdGrantPaymentDiscount() *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "grant-discount [payment-contract-id] [discount-id] " +
-			"[recipient-addr] [creator-xco-did]",
+			"[recipient-addr] [creator-kaiju-did]",
 		Short: "Create and sign a grant-discount tx using DIDs",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			contractIdStr := args[0]
 			discountIdStr := args[1]
 			recipientAddrStr := args[2]
-			xcoDidStr := args[3]
+			kaijuDidStr := args[3]
 
 			discountId, err := sdk.ParseUint(discountIdStr)
 			if err != nil {
@@ -298,7 +298,7 @@ func NewCmdGrantPaymentDiscount() *cobra.Command {
 				return err
 			}
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -307,17 +307,17 @@ func NewCmdGrantPaymentDiscount() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
 			msg := types.NewMsgGrantDiscount(
-				contractIdStr, discountId, recipientAddr, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.SenderAddress = xcoDid.Address().String()
+				contractIdStr, discountId, recipientAddr, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.SenderAddress = kaijuDid.Address().String()
 			err = msg.ValidateBasic()
 			if err != nil {
 				return err
 			}
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 
@@ -327,20 +327,20 @@ func NewCmdGrantPaymentDiscount() *cobra.Command {
 
 func NewCmdRevokePaymentDiscount() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "revoke-discount [payment-contract-id] [holder-addr] [creator-xco-did]",
+		Use:   "revoke-discount [payment-contract-id] [holder-addr] [creator-kaiju-did]",
 		Short: "Create and sign a revoke-discount tx using DIDs",
 		Args:  cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			contractIdStr := args[0]
 			holderAddrStr := args[1]
-			xcoDidStr := args[2]
+			kaijuDidStr := args[2]
 
 			holderAddr, err := sdk.AccAddressFromBech32(holderAddrStr)
 			if err != nil {
 				return err
 			}
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -349,17 +349,17 @@ func NewCmdRevokePaymentDiscount() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
 			msg := types.NewMsgRevokeDiscount(
-				contractIdStr, holderAddr, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.SenderAddress = xcoDid.Address().String()
+				contractIdStr, holderAddr, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.SenderAddress = kaijuDid.Address().String()
 			err = msg.ValidateBasic()
 			if err != nil {
 				return err
 			}
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 
@@ -369,14 +369,14 @@ func NewCmdRevokePaymentDiscount() *cobra.Command {
 
 func NewCmdEffectPayment() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "effect-payment [payment-contract-id] [creator-xco-did]",
+		Use:   "effect-payment [payment-contract-id] [creator-kaiju-did]",
 		Short: "Create and sign a effect-payment tx using DIDs",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			contractIdStr := args[0]
-			xcoDidStr := args[1]
+			kaijuDidStr := args[1]
 
-			xcoDid, err := didtypes.UnmarshalXcoDid(xcoDidStr)
+			kaijuDid, err := didtypes.UnmarshalKaijuDid(kaijuDidStr)
 			if err != nil {
 				return err
 			}
@@ -385,16 +385,16 @@ func NewCmdEffectPayment() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-			msg := types.NewMsgEffectPayment(contractIdStr, iidtypes.DIDFragment(xcoDid.Did), xcoDid.Address().String())
-			msg.SenderAddress = xcoDid.Address().String()
+			msg := types.NewMsgEffectPayment(contractIdStr, iidtypes.DIDFragment(kaijuDid.Did), kaijuDid.Address().String())
+			msg.SenderAddress = kaijuDid.Address().String()
 			err = msg.ValidateBasic()
 			if err != nil {
 				return err
 			}
 
-			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 		},
 	}
 

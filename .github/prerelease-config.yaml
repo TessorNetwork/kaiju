@@ -15,17 +15,17 @@ template: |
   ## Quick Start
   ### Homebrew
   ```
-  brew tap petrinetwork/xco
-  brew install xco-blockchain@$MAJOR.$MINOR
+  brew tap petrinetwork/kaiju
+  brew install kaiju@$MAJOR.$MINOR
   ```
 
   ### Docker
   ```
   docker run \
-    --name xco-blockchain \
+    --name kaiju \
     -p 1317:1317 \
     -p 26657:26657 \
-    ghcr.io/petrinetwork/xco-blockchain:v$RESOLVED_VERSION \
+    ghcr.io/tessornetwork/kaiju:v$RESOLVED_VERSION \
     start
   ```
 #   Release Candidate see changelog

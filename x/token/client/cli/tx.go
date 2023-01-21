@@ -11,7 +11,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govcli "github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/petrinetwork/xco-blockchain/x/token/types"
+	"github.com/tessornetwork/kaiju/x/token/types"
 	"github.com/spf13/cobra"
 )
 
@@ -53,12 +53,12 @@ func NewCmdUpdateTokenParamsProposal() *cobra.Command {
 				return err
 			}
 
-			xco1155CodeId, err := strconv.ParseUint(args[2], 0, 64)
+			kaiju1155CodeId, err := strconv.ParseUint(args[2], 0, 64)
 			if err != nil {
 				return err
 			}
 
-			content := types.NewSetTokenContract(cw20CodeId, cw721CodeId, xco1155CodeId)
+			content := types.NewSetTokenContract(cw20CodeId, cw721CodeId, kaiju1155CodeId)
 
 			from := clientCtx.GetFromAddress()
 
@@ -127,13 +127,13 @@ func NewCmdCreateToken() *cobra.Command {
 
 // func NewCmdUpdateProjectStatus() *cobra.Command {
 // cmd := &cobra.Command{
-// 	Use:   "update-project-status [sender-did] [status] [xco-did]",
-// 	Short: "Update the status of a project signed by the xcoDid of the project",
+// 	Use:   "update-project-status [sender-did] [status] [kaiju-did]",
+// 	Short: "Update the status of a project signed by the kaijuDid of the project",
 // 	Args:  cobra.ExactArgs(3),
 // 	RunE: func(cmd *cobra.Command, args []string) error {
 // 		senderDid := args[0]
 // 		status := args[1]
-// 		xcoDid, err := didtypes.UnmarshalXcoDid(args[2])
+// 		kaijuDid, err := didtypes.UnmarshalKaijuDid(args[2])
 // 		if err != nil {
 // 			return err
 // 		}
@@ -156,15 +156,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 		if err != nil {
 // 			return err
 // 		}
-// 		clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 		clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 		msg := types.NewMsgUpdateProjectStatus(senderDid, updateProjectStatusDoc, xcoDid.Did)
+// 		msg := types.NewMsgUpdateProjectStatus(senderDid, updateProjectStatusDoc, kaijuDid.Did)
 // 		err = msg.ValidateBasic()
 // 		if err != nil {
 // 			return err
 // 		}
 
-// 		return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 		return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 	},
 // }
 
@@ -176,7 +176,7 @@ func NewCmdCreateToken() *cobra.Command {
 // cmd := &cobra.Command{
 // 	Use: "create-agent [tx-hash] [sender-did] [agent-did] " +
 // 		"[role] [project-did]",
-// 	Short: "Create a new agent on a project signed by the xcoDid of the project",
+// 	Short: "Create a new agent on a project signed by the kaijuDid of the project",
 // 	Args:  cobra.ExactArgs(5),
 // 	RunE: func(cmd *cobra.Command, args []string) error {
 // 		txHash := args[0]
@@ -189,7 +189,7 @@ func NewCmdCreateToken() *cobra.Command {
 
 // 		createAgentDoc := types.NewCreateAgentDoc(agentDid, role)
 
-// 		xcoDid, err := didtypes.UnmarshalXcoDid(args[4])
+// 		kaijuDid, err := didtypes.UnmarshalKaijuDid(args[4])
 // 		if err != nil {
 // 			return err
 // 		}
@@ -198,15 +198,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 		if err != nil {
 // 			return err
 // 		}
-// 		clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 		clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 		msg := types.NewMsgCreateAgent(txHash, senderDid, createAgentDoc, xcoDid.Did)
+// 		msg := types.NewMsgCreateAgent(txHash, senderDid, createAgentDoc, kaijuDid.Did)
 // 		err = msg.ValidateBasic()
 // 		if err != nil {
 // 			return err
 // 		}
 
-// 		return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 		return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 	},
 // }
 
@@ -217,8 +217,8 @@ func NewCmdCreateToken() *cobra.Command {
 // func NewCmdUpdateAgent() *cobra.Command {
 // cmd := &cobra.Command{
 // 	Use: "update-agent [tx-hash] [sender-did] [agent-did] " +
-// 		"[status] [xco-did]",
-// 	Short: "Update the status of an agent on a project signed by the xcoDid of the project",
+// 		"[status] [kaiju-did]",
+// 	Short: "Update the status of an agent on a project signed by the kaijuDid of the project",
 // 	Args:  cobra.ExactArgs(6),
 // 	RunE: func(cmd *cobra.Command, args []string) error {
 // 		txHash := args[0]
@@ -233,7 +233,7 @@ func NewCmdCreateToken() *cobra.Command {
 // 		updateAgentDoc := types.NewUpdateAgentDoc(
 // 			agentDid, agentStatus, agentRole)
 
-// 		xcoDid, err := didtypes.UnmarshalXcoDid(args[5])
+// 		kaijuDid, err := didtypes.UnmarshalKaijuDid(args[5])
 // 		if err != nil {
 // 			return err
 // 		}
@@ -242,15 +242,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 		if err != nil {
 // 			return err
 // 		}
-// 		clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 		clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 		msg := types.NewMsgUpdateAgent(txHash, senderDid, updateAgentDoc, xcoDid.Did)
+// 		msg := types.NewMsgUpdateAgent(txHash, senderDid, updateAgentDoc, kaijuDid.Did)
 // 		err = msg.ValidateBasic()
 // 		if err != nil {
 // 			return err
 // 		}
 
-// 		return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 		return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 	},
 // }
 
@@ -260,8 +260,8 @@ func NewCmdCreateToken() *cobra.Command {
 
 // func NewCmdCreateClaim() *cobra.Command {
 // cmd := &cobra.Command{
-// 	Use:   "create-claim [tx-hash] [sender-did] [claim-id] [claim-template-id] [xco-did]",
-// 	Short: "Create a new claim on a project signed by the xcoDid of the project",
+// 	Use:   "create-claim [tx-hash] [sender-did] [claim-id] [claim-template-id] [kaiju-did]",
+// 	Short: "Create a new claim on a project signed by the kaijuDid of the project",
 // 	Args:  cobra.ExactArgs(5),
 // 	RunE: func(cmd *cobra.Command, args []string) error {
 // 		txHash := args[0]
@@ -270,7 +270,7 @@ func NewCmdCreateToken() *cobra.Command {
 // 		claimTemplateId := args[3]
 // 		createClaimDoc := types.NewCreateClaimDoc(claimId, claimTemplateId)
 
-// 		xcoDid, err := didtypes.UnmarshalXcoDid(args[4])
+// 		kaijuDid, err := didtypes.UnmarshalKaijuDid(args[4])
 // 		if err != nil {
 // 			return err
 // 		}
@@ -279,15 +279,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 		if err != nil {
 // 			return err
 // 		}
-// 		clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 		clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 		msg := types.NewMsgCreateClaim(txHash, senderDid, createClaimDoc, xcoDid.Did)
+// 		msg := types.NewMsgCreateClaim(txHash, senderDid, createClaimDoc, kaijuDid.Did)
 // 		err = msg.ValidateBasic()
 // 		if err != nil {
 // 			return err
 // 		}
 
-// 		return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 		return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 	},
 // }
 
@@ -298,8 +298,8 @@ func NewCmdCreateToken() *cobra.Command {
 // func NewCmdCreateEvaluation() *cobra.Command {
 // 	cmd := &cobra.Command{
 // 		Use: "create-evaluation [tx-hash] [sender-did] [claim-id] " +
-// 			"[status] [xco-did]",
-// 		Short: "Create a new claim evaluation on a project signed by the xcoDid of the project",
+// 			"[status] [kaiju-did]",
+// 		Short: "Create a new claim evaluation on a project signed by the kaijuDid of the project",
 // 		Args:  cobra.ExactArgs(5),
 // 		RunE: func(cmd *cobra.Command, args []string) error {
 // 			txHash := args[0]
@@ -313,7 +313,7 @@ func NewCmdCreateToken() *cobra.Command {
 // 			createEvaluationDoc := types.NewCreateEvaluationDoc(
 // 				claimId, claimStatus)
 
-// 			xcoDid, err := didtypes.UnmarshalXcoDid(args[4])
+// 			kaijuDid, err := didtypes.UnmarshalKaijuDid(args[4])
 // 			if err != nil {
 // 				return err
 // 			}
@@ -322,15 +322,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 			if err != nil {
 // 				return err
 // 			}
-// 			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 			msg := types.NewMsgCreateEvaluation(txHash, senderDid, createEvaluationDoc, xcoDid.Did)
+// 			msg := types.NewMsgCreateEvaluation(txHash, senderDid, createEvaluationDoc, kaijuDid.Did)
 // 			err = msg.ValidateBasic()
 // 			if err != nil {
 // 				return err
 // 			}
 
-// 			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 		},
 // 	}
 
@@ -344,7 +344,7 @@ func NewCmdCreateToken() *cobra.Command {
 // 		Short: "Withdraw funds.",
 // 		Args:  cobra.ExactArgs(2),
 // 		RunE: func(cmd *cobra.Command, args []string) error {
-// 			xcoDid, err := didtypes.UnmarshalXcoDid(args[0])
+// 			kaijuDid, err := didtypes.UnmarshalKaijuDid(args[0])
 // 			if err != nil {
 // 				return err
 // 			}
@@ -359,15 +359,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 			if err != nil {
 // 				return err
 // 			}
-// 			clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 			clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 			msg := types.NewMsgWithdrawFunds(xcoDid.Did, data)
+// 			msg := types.NewMsgWithdrawFunds(kaijuDid.Did, data)
 // 			err = msg.ValidateBasic()
 // 			if err != nil {
 // 				return err
 // 			}
 
-// 			return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 			return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 		},
 // 	}
 
@@ -377,13 +377,13 @@ func NewCmdCreateToken() *cobra.Command {
 
 // func NewCmdUpdateProjectDoc() *cobra.Command {
 // cmd := &cobra.Command{
-// 	Use:   "update-project-doc [sender-did] [project-iid-json] [xco-did]",
-// 	Short: "Update a project's iid signed by the xcoDid of the project",
+// 	Use:   "update-project-doc [sender-did] [project-iid-json] [kaiju-did]",
+// 	Short: "Update a project's iid signed by the kaijuDid of the project",
 // 	Args:  cobra.ExactArgs(3),
 // 	RunE: func(cmd *cobra.Command, args []string) error {
 // 		senderDid := args[0]
 // 		projectDataStr := args[1]
-// 		xcoDid, err := didtypes.UnmarshalXcoDid(args[2])
+// 		kaijuDid, err := didtypes.UnmarshalKaijuDid(args[2])
 // 		if err != nil {
 // 			return err
 // 		}
@@ -392,15 +392,15 @@ func NewCmdCreateToken() *cobra.Command {
 // 		if err != nil {
 // 			return err
 // 		}
-// 		clientCtx = clientCtx.WithFromAddress(xcoDid.Address())
+// 		clientCtx = clientCtx.WithFromAddress(kaijuDid.Address())
 
-// 		msg := types.NewMsgUpdateProjectDoc(senderDid, json.RawMessage(projectDataStr), xcoDid.Did)
+// 		msg := types.NewMsgUpdateProjectDoc(senderDid, json.RawMessage(projectDataStr), kaijuDid.Did)
 // 		err = msg.ValidateBasic()
 // 		if err != nil {
 // 			return err
 // 		}
 
-// 		return xcotypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), xcoDid, msg)
+// 		return kaijutypes.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), kaijuDid, msg)
 // 	},
 // }
 

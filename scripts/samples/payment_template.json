@@ -2,7 +2,7 @@
   "id": "payment:template:template1",
   "payment_amount": [
     {
-      "denom": "uxco",
+      "denom": "ukaiju",
       "amount": "10"
     }
   ],

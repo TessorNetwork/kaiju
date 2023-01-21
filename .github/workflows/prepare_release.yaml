@@ -69,7 +69,7 @@ jobs:
           - name: Build docker image
             os: ubuntu-latest
             enabled: true
-            artifact: xco-chain
+            artifact: kaiju-chain
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: dist-stable
@@ -80,27 +80,27 @@ jobs:
 
           - name: Build debian package
             os: ubuntu-latest
-            artifact: "xcod_linux_amd64"
+            artifact: "kaijud_linux_amd64"
             enabled: true
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: build-binary
             outputs:
               type: file
-              path: /dist/app/xco-blockchain_linux_amd64.tar.gz
+              path: /dist/app/kaiju_linux_amd64.tar.gz
             # post-build:
             #   enabled: false
 
           - name: Build darwin binary
             os: ubuntu-latest
-            artifact: "xcod_darwin_amd64"
+            artifact: "kaijud_darwin_amd64"
             enabled: true
             docker:
               file: .infra/dockerfiles/Dockerfile
               target: build-binary
             outputs:
               type: file
-              path: /dist/app/xco-blockchain_darwin_amd64.tar.gz
+              path: /dist/app/kaiju_darwin_amd64.tar.gz
 
         exclude:
           - build:
@@ -167,14 +167,14 @@ jobs:
         test:
           - name: Scan Docker image (Security)
             os: ubuntu-latest
-            artifact: xco-chain
+            artifact: kaiju-chain
             enabled: true
             experimental: true
-            command: docker scan --file .infra/dockerfiles/Dockerfile xco-chain:tmp
+            command: docker scan --file .infra/dockerfiles/Dockerfile kaiju-chain:tmp
 
           - name: Integration Tests (Quality)
             os: ubuntu-latest
-            artifact: xco-chain
+            artifact: kaiju-chain
             enabled: false
             experimental: true
 
@@ -243,7 +243,7 @@ jobs:
         artifact:
           - name: Publish Docker Image
             os: ubuntu-latest
-            artifact: xco-chain
+            artifact: kaiju-chain
             enabled: true
             type: docker
             docker: 
@@ -256,20 +256,20 @@ jobs:
 
           - name: Publish Linux Binary
             os: ubuntu-latest
-            artifact: "xcod_linux_amd64"
+            artifact: "kaijud_linux_amd64"
             enabled: true
             type: file
             file: 
-              path: xco-blockchain_linux_amd64.tar.gz
+              path: kaiju_linux_amd64.tar.gz
               extention: .tar.gz
             
           - name: Publish Darwin Binary
             os: ubuntu-latest
-            artifact: "xcod_darwin_amd64"
+            artifact: "kaijud_darwin_amd64"
             enabled: true
             type: file
             file: 
-              path: xco-blockchain_darwin_amd64.tar.gz
+              path: kaiju_darwin_amd64.tar.gz
               extention: .tar.gz
 
         exclude:

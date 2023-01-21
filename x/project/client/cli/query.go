@@ -6,7 +6,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	"github.com/tessornetwork/kaiju/x/project/types"
 	"github.com/spf13/cobra"
 )
 

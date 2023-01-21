@@ -1,0 +1,17 @@
+# /etc/systemd/system/kaijud.service
+
+[Unit]
+Description=kaijud Node
+After=network.target
+
+[Service]
+Type=simple
+User=kaiju
+WorkingDirectory=/home/kaiju
+ExecStart=/home/kaiju/go/bin/kaijud start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

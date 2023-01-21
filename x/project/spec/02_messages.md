@@ -13,9 +13,9 @@ project docs.
 | **Field**  | **Type**          | **Description** |
 |:-----------|:------------------|:----------------|
 | TxHash     | `string`          | Hash of the project request
-| SenderDid  | `did.Did`         | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`         | New project DID (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
-| PubKey     | `string`          | PubKey of project's xco account (e.g. `FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW`)
+| SenderDid  | `did.Did`         | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`         | New project DID (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
+| PubKey     | `string`          | PubKey of project's kaiju account (e.g. `FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW`)
 | Data       | `json.RawMessage` | Data relevant to the project
 
 ```go
@@ -43,8 +43,8 @@ This message updates a project's current status.
 | **Field**  | **Type**                 | **Description** |
 |:-----------|:-------------------------|:----------------|
 | TxHash     | `string`                 | Hash of the project request
-| SenderDid  | `did.Did`                | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`                | Project DID whose status is to be changed (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
+| SenderDid  | `did.Did`                | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`                | Project DID whose status is to be changed (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
 | Data       | `UpdateProjectStatusDoc` | Updated status data to this project
 
 ```go
@@ -83,8 +83,8 @@ This message updates a project's Data field.
 | **Field**  | **Type**          | **Description** |
 |:-----------|:------------------|:----------------|
 | TxHash     | `string`          | Hash of the project request
-| SenderDid  | `did.Did`         | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`         | Project DID whose Data field is to be updated (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
+| SenderDid  | `did.Did`         | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`         | Project DID whose Data field is to be updated (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
 | Data       | `json.RawMessage` | Updated data relevant to the project
 
 ```go
@@ -114,8 +114,8 @@ interacting with the project. Each agent has a project account.
 | **Field**  | **Type**         | **Description** |
 |:-----------|:-----------------|:----------------|
 | TxHash     | `string`         | Hash of the project request
-| SenderDid  | `did.Did`        | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`        | Project DID to which agent will be added (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
+| SenderDid  | `did.Did`        | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`        | Project DID to which agent will be added (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
 | Data       | `CreateAgentDoc` | AgentDoc data
 
 ```go
@@ -145,8 +145,8 @@ This message updates the status of an agent on a project.
 | **Field**  | **Type**         | **Description** |
 |:-----------|:-----------------|:----------------|
 | TxHash     | `string`         | Hash of the project request
-| SenderDid  | `did.Did`        | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`        | Project DID whose agent status will be updated (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
+| SenderDid  | `did.Did`        | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`        | Project DID whose agent status will be updated (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
 | Data       | `UpdateAgentDoc` | AgentDoc data
 
 ```go
@@ -178,8 +178,8 @@ This message creates a claim for a specified project. Refer to
 | **Field**  | **Type**         | **Description** |
 |:-----------|:-----------------|:----------------|
 | TxHash     | `string`         | Hash of the project request
-| SenderDid  | `did.Did`        | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`        | Project DID on which a claim is to be created (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
+| SenderDid  | `did.Did`        | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`        | Project DID on which a claim is to be created (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
 | Data       | `CreateClaimDoc` | Claim Doc for the project
 
 ```go
@@ -194,7 +194,7 @@ type MsgCreateClaim struct {
 A `CreateClaimDoc` contains an ID uniquely identifying the claim, and a template
 ID of the claim template that the claim is based on. More information about
 schema templates (and specifically claim templates) in [this repository](
-https://github.com/xcofoundation/schema). Upon creating a claim, its default
+https://github.com/kaijufoundation/schema). Upon creating a claim, its default
 status is `0` i.e. Pending.
 
 ```go
@@ -220,8 +220,8 @@ This message creates an evaluation for a specified claim on a specified project.
 | **Field**  | **Type**              | **Description** |
 |:-----------|:----------------------|:----------------|
 | TxHash     | `string`              | Hash of the project request
-| SenderDid  | `did.Did`             | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
-| ProjectDid | `did.Did`             | Project DID (e.g. `did:xco:U7GK8p8rVhJMKhBVRCJJ8c`)
+| SenderDid  | `did.Did`             | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
+| ProjectDid | `did.Did`             | Project DID (e.g. `did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c`)
 | Data       | `CreateEvaluationDoc` | Evalution Doc for the project
 
 ```go
@@ -250,7 +250,7 @@ This message is expected to fail if:
 - Project is not in status STARTED
 - Claim with ClaimId (in Data) does not exist
 - Claim with ClaimId (in Data) is not in status Pending (status `0`)
-- Oracle fee is present in project fees map, and xco address, node (relayer)
+- Oracle fee is present in project fees map, and kaiju address, node (relayer)
   address, or sender (oracle) address cannot be found, or if payment cannot be
   processed
 - SenderDid is empty or invalid
@@ -262,7 +262,7 @@ This message allows project agents to withdraw their funds from the project.
 
 | **Field** | **Type**           | **Description** |
 |:----------|:-------------------|:----------------|
-| SenderDid | `did.Did`          | Sender account DID (e.g. `did:xco:U4tSpzzv91HHqWW1YmFkHJ`)
+| SenderDid | `did.Did`          | Sender account DID (e.g. `did:kaiju:U4tSpzzv91HHqWW1YmFkHJ`)
 | Data      | `WithdrawFundsDoc` | Details about the funds to be withdrawn
 
 ```go

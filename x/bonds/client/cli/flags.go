@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
+	"github.com/tessornetwork/kaiju/x/bonds/types"
 	flag "github.com/spf13/pflag"
 )
 

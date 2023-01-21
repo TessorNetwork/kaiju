@@ -10,9 +10,9 @@ import (
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	authzkeeper "github.com/cosmos/cosmos-sdk/x/authz/keeper"
 	paramstypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
-	"github.com/petrinetwork/xco-blockchain/x/token/types"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/token/types"
 )
 
 type Keeper struct {

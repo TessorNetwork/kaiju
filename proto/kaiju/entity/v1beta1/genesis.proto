@@ -1,0 +1,21 @@
+syntax = "proto3";
+package kaiju.entity.v1beta1;
+
+import "gogoproto/gogo.proto";
+import "kaiju/entity/v1beta1/entity.proto";
+
+option go_package = "github.com/tessornetwork/kaiju/x/entity/types";
+
+// GenesisState defines the project module's genesis state.
+message GenesisState {
+  repeated kaiju.entity.v1beta1.EntityDoc entity_docs = 1 [
+    (gogoproto.nullable) = false,
+    (gogoproto.moretags) = "yaml:\"entity_docs\""
+  ];
+  // repeated GenesisAccountMap account_maps       = 2 [(gogoproto.nullable) =
+  // false, (gogoproto.moretags) = "yaml:\"account_maps\""];
+  kaiju.entity.v1beta1.Params params = 2 [
+    (gogoproto.nullable) = false,
+    (gogoproto.moretags) = "yaml:\"params\""
+  ];
+}

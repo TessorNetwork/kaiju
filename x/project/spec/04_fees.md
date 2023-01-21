@@ -92,14 +92,14 @@ The following are some key points about the above code:
 The payment contract's ID is contructed on-the-fly using the below template. This means that the payment contract created is unique to the projects module, project, sender address, and fee type.
 
 - Template: `payment:contract:<moduleName>:<projectDid>:<senderAddr>:<feeType>`
-- Example: `payment:contract:project:did:xco:U7G...J8c:xco107...0vx:OracleFee`
+- Example: `payment:contract:project:did:kaiju:U7G...J8c:kaiju107...0vx:OracleFee`
 
 Thus, if a new and unique set of the above 4 values is encountered, a new payment contract is created. Otherwise, the existing payment contract is fetched. This means that the project contract can (and is) used to persist information between two or more payments of the same type.
 
-An example use case is when we want to specify a maximum payment. Consider a contract created based on a payment template that specifies a pay amount of 100XCO and a maximum of 300XCO.
-1. In the first `processPay()` call, a new payment contract is created and immediately effected (cumulative pay: `100XCO`)
-2. In the second `processPay()` call, the payment contract already exists and is fetched and the payment is effected (cumulative pay: `200XCO`).
-3. In the third `processPay()` call, the cumulative pay will have reached the maximum `300XCO`.
+An example use case is when we want to specify a maximum payment. Consider a contract created based on a payment template that specifies a pay amount of 100KAIJU and a maximum of 300KAIJU.
+1. In the first `processPay()` call, a new payment contract is created and immediately effected (cumulative pay: `100KAIJU`)
+2. In the second `processPay()` call, the payment contract already exists and is fetched and the payment is effected (cumulative pay: `200KAIJU`).
+3. In the third `processPay()` call, the cumulative pay will have reached the maximum `300KAIJU`.
 4. If a fourth `processPay()` call comes through, no further payment is effected, given that the contract cannot be effected due to the maximum being reached.
 
 If the project does not have enough funds to effect the payment contract, an error is returned by the function. An error is also returned if the payment contract payment cannot be effected.
@@ -114,16 +114,16 @@ The following is the logic used to calculate how the payment is distributed betw
 
 - The oracle (service provider) share is `100% - OracleFeePercentage`
 - The node share is `OracleFeePercentage x (NodeFeePercentage)`
-- The xco.world share is `OracleFeePercentage x (100% - NodeFeePercentage)`
+- The kaiju.world share is `OracleFeePercentage x (100% - NodeFeePercentage)`
 
 For example, if `OracleFeePercentage=20%` and `NodeFeePercentage=50%`:
 
 - The oracle (service provider) share is `80%`
 - The node share is `10%`
-- The xco.world share is `10%`
+- The kaiju.world share is `10%`
 
 ### Fee for Service
 
 If a fee-for-service payment template ID was provided during project creation, the fee-for-service applies whenever a claimer's claim gets approved (claim status set to approved `= 1`) during `MsgCreateEvaluation` handling. It is paid by the project, with the claimer as the contract recipient.
 
-In contrast with the `OracleFee`, the claimer gets the full `FeeForService` (0% percentage sent to a node or xco.world).
+In contrast with the `OracleFee`, the claimer gets the full `FeeForService` (0% percentage sent to a node or kaiju.world).

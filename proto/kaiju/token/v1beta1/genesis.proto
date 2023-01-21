@@ -1,0 +1,23 @@
+syntax = "proto3";
+package kaiju.token.v1beta1;
+
+import "gogoproto/gogo.proto";
+import "kaiju/token/v1beta1/token.proto";
+
+option go_package = "github.com/tessornetwork/kaiju/x/token/types";
+
+// GenesisState defines the project module's genesis state.
+message GenesisState {
+  repeated TokenMinter tokenMinters = 1 [
+    (gogoproto.nullable) = false,
+    (gogoproto.moretags) = "yaml:\"token_minters\"",
+    (gogoproto.jsontag) = "token_minters"
+  ];
+  // repeated GenesisAccountMap account_maps       = 2 [(gogoproto.nullable) =
+  // false, (gogoproto.moretags) = "yaml:\"account_maps\""];
+  Params Params = 2 [
+    (gogoproto.nullable) = false,
+    (gogoproto.moretags) = "yaml:\"params\"",
+    (gogoproto.jsontag) = "params"
+  ];
+}

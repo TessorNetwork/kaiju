@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/petrinetwork/xco-blockchain/x/bonds/client"
-	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
+	"github.com/tessornetwork/kaiju/x/bonds/client"
+	"github.com/tessornetwork/kaiju/x/bonds/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

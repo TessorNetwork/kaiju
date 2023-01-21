@@ -1,4 +1,4 @@
-module github.com/petrinetwork/xco-blockchain
+module github.com/tessornetwork/kaiju
 
 go 1.18
 

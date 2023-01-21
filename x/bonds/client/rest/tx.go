@@ -10,9 +10,9 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
-	bondsclient "github.com/petrinetwork/xco-blockchain/x/bonds/client"
-	"github.com/petrinetwork/xco-blockchain/x/bonds/types"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
+	bondsclient "github.com/tessornetwork/kaiju/x/bonds/client"
+	"github.com/tessornetwork/kaiju/x/bonds/types"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 func registerTxHandlers(clientCtx client.Context, r *mux.Router) {

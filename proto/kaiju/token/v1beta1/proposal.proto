@@ -1,0 +1,22 @@
+syntax = "proto3";
+package kaiju.token.v1beta1;
+
+import "gogoproto/gogo.proto";
+import "kaiju/token/v1beta1/token.proto";
+
+option go_package = "github.com/tessornetwork/kaiju/x/token/types";
+
+message SetTokenContractCodes {
+  uint64 cw20ContractCode = 1 [
+    (gogoproto.jsontag) = "cw20_contract_code",
+    (gogoproto.moretags) = "yaml:\"cw20_contract_code\""
+  ];
+  uint64 cw721ContractCode = 2 [
+    (gogoproto.jsontag) = "cw721_contract_code",
+    (gogoproto.moretags) = "yaml:\"cw721_contract_code\""
+  ];
+  uint64 kaiju1155ContractCode = 3 [
+    (gogoproto.jsontag) = "kaiju1155_contract_code",
+    (gogoproto.moretags) = "yaml:\"kaiju1155_contract_code\""
+  ];
+}

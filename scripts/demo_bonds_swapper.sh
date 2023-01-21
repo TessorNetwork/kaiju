@@ -3,7 +3,7 @@
 wait() {
   echo "Waiting for chain to start..."
   while :; do
-    RET=$(xcod status 2>&1)
+    RET=$(kaijud status 2>&1)
     if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
       sleep 1
     else
@@ -14,18 +14,18 @@ wait() {
   done
 }
 
-RET=$(xcod status 2>&1)
+RET=$(kaijud status 2>&1)
 if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
   wait
 fi
 
 PASSWORD="12345678"
-GAS_PRICES="0.025uxco"
+GAS_PRICES="0.025ukaiju"
 CHAIN_ID="pandora-4"
-FEE=$(yes $PASSWORD | xcod keys show fee -a)
-RESERVE_OUT=$(yes $PASSWORD | xcod keys show reserveOut -a)
+FEE=$(yes $PASSWORD | kaijud keys show fee -a)
+RESERVE_OUT=$(yes $PASSWORD | kaijud keys show reserveOut -a)
 
-xcod_tx() {
+kaijud_tx() {
   # Helper function to broadcast a transaction and supply the necessary args
 
   # Get module ($1) and specific tx ($1), which forms the tx command
@@ -34,7 +34,7 @@ xcod_tx() {
   shift
 
   # Broadcast the transaction
-  xcod tx $cmd \
+  kaijud tx $cmd \
     --gas-prices="$GAS_PRICES" \
     --chain-id="$CHAIN_ID" \
     --broadcast-mode block \
@@ -43,13 +43,13 @@ xcod_tx() {
     # The $@ adds any extra arguments to the end
 }
 
-xcod_q() {
-  xcod q "$@" --output=json | jq .
+kaijud_q() {
+  kaijud q "$@" --output=json | jq .
 }
 
-BOND_DID="did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
+BOND_DID="did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c"
 #BOND_DID_FULL='{
-#  "did":"did:xco:U7GK8p8rVhJMKhBVRCJJ8c",
+#  "did":"did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c",
 #  "verifyKey":"FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW",
 #  "encryptionPublicKey":"domKpTpjrHQtKUnaFLjCuDLe2oHeS4b1sKt7yU9cq7m",
 #  "secret":{
@@ -59,10 +59,10 @@ BOND_DID="did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
 #  }
 #}'
 
-MIGUEL_ADDR="xco1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"
-FRANCESCO_ADDR="xco1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes"
+MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"
+FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes"
 MIGUEL_DID_FULL='{
-  "did":"did:xco:4XJLBfGtWSGKSz4BeRxdun",
+  "did":"did:kaiju:4XJLBfGtWSGKSz4BeRxdun",
   "verifyKey":"2vMHhssdhrBCRFiq9vj7TxGYDybW4yYdrYh9JG56RaAt",
   "encryptionPublicKey":"6GBp8qYgjE3ducksUa9Ar26ganhDFcmYfbZE9ezFx5xS",
   "secret":{
@@ -71,9 +71,9 @@ MIGUEL_DID_FULL='{
     "encryptionPrivateKey":"4oMozrMR6BXRN93MDk6UYoqBVBLiPn9RnZhR3wQd6tBh"
   }
 }'
-FRANCESCO_DID="did:xco:UKzkhVSHc3qEFva5EY2XHt"
+FRANCESCO_DID="did:kaiju:UKzkhVSHc3qEFva5EY2XHt"
 FRANCESCO_DID_FULL='{
-  "did":"did:xco:UKzkhVSHc3qEFva5EY2XHt",
+  "did":"did:kaiju:UKzkhVSHc3qEFva5EY2XHt",
   "verifyKey":"Ftsqjc2pEvGLqBtgvVx69VXLe1dj2mFzoi4kqQNGo3Ej",
   "encryptionPublicKey":"8YScf3mY4eeHoxDT9MRxiuGX5Fw7edWFnwHpgWYSn1si",
   "secret":{
@@ -85,12 +85,12 @@ FRANCESCO_DID_FULL='{
 
 # Ledger DIDs
 echo "Ledgering DID 1/2..."
-xcod_tx did add-did-doc "$MIGUEL_DID_FULL" 
+kaijud_tx did add-did-doc "$MIGUEL_DID_FULL" 
 echo "Ledgering DID 2/2..."
-xcod_tx did add-did-doc "$FRANCESCO_DID_FULL" 
+kaijud_tx did add-did-doc "$FRANCESCO_DID_FULL" 
 
 echo "Creating bond..."
-xcod_tx bonds create-bond \
+kaijud_tx bonds create-bond \
   --token=abc \
   --name="A B C" \
   --description="Description about A B C" \
@@ -111,44 +111,44 @@ xcod_tx bonds create-bond \
   --creator-did="$MIGUEL_DID_FULL" \
   --controller-did="$FRANCESCO_DID"
 echo "Created bond..."
-xcod_q bonds bond "$BOND_DID"
+kaijud_q bonds bond "$BOND_DID"
 
 echo "Miguel buys 1abc..."
-xcod_tx bonds buy 1abc 500res,1000rez "$BOND_DID" "$MIGUEL_DID_FULL" 
+kaijud_tx bonds buy 1abc 500res,1000rez "$BOND_DID" "$MIGUEL_DID_FULL" 
 echo "Miguel's account..."
-xcod_q bank balances "$MIGUEL_ADDR"
+kaijud_q bank balances "$MIGUEL_ADDR"
 
 echo "Francesco buys 10abc..."
-xcod_tx bonds buy 10abc 10100res,10100rez "$BOND_DID" "$FRANCESCO_DID_FULL" 
+kaijud_tx bonds buy 10abc 10100res,10100rez "$BOND_DID" "$FRANCESCO_DID_FULL" 
 echo "Francesco's account..."
-xcod_q bank balances "$FRANCESCO_ADDR"
+kaijud_q bank balances "$FRANCESCO_ADDR"
 
 echo "Miguel swap 500 res to rez..."
-xcod_tx bonds swap 500 res rez "$BOND_DID" "$MIGUEL_DID_FULL" 
+kaijud_tx bonds swap 500 res rez "$BOND_DID" "$MIGUEL_DID_FULL" 
 echo "Miguel's account..."
-xcod_q bank balances "$MIGUEL_ADDR"
+kaijud_q bank balances "$MIGUEL_ADDR"
 
 echo "Francesco swap 500 rez to res..."
-xcod_tx bonds swap 500 rez res "$BOND_DID" "$FRANCESCO_DID_FULL" 
+kaijud_tx bonds swap 500 rez res "$BOND_DID" "$FRANCESCO_DID_FULL" 
 echo "Francesco's account..."
-xcod_q bank balances "$FRANCESCO_ADDR"
+kaijud_q bank balances "$FRANCESCO_ADDR"
 
 echo "Miguel swaps above order limit (tx will fail)..."
-xcod_tx bonds swap 5001 res rez "$BOND_DID" "$MIGUEL_DID_FULL" 
+kaijud_tx bonds swap 5001 res rez "$BOND_DID" "$MIGUEL_DID_FULL" 
 echo "Miguel's account (no  changes)..."
-xcod_q bank balances "$MIGUEL_ADDR"
+kaijud_q bank balances "$MIGUEL_ADDR"
 
 echo "Francesco swaps to violate sanity (tx will be successful but order will fail)..."
-xcod_tx bonds swap 5000 rez res "$BOND_DID" "$FRANCESCO_DID_FULL" 
+kaijud_tx bonds swap 5000 rez res "$BOND_DID" "$FRANCESCO_DID_FULL" 
 echo "Francesco's account (no changes)..."
-xcod_q bank balances "$FRANCESCO_ADDR"
+kaijud_q bank balances "$FRANCESCO_ADDR"
 
 echo "Miguel sells 1abc..."
-xcod_tx bonds sell 1abc "$BOND_DID" "$MIGUEL_DID_FULL" 
+kaijud_tx bonds sell 1abc "$BOND_DID" "$MIGUEL_DID_FULL" 
 echo "Miguel's account..."
-xcod_q bank balances "$MIGUEL_ADDR"
+kaijud_q bank balances "$MIGUEL_ADDR"
 
 echo "Francesco sells 10abc..."
-xcod_tx bonds sell 10abc "$BOND_DID" "$FRANCESCO_DID_FULL" 
+kaijud_tx bonds sell 10abc "$BOND_DID" "$FRANCESCO_DID_FULL" 
 echo "Francesco's account..."
-xcod_q bank balances "$FRANCESCO_ADDR"
+kaijud_q bank balances "$FRANCESCO_ADDR"

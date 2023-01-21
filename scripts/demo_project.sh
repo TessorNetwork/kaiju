@@ -3,7 +3,7 @@
 wait() {
   echo "Waiting for chain to start..."
   while :; do
-    RET=$(xcod status 2>&1)
+    RET=$(kaijud status 2>&1)
     if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
       sleep 1
     else
@@ -14,12 +14,12 @@ wait() {
   done
 }
 
-# RET=$(xcod status 2>&1)
+# RET=$(kaijud status 2>&1)
 # if [[ ($RET == Error*) || ($RET == *'"latest_block_height":"0"'*) ]]; then
 #   wait
 # fi
 
-GAS_PRICES="0.025uxco"
+GAS_PRICES="0.025ukaiju"
 PASSWORD="12345678"
 CHAIN_ID="pandora-4"
 
@@ -34,7 +34,7 @@ MIGUEL_DID_FULL='{
       }
     }'
 
-xcod_tx() {
+kaijud_tx() {
   # Helper function to broadcast a transaction and supply the necessary args
 
   # Get module ($1) and specific tx ($1), which forms the tx command
@@ -42,10 +42,10 @@ xcod_tx() {
   shift
   shift
 
-  NODE="https://devnet.xco.earth:443/rpc/"
+  NODE="https://devnet.kaiju.earth:443/rpc/"
 
   # Broadcast the transaction
-  xcod tx $cmd \
+  kaijud tx $cmd \
     --gas-prices="$GAS_PRICES" \
     --chain-id="$CHAIN_ID" \
     --broadcast-mode block \
@@ -54,14 +54,14 @@ xcod_tx() {
     # The $@ adds any extra arguments to the end
 }
 
-xcod_q() {
-  # xcod q "$@" --output=json | jq .
+kaijud_q() {
+  # kaijud q "$@" --output=json | jq .
   true
 }
 
-PROJECT_DID="did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
+PROJECT_DID="did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c"
 PROJECT_DID_FULL='{
-  "did":"did:xco:U7GK8p8rVhJMKhBVRCJJ8c",
+  "did":"did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c",
   "verifyKey":"FmwNAfvV2xEqHwszrVJVBR3JgQ8AFCQEVzo1p6x4L8VW",
   "encryptionPublicKey":"domKpTpjrHQtKUnaFLjCuDLe2oHeS4b1sKt7yU9cq7m",
   "secret":{
@@ -88,24 +88,24 @@ PROJECT_INFO='{
 
 ORACLE_FEE_PAYMENT_TEMPLATE='{
   "id": "payment:template:oracle-fee",
-  "payment_amount": [{"denom":"uxco", "amount":"5000000"}],
-  "payment_minimum": [{"denom":"uxco", "amount":"5000000"}],
-  "payment_maximum": [{"denom":"uxco", "amount":"50000000"}],
+  "payment_amount": [{"denom":"ukaiju", "amount":"5000000"}],
+  "payment_minimum": [{"denom":"ukaiju", "amount":"5000000"}],
+  "payment_maximum": [{"denom":"ukaiju", "amount":"50000000"}],
   "discounts": []
 }'
 FEE_FOR_SERVICE_PAYMENT_TEMPLATE='{
   "id": "payment:template:fee-for-service",
-  "payment_amount": [{"denom":"uxco", "amount":"2000000"}],
-  "payment_minimum": [{"denom":"uxco", "amount":"2000000"}],
-  "payment_maximum": [{"denom":"uxco", "amount":"20000000"}],
+  "payment_amount": [{"denom":"ukaiju", "amount":"2000000"}],
+  "payment_minimum": [{"denom":"ukaiju", "amount":"2000000"}],
+  "payment_maximum": [{"denom":"ukaiju", "amount":"20000000"}],
   "discounts": []
 }'
 
-MIGUEL_DID="did:xco:4XJLBfGtWSGKSz4BeRxdun"
-FRANCESCO_DID="did:xco:UKzkhVSHc3qEFva5EY2XHt"
-SHAUN_DID="did:xco:U4tSpzzv91HHqWW1YmFkHJ"
+MIGUEL_DID="did:kaiju:4XJLBfGtWSGKSz4BeRxdun"
+FRANCESCO_DID="did:kaiju:UKzkhVSHc3qEFva5EY2XHt"
+SHAUN_DID="did:kaiju:U4tSpzzv91HHqWW1YmFkHJ"
 FRANCESCO_DID_FULL='{
-  "did":"did:xco:UKzkhVSHc3qEFva5EY2XHt",
+  "did":"did:kaiju:UKzkhVSHc3qEFva5EY2XHt",
   "verifyKey":"Ftsqjc2pEvGLqBtgvVx69VXLe1dj2mFzoi4kqQNGo3Ej",
   "encryptionPublicKey":"8YScf3mY4eeHoxDT9MRxiuGX5Fw7edWFnwHpgWYSn1si",
   "secret":{
@@ -115,7 +115,7 @@ FRANCESCO_DID_FULL='{
   }
 }'
 SHAUN_DID_FULL='{
-  "did":"did:xco:U4tSpzzv91HHqWW1YmFkHJ",
+  "did":"did:kaiju:U4tSpzzv91HHqWW1YmFkHJ",
   "verifyKey":"FkeDue5it82taeheMprdaPrctfK3DeVV9NnEPYDgwwRG",
   "encryptionPublicKey":"DtdGbZB2nSQvwhs6QoN5Cd8JTxWgfVRAGVKfxj8LA15i",
   "secret":{
@@ -127,30 +127,30 @@ SHAUN_DID_FULL='{
 
 # Ledger DIDs
 # echo "Ledgering Miguel DID..."
-xcod_tx iid create-iid-from-legacy-did "$MIGUEL_DID_FULL"
+kaijud_tx iid create-iid-from-legacy-did "$MIGUEL_DID_FULL"
 echo "Ledgering Francesco DID..."
-xcod_tx iid create-iid-from-legacy-did "$FRANCESCO_DID_FULL"
+kaijud_tx iid create-iid-from-legacy-did "$FRANCESCO_DID_FULL"
 echo "Ledgering Shaun DID..."
-xcod_tx iid create-iid-from-legacy-did "$SHAUN_DID_FULL"
+kaijud_tx iid create-iid-from-legacy-did "$SHAUN_DID_FULL"
 
 # Create oracle fee payment template
 echo "Creating oracle fee payment template..."
 CREATOR="$FRANCESCO_DID_FULL"
-xcod_tx payments create-payment-template "$ORACLE_FEE_PAYMENT_TEMPLATE" "$MIGUEL_DID_FULL"
+kaijud_tx payments create-payment-template "$ORACLE_FEE_PAYMENT_TEMPLATE" "$MIGUEL_DID_FULL"
 
 # Create fee-for-service payment template
 echo "Creating fee-for-service payment template..."
 CREATOR="$FRANCESCO_DID_FULL"
-xcod_tx payments create-payment-template "$FEE_FOR_SERVICE_PAYMENT_TEMPLATE" "$CREATOR"
+kaijud_tx payments create-payment-template "$FEE_FOR_SERVICE_PAYMENT_TEMPLATE" "$CREATOR"
 
 # # Create project and progress status to PENDING
 SENDER_DID="$SHAUN_DID"
 echo "Creating project..."
-xcod_tx project create-project "$SENDER_DID" "$PROJECT_INFO" "$PROJECT_DID_FULL"
+kaijud_tx project create-project "$SENDER_DID" "$PROJECT_INFO" "$PROJECT_DID_FULL"
 # echo "Updating project to CREATED..."
-# xcod_tx project update-project-status "$SENDER_DID" CREATED "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-status "$SENDER_DID" CREATED "$PROJECT_DID_FULL"
 # echo "Updating project to PENDING..."
-# xcod_tx project update-project-status "$SENDER_DID" PENDING "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-status "$SENDER_DID" PENDING "$PROJECT_DID_FULL"
 
 # # Updating project doc succeeds as project is in status PENDING and tx sender DID
 # # # is the same as project sender DID
@@ -171,47 +171,47 @@ xcod_tx project create-project "$SENDER_DID" "$PROJECT_INFO" "$PROJECT_DID_FULL"
 #   "newField":"someNewField"
 # }'
 # echo "Updating project doc..."
-# xcod_tx project update-project-doc "$SENDER_DID" "$PROJECT_INFO2" "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-doc "$SENDER_DID" "$PROJECT_INFO2" "$PROJECT_DID_FULL"
 
 # # Fund project and progress status to FUNDED
-# FULL_PROJECT_ADDR=$(xcod q project get-project-accounts $PROJECT_DID | grep "$PROJECT_DID")
+# FULL_PROJECT_ADDR=$(kaijud q project get-project-accounts $PROJECT_DID | grep "$PROJECT_DID")
 # # Delete longest match of pattern ': ' from the beginning
 # PROJECT_ADDR=${FULL_PROJECT_ADDR##*: }
-# echo "Funding project at [$PROJECT_ADDR] with uxco from Francesco..."
-# xcod_tx bank send francesco "$PROJECT_ADDR" 100000000uxco
+# echo "Funding project at [$PROJECT_ADDR] with ukaiju from Francesco..."
+# kaijud_tx bank send francesco "$PROJECT_ADDR" 100000000ukaiju
 # echo "Updating project to FUNDED..."
 # SENDER_DID="$SHAUN_DID"
-# xcod_tx project update-project-status "$SENDER_DID" FUNDED "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-status "$SENDER_DID" FUNDED "$PROJECT_DID_FULL"
 
 # # Progress project status to STARTED
 # SENDER_DID="$SHAUN_DID"
 # echo "Updating project to STARTED..."
-# xcod_tx project update-project-status "$SENDER_DID" STARTED "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-status "$SENDER_DID" STARTED "$PROJECT_DID_FULL"
 
 # # If we try updating the project-doc now, the tx fails as the project is in status STARTED
 # echo "Updating project doc fails since project is in status STARTED..."
-# xcod_tx project update-project-doc "$SENDER_DID" "$PROJECT_INFO" "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-doc "$SENDER_DID" "$PROJECT_INFO" "$PROJECT_DID_FULL"
 
 # # # Create claim and evaluation
 # echo "Creating a claim in project..."
 # SENDER_DID="$SHAUN_DID"
-# xcod_tx project create-claim "tx_hash" "$SENDER_DID" "claim_id" "template_id" "$PROJECT_DID_FULL"
+# kaijud_tx project create-claim "tx_hash" "$SENDER_DID" "claim_id" "template_id" "$PROJECT_DID_FULL"
 # echo "Creating an evaluation in project..."
 # SENDER_DID="$MIGUEL_DID"
 # STATUS="1" # create-evaluation updates status of claim from 0 to 1
-# xcod_tx project create-evaluation "tx_hash" "$SENDER_DID" "claim_id" $STATUS "$PROJECT_DID_FULL"
+# kaijud_tx project create-evaluation "tx_hash" "$SENDER_DID" "claim_id" $STATUS "$PROJECT_DID_FULL"
 
 # # OracleFeePercentage:  0.1 (10%)
 # # NodeFeePercentage:    0.1 (10%)
 
-# # Fee for service:   2,000,000 uxco
-# # Oracle pay:        5,000,000 uxco
+# # Fee for service:   2,000,000 ukaiju
+# # Oracle pay:        5,000,000 ukaiju
 
 # # Expected project account balances:
 # # - InitiatingNodePayFees:   50,000  # 0.1 of 0.1 of oracle pay
-# # - XcoFees:                      0
-# # - XcoPayFees:             450,000  # 0.9 of 0.1 of oracle pay
-# # - project:             93,000,000  # 100XCO - (5+2)XCO
+# # - KaijuFees:                      0
+# # - KaijuPayFees:             450,000  # 0.9 of 0.1 of oracle pay
+# # - project:             93,000,000  # 100KAIJU - (5+2)KAIJU
 # # Expected external account balances:
 # # - Miguel:       1,000,004,495,000  # 1,000,000,000,000 original +  0.9 of oracle pay - 5,000 tx fee
 # # - Shaun:        1,000,000,995,000  # 1,000,000,000,000 original + 1.0 of fee-for-service - 1,000,000 project creation fee - 5,000 tx fee
@@ -221,66 +221,66 @@ xcod_tx project create-project "$SENDER_DID" "$PROJECT_INFO" "$PROJECT_DID_FULL"
 # # Progress project status to PAIDOUT
 # SENDER_DID="$SHAUN_DID"
 # echo "Updating project to STOPPED..."
-# xcod_tx project update-project-status "$SENDER_DID" STOPPED "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-status "$SENDER_DID" STOPPED "$PROJECT_DID_FULL"
 # echo "Updating project to PAIDOUT..."
-# xcod_tx project update-project-status "$SENDER_DID" PAIDOUT "$PROJECT_DID_FULL"
+# kaijud_tx project update-project-status "$SENDER_DID" PAIDOUT "$PROJECT_DID_FULL"
 # echo "Project withdrawals query..."
-# xcod_q project get-project-txs $PROJECT_DID
+# kaijud_q project get-project-txs $PROJECT_DID
 
 # # Expected withdrawals:
-# # - 500,000 to xco (a.k.a Shaun) DID (did:xco:U4tSpzzv91HHqWW1YmFkHJ)
+# # - 500,000 to kaiju (a.k.a Shaun) DID (did:kaiju:U4tSpzzv91HHqWW1YmFkHJ)
 # # Expected project account balances:
 # # - InitiatingNodePayFees:        0
-# # - XcoFees:                      0
-# # - XcoPayFees:                   0
+# # - KaijuFees:                      0
+# # - KaijuPayFees:                   0
 # # - project:             93,000,000
 # # Expected external account balances:
 # # - Miguel:       1,000,004,495,000
 # # - Shaun:        1,000,001,495,000  # 500,000 withdrawal
 
 # echo "InitiatingNodePayFees"
-# xcod_q bank balances "xco1xvjy68xrrtxnypwev9r8tmjys9wk0zkkspzjmq"
-# echo "XcoFees"
-# xcod_q bank balances "xco1ff9we62w6eyes7wscjup3p40vy4uz0sa7j0ajc"
-# echo "XcoPayFees"
-# xcod_q bank balances "xco1udgxtf6yd09mwnnd0ljpmeq4vnyhxdg03uvne3"
-# echo "(project) did:xco:U7GK8p8rVhJMKhBVRCJJ8c"
-# xcod_q bank balances "xco1rmkak6t606wczsps9ytpga3z4nre4z3nwc04p8"
-# echo "(Miguel) did:xco:4XJLBfGtWSGKSz4BeRxdun"
-# MIGUEL_FULL_ADDR="$(xcod q did get-address-from-did $MIGUEL_DID)"
+# kaijud_q bank balances "kaiju1xvjy68xrrtxnypwev9r8tmjys9wk0zkkspzjmq"
+# echo "KaijuFees"
+# kaijud_q bank balances "kaiju1ff9we62w6eyes7wscjup3p40vy4uz0sa7j0ajc"
+# echo "KaijuPayFees"
+# kaijud_q bank balances "kaiju1udgxtf6yd09mwnnd0ljpmeq4vnyhxdg03uvne3"
+# echo "(project) did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c"
+# kaijud_q bank balances "kaiju1rmkak6t606wczsps9ytpga3z4nre4z3nwc04p8"
+# echo "(Miguel) did:kaiju:4XJLBfGtWSGKSz4BeRxdun"
+# MIGUEL_FULL_ADDR="$(kaijud q did get-address-from-did $MIGUEL_DID)"
 # MIGUEL_ADDR=${MIGUEL_FULL_ADDR##*: }
-# xcod_q bank balances "$MIGUEL_ADDR"
-# echo "(Shaun) did:xco:U4tSpzzv91HHqWW1YmFkHJ"
-# SHAUN_FULL_ADDR="$(xcod q did get-address-from-did $SHAUN_DID)"
+# kaijud_q bank balances "$MIGUEL_ADDR"
+# echo "(Shaun) did:kaiju:U4tSpzzv91HHqWW1YmFkHJ"
+# SHAUN_FULL_ADDR="$(kaijud q did get-address-from-did $SHAUN_DID)"
 # SHAUN_ADDR=${SHAUN_FULL_ADDR##*: }
-# xcod_q bank balances "$SHAUN_ADDR"
+# kaijud_q bank balances "$SHAUN_ADDR"
 
 # # # Withdraw funds (from main project account, i.e. as refund)
 # # # --> FAIL since Miguel is not the project owner
 echo "Withdraw project funds as Miguel (fail since Miguel is not the owner)..."
 DATA="{\"projectDid\":\"$PROJECT_DID\",\"recipientDid\":\"$MIGUEL_DID\",\"amount\":\"100000000\",\"isRefund\":true}"
-xcod_tx project withdraw-funds "$MIGUEL_DID_FULL" "$DATA"
+kaijud_tx project withdraw-funds "$MIGUEL_DID_FULL" "$DATA"
 # echo "Project withdrawals query..."
-# xcod_q project get-project-txs $PROJECT_DID
+# kaijud_q project get-project-txs $PROJECT_DID
 
 # # # Expected external account balances:
-# # - Miguel:       1,000,004,490,000 (5,000uxco tx fee deducted)
+# # - Miguel:       1,000,004,490,000 (5,000ukaiju tx fee deducted)
 
 # # Withdraw funds (from main project account, i.e. as refund)
 # # # --> SUCCESS since Shaun is the project owner
 # echo "Withdraw project funds as Shaun (success since Shaun is the owner)..."
 # DATA="{\"projectDid\":\"$PROJECT_DID\",\"recipientDid\":\"$SHAUN_DID\",\"amount\":\"1000000\",\"isRefund\":true}"
-# xcod_tx project withdraw-funds "$SHAUN_DID_FULL" "$DATA"
+# kaijud_tx project withdraw-funds "$SHAUN_DID_FULL" "$DATA"
 # echo "Project withdrawals query..."
-# xcod_q project get-project-txs $PROJECT_DID
+# kaijud_q project get-project-txs $PROJECT_DID
 
 # # Expected withdrawals:
-# # - 500,000 to xco (a.k.a Shaun) DID (did:xco:U4tSpzzv91HHqWW1YmFkHJ)
-# # - 1,000,000 to shaun DID (did:xco:U4tSpzzv91HHqWW1YmFkHJ)
+# # - 500,000 to kaiju (a.k.a Shaun) DID (did:kaiju:U4tSpzzv91HHqWW1YmFkHJ)
+# # - 1,000,000 to shaun DID (did:kaiju:U4tSpzzv91HHqWW1YmFkHJ)
 # # Expected project account balances:
 # # - InitiatingNodePayFees:        0
-# # - XcoFees:                      0
-# # - XcoPayFees:                   0
+# # - KaijuFees:                      0
+# # - KaijuPayFees:                   0
 # # - project:             92,000,000  # 1,000,000 has been withdrawn
 # # Expected external account balances:
 # # - Miguel:       1,000,004,490,000

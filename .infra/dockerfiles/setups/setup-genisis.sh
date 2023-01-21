@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Xco Chain Installer"
+echo "Kaiju Chain Installer"
 echo -e "-------------------------\n\n"
 sleep 2
 
@@ -9,7 +9,7 @@ if [ "$USER" != "root" ]; then
         exit 0;
 fi
 
-echo "Starting XCO based install"
+echo "Starting KAIJU based install"
 sleep 1
 echo "Fetching Genisis Config"
 apt-get update -y
@@ -19,14 +19,14 @@ cd ~
 
 
 git clone 
-mkdir /home/xco/.xcod
-mkdir /home/xco/.xcod/config
+mkdir /home/kaiju/.kaijud
+mkdir /home/kaiju/.kaijud/config
 
-cp /root/genesis/pandora-4/genesis.json /home/xco/.xcod/config/genesis.json
+cp /root/genesis/pandora-4/genesis.json /home/kaiju/.kaijud/config/genesis.json
 
-chown -R xco:xco /home/xco/.$DAEMONNAME
-chown -R xco:xco /home/xco/.$DAEMONNAME/config/
-chown -R xco:xco /home/xco/.$DAEMONNAME/config/genesis.json
+chown -R kaiju:kaiju /home/kaiju/.$DAEMONNAME
+chown -R kaiju:kaiju /home/kaiju/.$DAEMONNAME/config/
+chown -R kaiju:kaiju /home/kaiju/.$DAEMONNAME/config/genesis.json
 
 
 su $USERNAME <<EOSU
@@ -35,9 +35,9 @@ EOSU
 
 sleep 5
 
-cp /root/genesis/pandora-4/genesis.json /home/xco/.xcod/config/genesis.json
+cp /root/genesis/pandora-4/genesis.json /home/kaiju/.kaijud/config/genesis.json
 
-chown -R xco:xco /home/xco/.$DAEMONNAME/config/genesis.json
+chown -R kaiju:kaiju /home/kaiju/.$DAEMONNAME/config/genesis.json
 
 
 echo "---"

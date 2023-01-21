@@ -11,7 +11,7 @@ Refer to [01_state.md](./01_state.md) for information about payment templates.
 
 | **Field**       | **Type**          | **Description** |
 |:----------------|:------------------|:----------------|
-| CreatorDid      | `did.Did`         | DID of the template creator (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| CreatorDid      | `did.Did`         | DID of the template creator (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentTemplate | `PaymentTemplate` | Details of the payment template being created
 
 ```go
@@ -39,10 +39,10 @@ Refer to [01_state.md](./01_state.md) for information about payment contracts.
 
 | **Field**         | **Type**         | **Description** |
 |:------------------|:-----------------|:----------------|
-| CreatorDid        | `did.Did`        | DID of the contract creator (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| CreatorDid        | `did.Did`        | DID of the contract creator (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentTemplateId | `string`         | ID of the payment template on which this contract is based (e.g. `payment:template:template1`)
 | PaymentContractId | `string`         | ID of this payment contract (e.g. `payment:contract:contract1`)
-| Payer             | `sdk.AccAddress` | Address from where tokens will be deducted (e.g. `xco1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
+| Payer             | `sdk.AccAddress` | Address from where tokens will be deducted (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
 | Recipients        | `Distribution`   | List of token recipients with percentage shares
 | CanDeauthorise    | `bool`           | Whether or not this contract can be de-authorised
 | DiscountId        | `sdk.Uint`       | Any discount assigned to this contract (discounts defined in the template) (e.g. `0`)
@@ -88,7 +88,7 @@ to [01_state.md](./01_state.md) for information about subscriptions.
 
 | **Field**         | **Type**   | **Description** |
 |:------------------|:-----------|:----------------|
-| CreatorDid        | `did.Did`  | DID of the subscription creator (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| CreatorDid        | `did.Did`  | DID of the subscription creator (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | SubscriptionId    | `string`   | ID of this subscription (e.g. `payment:subscription:subscription1`)
 | PaymentContractId | `string`   | ID of the payment contract on which this subscription is based (e.g. `payment:contract:contract1`)
 | MaxPeriods        | `sdk.Uint` | Maximum number of times that the subscription payment is triggered
@@ -132,7 +132,7 @@ or disable effecting of the payment contract.
 
 | **Field**         | **Type**  | **Description** |
 |:------------------|:----------|:----------------|
-| PayerDid          | `did.Did` | DID of the payer associated with the contract (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| PayerDid          | `did.Did` | DID of the payer associated with the contract (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentContractId | `string`  | ID of the payment contract being modified (e.g. `payment:contract:contract1`)
 | Authorised        | `bool`    | New status of authorisation for the contract
 
@@ -161,10 +161,10 @@ This message grants a discount to a recipient for a particular payment contract.
 
 | **Field**         | **Type**         | **Description** |
 |:------------------|:-----------------|:----------------|
-| SenderDid         | `did.Did`        | DID of the discount granter (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| SenderDid         | `did.Did`        | DID of the discount granter (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentContractId | `string`         | ID of the contract for which the discount is being granted (e.g. `payment:contract:contract1`)
 | DiscountId        | `sdk.Uint`       | ID of the discount being granted (e.g. `0`)
-| Recipient         | `sdk.AccAddress` | The recipient of the discount (e.g. `xco1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
+| Recipient         | `sdk.AccAddress` | The recipient of the discount (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
 
 ```go
 type MsgGrantDiscount struct {
@@ -193,9 +193,9 @@ contract.
 
 | **Field**         | **Type**         | **Description** |
 |:------------------|:-----------------|:----------------|
-| SenderDid         | `did.Did`        | DID of the discount revoker (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| SenderDid         | `did.Did`        | DID of the discount revoker (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentContractId | `string`         | ID of the contract from which the discount is being revoked (e.g. `payment:contract:contract1`)
-| Holder            | `sdk.AccAddress` | The current holder of the discount (e.g. `xco1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
+| Holder            | `sdk.AccAddress` | The current holder of the discount (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
 
 ```go
 type MsgRevokeDiscount struct {
@@ -221,7 +221,7 @@ This message puts into effect a particular payment contract.
 
 | **Field**         | **Type**         | **Description** |
 |:------------------|:-----------------|:----------------|
-| SenderDid         | `did.Did`        | DID of the message sender (e.g. `did:xco:4XJLBfGtWSGKSz4BeRxdun`)
+| SenderDid         | `did.Did`        | DID of the message sender (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentContractId | `string`         | ID of the contract being effected (e.g. `payment:contract:contract1`)
 
 ```go

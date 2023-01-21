@@ -870,7 +870,7 @@
                 </li>
               
                 <li>
-                  <a href="#legacydid.XcoDid"><span class="badge">M</span>XcoDid</a>
+                  <a href="#legacydid.KaijuDid"><span class="badge">M</span>KaijuDid</a>
                 </li>
               
                 <li>
@@ -2760,7 +2760,7 @@
               <tr>
                 <td>Bonds</td>
                 <td>GET</td>
-                <td>/xco/bonds</td>
+                <td>/kaiju/bonds</td>
                 <td></td>
               </tr>
               
@@ -2770,7 +2770,7 @@
               <tr>
                 <td>BondsDetailed</td>
                 <td>GET</td>
-                <td>/xco/bonds_detailed</td>
+                <td>/kaiju/bonds_detailed</td>
                 <td></td>
               </tr>
               
@@ -2780,7 +2780,7 @@
               <tr>
                 <td>Params</td>
                 <td>GET</td>
-                <td>/xco/bonds/params</td>
+                <td>/kaiju/bonds/params</td>
                 <td></td>
               </tr>
               
@@ -2790,7 +2790,7 @@
               <tr>
                 <td>Bond</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}</td>
+                <td>/kaiju/bonds/{bond_did}</td>
                 <td></td>
               </tr>
               
@@ -2800,7 +2800,7 @@
               <tr>
                 <td>Batch</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/batch</td>
+                <td>/kaiju/bonds/{bond_did}/batch</td>
                 <td></td>
               </tr>
               
@@ -2810,7 +2810,7 @@
               <tr>
                 <td>LastBatch</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/last_batch</td>
+                <td>/kaiju/bonds/{bond_did}/last_batch</td>
                 <td></td>
               </tr>
               
@@ -2820,7 +2820,7 @@
               <tr>
                 <td>CurrentPrice</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/current_price</td>
+                <td>/kaiju/bonds/{bond_did}/current_price</td>
                 <td></td>
               </tr>
               
@@ -2830,7 +2830,7 @@
               <tr>
                 <td>CurrentReserve</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/current_reserve</td>
+                <td>/kaiju/bonds/{bond_did}/current_reserve</td>
                 <td></td>
               </tr>
               
@@ -2840,7 +2840,7 @@
               <tr>
                 <td>AvailableReserve</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/available_reserve</td>
+                <td>/kaiju/bonds/{bond_did}/available_reserve</td>
                 <td></td>
               </tr>
               
@@ -2850,7 +2850,7 @@
               <tr>
                 <td>CustomPrice</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/price/{bond_amount}</td>
+                <td>/kaiju/bonds/{bond_did}/price/{bond_amount}</td>
                 <td></td>
               </tr>
               
@@ -2860,7 +2860,7 @@
               <tr>
                 <td>BuyPrice</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/buy_price/{bond_amount}</td>
+                <td>/kaiju/bonds/{bond_did}/buy_price/{bond_amount}</td>
                 <td></td>
               </tr>
               
@@ -2870,7 +2870,7 @@
               <tr>
                 <td>SellReturn</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/sell_return/{bond_amount}</td>
+                <td>/kaiju/bonds/{bond_did}/sell_return/{bond_amount}</td>
                 <td></td>
               </tr>
               
@@ -2880,7 +2880,7 @@
               <tr>
                 <td>SwapReturn</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}</td>
+                <td>/kaiju/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}</td>
                 <td></td>
               </tr>
               
@@ -2890,7 +2890,7 @@
               <tr>
                 <td>AlphaMaximums</td>
                 <td>GET</td>
-                <td>/xco/bonds/{bond_did}/alpha_maximums</td>
+                <td>/kaiju/bonds/{bond_did}/alpha_maximums</td>
                 <td></td>
               </tr>
               
@@ -3940,7 +3940,7 @@ Params params                                 = 2 [(gogoproto.nullable) = false,
               <tr>
                 <td>EntityList</td>
                 <td>GET</td>
-                <td>/xco/entity</td>
+                <td>/kaiju/entity</td>
                 <td></td>
               </tr>
               
@@ -3950,7 +3950,7 @@ Params params                                 = 2 [(gogoproto.nullable) = false,
               <tr>
                 <td>EntityDoc</td>
                 <td>GET</td>
-                <td>/xco/entity/{entity_did}</td>
+                <td>/kaiju/entity/{entity_did}</td>
                 <td></td>
               </tr>
               
@@ -3960,7 +3960,7 @@ Params params                                 = 2 [(gogoproto.nullable) = false,
               <tr>
                 <td>EntityConfig</td>
                 <td>GET</td>
-                <td>/xco/entity/config</td>
+                <td>/kaiju/entity/config</td>
                 <td></td>
               </tr>
               
@@ -6306,7 +6306,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>IidDocuments</td>
                 <td>GET</td>
-                <td>/xco/did/dids</td>
+                <td>/kaiju/did/dids</td>
                 <td></td>
               </tr>
               
@@ -6316,7 +6316,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>IidDocument</td>
                 <td>GET</td>
-                <td>/xco/did/dids/{id}</td>
+                <td>/kaiju/did/dids/{id}</td>
                 <td></td>
               </tr>
               
@@ -6326,7 +6326,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>MetaData</td>
                 <td>GET</td>
-                <td>/xco/did/dids/{id}</td>
+                <td>/kaiju/did/dids/{id}</td>
                 <td></td>
               </tr>
               
@@ -6375,7 +6375,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="legacydid.DidCredential">DidCredential</h3>
-        <p>Digital identity credential issued to an xco DID</p>
+        <p>Digital identity credential issued to an kaiju DID</p>
 
         
           <table class="field-table">
@@ -6419,8 +6419,8 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
 
         
       
-        <h3 id="legacydid.XcoDid">XcoDid</h3>
-        <p>An xco DID with public and private keys, based on the Sovrin DID spec</p>
+        <h3 id="legacydid.KaijuDid">KaijuDid</h3>
+        <p>An kaiju DID with public and private keys, based on the Sovrin DID spec</p>
 
         
           <table class="field-table">
@@ -6465,7 +6465,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="legacydid.Secret">Secret</h3>
-        <p>The private section of an xco DID, based on the Sovrin DID spec</p>
+        <p>The private section of an kaiju DID, based on the Sovrin DID spec</p>
 
         
           <table class="field-table">
@@ -7244,7 +7244,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>PaymentTemplate</td>
                 <td>GET</td>
-                <td>/xco/payments/templates/{payment_template_id}</td>
+                <td>/kaiju/payments/templates/{payment_template_id}</td>
                 <td></td>
               </tr>
               
@@ -7254,7 +7254,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>PaymentContract</td>
                 <td>GET</td>
-                <td>/xco/payments/contracts/{payment_contract_id}</td>
+                <td>/kaiju/payments/contracts/{payment_contract_id}</td>
                 <td></td>
               </tr>
               
@@ -7264,7 +7264,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>PaymentContractsByIdPrefix</td>
                 <td>GET</td>
-                <td>/xco/payments/contracts_by_id_prefix/{payment_contracts_id_prefix}</td>
+                <td>/kaiju/payments/contracts_by_id_prefix/{payment_contracts_id_prefix}</td>
                 <td></td>
               </tr>
               
@@ -7274,7 +7274,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>Subscription</td>
                 <td>GET</td>
-                <td>/xco/payments/subscriptions/{subscription_id}</td>
+                <td>/kaiju/payments/subscriptions/{subscription_id}</td>
                 <td></td>
               </tr>
               
@@ -8048,7 +8048,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
             <tbody>
               
                 <tr>
-                  <td>xco_did</td>
+                  <td>kaiju_did</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -8637,7 +8637,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>ProjectDoc</td>
                 <td>GET</td>
-                <td>/xco/project/{project_did}</td>
+                <td>/kaiju/project/{project_did}</td>
                 <td></td>
               </tr>
               
@@ -8647,7 +8647,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>ProjectAccounts</td>
                 <td>GET</td>
-                <td>/xco/projectAccounts/{project_did}</td>
+                <td>/kaiju/projectAccounts/{project_did}</td>
                 <td></td>
               </tr>
               
@@ -8657,7 +8657,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>ProjectTx</td>
                 <td>GET</td>
-                <td>/xco/projectTxs/{project_did}</td>
+                <td>/kaiju/projectTxs/{project_did}</td>
                 <td></td>
               </tr>
               
@@ -8667,7 +8667,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
               <tr>
                 <td>Params</td>
                 <td>GET</td>
-                <td>/xco/projectParams</td>
+                <td>/kaiju/projectParams</td>
                 <td></td>
               </tr>
               

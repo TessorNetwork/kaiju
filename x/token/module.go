@@ -11,11 +11,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/gorilla/mux"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/petrinetwork/xco-blockchain/x/token/client/cli"
+	"github.com/tessornetwork/kaiju/x/token/client/cli"
 
-	// "github.com/petrinetwork/xco-blockchain/x/token/client/rest"
-	"github.com/petrinetwork/xco-blockchain/x/token/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/token/types"
+	// "github.com/tessornetwork/kaiju/x/token/client/rest"
+	"github.com/tessornetwork/kaiju/x/token/keeper"
+	"github.com/tessornetwork/kaiju/x/token/types"
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 )

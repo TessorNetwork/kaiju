@@ -3,8 +3,8 @@ package keeper_test
 import (
 	"testing"
 
-	paymentstypes "github.com/petrinetwork/xco-blockchain/x/payments/types"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	paymentstypes "github.com/tessornetwork/kaiju/x/payments/types"
+	"github.com/tessornetwork/kaiju/x/project/types"
 	"github.com/stretchr/testify/require"
 )
 

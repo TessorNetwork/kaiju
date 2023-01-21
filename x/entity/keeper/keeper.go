@@ -15,10 +15,10 @@ import (
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	paramstypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/petrinetwork/xco-blockchain/x/entity/types"
-	entitycontracts "github.com/petrinetwork/xco-blockchain/x/entity/types/contracts"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/entity/types"
+	entitycontracts "github.com/tessornetwork/kaiju/x/entity/types/contracts"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 type Keeper struct {
@@ -75,7 +75,7 @@ func (k Keeper) CreateEntity(ctx sdk.Context, msg *types.MsgCreateEntity) (types
 	}
 
 	account := k.AccountKeeper.NewAccount(ctx, authtypes.NewBaseAccount(address, pubKey, 0, 0))
-	entityId := fmt.Sprintf("did:xco:entity:%s:%s", msg.EntityType, base58.Encode(pubKey.Bytes()[:16]))
+	entityId := fmt.Sprintf("did:kaiju:entity:%s:%s", msg.EntityType, base58.Encode(pubKey.Bytes()[:16]))
 
 	verification := iidtypes.NewVerification(
 		iidtypes.NewVerificationMethod(
@@ -157,7 +157,7 @@ func (k Keeper) CreateEntity(ctx sdk.Context, msg *types.MsgCreateEntity) (types
 		return types.MsgCreateEntityResponse{}, err
 	}
 
-	_, err = k.WasmKeeper.Execute(ctx, nftContractAddress, address, finalMessage, sdk.NewCoins(sdk.NewCoin("uxco", sdk.ZeroInt())))
+	_, err = k.WasmKeeper.Execute(ctx, nftContractAddress, address, finalMessage, sdk.NewCoins(sdk.NewCoin("ukaiju", sdk.ZeroInt())))
 	if err != nil {
 		return types.MsgCreateEntityResponse{}, err
 	}
@@ -236,7 +236,7 @@ func (k Keeper) TransferEntity(ctx sdk.Context, msg *types.MsgTransferEntity) (*
 		return nil, err
 	}
 
-	_, err = k.WasmKeeper.Execute(ctx, nftContractAddress, controllerAddress, finalMessage, sdk.NewCoins(sdk.NewCoin("uxco", sdk.ZeroInt())))
+	_, err = k.WasmKeeper.Execute(ctx, nftContractAddress, controllerAddress, finalMessage, sdk.NewCoins(sdk.NewCoin("ukaiju", sdk.ZeroInt())))
 	if err != nil {
 		return nil, err
 	}

@@ -2,8 +2,8 @@ package entity
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/petrinetwork/xco-blockchain/x/entity/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/entity/types"
+	"github.com/tessornetwork/kaiju/x/entity/keeper"
+	"github.com/tessornetwork/kaiju/x/entity/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

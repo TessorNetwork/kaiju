@@ -1,0 +1,17 @@
+syntax = "proto3";
+package kaiju.entity.v1beta1;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/tessornetwork/kaiju/x/entity/types";
+
+message InitializeNftContract {
+  uint64 NftContractCodeId = 1 [
+    (gogoproto.jsontag) = "NftCotractCodeId",
+    (gogoproto.moretags) = "yaml:\"NftCotractCodeId\""
+  ];
+  string NftMinterAddress = 2 [
+    (gogoproto.jsontag) = "NftMinterAddress",
+    (gogoproto.moretags) = "yaml:\"NftMinterAddress\""
+  ];
+}

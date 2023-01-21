@@ -4,11 +4,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	iidante "github.com/petrinetwork/xco-blockchain/x/iid/ante"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	projectante "github.com/petrinetwork/xco-blockchain/x/project/ante"
-	projectkeeper "github.com/petrinetwork/xco-blockchain/x/project/keeper"
-	projecttypes "github.com/petrinetwork/xco-blockchain/x/project/types"
+	iidante "github.com/tessornetwork/kaiju/x/iid/ante"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	projectante "github.com/tessornetwork/kaiju/x/project/ante"
+	projectkeeper "github.com/tessornetwork/kaiju/x/project/keeper"
+	projecttypes "github.com/tessornetwork/kaiju/x/project/types"
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
@@ -28,7 +28,7 @@ import (
 // NewAnteHandler returns an AnteHandler that checks and increments sequence
 // numbers, checks signatures & account numbers, and deducts fees from the first
 // signer.
-// func XcoAnteHandler(
+// func KaijuAnteHandler(
 // 	ak authante.AccountKeeper,
 // 	bankKeeper authtypes.BankKeeper,
 // 	feeGrantKeeper authante.FeegrantKeeper,
@@ -77,7 +77,7 @@ func checkForCreateProjectMessages(tx sdk.Tx) bool {
 	return false
 }
 
-func XcoAnteHandler(options HandlerOptions) (sdk.AnteHandler, error) {
+func KaijuAnteHandler(options HandlerOptions) (sdk.AnteHandler, error) {
 	if options.AccountKeeper == nil {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "account keeper is required for ante builder")
 	}
@@ -104,7 +104,7 @@ func XcoAnteHandler(options HandlerOptions) (sdk.AnteHandler, error) {
 			// NOTE: REFER TO THIS FILE FOR MORE INFORMATION: app/ante.md
 			anteDecorators = []sdk.AnteDecorator{
 				projectante.NewSetUpContextDecorator(),
-				// xcoante.NewCheckTxForIncompatibleMsgsDecorator(), // outermost AnteDecorator. SetUpContext must be called first
+				// kaijuante.NewCheckTxForIncompatibleMsgsDecorator(), // outermost AnteDecorator. SetUpContext must be called first
 				//ante.NewMempoolFeeDecorator(),
 				authante.NewValidateBasicDecorator(),
 				authante.NewValidateMemoDecorator(options.AccountKeeper),
@@ -112,14 +112,14 @@ func XcoAnteHandler(options HandlerOptions) (sdk.AnteHandler, error) {
 				projectante.NewSetPubKeyDecorator(options.ProjectKeeper, options.AccountKeeper), // SetPubKeyDecorator must be called before all signature verification decorators
 				authante.NewValidateSigCountDecorator(options.AccountKeeper),
 				projectante.NewDeductFeeDecorator(options.ProjectKeeper, options.AccountKeeper, options.BankKeeper, options.IidKeeper),
-				//xco.NewSigGasConsumeDecorator(ak, sigGasConsumer, pubKeyGetter),
+				//kaiju.NewSigGasConsumeDecorator(ak, sigGasConsumer, pubKeyGetter),
 				projectante.NewSigVerificationDecorator(options.AccountKeeper, options.ProjectKeeper, options.SignModeHandler),
 				authante.NewIncrementSequenceDecorator(options.AccountKeeper), // innermost AnteDecorator
 			}
 		} else {
 			anteDecorators = []sdk.AnteDecorator{
 				authante.NewSetUpContextDecorator(),
-				// xcoante.NewCheckTxForIncompatibleMsgsDecorator(),
+				// kaijuante.NewCheckTxForIncompatibleMsgsDecorator(),
 				wasmkeeper.NewLimitSimulationGasDecorator(options.wasmConfig.SimulationGasLimit), // after setup context to enforce limits early
 				wasmkeeper.NewCountTXDecorator(options.txCounterStoreKey),
 				authante.NewRejectExtensionOptionsDecorator(),

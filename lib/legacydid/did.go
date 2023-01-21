@@ -28,37 +28,37 @@ var (
 	// IsValidDid adapted from the above link but assumes no sub-namespaces
 	// TODO: ValidDid needs to be updated once we no longer want to be able
 	//   to consider project accounts as DIDs (especially in treasury module),
-	//   possibly should just be `^did:(xco:|sov:)([a-zA-Z0-9]){21,22}$`.
+	//   possibly should just be `^did:(kaiju:|sov:)([a-zA-Z0-9]){21,22}$`.
 )
 
-var DidPrefix = "did:xco:"
+var DidPrefix = "did:kaiju:"
 
 type Did = string
 
-func fromJsonString(jsonXcoDid string) (XcoDid, error) {
-	var did XcoDid
-	err := json.Unmarshal([]byte(jsonXcoDid), &did)
+func fromJsonString(jsonKaijuDid string) (KaijuDid, error) {
+	var did KaijuDid
+	err := json.Unmarshal([]byte(jsonKaijuDid), &did)
 	if err != nil {
 		err := fmt.Errorf("could not unmarshal did into struct due to error: %s", err.Error())
-		return XcoDid{}, err
+		return KaijuDid{}, err
 	}
 
 	return did, nil
 }
 
-func UnmarshalXcoDid(jsonXcoDid string) (XcoDid, error) {
-	return fromJsonString(jsonXcoDid)
+func UnmarshalKaijuDid(jsonKaijuDid string) (KaijuDid, error) {
+	return fromJsonString(jsonKaijuDid)
 }
 
 func UnprefixedDid(did Did) string {
 	// Assumes that DID is valid (check IsValidDid regex)
-	// Removes 8 characters (for did:xco: or did:sov:)
+	// Removes 8 characters (for did:kaiju: or did:sov:)
 	return did[8:]
 }
 
 func UnprefixedDidFromPubKey(pubKey string) string {
 	// Assumes that PubKey is valid (check IsValidPubKey regex)
-	// Since result is not prefixed (did:xco:), string returned rather than DID
+	// Since result is not prefixed (did:kaiju:), string returned rather than DID
 	pubKeyBz := base58.Decode(pubKey)
 	return base58.Encode(pubKeyBz[:16])
 }
@@ -87,7 +87,7 @@ func (s Secret) Equals(other Secret) bool {
 		s.EncryptionPrivateKey == other.EncryptionPrivateKey
 }
 
-// Above XcoDid modelled after Sovrin documents
+// Above KaijuDid modelled after Sovrin documents
 // Ref: https://www.npmjs.com/package/sovrin-did
 // {
 //    did: "<base58 did>",
@@ -101,8 +101,8 @@ func (s Secret) Equals(other Secret) bool {
 //    }
 // }
 
-func NewXcoDid(did, verifyKey, encryptionPublicKey string, secret Secret) XcoDid {
-	return XcoDid{
+func NewKaijuDid(did, verifyKey, encryptionPublicKey string, secret Secret) KaijuDid {
+	return KaijuDid{
 		Did:                 did,
 		VerifyKey:           verifyKey,
 		EncryptionPublicKey: encryptionPublicKey,
@@ -110,7 +110,7 @@ func NewXcoDid(did, verifyKey, encryptionPublicKey string, secret Secret) XcoDid
 	}
 }
 
-func (id XcoDid) Equals(other XcoDid) bool {
+func (id KaijuDid) Equals(other KaijuDid) bool {
 	return id.Did == other.Did &&
 		id.VerifyKey == other.VerifyKey &&
 		id.EncryptionPublicKey == other.EncryptionPublicKey &&
@@ -126,7 +126,7 @@ func VerifyKeyToAddr(verifyKey string) sdk.AccAddress {
 	return sdk.AccAddress(pubKey.Address())
 }
 
-func (id XcoDid) Address() sdk.AccAddress {
+func (id KaijuDid) Address() sdk.AccAddress {
 	return VerifyKeyToAddr(id.VerifyKey)
 }
 
@@ -138,7 +138,7 @@ func GenerateMnemonic() (string, error) {
 	return bip39.NewMnemonic(entropy)
 }
 
-func FromMnemonic(mnemonic string) (XcoDid, error) {
+func FromMnemonic(mnemonic string) (KaijuDid, error) {
 	seed := sha256.New()
 	seed.Write([]byte(mnemonic))
 
@@ -148,19 +148,19 @@ func FromMnemonic(mnemonic string) (XcoDid, error) {
 	return FromSeed(seed32)
 }
 
-func Gen() (XcoDid, error) {
+func Gen() (KaijuDid, error) {
 	var seed [32]byte
 	_, err := io.ReadFull(cryptoRand.Reader, seed[:])
 	if err != nil {
-		return XcoDid{}, err
+		return KaijuDid{}, err
 	}
 	return FromSeed(seed)
 }
 
-func FromSeed(seed [32]byte) (XcoDid, error) {
+func FromSeed(seed [32]byte) (KaijuDid, error) {
 	publicKeyBytes, privateKeyBytes, err := ed25519Local.GenerateKey(bytes.NewReader(seed[0:32]))
 	if err != nil {
-		return XcoDid{}, err
+		return KaijuDid{}, err
 	}
 	publicKey := []byte(publicKeyBytes)
 	privateKey := []byte(privateKeyBytes)
@@ -168,10 +168,10 @@ func FromSeed(seed [32]byte) (XcoDid, error) {
 	signKey := base58.Encode(privateKey[:32])
 	keyPairPublicKey, keyPairPrivateKey, err := naclBox.GenerateKey(bytes.NewReader(privateKey[:]))
 	if err != nil {
-		return XcoDid{}, err
+		return KaijuDid{}, err
 	}
 
-	return XcoDid{
+	return KaijuDid{
 		Did:                 DidPrefix + base58.Encode(publicKey[:16]),
 		VerifyKey:           base58.Encode(publicKey),
 		EncryptionPublicKey: base58.Encode(keyPairPublicKey[:]),
@@ -183,14 +183,14 @@ func FromSeed(seed [32]byte) (XcoDid, error) {
 	}, nil
 }
 
-func (id XcoDid) SignMessage(msg []byte) ([]byte, error) {
+func (id KaijuDid) SignMessage(msg []byte) ([]byte, error) {
 	var privateKey ed25519.PrivKey
 	privateKey.Key = append(base58.Decode(id.Secret.SignKey), base58.Decode(id.VerifyKey)...)
 
 	return privateKey.Sign(msg)
 }
 
-func (id XcoDid) VerifySignedMessage(msg []byte, sig []byte) bool {
+func (id KaijuDid) VerifySignedMessage(msg []byte, sig []byte) bool {
 	var publicKey ed25519.PubKey
 	publicKey.Key = base58.Decode(id.VerifyKey)
 

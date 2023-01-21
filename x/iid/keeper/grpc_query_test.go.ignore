@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/petrinetwork/xco-blockchain/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/iid/types"
 )
 
 func (suite *KeeperTestSuite) TestGRPCQueryDidDocuments() {

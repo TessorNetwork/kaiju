@@ -6,10 +6,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/x/auth/legacy/legacytx"
-	xcotypes "github.com/petrinetwork/xco-blockchain/lib/xco"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
+	kaijutypes "github.com/tessornetwork/kaiju/lib/kaiju"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
+	didtypes "github.com/tessornetwork/kaiju/lib/legacydid"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
 	"github.com/spf13/viper"
 )
 
@@ -31,14 +31,14 @@ const (
 )
 
 var (
-	_ xcotypes.XcoMsg = &MsgCreateProject{}
-	_ xcotypes.XcoMsg = &MsgUpdateProjectStatus{}
-	_ xcotypes.XcoMsg = &MsgCreateAgent{}
-	_ xcotypes.XcoMsg = &MsgUpdateAgent{}
-	_ xcotypes.XcoMsg = &MsgCreateClaim{}
-	_ xcotypes.XcoMsg = &MsgCreateEvaluation{}
-	_ xcotypes.XcoMsg = &MsgWithdrawFunds{}
-	_ xcotypes.XcoMsg = &MsgUpdateProjectDoc{}
+	_ kaijutypes.KaijuMsg = &MsgCreateProject{}
+	_ kaijutypes.KaijuMsg = &MsgUpdateProjectStatus{}
+	_ kaijutypes.KaijuMsg = &MsgCreateAgent{}
+	_ kaijutypes.KaijuMsg = &MsgUpdateAgent{}
+	_ kaijutypes.KaijuMsg = &MsgCreateClaim{}
+	_ kaijutypes.KaijuMsg = &MsgCreateEvaluation{}
+	_ kaijutypes.KaijuMsg = &MsgWithdrawFunds{}
+	_ kaijutypes.KaijuMsg = &MsgUpdateProjectDoc{}
 )
 
 func NewMsgCreateProject(senderDid iidtypes.DIDFragment, projectData json.RawMessage,
@@ -59,7 +59,7 @@ func (msg MsgCreateProject) GetIidController() iidtypes.DIDFragment {
 
 func (msg MsgCreateProject) ToStdSignMsg(fee int64) legacytx.StdSignMsg {
 	accNum, accSeq := uint64(0), uint64(0)
-	stdFee := legacytx.NewStdFee(0, sdk.NewCoins(sdk.NewCoin(xcotypes.XcoNativeToken, sdk.NewInt(fee))))
+	stdFee := legacytx.NewStdFee(0, sdk.NewCoins(sdk.NewCoin(kaijutypes.KaijuNativeToken, sdk.NewInt(fee))))
 	memo := viper.GetString(flagMemo)
 
 	return legacytx.StdSignMsg{

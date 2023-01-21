@@ -7,8 +7,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
-	"github.com/petrinetwork/xco-blockchain/x/payments/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/payments/types"
+	"github.com/tessornetwork/kaiju/x/payments/keeper"
+	"github.com/tessornetwork/kaiju/x/payments/types"
 )
 
 func registerQueryRoutes(clientCtx client.Context, r *mux.Router) {

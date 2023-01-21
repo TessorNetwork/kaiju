@@ -9,7 +9,7 @@ import (
 
 // "fmt"
 
-// "github.com/petrinetwork/xco-blockchain/x/bonds/types"
+// "github.com/tessornetwork/kaiju/x/bonds/types"
 func toPercentage(f float64) float64 { return f / 100 }
 
 func ConvertFloat64ToDec(f float64) (sdk.Dec, error) {

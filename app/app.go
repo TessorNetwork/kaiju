@@ -88,33 +88,33 @@ import (
 	ibchost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
 	"github.com/gorilla/mux"
-	"github.com/petrinetwork/xco-blockchain/app/params"
-	"github.com/petrinetwork/xco-blockchain/client/tx"
-	libxco "github.com/petrinetwork/xco-blockchain/lib/xco"
-	"github.com/petrinetwork/xco-blockchain/x/bonds"
-	bondskeeper "github.com/petrinetwork/xco-blockchain/x/bonds/keeper"
-	bondstypes "github.com/petrinetwork/xco-blockchain/x/bonds/types"
+	"github.com/tessornetwork/kaiju/app/params"
+	"github.com/tessornetwork/kaiju/client/tx"
+	libkaiju "github.com/tessornetwork/kaiju/lib/kaiju"
+	"github.com/tessornetwork/kaiju/x/bonds"
+	bondskeeper "github.com/tessornetwork/kaiju/x/bonds/keeper"
+	bondstypes "github.com/tessornetwork/kaiju/x/bonds/types"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
-	entitymodule "github.com/petrinetwork/xco-blockchain/x/entity"
-	entityclient "github.com/petrinetwork/xco-blockchain/x/entity/client"
-	entitykeeper "github.com/petrinetwork/xco-blockchain/x/entity/keeper"
-	entitytypes "github.com/petrinetwork/xco-blockchain/x/entity/types"
+	entitymodule "github.com/tessornetwork/kaiju/x/entity"
+	entityclient "github.com/tessornetwork/kaiju/x/entity/client"
+	entitykeeper "github.com/tessornetwork/kaiju/x/entity/keeper"
+	entitytypes "github.com/tessornetwork/kaiju/x/entity/types"
 
-	tokenmodule "github.com/petrinetwork/xco-blockchain/x/token"
-	tokenclient "github.com/petrinetwork/xco-blockchain/x/token/client"
-	tokenkeeper "github.com/petrinetwork/xco-blockchain/x/token/keeper"
-	tokentypes "github.com/petrinetwork/xco-blockchain/x/token/types"
+	tokenmodule "github.com/tessornetwork/kaiju/x/token"
+	tokenclient "github.com/tessornetwork/kaiju/x/token/client"
+	tokenkeeper "github.com/tessornetwork/kaiju/x/token/keeper"
+	tokentypes "github.com/tessornetwork/kaiju/x/token/types"
 
-	iidmodule "github.com/petrinetwork/xco-blockchain/x/iid"
-	iidmodulekeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	iidtypes "github.com/petrinetwork/xco-blockchain/x/iid/types"
-	"github.com/petrinetwork/xco-blockchain/x/payments"
-	paymentskeeper "github.com/petrinetwork/xco-blockchain/x/payments/keeper"
-	paymentstypes "github.com/petrinetwork/xco-blockchain/x/payments/types"
-	"github.com/petrinetwork/xco-blockchain/x/project"
-	projectkeeper "github.com/petrinetwork/xco-blockchain/x/project/keeper"
-	projecttypes "github.com/petrinetwork/xco-blockchain/x/project/types"
+	iidmodule "github.com/tessornetwork/kaiju/x/iid"
+	iidmodulekeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	iidtypes "github.com/tessornetwork/kaiju/x/iid/types"
+	"github.com/tessornetwork/kaiju/x/payments"
+	paymentskeeper "github.com/tessornetwork/kaiju/x/payments/keeper"
+	paymentstypes "github.com/tessornetwork/kaiju/x/payments/types"
+	"github.com/tessornetwork/kaiju/x/project"
+	projectkeeper "github.com/tessornetwork/kaiju/x/project/keeper"
+	projecttypes "github.com/tessornetwork/kaiju/x/project/types"
 	"github.com/rakyll/statik/fs"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -126,8 +126,8 @@ import (
 )
 
 const (
-	appName              = "XcoApp"
-	Bech32MainPrefix     = "xco"
+	appName              = "KaijuApp"
+	Bech32MainPrefix     = "kaiju"
 	Bech32PrefixAccAddr  = Bech32MainPrefix
 	Bech32PrefixAccPub   = Bech32MainPrefix + sdk.PrefixPublic
 	Bech32PrefixValAddr  = Bech32MainPrefix + sdk.PrefixValidator + sdk.PrefixOperator
@@ -138,7 +138,7 @@ const (
 
 var (
 	// DefaultNodeHome default home directories for the application daemon
-	DefaultNodeHome = os.ExpandEnv("$HOME/.xcod")
+	DefaultNodeHome = os.ExpandEnv("$HOME/.kaijud")
 
 	// ModuleBasics defines the module BasicManager which is in charge of setting up basic,
 	// non-dependant module elements, such as codec registration
@@ -177,7 +177,7 @@ var (
 			)...,
 		),
 		wasm.AppModuleBasic{},
-		// Custom xco modules
+		// Custom kaiju modules
 		bonds.AppModuleBasic{},
 		payments.AppModuleBasic{},
 		project.AppModuleBasic{},
@@ -197,7 +197,7 @@ var (
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
 		wasm.ModuleName:                {authtypes.Burner},
 
-		// Custom xco module accounts
+		// Custom kaiju module accounts
 		bondstypes.BondsMintBurnAccount:       {authtypes.Minter, authtypes.Burner},
 		bondstypes.BatchesIntermediaryAccount: nil,
 		bondstypes.BondsReserveAccount:        nil,
@@ -216,8 +216,8 @@ var (
 )
 
 var (
-	//NodeDir      = ".xcod"
-	//Bech32Prefix = "xco"
+	//NodeDir      = ".kaijud"
+	//Bech32Prefix = "kaiju"
 
 	// If EnabledSpecificProposals is "", and this is "true", then enable all x/wasm proposals.
 	// If EnabledSpecificProposals is "", and this is not "true", then disable all x/wasm proposals.
@@ -229,8 +229,8 @@ var (
 )
 
 // Verify app interface at compile time
-var _ simapp.App = (*XcoApp)(nil)
-var _ servertypes.Application = (*XcoApp)(nil)
+var _ simapp.App = (*KaijuApp)(nil)
+var _ servertypes.Application = (*KaijuApp)(nil)
 
 func GetEnabledProposals() []wasm.ProposalType {
 	if EnableSpecificProposals == "" {
@@ -248,7 +248,7 @@ func GetEnabledProposals() []wasm.ProposalType {
 }
 
 // Extended ABCI application
-type XcoApp struct {
+type KaijuApp struct {
 	*baseapp.BaseApp  `json:"_bam_base_app,omitempty"`
 	legacyAmino       *codec.LegacyAmino      `json:"legacy_amino,omitempty"`
 	appCodec          codec.Codec             `json:"app_codec,omitempty"`
@@ -285,7 +285,7 @@ type XcoApp struct {
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper `json:"scoped_transfer_keeper"`
 	scopedWasmKeeper     capabilitykeeper.ScopedKeeper
 
-	// Custom xco keepers
+	// Custom kaiju keepers
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	IidKeeper      iidmodulekeeper.Keeper `json:"iid_keeper"`
@@ -302,12 +302,12 @@ type XcoApp struct {
 	sm *module.SimulationManager `json:"sm,omitempty"`
 }
 
-// NewXcoApp returns a reference to an initialized XcoApp.
-func NewXcoApp(
+// NewKaijuApp returns a reference to an initialized KaijuApp.
+func NewKaijuApp(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, loadLatest bool, skipUpgradeHeights map[int64]bool,
 	homePath string, invCheckPeriod uint, encodingConfig params.EncodingConfig, enabledProposals []wasm.ProposalType,
 	appOpts servertypes.AppOptions, wasmOpts []wasm.Option, baseAppOptions ...func(*baseapp.BaseApp),
-) *XcoApp {
+) *KaijuApp {
 
 	appCodec := encodingConfig.Marshaler
 	legacyAmino := encodingConfig.Amino
@@ -328,7 +328,7 @@ func NewXcoApp(
 		// this line is used by starport scaffolding # stargate/app/storeKey
 		wasm.StoreKey,
 		iidtypes.StoreKey,
-		// Custom xco store keys
+		// Custom kaiju store keys
 		bondstypes.StoreKey,
 		paymentstypes.StoreKey, projecttypes.StoreKey,
 		entitytypes.StoreKey,
@@ -337,7 +337,7 @@ func NewXcoApp(
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
 
-	app := &XcoApp{
+	app := &KaijuApp{
 		BaseApp:           bApp,
 		legacyAmino:       legacyAmino,
 		appCodec:          appCodec,
@@ -476,7 +476,7 @@ func NewXcoApp(
 	// we prefer to be more strict in what arguments the modules expect.
 	var skipGenesisInvariants = cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
-	// add keepers (for custom xco modules)
+	// add keepers (for custom kaiju modules)
 	app.BondsKeeper = bondskeeper.NewKeeper(app.BankKeeper, app.AccountKeeper, app.StakingKeeper, app.IidKeeper,
 		keys[bondstypes.StoreKey], app.GetSubspace(bondstypes.ModuleName), app.appCodec)
 	app.PaymentsKeeper = paymentskeeper.NewKeeper(app.appCodec, keys[paymentstypes.StoreKey],
@@ -554,7 +554,7 @@ func NewXcoApp(
 		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
 		transferModule,
 
-		// Custom xco AppModules
+		// Custom kaiju AppModules
 		// this line is used by starport scaffolding # stargate/app/appModule
 		iidmodule.NewAppModule(app.appCodec, app.IidKeeper, &app.WasmKeeper),
 		bonds.NewAppModule(app.BondsKeeper, app.AccountKeeper),
@@ -577,7 +577,7 @@ func NewXcoApp(
 		govtypes.ModuleName, ibctransfertypes.ModuleName, vestingtypes.ModuleName,
 		authz.ModuleName, feegrant.ModuleName, wasm.ModuleName,
 
-		// Custom xco modules
+		// Custom kaiju modules
 		projecttypes.ModuleName,
 		bondstypes.ModuleName,
 		iidtypes.ModuleName,
@@ -585,7 +585,7 @@ func NewXcoApp(
 		tokentypes.ModuleName,
 	)
 	app.mm.SetOrderEndBlockers(
-		// Custom xco modules
+		// Custom kaiju modules
 
 		// Standard Cosmos modules
 		crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName,
@@ -612,7 +612,7 @@ func NewXcoApp(
 		upgradetypes.ModuleName, paramstypes.ModuleName, vestingtypes.ModuleName, authz.ModuleName,
 		feegrant.ModuleName, wasm.ModuleName,
 
-		// Custom xco modules
+		// Custom kaiju modules
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 		iidtypes.ModuleName, bondstypes.ModuleName,
 		paymentstypes.ModuleName, projecttypes.ModuleName, wasm.ModuleName,
@@ -657,7 +657,7 @@ func NewXcoApp(
 	app.MountMemoryStores(memKeys)
 
 	// initialize BaseApp
-	xcoAnteHandler, err := XcoAnteHandler(HandlerOptions{
+	kaijuAnteHandler, err := KaijuAnteHandler(HandlerOptions{
 		AccountKeeper:     app.AccountKeeper,
 		BankKeeper:        app.BankKeeper,
 		FeegrantKeeper:    app.FeeGrantKeeper,
@@ -667,7 +667,7 @@ func NewXcoApp(
 		txCounterStoreKey: keys[wasm.StoreKey],
 
 		SignModeHandler: encodingConfig.TxConfig.SignModeHandler(),
-		SigGasConsumer:  libxco.XcoSigVerificationGasConsumer,
+		SigGasConsumer:  libkaiju.KaijuSigVerificationGasConsumer,
 	})
 	if err != nil {
 		panic(err)
@@ -675,7 +675,7 @@ func NewXcoApp(
 
 	app.SetInitChainer(app.InitChainer)
 	app.SetBeginBlocker(app.BeginBlocker)
-	app.SetAnteHandler(xcoAnteHandler)
+	app.SetAnteHandler(kaijuAnteHandler)
 	app.SetEndBlocker(app.EndBlocker)
 
 	if loadLatest {
@@ -703,28 +703,28 @@ func NewXcoApp(
 }
 
 // MakeCodecs constructs the *std.Codec and *codec.LegacyAmino instances used by
-// xcoapp. It is useful for tests and clients who do not want to construct the
-// full xcoapp.
+// kaijuapp. It is useful for tests and clients who do not want to construct the
+// full kaijuapp.
 func MakeCodecs() (codec.Codec, *codec.LegacyAmino) {
 	config := MakeTestEncodingConfig()
 	return config.Marshaler, config.Amino
 }
 
 // Name returns the name of the App
-func (app *XcoApp) Name() string { return app.BaseApp.Name() }
+func (app *KaijuApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker application updates every begin block
-func (app *XcoApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *KaijuApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker application updates every end block
-func (app *XcoApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *KaijuApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer application update at chain initialization
-func (app *XcoApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *KaijuApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState GenesisState
 	if err := tmjson.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -733,12 +733,12 @@ func (app *XcoApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.
 }
 
 // LoadHeight loads a particular height
-func (app *XcoApp) LoadHeight(height int64) error {
+func (app *KaijuApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *XcoApp) ModuleAccountAddrs() map[string]bool {
+func (app *KaijuApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[authtypes.NewModuleAddress(acc).String()] = true
@@ -748,7 +748,7 @@ func (app *XcoApp) ModuleAccountAddrs() map[string]bool {
 }
 
 // BlockedAddrs returns all the app's module account addresses black listed for receiving tokens.
-func (app *XcoApp) BlockedAddrs() map[string]bool {
+func (app *KaijuApp) BlockedAddrs() map[string]bool {
 	blockedAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		blockedAddrs[authtypes.NewModuleAddress(acc).String()] = !allowedReceivingModAcc[acc]
@@ -757,64 +757,64 @@ func (app *XcoApp) BlockedAddrs() map[string]bool {
 	return blockedAddrs
 }
 
-// LegacyAmino returns XcoApp's amino codec.
+// LegacyAmino returns KaijuApp's amino codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *XcoApp) LegacyAmino() *codec.LegacyAmino {
+func (app *KaijuApp) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-// AppCodec returns XcoApp's app codec.
+// AppCodec returns KaijuApp's app codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *XcoApp) AppCodec() codec.Codec {
+func (app *KaijuApp) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns XcoApp's InterfaceRegistry
-func (app *XcoApp) InterfaceRegistry() types.InterfaceRegistry {
+// InterfaceRegistry returns KaijuApp's InterfaceRegistry
+func (app *KaijuApp) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *XcoApp) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *KaijuApp) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *XcoApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
+func (app *KaijuApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
 	return app.tkeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (app *XcoApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
+func (app *KaijuApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 	return app.memKeys[storeKey]
 }
 
 // GetSubspace returns a param subspace for a given module name.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *XcoApp) GetSubspace(moduleName string) paramstypes.Subspace {
+func (app *KaijuApp) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *XcoApp) SimulationManager() *module.SimulationManager {
+func (app *KaijuApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided
 // API server.
-func (app *XcoApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig srvconfig.APIConfig) {
+func (app *KaijuApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig srvconfig.APIConfig) {
 	//panic("implement me")
 
 	clientCtx := apiSvr.ClientCtx
@@ -839,12 +839,12 @@ func (app *XcoApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig srvconfig.API
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
-func (app *XcoApp) RegisterTxService(clientCtx client.Context) {
+func (app *KaijuApp) RegisterTxService(clientCtx client.Context) {
 	authtx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
 // RegisterTendermintService implements the Application.RegisterTendermintService method.
-func (app *XcoApp) RegisterTendermintService(clientCtx client.Context) {
+func (app *KaijuApp) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
 }
 
@@ -872,7 +872,7 @@ type KVStoreKey struct {
 	name string
 }
 
-// func NewXcoAnteHandler(app *XcoApp, encodingConfig params.EncodingConfig, wasmConfig WasmTypes.WasmConfig, key sdk.StoreKey) sdk.AnteHandler {
+// func NewKaijuAnteHandler(app *KaijuApp, encodingConfig params.EncodingConfig, wasmConfig WasmTypes.WasmConfig, key sdk.StoreKey) sdk.AnteHandler {
 
 // 	// The AnteHandler needs to get the signer's pubkey to verify signatures,
 // 	// charge gas fees (to the corresponding address), and for other purposes.
@@ -880,7 +880,7 @@ type KVStoreKey struct {
 // 	// The default Cosmos AnteHandler fetches a signer address' pubkey from the
 // 	// GetPubKey() function after querying the account from the account keeper.
 // 	//
-// 	// In the case of xco, since signers are DIDs rather than addresses, we get
+// 	// In the case of kaiju, since signers are DIDs rather than addresses, we get
 // 	// the DID Doc containing the pubkey from the did/project module (depending
 // 	// if signer is a user or a project, respectively).
 // 	//
@@ -895,7 +895,7 @@ type KVStoreKey struct {
 // 	//
 // 	// - did module msgs are signed by did module DIDs
 // 	// - project module msgs are signed by project module DIDs (a.k.a projects)
-// 	// - [[default]] remaining xco module msgs are signed by did module DIDs
+// 	// - [[default]] remaining kaiju module msgs are signed by did module DIDs
 // 	//
 // 	// A special case in the project module is the MsgWithdrawFunds message,
 // 	// which is a project module message signed by a did module DID (instead
@@ -907,25 +907,25 @@ type KVStoreKey struct {
 // 	projectPubKeyGetter := project.NewModulePubKeyGetter(app.ProjectKeeper, app.IidKeeper)
 
 // 	// Since we have parameterised pubkey getters, we can use the same default
-// 	// xco AnteHandler (xco.NewDefaultAnteHandler) for all three pubkey getters
+// 	// kaiju AnteHandler (kaiju.NewDefaultAnteHandler) for all three pubkey getters
 // 	// instead of having to implement three unique AnteHandlers.
 
-// 	defaultXcoAnteHandler := xcotypes.NewDefaultAnteHandler(
-// 		app.AccountKeeper, app.BankKeeper, xcotypes.XcoSigVerificationGasConsumer,
+// 	defaultKaijuAnteHandler := kaijutypes.NewDefaultAnteHandler(
+// 		app.AccountKeeper, app.BankKeeper, kaijutypes.KaijuSigVerificationGasConsumer,
 // 		defaultPubKeyGetter, encodingConfig.TxConfig.SignModeHandler(), key, app.IBCKeeper,
 // 		wasmConfig)
-// 	iidAnteHandler := xcotypes.NewDefaultAnteHandler(
-// 		app.AccountKeeper, app.BankKeeper, xcotypes.XcoSigVerificationGasConsumer,
+// 	iidAnteHandler := kaijutypes.NewDefaultAnteHandler(
+// 		app.AccountKeeper, app.BankKeeper, kaijutypes.KaijuSigVerificationGasConsumer,
 // 		iidPubKeyGetter, encodingConfig.TxConfig.SignModeHandler(), key, app.IBCKeeper,
 // 		wasmConfig)
-// 	projectAnteHandler := xcotypes.NewDefaultAnteHandler(
-// 		app.AccountKeeper, app.BankKeeper, xcotypes.XcoSigVerificationGasConsumer,
+// 	projectAnteHandler := kaijutypes.NewDefaultAnteHandler(
+// 		app.AccountKeeper, app.BankKeeper, kaijutypes.KaijuSigVerificationGasConsumer,
 // 		projectPubKeyGetter, encodingConfig.TxConfig.SignModeHandler(), key, app.IBCKeeper,
 // 		wasmConfig)
 
 // 	// The default Cosmos AnteHandler is still used for standard Cosmos messages
 // 	// implemented in standard Cosmos modules (bank, gov, etc.). The only change
-// 	// is that we use an XcoSigVerificationGasConsumer instead of the default
+// 	// is that we use an KaijuSigVerificationGasConsumer instead of the default
 // 	// one, since the default does not allow ED25519 signatures. Thus, like this
 // 	// we enable ED25519 (as well as Secp) signing of standard Cosmos messages.
 
@@ -934,7 +934,7 @@ type KVStoreKey struct {
 // 		BankKeeper:      app.BankKeeper,
 // 		FeegrantKeeper:  app.FeeGrantKeeper,
 // 		SignModeHandler: encodingConfig.TxConfig.SignModeHandler(),
-// 		SigGasConsumer:  xcotypes.XcoSigVerificationGasConsumer,
+// 		SigGasConsumer:  kaijutypes.KaijuSigVerificationGasConsumer,
 // 	}
 
 // 	cosmosAnteHandler, err := authante.NewAnteHandler(options)
@@ -952,7 +952,7 @@ type KVStoreKey struct {
 // 	// However, in the case of a project, we cannot send tokens to it before its
 // 	// creation since we do not know the project DID (and thus where to send the
 // 	// tokens) until exactly before its creation (when project creation is done
-// 	// through xco-cellnode). The project however does have an original creator!
+// 	// through kaiju-cellnode). The project however does have an original creator!
 // 	//
 // 	// Thus, the gas fees in the case of project creation are instead charged
 // 	// to the original creator, which is pointed out in the project doc. For
@@ -964,7 +964,7 @@ type KVStoreKey struct {
 
 // 	// TODO: Routing https://docs.cosmos.network/v0.44/building-modules/msg-services.html#amino-legacymsgs
 // 	return func(ctx sdk.Context, tx sdk.Tx, simulate bool) (_ sdk.Context, err error) {
-// 		// Route message based on xco module router key
+// 		// Route message based on kaiju module router key
 // 		// Otherwise, route to Cosmos ante handler
 // 		msg := tx.GetMsgs()[0].(legacytx.LegacyMsg)
 
@@ -982,7 +982,7 @@ type KVStoreKey struct {
 // 		case bondstypes.RouterKey:
 // 			fallthrough
 // 		case paymentstypes.RouterKey:
-// 			return defaultXcoAnteHandler(ctx, tx, simulate)
+// 			return defaultKaijuAnteHandler(ctx, tx, simulate)
 // 		default:
 // 			return cosmosAnteHandler(ctx, tx, simulate)
 // 		}
@@ -1005,7 +1005,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	paramsKeeper.Subspace(wasm.ModuleName)
-	// init params keeper and subspaces (for custom xco modules)
+	// init params keeper and subspaces (for custom kaiju modules)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
 	paramsKeeper.Subspace(iidtypes.ModuleName)
 	paramsKeeper.Subspace(bondstypes.ModuleName)

@@ -10,11 +10,11 @@ import (
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	paramstypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	didexported "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	didtypes "github.com/petrinetwork/xco-blockchain/lib/legacydid"
-	iidkeeper "github.com/petrinetwork/xco-blockchain/x/iid/keeper"
-	paymentskeeper "github.com/petrinetwork/xco-blockchain/x/payments/keeper"
-	"github.com/petrinetwork/xco-blockchain/x/project/types"
+	didexported "github.com/tessornetwork/kaiju/lib/legacydid"
+	didtypes "github.com/tessornetwork/kaiju/lib/legacydid"
+	iidkeeper "github.com/tessornetwork/kaiju/x/iid/keeper"
+	paymentskeeper "github.com/tessornetwork/kaiju/x/payments/keeper"
+	"github.com/tessornetwork/kaiju/x/project/types"
 )
 
 type Keeper struct {
