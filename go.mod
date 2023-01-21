@@ -24,8 +24,8 @@ require (
 	github.com/tendermint/tendermint v0.34.21
 	github.com/tendermint/tm-db v0.6.7
 	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90
-	google.golang.org/genproto v0.0.0-20221027153422-115e99e71e1c
-	google.golang.org/grpc v1.50.1
+	google.golang.org/genproto v0.0.0-20221207170731-23e4bf6bdc37
+	google.golang.org/grpc v1.51.0
 	google.golang.org/protobuf v1.28.1
 )
 
@@ -63,6 +63,7 @@ require (
 	github.com/dvsekhvalnov/jose2go v1.5.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
+	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-kit/kit v0.12.0 // indirect
 	github.com/go-kit/log v0.2.1 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
@@ -76,6 +77,7 @@ require (
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.0 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
 	github.com/gtank/merlin v0.1.1 // indirect
 	github.com/gtank/ristretto255 v0.1.2 // indirect
@@ -117,9 +119,9 @@ require (
 	github.com/tendermint/crypto v0.0.0-20191022145703-50d29ede1e15 // indirect
 	github.com/zondax/hid v0.9.0 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
-	golang.org/x/sys v0.1.0 // indirect
-	golang.org/x/term v0.1.0 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/sys v0.3.0 // indirect
+	golang.org/x/term v0.3.0 // indirect
+	golang.org/x/text v0.5.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
@@ -128,7 +130,7 @@ require (
 
 require (
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
-	golang.org/x/net v0.1.0 // indirect
+	golang.org/x/net v0.3.0 // indirect
 )
 
 replace (

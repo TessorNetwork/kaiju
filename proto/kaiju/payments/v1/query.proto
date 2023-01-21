@@ -14,9 +14,9 @@ service Query {
       returns (QueryPaymentTemplateResponse) {
     option (google.api.http).get =
         "/kaiju/payments/templates/{payment_template_id}"; // this is a REST
-                                                         // endpoint - see Query
-                                                         // service here
-                                                         // https://docs.cosmos.network/master/migrations/app_and_modules.html
+                                                           // endpoint - see
+                                                           // Query service here
+                                                           // https://docs.cosmos.network/master/migrations/app_and_modules.html
   }
 
   // PaymentContract queries info of a specific payment contract.

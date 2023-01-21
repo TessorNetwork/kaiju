@@ -162,7 +162,7 @@ message MintCw721 {
     (gogoproto.casttype) = "encoding/json.RawMessage",
     (gogoproto.moretags) = "yaml:\"data\""
   ]; //"Arbitrary properties. Values may be strings, numbers, object or
-     //arrays."];
+     // arrays."];
 }
 
 message MintCw1155 {

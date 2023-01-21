@@ -14,7 +14,7 @@ service Query {
   rpc Bonds(QueryBondsRequest) returns (QueryBondsResponse) {
     option (google.api.http).get =
         "/kaiju/bonds"; // this is a REST endpoint - see Query service here
-                      // https://docs.cosmos.network/master/migrations/app_and_modules.html
+                        // https://docs.cosmos.network/master/migrations/app_and_modules.html
   }
 
   // BondsDetailed returns a list of all existing bonds with some details about
@@ -66,7 +66,8 @@ service Query {
 
   // CustomPrice queries price/s of a specific bond at a specific supply.
   rpc CustomPrice(QueryCustomPriceRequest) returns (QueryCustomPriceResponse) {
-    option (google.api.http).get = "/kaiju/bonds/{bond_did}/price/{bond_amount}";
+    option (google.api.http).get =
+        "/kaiju/bonds/{bond_did}/price/{bond_amount}";
   }
 
   // BuyPrice queries price/s of buying an amount of tokens from a specific
@@ -86,8 +87,8 @@ service Query {
   // SwapReturn queries return/s on swapping an amount of tokens to another
   // token of a specific bond.
   rpc SwapReturn(QuerySwapReturnRequest) returns (QuerySwapReturnResponse) {
-    option (google.api.http).get =
-        "/kaiju/bonds/{bond_did}/swap_return/{from_token_with_amount}/{to_token}";
+    option (google.api.http).get = "/kaiju/bonds/{bond_did}/swap_return/"
+                                   "{from_token_with_amount}/{to_token}";
   }
 
   // AlphaMaximums queries alpha maximums for a specific augmented bonding
@@ -140,7 +141,8 @@ message QueryBatchRequest {
 
 // QueryBatchResponse is the response type for the Query/Batch RPC method.
 message QueryBatchResponse {
-  kaiju.bonds.v1beta1.Batch batch = 1 [ (gogoproto.moretags) = "yaml:\"batch\"" ];
+  kaiju.bonds.v1beta1.Batch batch = 1
+      [ (gogoproto.moretags) = "yaml:\"batch\"" ];
 }
 
 // QueryLastBatchRequest is the request type for the Query/LastBatch RPC method.

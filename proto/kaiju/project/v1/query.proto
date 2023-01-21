@@ -13,8 +13,8 @@ service Query {
   rpc ProjectDoc(QueryProjectDocRequest) returns (QueryProjectDocResponse) {
     option (google.api.http).get =
         "/kaiju/project/{project_did}"; // this is a REST endpoint - see Query
-                                      // service here
-                                      // https://docs.cosmos.network/master/migrations/app_and_modules.html
+                                        // service here
+                                        // https://docs.cosmos.network/master/migrations/app_and_modules.html
   }
 
   // ProjectAccounts lists a specific project's accounts.
