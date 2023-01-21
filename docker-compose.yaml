@@ -25,7 +25,7 @@ services:
   #     - "./docs/static/openapi.yml:/api-docs/swagger.yaml"
 
   kaiju:
-    container_name: kaiju_blockchain
+    container_name: kaiju
     platform: linux/amd64
     build:
       context: .

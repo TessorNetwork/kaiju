@@ -1524,7 +1524,7 @@
 
       
         <h3 id="kaiju.bonds.v1beta1.BaseOrder">BaseOrder</h3>
-        <p>BaseOrder defines a base order type. It contains all the necessary fields for specifying</p><p>the general details about a buy, sell, or swap order.</p>
+        <p>BaseOrder defines a base order type. It contains all the necessary fields for</p><p>specifying the general details about a buy, sell, or swap order.</p>
 
         
           <table class="field-table">
@@ -1569,7 +1569,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.Batch">Batch</h3>
-        <p>Batch holds a collection of outstanding buy, sell, and swap orders on a particular bond.</p>
+        <p>Batch holds a collection of outstanding buy, sell, and swap orders on a</p><p>particular bond.</p>
 
         
           <table class="field-table">
@@ -1914,7 +1914,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.BuyOrder">BuyOrder</h3>
-        <p>BuyOrder defines a type for submitting a buy order on a bond, together with the maximum</p><p>amount of reserve tokens the buyer is willing to pay.</p>
+        <p>BuyOrder defines a type for submitting a buy order on a bond, together with</p><p>the maximum amount of reserve tokens the buyer is willing to pay.</p>
 
         
           <table class="field-table">
@@ -1945,7 +1945,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.FunctionParam">FunctionParam</h3>
-        <p>FunctionParam is a key-value pair used for specifying a specific bond parameter.</p>
+        <p>FunctionParam is a key-value pair used for specifying a specific bond</p><p>parameter.</p>
 
         
           <table class="field-table">
@@ -2024,7 +2024,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.SwapOrder">SwapOrder</h3>
-        <p>SwapOrder defines a type for submitting a swap order between two tokens on a bond.</p>
+        <p>SwapOrder defines a type for submitting a swap order between two tokens on a</p><p>bond.</p>
 
         
           <table class="field-table">
@@ -2121,7 +2121,7 @@
 
       
         <h3 id="kaiju.bonds.v1beta1.QueryAlphaMaximumsRequest">QueryAlphaMaximumsRequest</h3>
-        <p>QueryAlphaMaximumsRequest is the request type for the Query/AlphaMaximums RPC method.</p>
+        <p>QueryAlphaMaximumsRequest is the request type for the Query/AlphaMaximums RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2145,7 +2145,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryAlphaMaximumsResponse">QueryAlphaMaximumsResponse</h3>
-        <p>QueryAlphaMaximumsResponse is the response type for the Query/AlphaMaximums RPC method.</p>
+        <p>QueryAlphaMaximumsResponse is the response type for the Query/AlphaMaximums</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -2176,7 +2176,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryAvailableReserveRequest">QueryAvailableReserveRequest</h3>
-        <p>QueryAvailableReserveRequest is the request type for the Query/AvailableReserve RPC method.</p>
+        <p>QueryAvailableReserveRequest is the request type for the</p><p>Query/AvailableReserve RPC method.</p>
 
         
           <table class="field-table">
@@ -2200,7 +2200,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryAvailableReserveResponse">QueryAvailableReserveResponse</h3>
-        <p>QueryAvailableReserveResponse is the response type for the Query/AvailableReserve RPC method.</p>
+        <p>QueryAvailableReserveResponse is the response type for the</p><p>Query/AvailableReserve RPC method.</p>
 
         
           <table class="field-table">
@@ -2320,14 +2320,14 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryBondsDetailedRequest">QueryBondsDetailedRequest</h3>
-        <p>QueryBondsDetailedRequest is the request type for the Query/BondsDetailed RPC method.</p>
+        <p>QueryBondsDetailedRequest is the request type for the Query/BondsDetailed RPC</p><p>method.</p>
 
         
 
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryBondsDetailedResponse">QueryBondsDetailedResponse</h3>
-        <p>QueryBondsDetailedResponse is the response type for the Query/BondsDetailed RPC method.</p>
+        <p>QueryBondsDetailedResponse is the response type for the Query/BondsDetailed</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -2382,7 +2382,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryBuyPriceRequest">QueryBuyPriceRequest</h3>
-        <p>QueryCustomPriceRequest is the request type for the Query/BuyPrice RPC method.</p>
+        <p>QueryCustomPriceRequest is the request type for the Query/BuyPrice RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2413,7 +2413,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryBuyPriceResponse">QueryBuyPriceResponse</h3>
-        <p>QueryCustomPriceResponse is the response type for the Query/BuyPrice RPC method.</p>
+        <p>QueryCustomPriceResponse is the response type for the Query/BuyPrice RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2465,7 +2465,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryCurrentPriceRequest">QueryCurrentPriceRequest</h3>
-        <p>QueryCurrentPriceRequest is the request type for the Query/CurrentPrice RPC method.</p>
+        <p>QueryCurrentPriceRequest is the request type for the Query/CurrentPrice RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2489,7 +2489,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryCurrentPriceResponse">QueryCurrentPriceResponse</h3>
-        <p>QueryCurrentPriceResponse is the response type for the Query/CurrentPrice RPC method.</p>
+        <p>QueryCurrentPriceResponse is the response type for the Query/CurrentPrice RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2513,7 +2513,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryCurrentReserveRequest">QueryCurrentReserveRequest</h3>
-        <p>QueryCurrentReserveRequest is the request type for the Query/CurrentReserve RPC method.</p>
+        <p>QueryCurrentReserveRequest is the request type for the Query/CurrentReserve</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -2537,7 +2537,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryCurrentReserveResponse">QueryCurrentReserveResponse</h3>
-        <p>QueryCurrentReserveResponse is the response type for the Query/CurrentReserve RPC method.</p>
+        <p>QueryCurrentReserveResponse is the response type for the Query/CurrentReserve</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -2561,7 +2561,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryCustomPriceRequest">QueryCustomPriceRequest</h3>
-        <p>QueryCustomPriceRequest is the request type for the Query/CustomPrice RPC method.</p>
+        <p>QueryCustomPriceRequest is the request type for the Query/CustomPrice RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2592,7 +2592,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryCustomPriceResponse">QueryCustomPriceResponse</h3>
-        <p>QueryCustomPriceResponse is the response type for the Query/CustomPrice RPC method.</p>
+        <p>QueryCustomPriceResponse is the response type for the Query/CustomPrice RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2640,7 +2640,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QueryLastBatchResponse">QueryLastBatchResponse</h3>
-        <p>QueryLastBatchResponse is the response type for the Query/LastBatch RPC method.</p>
+        <p>QueryLastBatchResponse is the response type for the Query/LastBatch RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2695,7 +2695,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QuerySellReturnRequest">QuerySellReturnRequest</h3>
-        <p>QuerySellReturnRequest is the request type for the Query/SellReturn RPC method.</p>
+        <p>QuerySellReturnRequest is the request type for the Query/SellReturn RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2726,7 +2726,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QuerySellReturnResponse">QuerySellReturnResponse</h3>
-        <p>QuerySellReturnResponse is the response type for the Query/SellReturn RPC method.</p>
+        <p>QuerySellReturnResponse is the response type for the Query/SellReturn RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2785,7 +2785,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QuerySwapReturnRequest">QuerySwapReturnRequest</h3>
-        <p>QuerySwapReturnRequest is the request type for the Query/SwapReturn RPC method.</p>
+        <p>QuerySwapReturnRequest is the request type for the Query/SwapReturn RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2823,7 +2823,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.QuerySwapReturnResponse">QuerySwapReturnResponse</h3>
-        <p>QuerySwapReturnResponse is the response type for the Query/SwapReturn RPC method.</p>
+        <p>QuerySwapReturnResponse is the response type for the Query/SwapReturn RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -2878,7 +2878,8 @@
                 <td>BondsDetailed</td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryBondsDetailedRequest">QueryBondsDetailedRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryBondsDetailedResponse">QueryBondsDetailedResponse</a></td>
-                <td><p>BondsDetailed returns a list of all existing bonds with some details about their current state.</p></td>
+                <td><p>BondsDetailed returns a list of all existing bonds with some details about
+their current state.</p></td>
               </tr>
             
               <tr>
@@ -2920,14 +2921,16 @@
                 <td>CurrentReserve</td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryCurrentReserveRequest">QueryCurrentReserveRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryCurrentReserveResponse">QueryCurrentReserveResponse</a></td>
-                <td><p>CurrentReserve queries the current balance/s of the reserve pool for a specific bond.</p></td>
+                <td><p>CurrentReserve queries the current balance/s of the reserve pool for a
+specific bond.</p></td>
               </tr>
             
               <tr>
                 <td>AvailableReserve</td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryAvailableReserveRequest">QueryAvailableReserveRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryAvailableReserveResponse">QueryAvailableReserveResponse</a></td>
-                <td><p>AvailableReserve queries current available balance/s of the reserve pool for a specific bond.</p></td>
+                <td><p>AvailableReserve queries current available balance/s of the reserve pool
+for a specific bond.</p></td>
               </tr>
             
               <tr>
@@ -2941,28 +2944,32 @@
                 <td>BuyPrice</td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryBuyPriceRequest">QueryBuyPriceRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryBuyPriceResponse">QueryBuyPriceResponse</a></td>
-                <td><p>BuyPrice queries price/s of buying an amount of tokens from a specific bond.</p></td>
+                <td><p>BuyPrice queries price/s of buying an amount of tokens from a specific
+bond.</p></td>
               </tr>
             
               <tr>
                 <td>SellReturn</td>
                 <td><a href="#kaiju.bonds.v1beta1.QuerySellReturnRequest">QuerySellReturnRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QuerySellReturnResponse">QuerySellReturnResponse</a></td>
-                <td><p>SellReturn queries return/s on selling an amount of tokens of a specific bond.</p></td>
+                <td><p>SellReturn queries return/s on selling an amount of tokens of a specific
+bond.</p></td>
               </tr>
             
               <tr>
                 <td>SwapReturn</td>
                 <td><a href="#kaiju.bonds.v1beta1.QuerySwapReturnRequest">QuerySwapReturnRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QuerySwapReturnResponse">QuerySwapReturnResponse</a></td>
-                <td><p>SwapReturn queries return/s on swapping an amount of tokens to another token of a specific bond.</p></td>
+                <td><p>SwapReturn queries return/s on swapping an amount of tokens to another
+token of a specific bond.</p></td>
               </tr>
             
               <tr>
                 <td>AlphaMaximums</td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryAlphaMaximumsRequest">QueryAlphaMaximumsRequest</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.QueryAlphaMaximumsResponse">QueryAlphaMaximumsResponse</a></td>
-                <td><p>AlphaMaximums queries alpha maximums for a specific augmented bonding curve.</p></td>
+                <td><p>AlphaMaximums queries alpha maximums for a specific augmented bonding
+curve.</p></td>
               </tr>
             
           </tbody>
@@ -3467,7 +3474,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.MsgMakeOutcomePayment">MsgMakeOutcomePayment</h3>
-        <p>MsgMakeOutcomePayment defines a message for making an outcome payment to a bond.</p>
+        <p>MsgMakeOutcomePayment defines a message for making an outcome payment to a</p><p>bond.</p>
 
         
           <table class="field-table">
@@ -3512,7 +3519,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.MsgMakeOutcomePaymentResponse">MsgMakeOutcomePaymentResponse</h3>
-        <p>MsgMakeOutcomePaymentResponse defines the Msg/MakeOutcomePayment response type.</p>
+        <p>MsgMakeOutcomePaymentResponse defines the Msg/MakeOutcomePayment response</p><p>type.</p>
 
         
 
@@ -3630,7 +3637,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.MsgSwap">MsgSwap</h3>
-        <p>MsgSwap defines a message for swapping from one reserve bond token to another.</p>
+        <p>MsgSwap defines a message for swapping from one reserve bond token to</p><p>another.</p>
 
         
           <table class="field-table">
@@ -3793,7 +3800,7 @@
         
       
         <h3 id="kaiju.bonds.v1beta1.MsgWithdrawShare">MsgWithdrawShare</h3>
-        <p>MsgWithdrawShare defines a message for withdrawing a share from a bond that is in the SETTLE stage.</p>
+        <p>MsgWithdrawShare defines a message for withdrawing a share from a bond that</p><p>is in the SETTLE stage.</p>
 
         
           <table class="field-table">
@@ -3904,14 +3911,16 @@
                 <td>MakeOutcomePayment</td>
                 <td><a href="#kaiju.bonds.v1beta1.MsgMakeOutcomePayment">MsgMakeOutcomePayment</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.MsgMakeOutcomePaymentResponse">MsgMakeOutcomePaymentResponse</a></td>
-                <td><p>MakeOutcomePayment defines a method for making an outcome payment to a bond.</p></td>
+                <td><p>MakeOutcomePayment defines a method for making an outcome payment to a
+bond.</p></td>
               </tr>
             
               <tr>
                 <td>WithdrawShare</td>
                 <td><a href="#kaiju.bonds.v1beta1.MsgWithdrawShare">MsgWithdrawShare</a></td>
                 <td><a href="#kaiju.bonds.v1beta1.MsgWithdrawShareResponse">MsgWithdrawShareResponse</a></td>
-                <td><p>WithdrawShare defines a method for withdrawing a share from a bond that is in the SETTLE stage.</p></td>
+                <td><p>WithdrawShare defines a method for withdrawing a share from a bond that is
+in the SETTLE stage.</p></td>
               </tr>
             
               <tr>
@@ -4006,7 +4015,8 @@
                   <td>params</td>
                   <td><a href="#kaiju.entity.v1beta1.Params">Params</a></td>
                   <td></td>
-                  <td><p>repeated GenesisAccountMap account_maps       = 2 [(gogoproto.nullable) = false, (gogoproto.moretags) = &#34;yaml:\&#34;account_maps\&#34;&#34;]; </p></td>
+                  <td><p>repeated GenesisAccountMap account_maps       = 2 [(gogoproto.nullable) =
+false, (gogoproto.moretags) = &#34;yaml:\&#34;account_maps\&#34;&#34;]; </p></td>
                 </tr>
               
             </tbody>
@@ -4083,7 +4093,7 @@
         
       
         <h3 id="kaiju.entity.v1beta1.QueryEntityConfigResponse">QueryEntityConfigResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -4138,7 +4148,7 @@
         
       
         <h3 id="kaiju.entity.v1beta1.QueryEntityDocRequest">QueryEntityDocRequest</h3>
-        <p>QueryProjectDocRequest is the request type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocRequest is the request type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -4162,7 +4172,7 @@
         
       
         <h3 id="kaiju.entity.v1beta1.QueryEntityDocResponse">QueryEntityDocResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
 
@@ -4200,7 +4210,7 @@
         
       
         <h3 id="kaiju.entity.v1beta1.QueryEntityListResponse">QueryEntityListResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
 
@@ -4412,25 +4422,25 @@
                   <td>controller</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>A DID controller is an entity that is authorized to make changes to a DID document.
-cfr. https://www.w3.org/TR/did-core/#did-controller </p></td>
+                  <td><p>A DID controller is an entity that is authorized to make changes to a DID
+document. cfr. https://www.w3.org/TR/did-core/#did-controller </p></td>
                 </tr>
               
                 <tr>
                   <td>verificationMethod</td>
                   <td><a href="#kaiju.iid.v1beta1.VerificationMethod">VerificationMethod</a></td>
                   <td>repeated</td>
-                  <td><p>A DID document can express verification methods, 
-such as cryptographic public keys, which can be used 
-to authenticate or authorize interactions with the DID subject or associated parties.
-https://www.w3.org/TR/did-core/#verification-methods </p></td>
+                  <td><p>A DID document can express verification methods,
+such as cryptographic public keys, which can be used
+to authenticate or authorize interactions with the DID subject or
+associated parties. https://www.w3.org/TR/did-core/#verification-methods </p></td>
                 </tr>
               
                 <tr>
                   <td>service</td>
                   <td><a href="#kaiju.iid.v1beta1.Service">Service</a></td>
                   <td>repeated</td>
-                  <td><p>Services are used in DID documents to express ways of communicating 
+                  <td><p>Services are used in DID documents to express ways of communicating
 with the DID subject or associated entities.
 https://www.w3.org/TR/did-core/#services </p></td>
                 </tr>
@@ -4448,7 +4458,7 @@ cfr. https://www.w3.org/TR/did-core/#authentication </p></td>
                   <td>assertionMethod</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Used to specify how the DID subject is expected to express claims, 
+                  <td><p>Used to specify how the DID subject is expected to express claims,
 such as for the purposes of issuing a Verifiable Credential.
 cfr. https://www.w3.org/TR/did-core/#assertion </p></td>
                 </tr>
@@ -4457,7 +4467,7 @@ cfr. https://www.w3.org/TR/did-core/#assertion </p></td>
                   <td>keyAgreement</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>used to specify how an entity can generate encryption material 
+                  <td><p>used to specify how an entity can generate encryption material
 in order to transmit confidential information intended for the DID subject.
 https://www.w3.org/TR/did-core/#key-agreement </p></td>
                 </tr>
@@ -4467,7 +4477,7 @@ https://www.w3.org/TR/did-core/#key-agreement </p></td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>Used to specify a verification method that might be used by the DID subject
-to invoke a cryptographic capability, such as the authorization 
+to invoke a cryptographic capability, such as the authorization
 to update the DID Document.
 https://www.w3.org/TR/did-core/#capability-invocation </p></td>
                 </tr>
@@ -4476,7 +4486,7 @@ https://www.w3.org/TR/did-core/#capability-invocation </p></td>
                   <td>capabilityDelegation</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Used to specify a mechanism that might be used by the DID subject 
+                  <td><p>Used to specify a mechanism that might be used by the DID subject
 to delegate a cryptographic capability to another party.
 https://www.w3.org/TR/did-core/#capability-delegation </p></td>
                 </tr>
@@ -4517,7 +4527,7 @@ https://www.w3.org/TR/did-core/#capability-delegation </p></td>
         
       
         <h3 id="kaiju.iid.v1beta1.IidMetadata">IidMetadata</h3>
-        <p>DidMetadata defines metadata associated to a did document such as </p><p>the status of the DID document</p>
+        <p>DidMetadata defines metadata associated to a did document such as</p><p>the status of the DID document</p>
 
         
           <table class="field-table">
@@ -5823,7 +5833,8 @@ relationships that the method is allowed into. </p></td>
                 <td>RevokeVerification</td>
                 <td><a href="#kaiju.iid.v1beta1.MsgRevokeVerification">MsgRevokeVerification</a></td>
                 <td><a href="#kaiju.iid.v1beta1.MsgRevokeVerificationResponse">MsgRevokeVerificationResponse</a></td>
-                <td><p>RevokeVerification remove the verification method and all associated verification Relations</p></td>
+                <td><p>RevokeVerification remove the verification method and all associated
+verification Relations</p></td>
               </tr>
             
               <tr>
@@ -5964,7 +5975,8 @@ relationships that the method is allowed into. </p></td>
                   <td>entityStatus</td>
                   <td><a href="#int32">int32</a></td>
                   <td></td>
-                  <td><p>Status of the Entity as defined by the implementer and interpreted by Client applications </p></td>
+                  <td><p>Status of the Entity as defined by the implementer and interpreted by
+Client applications </p></td>
                 </tr>
               
                 <tr>
@@ -6027,7 +6039,8 @@ relationships that the method is allowed into. </p></td>
                   <td>startDate</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>Start Date of the Entity as defined by the implementer and interpreted by Client applications
+                  <td><p>Start Date of the Entity as defined by the implementer and interpreted by
+Client applications
 
 address of the account signing the message </p></td>
                 </tr>
@@ -6036,7 +6049,8 @@ address of the account signing the message </p></td>
                   <td>endDate</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>End Date of the Entity as defined by the implementer and interpreted by Client applications
+                  <td><p>End Date of the Entity as defined by the implementer and interpreted by
+Client applications
 
 address of the account signing the message </p></td>
                 </tr>
@@ -6045,14 +6059,15 @@ address of the account signing the message </p></td>
                   <td>stage</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>State of the Entity as defined by the implementer and interpreted by Client applications </p></td>
+                  <td><p>State of the Entity as defined by the implementer and </p></td>
                 </tr>
               
                 <tr>
                   <td>relayerNode</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>DID of the operator through which the Entity was created </p></td>
+                  <td><p>interpreted by Client applications
+DID of the operator through which the Entity was created </p></td>
                 </tr>
               
                 <tr>
@@ -6066,7 +6081,8 @@ address of the account signing the message </p></td>
                   <td>verifiableCredential</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Content ID or Hash of public Verifiable Credentials associated with the  subject </p></td>
+                  <td><p>Content ID or Hash of public Verifiable Credentials associated with the
+subject </p></td>
                 </tr>
               
                 <tr>
@@ -6181,14 +6197,14 @@ address of the account signing the message </p></td>
         
       
         <h3 id="kaiju.entity.v1beta1.MsgTransferEntityResponse">MsgTransferEntityResponse</h3>
-        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateEntityStatus response type.</p>
+        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateEntityStatus response</p><p>type.</p>
 
         
 
         
       
         <h3 id="kaiju.entity.v1beta1.MsgUpdateEntity">MsgUpdateEntity</h3>
-        <p>MsgUpdateEntityStatus defines a message for updating a entity's current status.</p>
+        <p>MsgUpdateEntityStatus defines a message for updating a entity's current</p><p>status.</p>
 
         
           <table class="field-table">
@@ -6272,7 +6288,7 @@ address of the account signing the message </p></td>
         
       
         <h3 id="kaiju.entity.v1beta1.MsgUpdateEntityResponse">MsgUpdateEntityResponse</h3>
-        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateEntityStatus response type.</p>
+        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateEntityStatus response</p><p>type.</p>
 
         
 
@@ -6471,7 +6487,7 @@ address of the account signing the message </p></td>
         
       
         <h3 id="kaiju.iid.v1beta1.QueryIidDocumentResponse">QueryIidDocumentResponse</h3>
-        <p>QueryDidDocumentsResponse is response type for the Query/DidDocuments RPC method</p>
+        <p>QueryDidDocumentsResponse is response type for the Query/DidDocuments RPC</p><p>method</p>
 
         
           <table class="field-table">
@@ -6521,7 +6537,7 @@ DidMetadata didMetadata = 2  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.iid.v1beta1.QueryIidDocumentsResponse">QueryIidDocumentsResponse</h3>
-        <p>QueryDidDocumentsResponse is response type for the Query/DidDocuments RPC method</p>
+        <p>QueryDidDocumentsResponse is response type for the Query/DidDocuments RPC</p><p>method</p>
 
         
           <table class="field-table">
@@ -6862,7 +6878,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
 
       
         <h3 id="legacydid.BaseDidDoc">BaseDidDoc</h3>
-        <p>BaseDidDoc defines a base DID document type. It implements the DidDoc interface.</p>
+        <p>BaseDidDoc defines a base DID document type. It implements the DidDoc</p><p>interface.</p>
 
         
           <table class="field-table">
@@ -6914,7 +6930,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
 
       
         <h3 id="kaiju.payments.v1.BlockPeriod">BlockPeriod</h3>
-        <p>BlockPeriod implements the Period interface and specifies a period in terms of number</p><p>of blocks.</p>
+        <p>BlockPeriod implements the Period interface and specifies a period in terms</p><p>of number of blocks.</p>
 
         
           <table class="field-table">
@@ -6976,7 +6992,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.DistributionShare">DistributionShare</h3>
-        <p>DistributionShare specifies the share of a specific payment an address will receive.</p>
+        <p>DistributionShare specifies the share of a specific payment an address will</p><p>receive.</p>
 
         
           <table class="field-table">
@@ -7007,7 +7023,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.PaymentContract">PaymentContract</h3>
-        <p>PaymentContract specifies an agreement between a payer and payee/s which can be invoked</p><p>once or multiple times to effect payment/s.</p>
+        <p>PaymentContract specifies an agreement between a payer and payee/s which can</p><p>be invoked once or multiple times to effect payment/s.</p>
 
         
           <table class="field-table">
@@ -7094,7 +7110,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.PaymentTemplate">PaymentTemplate</h3>
-        <p>PaymentTemplate contains details about a payment, with no info about the payer or payee.</p>
+        <p>PaymentTemplate contains details about a payment, with no info about the</p><p>payer or payee.</p>
 
         
           <table class="field-table">
@@ -7205,7 +7221,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.TestPeriod">TestPeriod</h3>
-        <p>TestPeriod implements the Period interface and is identical to BlockPeriod, except it</p><p>ignores the context in periodEnded() and periodStarted().</p>
+        <p>TestPeriod implements the Period interface and is identical to BlockPeriod,</p><p>except it ignores the context in periodEnded() and periodStarted().</p>
 
         
           <table class="field-table">
@@ -7236,7 +7252,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.TimePeriod">TimePeriod</h3>
-        <p>TimePeriod implements the Period interface and specifies a period in terms of time.</p>
+        <p>TimePeriod implements the Period interface and specifies a period in terms of</p><p>time.</p>
 
         
           <table class="field-table">
@@ -7333,7 +7349,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
 
       
         <h3 id="kaiju.payments.v1.QueryPaymentContractRequest">QueryPaymentContractRequest</h3>
-        <p>QueryPaymentContractRequest is the request type for the Query/PaymentContract RPC method.</p>
+        <p>QueryPaymentContractRequest is the request type for the Query/PaymentContract</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -7357,7 +7373,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QueryPaymentContractResponse">QueryPaymentContractResponse</h3>
-        <p>QueryPaymentContractResponse is the response type for the Query/PaymentContract RPC method.</p>
+        <p>QueryPaymentContractResponse is the response type for the</p><p>Query/PaymentContract RPC method.</p>
 
         
           <table class="field-table">
@@ -7381,7 +7397,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QueryPaymentContractsByIdPrefixRequest">QueryPaymentContractsByIdPrefixRequest</h3>
-        <p>QueryPaymentContractsByIdPrefixRequest is the request type for the Query/PaymentContractsByIdPrefix RPC method.</p>
+        <p>QueryPaymentContractsByIdPrefixRequest is the request type for the</p><p>Query/PaymentContractsByIdPrefix RPC method.</p>
 
         
           <table class="field-table">
@@ -7405,7 +7421,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QueryPaymentContractsByIdPrefixResponse">QueryPaymentContractsByIdPrefixResponse</h3>
-        <p>QueryPaymentContractsByIdPrefixResponse is the response type for the Query/PaymentContractsByIdPrefix RPC method.</p>
+        <p>QueryPaymentContractsByIdPrefixResponse is the response type for the</p><p>Query/PaymentContractsByIdPrefix RPC method.</p>
 
         
           <table class="field-table">
@@ -7429,7 +7445,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QueryPaymentTemplateRequest">QueryPaymentTemplateRequest</h3>
-        <p>QueryPaymentTemplateRequest is the request type for the Query/PaymentTemplate RPC method.</p>
+        <p>QueryPaymentTemplateRequest is the request type for the Query/PaymentTemplate</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -7453,7 +7469,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QueryPaymentTemplateResponse">QueryPaymentTemplateResponse</h3>
-        <p>QueryPaymentTemplateResponse is the response type for the Query/PaymentTemplate RPC method.</p>
+        <p>QueryPaymentTemplateResponse is the response type for the</p><p>Query/PaymentTemplate RPC method.</p>
 
         
           <table class="field-table">
@@ -7477,7 +7493,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QuerySubscriptionRequest">QuerySubscriptionRequest</h3>
-        <p>QuerySubscriptionRequest is the request type for the Query/Subscription RPC method.</p>
+        <p>QuerySubscriptionRequest is the request type for the Query/Subscription RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -7501,7 +7517,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.QuerySubscriptionResponse">QuerySubscriptionResponse</h3>
-        <p>QuerySubscriptionResponse is the response type for the Query/Subscription RPC method.</p>
+        <p>QuerySubscriptionResponse is the response type for the Query/Subscription RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -7556,7 +7572,8 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                 <td>PaymentContractsByIdPrefix</td>
                 <td><a href="#kaiju.payments.v1.QueryPaymentContractsByIdPrefixRequest">QueryPaymentContractsByIdPrefixRequest</a></td>
                 <td><a href="#kaiju.payments.v1.QueryPaymentContractsByIdPrefixResponse">QueryPaymentContractsByIdPrefixResponse</a></td>
-                <td><p>PaymentContractsByIdPrefix lists all payment contracts having an id with a specific prefix.</p></td>
+                <td><p>PaymentContractsByIdPrefix lists all payment contracts having an id with a
+specific prefix.</p></td>
               </tr>
             
               <tr>
@@ -7710,7 +7727,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgCreatePaymentContractResponse">MsgCreatePaymentContractResponse</h3>
-        <p>MsgCreatePaymentContractResponse defines the Msg/CreatePaymentContract response type.</p>
+        <p>MsgCreatePaymentContractResponse defines the Msg/CreatePaymentContract</p><p>response type.</p>
 
         
 
@@ -7755,7 +7772,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgCreatePaymentTemplateResponse">MsgCreatePaymentTemplateResponse</h3>
-        <p>MsgCreatePaymentTemplateResponse defines the Msg/CreatePaymentTemplate response type.</p>
+        <p>MsgCreatePaymentTemplateResponse defines the Msg/CreatePaymentTemplate</p><p>response type.</p>
 
         
 
@@ -7821,14 +7838,14 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgCreateSubscriptionResponse">MsgCreateSubscriptionResponse</h3>
-        <p>MsgCreateSubscriptionResponse defines the Msg/CreateSubscription response type.</p>
+        <p>MsgCreateSubscriptionResponse defines the Msg/CreateSubscription response</p><p>type.</p>
 
         
 
         
       
         <h3 id="kaiju.payments.v1.MsgEffectPayment">MsgEffectPayment</h3>
-        <p>MsgEffectPayment defines a message for putting a specific payment contract into effect.</p>
+        <p>MsgEffectPayment defines a message for putting a specific payment contract</p><p>into effect.</p>
 
         
           <table class="field-table">
@@ -7880,7 +7897,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgGrantDiscount">MsgGrantDiscount</h3>
-        <p>MsgGrantDiscount defines a message for granting a discount to a payer on a specific payment contract.</p>
+        <p>MsgGrantDiscount defines a message for granting a discount to a payer on a</p><p>specific payment contract.</p>
 
         
           <table class="field-table">
@@ -7939,7 +7956,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgRevokeDiscount">MsgRevokeDiscount</h3>
-        <p>MsgRevokeDiscount defines a message for revoking a discount previously granted to a payer.</p>
+        <p>MsgRevokeDiscount defines a message for revoking a discount previously</p><p>granted to a payer.</p>
 
         
           <table class="field-table">
@@ -7991,7 +8008,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgSetPaymentContractAuthorisation">MsgSetPaymentContractAuthorisation</h3>
-        <p>MsgSetPaymentContractAuthorisation defines a message for authorising or deauthorising a payment contract.</p>
+        <p>MsgSetPaymentContractAuthorisation defines a message for authorising or</p><p>deauthorising a payment contract.</p>
 
         
           <table class="field-table">
@@ -8036,7 +8053,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.payments.v1.MsgSetPaymentContractAuthorisationResponse">MsgSetPaymentContractAuthorisationResponse</h3>
-        <p>MsgSetPaymentContractAuthorisationResponse defines the Msg/SetPaymentContractAuthorisation response type.</p>
+        <p>MsgSetPaymentContractAuthorisationResponse defines the</p><p>Msg/SetPaymentContractAuthorisation response type.</p>
 
         
 
@@ -8060,7 +8077,8 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                 <td>SetPaymentContractAuthorisation</td>
                 <td><a href="#kaiju.payments.v1.MsgSetPaymentContractAuthorisation">MsgSetPaymentContractAuthorisation</a></td>
                 <td><a href="#kaiju.payments.v1.MsgSetPaymentContractAuthorisationResponse">MsgSetPaymentContractAuthorisationResponse</a></td>
-                <td><p>SetPaymentContractAuthorisation defines a method for authorising or deauthorising a payment contract.</p></td>
+                <td><p>SetPaymentContractAuthorisation defines a method for authorising or
+deauthorising a payment contract.</p></td>
               </tr>
             
               <tr>
@@ -8088,21 +8106,24 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                 <td>GrantDiscount</td>
                 <td><a href="#kaiju.payments.v1.MsgGrantDiscount">MsgGrantDiscount</a></td>
                 <td><a href="#kaiju.payments.v1.MsgGrantDiscountResponse">MsgGrantDiscountResponse</a></td>
-                <td><p>GrantDiscount defines a method for granting a discount to a payer on a specific payment contract.</p></td>
+                <td><p>GrantDiscount defines a method for granting a discount to a payer on a
+specific payment contract.</p></td>
               </tr>
             
               <tr>
                 <td>RevokeDiscount</td>
                 <td><a href="#kaiju.payments.v1.MsgRevokeDiscount">MsgRevokeDiscount</a></td>
                 <td><a href="#kaiju.payments.v1.MsgRevokeDiscountResponse">MsgRevokeDiscountResponse</a></td>
-                <td><p>RevokeDiscount defines a method for revoking a discount previously granted to a payer.</p></td>
+                <td><p>RevokeDiscount defines a method for revoking a discount previously granted
+to a payer.</p></td>
               </tr>
             
               <tr>
                 <td>EffectPayment</td>
                 <td><a href="#kaiju.payments.v1.MsgEffectPayment">MsgEffectPayment</a></td>
                 <td><a href="#kaiju.payments.v1.MsgEffectPaymentResponse">MsgEffectPaymentResponse</a></td>
-                <td><p>EffectPayment defines a method for putting a specific payment contract into effect.</p></td>
+                <td><p>EffectPayment defines a method for putting a specific payment contract into
+effect.</p></td>
               </tr>
             
           </tbody>
@@ -8118,7 +8139,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
 
       
         <h3 id="kaiju.project.v1.AccountMap">AccountMap</h3>
-        <p>AccountMap maps a specific project's account names to the accounts' addresses.</p>
+        <p>AccountMap maps a specific project's account names to the accounts'</p><p>addresses.</p>
 
         
           <table class="field-table">
@@ -8304,7 +8325,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.CreateEvaluationDoc">CreateEvaluationDoc</h3>
-        <p>CreateEvaluationDoc contains details required to create an evaluation for a specific claim on a project.</p>
+        <p>CreateEvaluationDoc contains details required to create an evaluation for a</p><p>specific claim on a project.</p>
 
         
           <table class="field-table">
@@ -8335,7 +8356,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.GenesisAccountMap">GenesisAccountMap</h3>
-        <p>GenesisAccountMap is a type used at genesis that maps a specific project's account names to the accounts' addresses.</p>
+        <p>GenesisAccountMap is a type used at genesis that maps a specific project's</p><p>account names to the accounts' addresses.</p>
 
         
           <table class="field-table">
@@ -8532,7 +8553,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.UpdateProjectStatusDoc">UpdateProjectStatusDoc</h3>
-        <p>UpdateProjectStatusDoc contains details required to update a project's status.</p>
+        <p>UpdateProjectStatusDoc contains details required to update a project's</p><p>status.</p>
 
         
           <table class="field-table">
@@ -8563,7 +8584,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.WithdrawFundsDoc">WithdrawFundsDoc</h3>
-        <p>WithdrawFundsDoc contains details required to withdraw funds from a specific project.</p>
+        <p>WithdrawFundsDoc contains details required to withdraw funds from a specific</p><p>project.</p>
 
         
           <table class="field-table">
@@ -8608,7 +8629,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.WithdrawalInfoDoc">WithdrawalInfoDoc</h3>
-        <p>WithdrawalInfoDoc contains details required to withdraw from a specific project.</p>
+        <p>WithdrawalInfoDoc contains details required to withdraw from a specific</p><p>project.</p>
 
         
           <table class="field-table">
@@ -8781,7 +8802,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.QueryProjectAccountsRequest">QueryProjectAccountsRequest</h3>
-        <p>QueryProjectAccountsRequest is the request type for the Query/ProjectAccounts RPC method.</p>
+        <p>QueryProjectAccountsRequest is the request type for the Query/ProjectAccounts</p><p>RPC method.</p>
 
         
           <table class="field-table">
@@ -8805,7 +8826,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.QueryProjectAccountsResponse">QueryProjectAccountsResponse</h3>
-        <p>QueryProjectAccountsResponse is the response type for the Query/ProjectAccounts RPC method.</p>
+        <p>QueryProjectAccountsResponse is the response type for the</p><p>Query/ProjectAccounts RPC method.</p>
 
         
           <table class="field-table">
@@ -8829,7 +8850,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.QueryProjectDocRequest">QueryProjectDocRequest</h3>
-        <p>QueryProjectDocRequest is the request type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocRequest is the request type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -8853,7 +8874,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.QueryProjectDocResponse">QueryProjectDocResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -8901,7 +8922,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.QueryProjectTxResponse">QueryProjectTxResponse</h3>
-        <p>QueryProjectTxResponse is the response type for the Query/ProjectTx RPC method.</p>
+        <p>QueryProjectTxResponse is the response type for the Query/ProjectTx RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -9155,7 +9176,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.MsgCreateEvaluation">MsgCreateEvaluation</h3>
-        <p>MsgCreateEvaluation defines a message for creating an evaluation for a specific claim on a project.</p>
+        <p>MsgCreateEvaluation defines a message for creating an evaluation for a</p><p>specific claim on a project.</p>
 
         
           <table class="field-table">
@@ -9398,7 +9419,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.MsgUpdateProjectStatus">MsgUpdateProjectStatus</h3>
-        <p>MsgUpdateProjectStatus defines a message for updating a project's current status.</p>
+        <p>MsgUpdateProjectStatus defines a message for updating a project's current</p><p>status.</p>
 
         
           <table class="field-table">
@@ -9450,14 +9471,14 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.project.v1.MsgUpdateProjectStatusResponse">MsgUpdateProjectStatusResponse</h3>
-        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateProjectStatus response type.</p>
+        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateProjectStatus response</p><p>type.</p>
 
         
 
         
       
         <h3 id="kaiju.project.v1.MsgWithdrawFunds">MsgWithdrawFunds</h3>
-        <p>MsgWithdrawFunds defines a message for project agents to withdraw their funds from a project.</p>
+        <p>MsgWithdrawFunds defines a message for project agents to withdraw their funds</p><p>from a project.</p>
 
         
           <table class="field-table">
@@ -9526,7 +9547,8 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                 <td>UpdateProjectStatus</td>
                 <td><a href="#kaiju.project.v1.MsgUpdateProjectStatus">MsgUpdateProjectStatus</a></td>
                 <td><a href="#kaiju.project.v1.MsgUpdateProjectStatusResponse">MsgUpdateProjectStatusResponse</a></td>
-                <td><p>UpdateProjectStatus defines a method for updating a project&#39;s current status.</p></td>
+                <td><p>UpdateProjectStatus defines a method for updating a project&#39;s current
+status.</p></td>
               </tr>
             
               <tr>
@@ -9554,14 +9576,16 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                 <td>CreateEvaluation</td>
                 <td><a href="#kaiju.project.v1.MsgCreateEvaluation">MsgCreateEvaluation</a></td>
                 <td><a href="#kaiju.project.v1.MsgCreateEvaluationResponse">MsgCreateEvaluationResponse</a></td>
-                <td><p>CreateEvaluation defines a method for creating an evaluation for a specific claim on a project.</p></td>
+                <td><p>CreateEvaluation defines a method for creating an evaluation for a specific
+claim on a project.</p></td>
               </tr>
             
               <tr>
                 <td>WithdrawFunds</td>
                 <td><a href="#kaiju.project.v1.MsgWithdrawFunds">MsgWithdrawFunds</a></td>
                 <td><a href="#kaiju.project.v1.MsgWithdrawFundsResponse">MsgWithdrawFundsResponse</a></td>
-                <td><p>WithdrawFunds defines a method for project agents to withdraw their funds from a project.</p></td>
+                <td><p>WithdrawFunds defines a method for project agents to withdraw their funds
+from a project.</p></td>
               </tr>
             
               <tr>
@@ -9927,7 +9951,8 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                   <td>Params</td>
                   <td><a href="#kaiju.token.v1beta1.Params">Params</a></td>
                   <td></td>
-                  <td><p>repeated GenesisAccountMap account_maps       = 2 [(gogoproto.nullable) = false, (gogoproto.moretags) = &#34;yaml:\&#34;account_maps\&#34;&#34;]; </p></td>
+                  <td><p>repeated GenesisAccountMap account_maps       = 2 [(gogoproto.nullable) =
+false, (gogoproto.moretags) = &#34;yaml:\&#34;account_maps\&#34;&#34;]; </p></td>
                 </tr>
               
             </tbody>
@@ -10011,7 +10036,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.token.v1beta1.QueryTokenConfigResponse">QueryTokenConfigResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -10066,7 +10091,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.token.v1beta1.QueryTokenDocRequest">QueryTokenDocRequest</h3>
-        <p>QueryProjectDocRequest is the request type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocRequest is the request type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -10097,7 +10122,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.token.v1beta1.QueryTokenDocResponse">QueryTokenDocResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
 
@@ -10128,7 +10153,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.token.v1beta1.QueryTokenListResponse">QueryTokenListResponse</h3>
-        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC method.</p>
+        <p>QueryProjectDocResponse is the response type for the Query/ProjectDoc RPC</p><p>method.</p>
 
         
           <table class="field-table">
@@ -10298,14 +10323,18 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                   <td>image</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>A URI pointing to a resource with media type image/* representing the asset to which this token represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive. </p></td>
+                  <td><p>A URI pointing to a resource with media type image/* representing </p></td>
                 </tr>
               
                 <tr>
                   <td>uri</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Uri </p></td>
+                  <td><p>the asset to which this token represents. Consider making any
+images at a width between 320 and 1080 pixels and aspect ratio
+between 1.91:1 and 4:5 inclusive.
+
+Uri </p></td>
                 </tr>
               
                 <tr>
@@ -10367,21 +10396,25 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
                   <td>image</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>A URI pointing to a resource with media type image/* representing the asset to which this token represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive. </p></td>
+                  <td><p>A URI pointing to a resource with media type image/* representing </p></td>
                 </tr>
               
                 <tr>
                   <td>uri</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Uri </p></td>
+                  <td><p>the asset to which this token represents. Consider making any
+images at a width between 320 and 1080 pixels and aspect ratio
+between 1.91:1 and 4:5 inclusive.
+
+Uri </p></td>
                 </tr>
               
                 <tr>
                   <td>properties</td>
                   <td><a href="#bytes">bytes</a></td>
                   <td></td>
-                  <td><p>&#34;Arbitrary properties. Values may be strings, numbers, object or arrays.&#34;]; </p></td>
+                  <td><p>&#34;Arbitrary properties. Values may be strings, numbers, object or </p></td>
                 </tr>
               
             </tbody>
@@ -10590,7 +10623,7 @@ IidDocument iidDocument = 1  [(gogoproto.nullable) = false]; </p></td>
         
       
         <h3 id="kaiju.token.v1beta1.MsgTransferTokenResponse">MsgTransferTokenResponse</h3>
-        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateTokenStatus response type.</p>
+        <p>MsgUpdateProjectStatusResponse defines the Msg/UpdateTokenStatus response</p><p>type.</p>
 
         
 

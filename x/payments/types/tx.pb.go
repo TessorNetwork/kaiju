@@ -12,7 +12,7 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
-	github_com_kaijufoundation_kaiju_blockchain_x_iid_types "github.com/tessornetwork/kaiju/x/iid/types"
+	github_com_tessornetwork_kaiju_x_iid_types "github.com/tessornetwork/kaiju/x/iid/types"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -32,18 +32,19 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// MsgSetPaymentContractAuthorisation defines a message for authorising or deauthorising a payment contract.
+// MsgSetPaymentContractAuthorisation defines a message for authorising or
+// deauthorising a payment contract.
 type MsgSetPaymentContractAuthorisation struct {
-	PaymentContractId string                                                          `protobuf:"bytes,1,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
-	PayerDid          github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,2,opt,name=payer_did,json=payerDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"payer_did,omitempty" yaml:"payer_did"`
-	Authorised        bool                                                            `protobuf:"varint,3,opt,name=authorised,proto3" json:"authorised,omitempty" yaml:"authorised"`
-	PayerAddress      string                                                          `protobuf:"bytes,4,opt,name=payer_address,json=payerAddress,proto3" json:"payer_address" yaml:"payer_address"`
+	PaymentContractId string                                                 `protobuf:"bytes,1,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
+	PayerDid          github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,2,opt,name=payer_did,json=payerDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"payer_did,omitempty" yaml:"payer_did"`
+	Authorised        bool                                                   `protobuf:"varint,3,opt,name=authorised,proto3" json:"authorised,omitempty" yaml:"authorised"`
+	PayerAddress      string                                                 `protobuf:"bytes,4,opt,name=payer_address,json=payerAddress,proto3" json:"payer_address" yaml:"payer_address"`
 }
 
 func (m *MsgSetPaymentContractAuthorisation) Reset()      { *m = MsgSetPaymentContractAuthorisation{} }
 func (*MsgSetPaymentContractAuthorisation) ProtoMessage() {}
 func (*MsgSetPaymentContractAuthorisation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{0}
+	return fileDescriptor_7678362972347e96, []int{0}
 }
 func (m *MsgSetPaymentContractAuthorisation) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -79,7 +80,7 @@ func (m *MsgSetPaymentContractAuthorisation) GetPaymentContractId() string {
 	return ""
 }
 
-func (m *MsgSetPaymentContractAuthorisation) GetPayerDid() github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment {
+func (m *MsgSetPaymentContractAuthorisation) GetPayerDid() github_com_tessornetwork_kaiju_x_iid_types.DIDFragment {
 	if m != nil {
 		return m.PayerDid
 	}
@@ -100,7 +101,8 @@ func (m *MsgSetPaymentContractAuthorisation) GetPayerAddress() string {
 	return ""
 }
 
-// MsgSetPaymentContractAuthorisationResponse defines the Msg/SetPaymentContractAuthorisation response type.
+// MsgSetPaymentContractAuthorisationResponse defines the
+// Msg/SetPaymentContractAuthorisation response type.
 type MsgSetPaymentContractAuthorisationResponse struct {
 }
 
@@ -112,7 +114,7 @@ func (m *MsgSetPaymentContractAuthorisationResponse) String() string {
 }
 func (*MsgSetPaymentContractAuthorisationResponse) ProtoMessage() {}
 func (*MsgSetPaymentContractAuthorisationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{1}
+	return fileDescriptor_7678362972347e96, []int{1}
 }
 func (m *MsgSetPaymentContractAuthorisationResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -143,15 +145,15 @@ var xxx_messageInfo_MsgSetPaymentContractAuthorisationResponse proto.InternalMes
 
 // MsgCreatePaymentTemplate defines a message for creating a payment template.
 type MsgCreatePaymentTemplate struct {
-	CreatorDid      github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=creator_did,json=creatorDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"creator_did,omitempty" yaml:"creator_did"`
-	PaymentTemplate PaymentTemplate                                                 `protobuf:"bytes,2,opt,name=payment_template,json=paymentTemplate,proto3" json:"payment_template" yaml:"payment_template"`
-	CreatorAddress  string                                                          `protobuf:"bytes,3,opt,name=creator_address,json=creatorAddress,proto3" json:"creator_address" yaml:"creator_address"`
+	CreatorDid      github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=creator_did,json=creatorDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"creator_did,omitempty" yaml:"creator_did"`
+	PaymentTemplate PaymentTemplate                                        `protobuf:"bytes,2,opt,name=payment_template,json=paymentTemplate,proto3" json:"payment_template" yaml:"payment_template"`
+	CreatorAddress  string                                                 `protobuf:"bytes,3,opt,name=creator_address,json=creatorAddress,proto3" json:"creator_address" yaml:"creator_address"`
 }
 
 func (m *MsgCreatePaymentTemplate) Reset()      { *m = MsgCreatePaymentTemplate{} }
 func (*MsgCreatePaymentTemplate) ProtoMessage() {}
 func (*MsgCreatePaymentTemplate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{2}
+	return fileDescriptor_7678362972347e96, []int{2}
 }
 func (m *MsgCreatePaymentTemplate) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -180,7 +182,7 @@ func (m *MsgCreatePaymentTemplate) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCreatePaymentTemplate proto.InternalMessageInfo
 
-func (m *MsgCreatePaymentTemplate) GetCreatorDid() github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment {
+func (m *MsgCreatePaymentTemplate) GetCreatorDid() github_com_tessornetwork_kaiju_x_iid_types.DIDFragment {
 	if m != nil {
 		return m.CreatorDid
 	}
@@ -201,7 +203,8 @@ func (m *MsgCreatePaymentTemplate) GetCreatorAddress() string {
 	return ""
 }
 
-// MsgCreatePaymentTemplateResponse defines the Msg/CreatePaymentTemplate response type.
+// MsgCreatePaymentTemplateResponse defines the Msg/CreatePaymentTemplate
+// response type.
 type MsgCreatePaymentTemplateResponse struct {
 }
 
@@ -209,7 +212,7 @@ func (m *MsgCreatePaymentTemplateResponse) Reset()         { *m = MsgCreatePayme
 func (m *MsgCreatePaymentTemplateResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgCreatePaymentTemplateResponse) ProtoMessage()    {}
 func (*MsgCreatePaymentTemplateResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{3}
+	return fileDescriptor_7678362972347e96, []int{3}
 }
 func (m *MsgCreatePaymentTemplateResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -240,20 +243,20 @@ var xxx_messageInfo_MsgCreatePaymentTemplateResponse proto.InternalMessageInfo
 
 // MsgCreatePaymentContract defines a message for creating a payment contract.
 type MsgCreatePaymentContract struct {
-	CreatorDid        github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=creator_did,json=creatorDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"creator_did,omitempty" yaml:"creator_did"`
-	PaymentTemplateId string                                                          `protobuf:"bytes,2,opt,name=payment_template_id,json=paymentTemplateId,proto3" json:"payment_template_id,omitempty" yaml:"payment_template_id"`
-	PaymentContractId string                                                          `protobuf:"bytes,3,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
-	Payer             string                                                          `protobuf:"bytes,4,opt,name=payer,proto3" json:"payer,omitempty" yaml:"payer"`
-	Recipients        []DistributionShare                                             `protobuf:"bytes,5,rep,name=recipients,proto3" json:"recipients" yaml:"recipients"`
-	CanDeauthorise    bool                                                            `protobuf:"varint,6,opt,name=can_deauthorise,json=canDeauthorise,proto3" json:"can_deauthorise,omitempty" yaml:"can_deauthorise"`
-	DiscountId        github_com_cosmos_cosmos_sdk_types.Uint                         `protobuf:"bytes,7,opt,name=discount_id,json=discountId,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Uint" json:"discount_id" yaml:"discount_id"`
-	CreatorAddress    string                                                          `protobuf:"bytes,8,opt,name=creator_address,json=creatorAddress,proto3" json:"creator_address" yaml:"creator_address"`
+	CreatorDid        github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=creator_did,json=creatorDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"creator_did,omitempty" yaml:"creator_did"`
+	PaymentTemplateId string                                                 `protobuf:"bytes,2,opt,name=payment_template_id,json=paymentTemplateId,proto3" json:"payment_template_id,omitempty" yaml:"payment_template_id"`
+	PaymentContractId string                                                 `protobuf:"bytes,3,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
+	Payer             string                                                 `protobuf:"bytes,4,opt,name=payer,proto3" json:"payer,omitempty" yaml:"payer"`
+	Recipients        []DistributionShare                                    `protobuf:"bytes,5,rep,name=recipients,proto3" json:"recipients" yaml:"recipients"`
+	CanDeauthorise    bool                                                   `protobuf:"varint,6,opt,name=can_deauthorise,json=canDeauthorise,proto3" json:"can_deauthorise,omitempty" yaml:"can_deauthorise"`
+	DiscountId        github_com_cosmos_cosmos_sdk_types.Uint                `protobuf:"bytes,7,opt,name=discount_id,json=discountId,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Uint" json:"discount_id" yaml:"discount_id"`
+	CreatorAddress    string                                                 `protobuf:"bytes,8,opt,name=creator_address,json=creatorAddress,proto3" json:"creator_address" yaml:"creator_address"`
 }
 
 func (m *MsgCreatePaymentContract) Reset()      { *m = MsgCreatePaymentContract{} }
 func (*MsgCreatePaymentContract) ProtoMessage() {}
 func (*MsgCreatePaymentContract) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{4}
+	return fileDescriptor_7678362972347e96, []int{4}
 }
 func (m *MsgCreatePaymentContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -282,7 +285,7 @@ func (m *MsgCreatePaymentContract) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCreatePaymentContract proto.InternalMessageInfo
 
-func (m *MsgCreatePaymentContract) GetCreatorDid() github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment {
+func (m *MsgCreatePaymentContract) GetCreatorDid() github_com_tessornetwork_kaiju_x_iid_types.DIDFragment {
 	if m != nil {
 		return m.CreatorDid
 	}
@@ -331,7 +334,8 @@ func (m *MsgCreatePaymentContract) GetCreatorAddress() string {
 	return ""
 }
 
-// MsgCreatePaymentContractResponse defines the Msg/CreatePaymentContract response type.
+// MsgCreatePaymentContractResponse defines the Msg/CreatePaymentContract
+// response type.
 type MsgCreatePaymentContractResponse struct {
 }
 
@@ -339,7 +343,7 @@ func (m *MsgCreatePaymentContractResponse) Reset()         { *m = MsgCreatePayme
 func (m *MsgCreatePaymentContractResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgCreatePaymentContractResponse) ProtoMessage()    {}
 func (*MsgCreatePaymentContractResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{5}
+	return fileDescriptor_7678362972347e96, []int{5}
 }
 func (m *MsgCreatePaymentContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -370,18 +374,18 @@ var xxx_messageInfo_MsgCreatePaymentContractResponse proto.InternalMessageInfo
 
 // MsgCreateSubscription defines a message for creating a subscription.
 type MsgCreateSubscription struct {
-	CreatorDid        github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=creator_did,json=creatorDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"creator_did,omitempty" yaml:"creator_did"`
-	SubscriptionId    string                                                          `protobuf:"bytes,2,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty" yaml:"subscription_id"`
-	PaymentContractId string                                                          `protobuf:"bytes,3,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
-	MaxPeriods        github_com_cosmos_cosmos_sdk_types.Uint                         `protobuf:"bytes,4,opt,name=max_periods,json=maxPeriods,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Uint" json:"max_periods" yaml:"max_periods"`
-	Period            *types.Any                                                      `protobuf:"bytes,5,opt,name=period,proto3" json:"period,omitempty" yaml:"period"`
-	CreatorAddress    string                                                          `protobuf:"bytes,6,opt,name=creator_address,json=creatorAddress,proto3" json:"creator_address" yaml:"creator_address"`
+	CreatorDid        github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=creator_did,json=creatorDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"creator_did,omitempty" yaml:"creator_did"`
+	SubscriptionId    string                                                 `protobuf:"bytes,2,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty" yaml:"subscription_id"`
+	PaymentContractId string                                                 `protobuf:"bytes,3,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
+	MaxPeriods        github_com_cosmos_cosmos_sdk_types.Uint                `protobuf:"bytes,4,opt,name=max_periods,json=maxPeriods,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Uint" json:"max_periods" yaml:"max_periods"`
+	Period            *types.Any                                             `protobuf:"bytes,5,opt,name=period,proto3" json:"period,omitempty" yaml:"period"`
+	CreatorAddress    string                                                 `protobuf:"bytes,6,opt,name=creator_address,json=creatorAddress,proto3" json:"creator_address" yaml:"creator_address"`
 }
 
 func (m *MsgCreateSubscription) Reset()      { *m = MsgCreateSubscription{} }
 func (*MsgCreateSubscription) ProtoMessage() {}
 func (*MsgCreateSubscription) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{6}
+	return fileDescriptor_7678362972347e96, []int{6}
 }
 func (m *MsgCreateSubscription) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -410,7 +414,8 @@ func (m *MsgCreateSubscription) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCreateSubscription proto.InternalMessageInfo
 
-// MsgCreateSubscriptionResponse defines the Msg/CreateSubscription response type.
+// MsgCreateSubscriptionResponse defines the Msg/CreateSubscription response
+// type.
 type MsgCreateSubscriptionResponse struct {
 }
 
@@ -418,7 +423,7 @@ func (m *MsgCreateSubscriptionResponse) Reset()         { *m = MsgCreateSubscrip
 func (m *MsgCreateSubscriptionResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateSubscriptionResponse) ProtoMessage()    {}
 func (*MsgCreateSubscriptionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{7}
+	return fileDescriptor_7678362972347e96, []int{7}
 }
 func (m *MsgCreateSubscriptionResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -447,19 +452,20 @@ func (m *MsgCreateSubscriptionResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCreateSubscriptionResponse proto.InternalMessageInfo
 
-// MsgGrantDiscount defines a message for granting a discount to a payer on a specific payment contract.
+// MsgGrantDiscount defines a message for granting a discount to a payer on a
+// specific payment contract.
 type MsgGrantDiscount struct {
-	SenderDid         github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=sender_did,json=senderDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"sender_did,omitempty" yaml:"sender_did"`
-	PaymentContractId string                                                          `protobuf:"bytes,2,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
-	DiscountId        github_com_cosmos_cosmos_sdk_types.Uint                         `protobuf:"bytes,3,opt,name=discount_id,json=discountId,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Uint" json:"discount_id" yaml:"discount_id"`
-	Recipient         string                                                          `protobuf:"bytes,4,opt,name=recipient,proto3" json:"recipient,omitempty" yaml:"recipient"`
-	SenderAddress     string                                                          `protobuf:"bytes,5,opt,name=sender_address,json=senderAddress,proto3" json:"sender_address" yaml:"sender_address"`
+	SenderDid         github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=sender_did,json=senderDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"sender_did,omitempty" yaml:"sender_did"`
+	PaymentContractId string                                                 `protobuf:"bytes,2,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
+	DiscountId        github_com_cosmos_cosmos_sdk_types.Uint                `protobuf:"bytes,3,opt,name=discount_id,json=discountId,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Uint" json:"discount_id" yaml:"discount_id"`
+	Recipient         string                                                 `protobuf:"bytes,4,opt,name=recipient,proto3" json:"recipient,omitempty" yaml:"recipient"`
+	SenderAddress     string                                                 `protobuf:"bytes,5,opt,name=sender_address,json=senderAddress,proto3" json:"sender_address" yaml:"sender_address"`
 }
 
 func (m *MsgGrantDiscount) Reset()      { *m = MsgGrantDiscount{} }
 func (*MsgGrantDiscount) ProtoMessage() {}
 func (*MsgGrantDiscount) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{8}
+	return fileDescriptor_7678362972347e96, []int{8}
 }
 func (m *MsgGrantDiscount) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -488,7 +494,7 @@ func (m *MsgGrantDiscount) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgGrantDiscount proto.InternalMessageInfo
 
-func (m *MsgGrantDiscount) GetSenderDid() github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment {
+func (m *MsgGrantDiscount) GetSenderDid() github_com_tessornetwork_kaiju_x_iid_types.DIDFragment {
 	if m != nil {
 		return m.SenderDid
 	}
@@ -524,7 +530,7 @@ func (m *MsgGrantDiscountResponse) Reset()         { *m = MsgGrantDiscountRespon
 func (m *MsgGrantDiscountResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgGrantDiscountResponse) ProtoMessage()    {}
 func (*MsgGrantDiscountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{9}
+	return fileDescriptor_7678362972347e96, []int{9}
 }
 func (m *MsgGrantDiscountResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -553,18 +559,19 @@ func (m *MsgGrantDiscountResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgGrantDiscountResponse proto.InternalMessageInfo
 
-// MsgRevokeDiscount defines a message for revoking a discount previously granted to a payer.
+// MsgRevokeDiscount defines a message for revoking a discount previously
+// granted to a payer.
 type MsgRevokeDiscount struct {
-	SenderDid         github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=sender_did,json=senderDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"sender_did,omitempty" yaml:"sender_did"`
-	PaymentContractId string                                                          `protobuf:"bytes,2,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
-	Holder            string                                                          `protobuf:"bytes,3,opt,name=holder,proto3" json:"holder,omitempty" yaml:"holder"`
-	SenderAddress     string                                                          `protobuf:"bytes,4,opt,name=sender_address,json=senderAddress,proto3" json:"sender_address" yaml:"sender_address"`
+	SenderDid         github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=sender_did,json=senderDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"sender_did,omitempty" yaml:"sender_did"`
+	PaymentContractId string                                                 `protobuf:"bytes,2,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
+	Holder            string                                                 `protobuf:"bytes,3,opt,name=holder,proto3" json:"holder,omitempty" yaml:"holder"`
+	SenderAddress     string                                                 `protobuf:"bytes,4,opt,name=sender_address,json=senderAddress,proto3" json:"sender_address" yaml:"sender_address"`
 }
 
 func (m *MsgRevokeDiscount) Reset()      { *m = MsgRevokeDiscount{} }
 func (*MsgRevokeDiscount) ProtoMessage() {}
 func (*MsgRevokeDiscount) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{10}
+	return fileDescriptor_7678362972347e96, []int{10}
 }
 func (m *MsgRevokeDiscount) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -593,7 +600,7 @@ func (m *MsgRevokeDiscount) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgRevokeDiscount proto.InternalMessageInfo
 
-func (m *MsgRevokeDiscount) GetSenderDid() github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment {
+func (m *MsgRevokeDiscount) GetSenderDid() github_com_tessornetwork_kaiju_x_iid_types.DIDFragment {
 	if m != nil {
 		return m.SenderDid
 	}
@@ -629,7 +636,7 @@ func (m *MsgRevokeDiscountResponse) Reset()         { *m = MsgRevokeDiscountResp
 func (m *MsgRevokeDiscountResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgRevokeDiscountResponse) ProtoMessage()    {}
 func (*MsgRevokeDiscountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{11}
+	return fileDescriptor_7678362972347e96, []int{11}
 }
 func (m *MsgRevokeDiscountResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -658,18 +665,19 @@ func (m *MsgRevokeDiscountResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgRevokeDiscountResponse proto.InternalMessageInfo
 
-// MsgEffectPayment defines a message for putting a specific payment contract into effect.
+// MsgEffectPayment defines a message for putting a specific payment contract
+// into effect.
 type MsgEffectPayment struct {
-	SenderDid            github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=sender_did,json=senderDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"sender_did,omitempty" yaml:"sender_did"`
-	PaymentContractId    string                                                          `protobuf:"bytes,2,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
-	PartialPaymentAmount github_com_cosmos_cosmos_sdk_types.Coins                        `protobuf:"bytes,6,rep,name=partial_payment_amount,json=partialPaymentAmount,proto3,castrepeated=github.com/cosmos/cosmos-sdk/types.Coins" json:"partial_payment_amount" yaml:"partial_payment_amount"`
-	SenderAddress        string                                                          `protobuf:"bytes,4,opt,name=sender_address,json=senderAddress,proto3" json:"sender_address" yaml:"sender_address"`
+	SenderDid            github_com_tessornetwork_kaiju_x_iid_types.DIDFragment `protobuf:"bytes,1,opt,name=sender_did,json=senderDid,proto3,casttype=github.com/tessornetwork/kaiju/x/iid/types.DIDFragment" json:"sender_did,omitempty" yaml:"sender_did"`
+	PaymentContractId    string                                                 `protobuf:"bytes,2,opt,name=payment_contract_id,json=paymentContractId,proto3" json:"payment_contract_id,omitempty" yaml:"payment_contract_id"`
+	PartialPaymentAmount github_com_cosmos_cosmos_sdk_types.Coins               `protobuf:"bytes,6,rep,name=partial_payment_amount,json=partialPaymentAmount,proto3,castrepeated=github.com/cosmos/cosmos-sdk/types.Coins" json:"partial_payment_amount" yaml:"partial_payment_amount"`
+	SenderAddress        string                                                 `protobuf:"bytes,4,opt,name=sender_address,json=senderAddress,proto3" json:"sender_address" yaml:"sender_address"`
 }
 
 func (m *MsgEffectPayment) Reset()      { *m = MsgEffectPayment{} }
 func (*MsgEffectPayment) ProtoMessage() {}
 func (*MsgEffectPayment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{12}
+	return fileDescriptor_7678362972347e96, []int{12}
 }
 func (m *MsgEffectPayment) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -698,7 +706,7 @@ func (m *MsgEffectPayment) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgEffectPayment proto.InternalMessageInfo
 
-func (m *MsgEffectPayment) GetSenderDid() github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment {
+func (m *MsgEffectPayment) GetSenderDid() github_com_tessornetwork_kaiju_x_iid_types.DIDFragment {
 	if m != nil {
 		return m.SenderDid
 	}
@@ -734,7 +742,7 @@ func (m *MsgEffectPaymentResponse) Reset()         { *m = MsgEffectPaymentRespon
 func (m *MsgEffectPaymentResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgEffectPaymentResponse) ProtoMessage()    {}
 func (*MsgEffectPaymentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1af1e3aa55f1a5, []int{13}
+	return fileDescriptor_7678362972347e96, []int{13}
 }
 func (m *MsgEffectPaymentResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -780,86 +788,85 @@ func init() {
 	proto.RegisterType((*MsgEffectPaymentResponse)(nil), "kaiju.payments.v1.MsgEffectPaymentResponse")
 }
 
-func init() { proto.RegisterFile("kaiju/payments/v1/tx.proto", fileDescriptor_7d1af1e3aa55f1a5) }
+func init() { proto.RegisterFile("kaiju/payments/v1/tx.proto", fileDescriptor_7678362972347e96) }
 
-var fileDescriptor_7d1af1e3aa55f1a5 = []byte{
-	// 1205 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x58, 0xcf, 0x4f, 0xe3, 0x46,
-	0x14, 0x4e, 0x08, 0xa4, 0x30, 0x2c, 0xbf, 0x5c, 0xd8, 0x86, 0x54, 0x9b, 0xa1, 0x73, 0xd8, 0xc2,
-	0xb6, 0xd8, 0x82, 0x55, 0xa5, 0x6a, 0x7b, 0x58, 0x11, 0xb2, 0xad, 0x38, 0xb0, 0xda, 0x9a, 0xfe,
-	0x96, 0x56, 0xe9, 0xc4, 0x9e, 0x98, 0x11, 0x89, 0xc7, 0xf2, 0x38, 0x34, 0xe9, 0x5f, 0xd0, 0x63,
-	0xa5, 0x1e, 0xda, 0xe3, 0xaa, 0xc7, 0x5e, 0xfb, 0x4f, 0x70, 0xdc, 0xde, 0xaa, 0x3d, 0xb8, 0x2d,
-	0xdc, 0x38, 0xe6, 0x52, 0xa9, 0xa7, 0xca, 0xe3, 0xb1, 0x63, 0x07, 0xa3, 0x44, 0x2c, 0x68, 0xa5,
-	0x3d, 0x81, 0xe7, 0xbd, 0xf9, 0x66, 0xde, 0xfb, 0xbe, 0xf7, 0xfc, 0x1c, 0x50, 0xa2, 0x5d, 0xa6,
-	0x39, 0xb8, 0xd7, 0x26, 0xb6, 0xc7, 0xb5, 0xe3, 0x2d, 0xcd, 0xeb, 0xaa, 0x8e, 0xcb, 0x3c, 0xa6,
-	0x2c, 0xd0, 0x2e, 0x53, 0x23, 0x8b, 0x7a, 0xbc, 0x55, 0x5e, 0xb6, 0x98, 0xc5, 0x84, 0x4d, 0x0b,
-	0xfe, 0x0b, 0xdd, 0xca, 0xab, 0x16, 0x63, 0x56, 0x8b, 0x68, 0xe2, 0xa9, 0xd1, 0x69, 0x6a, 0xd8,
-	0xee, 0x49, 0x53, 0x65, 0x18, 0x3b, 0x46, 0x93, 0x76, 0x83, 0xf1, 0x36, 0xe3, 0x5a, 0x03, 0x73,
-	0xa2, 0x1d, 0x6f, 0x35, 0x88, 0x87, 0xb7, 0x34, 0x83, 0x51, 0x3b, 0xb4, 0xa3, 0x7f, 0x27, 0x00,
-	0xda, 0xe7, 0xd6, 0x01, 0xf1, 0x9e, 0x84, 0x1b, 0x77, 0x99, 0xed, 0xb9, 0xd8, 0xf0, 0x76, 0x3a,
-	0xde, 0x21, 0x73, 0x29, 0xc7, 0x1e, 0x65, 0xb6, 0xf2, 0x18, 0xbc, 0x29, 0x81, 0xeb, 0x86, 0x74,
-	0xa8, 0x53, 0xb3, 0x94, 0x5f, 0xcb, 0xaf, 0xcf, 0x54, 0x2b, 0x7d, 0x1f, 0x96, 0x7b, 0xb8, 0xdd,
-	0x7a, 0x80, 0x32, 0x9c, 0x90, 0xbe, 0xe4, 0xa4, 0xa1, 0xf7, 0x4c, 0xc5, 0x03, 0x33, 0x0e, 0xee,
-	0x11, 0xb7, 0x6e, 0x52, 0xb3, 0x34, 0x21, 0x50, 0xbe, 0xec, 0xfb, 0x70, 0x31, 0x46, 0x09, 0x4d,
-	0xe8, 0x3f, 0x1f, 0x3e, 0xb4, 0xa8, 0x77, 0xd8, 0x69, 0xa8, 0x06, 0x6b, 0x6b, 0xb4, 0xcb, 0x9a,
-	0xac, 0x63, 0x9b, 0xe2, 0x52, 0xc1, 0xd3, 0x66, 0xa3, 0xc5, 0x8c, 0x23, 0xe3, 0x10, 0x53, 0x5b,
-	0xeb, 0x6a, 0x94, 0x9a, 0x9a, 0xd7, 0x73, 0x08, 0x57, 0x6b, 0x7b, 0xb5, 0x8f, 0x5d, 0x6c, 0x05,
-	0xa7, 0xea, 0xd3, 0x02, 0xae, 0x46, 0x4d, 0xe5, 0x03, 0x00, 0xb0, 0x0c, 0x8b, 0x98, 0xa5, 0xc2,
-	0x5a, 0x7e, 0x7d, 0xba, 0xba, 0xd2, 0xf7, 0xe1, 0x52, 0x78, 0xec, 0xc0, 0x86, 0xf4, 0x84, 0xa3,
-	0xf2, 0x18, 0xcc, 0x85, 0x37, 0xc2, 0xa6, 0xe9, 0x12, 0xce, 0x4b, 0x93, 0xe2, 0xc2, 0x1b, 0xe7,
-	0x3e, 0x4c, 0x1b, 0xfa, 0x3e, 0x5c, 0x4e, 0x46, 0x20, 0x97, 0x91, 0x7e, 0x4b, 0x3c, 0xef, 0x84,
-	0x8f, 0x0f, 0x26, 0x7f, 0x79, 0x06, 0x73, 0xe8, 0x7d, 0x70, 0x6f, 0x74, 0xe2, 0x75, 0xc2, 0x1d,
-	0x66, 0x73, 0x82, 0x4e, 0x27, 0x40, 0x69, 0x9f, 0x5b, 0xbb, 0x2e, 0xc1, 0x1e, 0x91, 0x3b, 0x3e,
-	0x23, 0x6d, 0xa7, 0x85, 0x3d, 0xa2, 0x7c, 0x0f, 0x66, 0x8d, 0xc0, 0xc0, 0xc2, 0x7c, 0x86, 0xac,
-	0x7c, 0xdd, 0xf7, 0xa1, 0x12, 0xde, 0x26, 0x61, 0xbc, 0x96, 0x8c, 0x02, 0x09, 0x18, 0xe4, 0xb4,
-	0x05, 0x16, 0x23, 0xd2, 0x3d, 0x79, 0x1f, 0x41, 0xe8, 0xec, 0xf6, 0x9a, 0x3a, 0xa4, 0x6e, 0x75,
-	0xe8, 0xde, 0x55, 0x78, 0xe2, 0xc3, 0x5c, 0xdf, 0x87, 0x6f, 0xa5, 0xc5, 0x13, 0xe1, 0x20, 0x7d,
-	0xc1, 0x19, 0x8a, 0xf4, 0x0b, 0xb0, 0x10, 0x05, 0x13, 0x91, 0x51, 0x10, 0xd1, 0x6e, 0x9e, 0xfb,
-	0x70, 0xd8, 0xd4, 0xf7, 0xe1, 0xed, 0x74, 0x02, 0x62, 0x42, 0xe6, 0xe5, 0x4a, 0x9a, 0x12, 0x04,
-	0xd6, 0x2e, 0xcb, 0x71, 0x4c, 0xc4, 0xc9, 0xd4, 0x45, 0x22, 0x22, 0xea, 0x5e, 0x29, 0x11, 0x89,
-	0x12, 0x8d, 0x12, 0x58, 0x8f, 0x8b, 0x2b, 0xa3, 0x44, 0x13, 0x4e, 0x83, 0x12, 0x8d, 0xc2, 0xdd,
-	0x33, 0x2f, 0x2b, 0xf9, 0xc2, 0x55, 0x4b, 0xfe, 0x2e, 0x98, 0x12, 0x55, 0x20, 0xab, 0x67, 0xb1,
-	0xef, 0xc3, 0x5b, 0x89, 0x62, 0x41, 0x7a, 0x68, 0x56, 0x9e, 0x02, 0xe0, 0x12, 0x83, 0x3a, 0x34,
-	0x50, 0x4d, 0x69, 0x6a, 0xad, 0xb0, 0x3e, 0xbb, 0x8d, 0x2e, 0x48, 0xa9, 0x46, 0xb9, 0xe7, 0xd2,
-	0x46, 0x27, 0xc8, 0xd6, 0xc1, 0x21, 0x76, 0x49, 0x75, 0x55, 0x8a, 0x49, 0x16, 0xf3, 0x00, 0x03,
-	0xe9, 0x09, 0x40, 0x65, 0x17, 0x2c, 0x18, 0xd8, 0xae, 0x9b, 0x24, 0x2e, 0xf0, 0x52, 0x51, 0x34,
-	0x82, 0x72, 0x42, 0x2e, 0x69, 0x87, 0x40, 0x2e, 0xd8, 0xae, 0x0d, 0x16, 0x94, 0x26, 0x98, 0x35,
-	0x29, 0x37, 0x58, 0xc7, 0x16, 0x39, 0x79, 0x43, 0x44, 0xf4, 0x28, 0xb8, 0xc0, 0x0b, 0x1f, 0xbe,
-	0x9b, 0x60, 0x55, 0x76, 0xdf, 0xf0, 0xcf, 0x26, 0x37, 0x8f, 0x24, 0x89, 0x9f, 0x53, 0xdb, 0x1b,
-	0xc8, 0x22, 0x81, 0x85, 0x74, 0x10, 0x3d, 0xed, 0x99, 0x59, 0x72, 0x9f, 0xbe, 0x51, 0xb9, 0x47,
-	0x7c, 0xc5, 0x72, 0xff, 0x7d, 0x12, 0xac, 0xc4, 0x4e, 0x07, 0x9d, 0x06, 0x37, 0x5c, 0xea, 0x88,
-	0x57, 0xc2, 0xab, 0xd4, 0xfa, 0x2e, 0x58, 0xe0, 0x89, 0xbb, 0x0c, 0x74, 0x9e, 0x20, 0x71, 0xc8,
-	0x01, 0xe9, 0xf3, 0xc9, 0x95, 0x1b, 0x10, 0x78, 0x13, 0xcc, 0xb6, 0x71, 0xb7, 0xee, 0x10, 0x97,
-	0x32, 0x33, 0x7a, 0x49, 0x5c, 0x5d, 0x14, 0x09, 0x2c, 0xa4, 0x83, 0x36, 0xee, 0x3e, 0x09, 0x1f,
-	0x94, 0x87, 0xa0, 0x18, 0xae, 0x97, 0xa6, 0x44, 0x9f, 0x5d, 0x56, 0xc3, 0xf1, 0x40, 0x8d, 0xc6,
-	0x03, 0x75, 0xc7, 0xee, 0x55, 0x97, 0xfa, 0x3e, 0x9c, 0x93, 0x01, 0x08, 0x6f, 0xa4, 0xcb, 0x6d,
-	0x59, 0xaa, 0x2a, 0x5e, 0x87, 0xaa, 0xa6, 0x7f, 0x78, 0x06, 0x73, 0x42, 0x59, 0x10, 0xdc, 0xc9,
-	0x14, 0x4d, 0x2c, 0xab, 0x3f, 0x0a, 0x60, 0x71, 0x9f, 0x5b, 0x9f, 0xb8, 0xd8, 0xf6, 0x6a, 0x52,
-	0xef, 0xca, 0x77, 0x00, 0x70, 0x62, 0x9b, 0x24, 0x29, 0xa8, 0xaf, 0x06, 0x15, 0x3d, 0xb0, 0x5d,
-	0x8b, 0x9e, 0x66, 0x42, 0xbc, 0xa1, 0xd6, 0x99, 0x54, 0xc2, 0xc4, 0x4b, 0x28, 0x21, 0xd9, 0x1e,
-	0x0a, 0x37, 0xd5, 0x1e, 0xb6, 0xc1, 0x4c, 0xdc, 0xd9, 0xa4, 0xde, 0x96, 0x07, 0x53, 0x54, 0x6c,
-	0x42, 0xfa, 0xc0, 0x4d, 0xd1, 0xc1, 0xbc, 0x4c, 0x64, 0xc4, 0xfd, 0x94, 0xd8, 0xf8, 0xde, 0xb9,
-	0x0f, 0x87, 0x2c, 0x7d, 0x1f, 0xae, 0xa4, 0x52, 0x1f, 0x33, 0x3f, 0x17, 0x2e, 0xa4, 0xdb, 0x49,
-	0x59, 0xbc, 0x18, 0x53, 0x94, 0xc6, 0x7c, 0xff, 0x33, 0x01, 0x96, 0xf6, 0xb9, 0xa5, 0x93, 0x63,
-	0x76, 0x44, 0x5e, 0x3f, 0xc2, 0x37, 0x40, 0xf1, 0x90, 0xb5, 0x4c, 0xe2, 0x4a, 0xae, 0x13, 0xc5,
-	0x17, 0xae, 0x23, 0x5d, 0x3a, 0x64, 0xe4, 0x7f, 0xf2, 0x9a, 0xf2, 0xff, 0x36, 0x58, 0xbd, 0x90,
-	0xe2, 0x98, 0x80, 0x17, 0x61, 0xc1, 0x3d, 0x6a, 0x36, 0x89, 0x11, 0x4d, 0x9c, 0xaf, 0x4f, 0xfe,
-	0x7f, 0xcd, 0x83, 0xdb, 0x0e, 0x76, 0x3d, 0x8a, 0x5b, 0xf5, 0x68, 0x0f, 0x6e, 0x07, 0x09, 0x28,
-	0x15, 0xc5, 0x00, 0xb1, 0xaa, 0x86, 0x35, 0xa6, 0x06, 0xdf, 0x41, 0xaa, 0xfc, 0x0e, 0x52, 0x77,
-	0x19, 0xb5, 0xab, 0x9f, 0xca, 0xb9, 0xe1, 0x4e, 0x74, 0x64, 0x16, 0x0c, 0xfa, 0xed, 0x2f, 0xb8,
-	0x3e, 0x46, 0xe1, 0x06, 0x88, 0x5c, 0x5f, 0x96, 0x20, 0x32, 0xcf, 0x3b, 0x02, 0xe2, 0x06, 0x99,
-	0x0f, 0x2b, 0x2f, 0xc5, 0x6d, 0x44, 0xfc, 0xf6, 0xcf, 0x45, 0x50, 0xd8, 0xe7, 0x96, 0xf2, 0x53,
-	0x1e, 0xc0, 0x51, 0x5f, 0x79, 0xf7, 0x2f, 0x8c, 0x59, 0xa3, 0xbf, 0x50, 0xca, 0x1f, 0x5d, 0x61,
-	0x53, 0x74, 0x3b, 0xa5, 0x03, 0x56, 0xb2, 0x3f, 0x69, 0x36, 0xb2, 0x50, 0x33, 0x5d, 0xcb, 0x5b,
-	0x63, 0xbb, 0x5e, 0x7a, 0x6c, 0x3c, 0xc0, 0x8f, 0x3e, 0x36, 0x72, 0x1d, 0xe3, 0xd8, 0xe1, 0x61,
-	0x4a, 0x69, 0x01, 0x25, 0x63, 0x90, 0xba, 0x7b, 0x39, 0x50, 0xd2, 0xaf, 0xac, 0x8e, 0xe7, 0x17,
-	0x9f, 0xf6, 0x14, 0xcc, 0xa5, 0xdf, 0xaf, 0xef, 0x64, 0x01, 0xa4, 0x5c, 0xca, 0x1b, 0x23, 0x5d,
-	0x62, 0xf8, 0x6f, 0xc1, 0xfc, 0x50, 0x3b, 0x47, 0x59, 0x9b, 0xd3, 0x3e, 0xe5, 0x7b, 0xa3, 0x7d,
-	0x92, 0x01, 0xa4, 0xfb, 0x55, 0x66, 0x00, 0x29, 0x97, 0xec, 0x00, 0x32, 0x2b, 0xa3, 0xaa, 0x9f,
-	0x9c, 0x56, 0xf2, 0xcf, 0x4f, 0x2b, 0xf9, 0xbf, 0x4f, 0x2b, 0xf9, 0x1f, 0xcf, 0x2a, 0xb9, 0xe7,
-	0x67, 0x95, 0xdc, 0x9f, 0x67, 0x95, 0xdc, 0x37, 0x1f, 0x8e, 0xdf, 0xea, 0xe2, 0x9f, 0x5e, 0x44,
-	0xfd, 0x37, 0x8a, 0x62, 0x06, 0xbb, 0xff, 0x7f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x2b, 0xbb, 0x19,
-	0xe6, 0xf3, 0x11, 0x00, 0x00,
+var fileDescriptor_7678362972347e96 = []byte{
+	// 1200 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x58, 0xcf, 0x53, 0xe4, 0x44,
+	0x14, 0x9e, 0x61, 0x60, 0x84, 0x66, 0xf9, 0x15, 0x61, 0x1d, 0x62, 0xed, 0x34, 0xd5, 0x6e, 0x29,
+	0x2b, 0xbb, 0x89, 0xb0, 0xb5, 0x1e, 0xb6, 0xca, 0xb2, 0x18, 0x66, 0xb5, 0x38, 0x80, 0x18, 0xd4,
+	0x83, 0x97, 0xa9, 0x9e, 0xa4, 0x09, 0x11, 0x26, 0x1d, 0xd3, 0x19, 0x64, 0xfe, 0x03, 0x8f, 0xde,
+	0xf4, 0xb8, 0xe5, 0x71, 0xaf, 0xfe, 0x05, 0xde, 0x38, 0xae, 0xb7, 0x2d, 0xad, 0x8a, 0x16, 0xdc,
+	0x38, 0x78, 0x98, 0xa3, 0x27, 0x2b, 0xdd, 0x9d, 0x4c, 0x32, 0x64, 0x64, 0x84, 0xa5, 0xb6, 0xf4,
+	0x04, 0xe9, 0xf7, 0xf5, 0xeb, 0x7e, 0xef, 0xfb, 0xde, 0xcb, 0xcb, 0x00, 0xf5, 0x00, 0x3b, 0x5f,
+	0xb5, 0x75, 0x0f, 0x77, 0x5a, 0xc4, 0x0d, 0x98, 0x7e, 0xb4, 0xaa, 0x07, 0xc7, 0x9a, 0xe7, 0xd3,
+	0x80, 0x2a, 0x73, 0xdc, 0xa6, 0xc5, 0x36, 0xed, 0x68, 0x55, 0x9d, 0xb7, 0xa9, 0x4d, 0xb9, 0x55,
+	0x8f, 0xfe, 0x13, 0x40, 0x75, 0xd1, 0xa6, 0xd4, 0x3e, 0x24, 0x3a, 0x7f, 0x6a, 0xb6, 0xf7, 0x74,
+	0xec, 0x76, 0xa4, 0x69, 0xe9, 0xa2, 0xff, 0xc4, 0x9f, 0x40, 0x54, 0x4d, 0xca, 0x5a, 0x94, 0xe9,
+	0x4d, 0xcc, 0x88, 0x7e, 0xb4, 0xda, 0x24, 0x01, 0x5e, 0xd5, 0x4d, 0xea, 0xb8, 0xc2, 0x8e, 0xfe,
+	0x1c, 0x01, 0x68, 0x8b, 0xd9, 0xbb, 0x24, 0xd8, 0x11, 0x1b, 0x37, 0xa8, 0x1b, 0xf8, 0xd8, 0x0c,
+	0xd6, 0xdb, 0xc1, 0x3e, 0xf5, 0x1d, 0x86, 0x03, 0x87, 0xba, 0xca, 0x36, 0x78, 0x5d, 0x3a, 0x6e,
+	0x98, 0x12, 0xd0, 0x70, 0xac, 0x4a, 0x71, 0xa9, 0xb8, 0x3c, 0x51, 0xab, 0x76, 0x43, 0xa8, 0x76,
+	0x70, 0xeb, 0xf0, 0x31, 0xca, 0x01, 0x21, 0x63, 0xce, 0xcb, 0xba, 0xde, 0xb4, 0x94, 0x03, 0x30,
+	0xe1, 0xe1, 0x0e, 0xf1, 0x1b, 0x96, 0x63, 0x55, 0x46, 0xb8, 0x97, 0xed, 0x6e, 0x08, 0x67, 0x13,
+	0x2f, 0xc2, 0x84, 0xfe, 0x0a, 0xe1, 0xfb, 0xb6, 0x13, 0xec, 0xb7, 0x9b, 0x9a, 0x49, 0x5b, 0x7a,
+	0x40, 0x18, 0xa3, 0xbe, 0x4b, 0x82, 0x6f, 0xa8, 0x7f, 0xa0, 0x8b, 0xe0, 0x8f, 0x75, 0xc7, 0xb1,
+	0xf4, 0xa0, 0xe3, 0x11, 0xa6, 0xd5, 0x37, 0xeb, 0x1f, 0xf9, 0xd8, 0x8e, 0x0e, 0x33, 0xc6, 0xb9,
+	0x97, 0xba, 0x63, 0x29, 0x8f, 0x00, 0xc0, 0x32, 0x1a, 0x62, 0x55, 0x4a, 0x4b, 0xc5, 0xe5, 0xf1,
+	0xda, 0x42, 0x37, 0x84, 0x73, 0xe2, 0xb4, 0x9e, 0x0d, 0x19, 0x29, 0xa0, 0xb2, 0x0d, 0xa6, 0xc4,
+	0x45, 0xb0, 0x65, 0xf9, 0x84, 0xb1, 0xca, 0x28, 0xbf, 0xe7, 0xbd, 0xf3, 0x10, 0x66, 0x0d, 0xdd,
+	0x10, 0xce, 0xa7, 0x2f, 0x2e, 0x97, 0x91, 0x71, 0x8b, 0x3f, 0xaf, 0x8b, 0xc7, 0xc7, 0xa3, 0x3f,
+	0x3c, 0x85, 0x05, 0x74, 0x1f, 0xbc, 0x7b, 0x79, 0xbe, 0x0d, 0xc2, 0x3c, 0xea, 0x32, 0x82, 0x7e,
+	0x1b, 0x01, 0x95, 0x2d, 0x66, 0x6f, 0xf8, 0x04, 0x07, 0x44, 0xee, 0xf8, 0x8c, 0xb4, 0xbc, 0x43,
+	0x1c, 0x10, 0xe5, 0x6b, 0x30, 0x69, 0x46, 0x06, 0x2a, 0xd2, 0x28, 0xc8, 0xd8, 0xe9, 0x86, 0x50,
+	0x11, 0xb7, 0x49, 0x19, 0xaf, 0x93, 0x48, 0x20, 0xfd, 0x44, 0xa9, 0x74, 0xc1, 0x6c, 0x4c, 0x71,
+	0x20, 0xaf, 0xc1, 0xe9, 0x9b, 0x5c, 0x43, 0xda, 0x05, 0x3d, 0x6b, 0x7d, 0x17, 0xae, 0xc1, 0x93,
+	0x10, 0x16, 0xba, 0x21, 0x7c, 0x23, 0x2b, 0x96, 0xd8, 0x13, 0x32, 0x66, 0xbc, 0xbe, 0x10, 0xbf,
+	0x00, 0x33, 0x71, 0x14, 0x31, 0x0b, 0x25, 0x1e, 0xe6, 0x83, 0xf3, 0x10, 0xf6, 0x9b, 0xba, 0x21,
+	0xbc, 0x9d, 0x8d, 0x3c, 0x61, 0x62, 0x5a, 0xae, 0x64, 0xb9, 0x40, 0x60, 0x69, 0x50, 0x72, 0x13,
+	0x06, 0x7e, 0x1e, 0xbb, 0xc8, 0x40, 0xcc, 0xd9, 0xab, 0x60, 0x20, 0x55, 0x89, 0x71, 0xde, 0x1a,
+	0x49, 0x0d, 0xe5, 0x54, 0x62, 0x0a, 0xd4, 0xab, 0xc4, 0x38, 0xca, 0x4d, 0x6b, 0x50, 0x65, 0x97,
+	0xae, 0x5a, 0xd9, 0x6f, 0x83, 0x31, 0xae, 0x7a, 0x59, 0x2d, 0xb3, 0xdd, 0x10, 0xde, 0x4a, 0x15,
+	0x07, 0x32, 0x84, 0x59, 0x69, 0x00, 0xe0, 0x13, 0xd3, 0xf1, 0x9c, 0x48, 0x2c, 0x95, 0xb1, 0xa5,
+	0xd2, 0xf2, 0xe4, 0xda, 0xdd, 0x1c, 0x0d, 0xd5, 0x1d, 0x16, 0xf8, 0x4e, 0xb3, 0x1d, 0x95, 0xc5,
+	0xee, 0x3e, 0xf6, 0x49, 0x6d, 0x51, 0xaa, 0x48, 0x96, 0x6f, 0xcf, 0x0b, 0x32, 0x52, 0x2e, 0x95,
+	0x0d, 0x30, 0x63, 0x62, 0xb7, 0x61, 0x91, 0xa4, 0xa4, 0x2b, 0x65, 0x5e, 0xfa, 0x6a, 0x4a, 0x27,
+	0x59, 0x40, 0xa4, 0x13, 0xec, 0xd6, 0x7b, 0x0b, 0xca, 0x1e, 0x98, 0xb4, 0x1c, 0x66, 0xd2, 0xb6,
+	0xcb, 0xb3, 0xf2, 0x1a, 0x8f, 0xe9, 0x49, 0x74, 0x81, 0x5f, 0x43, 0xf8, 0x4e, 0x8a, 0x4e, 0xd9,
+	0x66, 0xc5, 0x9f, 0x07, 0xcc, 0x3a, 0x90, 0x34, 0x7e, 0xee, 0xb8, 0x41, 0x4f, 0x0f, 0x29, 0x5f,
+	0xc8, 0x00, 0xf1, 0xd3, 0xa6, 0x95, 0xa7, 0xf3, 0xf1, 0x1b, 0xd5, 0x79, 0xcc, 0x58, 0xa2, 0xf3,
+	0x67, 0xa3, 0x60, 0x21, 0x01, 0xed, 0xb6, 0x9b, 0xcc, 0xf4, 0x1d, 0x8f, 0xf7, 0xfe, 0x57, 0x20,
+	0xf2, 0x0d, 0x30, 0xc3, 0x52, 0x57, 0xe8, 0x09, 0x3c, 0xc5, 0x5d, 0x1f, 0x00, 0x19, 0xd3, 0xe9,
+	0x95, 0x1b, 0x50, 0xf6, 0x1e, 0x98, 0x6c, 0xe1, 0xe3, 0x86, 0x47, 0x7c, 0x87, 0x5a, 0xf1, 0xdb,
+	0xe0, 0xea, 0x5a, 0x48, 0xf9, 0x42, 0x06, 0x68, 0xe1, 0xe3, 0x1d, 0xf1, 0xa0, 0x7c, 0x08, 0xca,
+	0x62, 0xbd, 0x32, 0xc6, 0x3b, 0xeb, 0xbc, 0x26, 0x06, 0x00, 0x2d, 0x1e, 0x00, 0xb4, 0x75, 0xb7,
+	0x53, 0x9b, 0xeb, 0x86, 0x70, 0x4a, 0x06, 0xc0, 0xd1, 0xc8, 0x90, 0xdb, 0xf2, 0xc4, 0x54, 0x7e,
+	0x19, 0x62, 0x1a, 0xff, 0xf6, 0x29, 0x2c, 0x70, 0x41, 0x41, 0x70, 0x27, 0x57, 0x2b, 0x89, 0x9a,
+	0x4e, 0x4a, 0x60, 0x76, 0x8b, 0xd9, 0x1f, 0xfb, 0xd8, 0x0d, 0xea, 0x52, 0xe6, 0x8a, 0x0b, 0x00,
+	0x23, 0xae, 0x45, 0xd2, 0x3a, 0xfa, 0xa4, 0x57, 0xc8, 0x3d, 0xdb, 0x75, 0x64, 0x34, 0x21, 0xdc,
+	0xf4, 0xb5, 0xca, 0xb4, 0x00, 0x46, 0xae, 0x21, 0x80, 0x74, 0x33, 0x28, 0xdd, 0x54, 0x33, 0x58,
+	0x03, 0x13, 0x49, 0x1f, 0x93, 0x32, 0x9b, 0xef, 0x0d, 0x47, 0x89, 0x09, 0x19, 0x3d, 0x98, 0x62,
+	0x80, 0x69, 0x99, 0xbf, 0x98, 0xf2, 0x31, 0xbe, 0x71, 0xe5, 0x3c, 0x84, 0x7d, 0x96, 0x6e, 0x08,
+	0x17, 0x32, 0x19, 0x4f, 0x08, 0x9f, 0x12, 0x0b, 0xd9, 0xe6, 0xa1, 0xf2, 0xf7, 0x5f, 0x86, 0xc9,
+	0x84, 0xe6, 0x17, 0x23, 0x60, 0x6e, 0x8b, 0xd9, 0x06, 0x39, 0xa2, 0x07, 0xe4, 0x7f, 0xc3, 0xf3,
+	0x3d, 0x50, 0xde, 0xa7, 0x87, 0x16, 0xf1, 0x25, 0xc5, 0xa9, 0x52, 0x13, 0xeb, 0xc8, 0x90, 0x80,
+	0x9c, 0xb4, 0x8f, 0xbe, 0xa4, 0xb4, 0xbf, 0x09, 0x16, 0x2f, 0x64, 0x36, 0xc9, 0xfb, 0x2f, 0xa2,
+	0xbc, 0x9e, 0xec, 0xed, 0x11, 0x33, 0x1e, 0x24, 0xff, 0xf3, 0x69, 0xff, 0xb1, 0x08, 0x6e, 0x7b,
+	0xd8, 0x0f, 0x1c, 0x7c, 0xd8, 0x88, 0xf7, 0xe0, 0x56, 0x14, 0x77, 0xa5, 0xcc, 0xc7, 0x83, 0x45,
+	0x4d, 0x54, 0x94, 0x16, 0x7d, 0xcc, 0x68, 0xf2, 0x63, 0x46, 0xdb, 0xa0, 0x8e, 0x5b, 0xfb, 0x54,
+	0xce, 0x04, 0x77, 0xe2, 0x23, 0xf3, 0xdc, 0xa0, 0x67, 0xbf, 0xc3, 0xe5, 0x21, 0xca, 0x34, 0xf2,
+	0xc8, 0x8c, 0x79, 0xe9, 0x44, 0xa6, 0x77, 0x9d, 0xbb, 0xb8, 0x41, 0xc2, 0x45, 0x9d, 0x65, 0x28,
+	0x8d, 0xf9, 0x5e, 0xfb, 0xa9, 0x0c, 0x4a, 0x5b, 0xcc, 0x56, 0xbe, 0x2f, 0x02, 0x78, 0xd9, 0xa7,
+	0xda, 0xa3, 0x9c, 0x21, 0xea, 0xf2, 0x2f, 0x0e, 0xf5, 0x83, 0x2b, 0x6d, 0x8b, 0x6f, 0xa8, 0x74,
+	0xc0, 0x42, 0xfe, 0x47, 0xca, 0x4a, 0xbe, 0xdf, 0x5c, 0xb0, 0xfa, 0xf0, 0x5f, 0x80, 0x07, 0x1e,
+	0x9d, 0x4c, 0xe7, 0xc3, 0x1c, 0x1d, 0x83, 0x87, 0x3a, 0xba, 0x7f, 0x68, 0x52, 0x3c, 0xa0, 0xe4,
+	0x0c, 0x4c, 0xcb, 0xff, 0xe4, 0x2a, 0x8d, 0x54, 0xdf, 0x1b, 0x16, 0x99, 0x9c, 0x88, 0xc1, 0x54,
+	0xf6, 0xa5, 0xfa, 0x56, 0xbe, 0x8b, 0x0c, 0x48, 0x5d, 0x19, 0x02, 0x94, 0x1c, 0x61, 0x81, 0xe9,
+	0xbe, 0x86, 0x7e, 0x37, 0x7f, 0x7b, 0x16, 0xa5, 0xde, 0x1f, 0x06, 0x95, 0x0e, 0x24, 0xdb, 0xbe,
+	0x06, 0x04, 0x92, 0x01, 0x0d, 0x0a, 0x24, 0xb7, 0x6a, 0x6a, 0x9b, 0x27, 0xa7, 0xd5, 0xe2, 0xf3,
+	0xd3, 0x6a, 0xf1, 0x8f, 0xd3, 0x6a, 0xf1, 0xbb, 0xb3, 0x6a, 0xe1, 0xf9, 0x59, 0xb5, 0xf0, 0xe2,
+	0xac, 0x5a, 0xf8, 0x52, 0xbf, 0xb4, 0xfb, 0x25, 0x3f, 0xa9, 0xf0, 0x96, 0xd0, 0x2c, 0xf3, 0xd9,
+	0xeb, 0xe1, 0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xad, 0xcf, 0x9e, 0x78, 0xd1, 0x11, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -874,7 +881,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
-	// SetPaymentContractAuthorisation defines a method for authorising or deauthorising a payment contract.
+	// SetPaymentContractAuthorisation defines a method for authorising or
+	// deauthorising a payment contract.
 	SetPaymentContractAuthorisation(ctx context.Context, in *MsgSetPaymentContractAuthorisation, opts ...grpc.CallOption) (*MsgSetPaymentContractAuthorisationResponse, error)
 	// CreatePaymentTemplate defines a method for creating a payment template.
 	CreatePaymentTemplate(ctx context.Context, in *MsgCreatePaymentTemplate, opts ...grpc.CallOption) (*MsgCreatePaymentTemplateResponse, error)
@@ -882,11 +890,14 @@ type MsgClient interface {
 	CreatePaymentContract(ctx context.Context, in *MsgCreatePaymentContract, opts ...grpc.CallOption) (*MsgCreatePaymentContractResponse, error)
 	// CreateSubscription defines a method for creating a subscription.
 	CreateSubscription(ctx context.Context, in *MsgCreateSubscription, opts ...grpc.CallOption) (*MsgCreateSubscriptionResponse, error)
-	// GrantDiscount defines a method for granting a discount to a payer on a specific payment contract.
+	// GrantDiscount defines a method for granting a discount to a payer on a
+	// specific payment contract.
 	GrantDiscount(ctx context.Context, in *MsgGrantDiscount, opts ...grpc.CallOption) (*MsgGrantDiscountResponse, error)
-	// RevokeDiscount defines a method for revoking a discount previously granted to a payer.
+	// RevokeDiscount defines a method for revoking a discount previously granted
+	// to a payer.
 	RevokeDiscount(ctx context.Context, in *MsgRevokeDiscount, opts ...grpc.CallOption) (*MsgRevokeDiscountResponse, error)
-	// EffectPayment defines a method for putting a specific payment contract into effect.
+	// EffectPayment defines a method for putting a specific payment contract into
+	// effect.
 	EffectPayment(ctx context.Context, in *MsgEffectPayment, opts ...grpc.CallOption) (*MsgEffectPaymentResponse, error)
 }
 
@@ -963,7 +974,8 @@ func (c *msgClient) EffectPayment(ctx context.Context, in *MsgEffectPayment, opt
 
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
-	// SetPaymentContractAuthorisation defines a method for authorising or deauthorising a payment contract.
+	// SetPaymentContractAuthorisation defines a method for authorising or
+	// deauthorising a payment contract.
 	SetPaymentContractAuthorisation(context.Context, *MsgSetPaymentContractAuthorisation) (*MsgSetPaymentContractAuthorisationResponse, error)
 	// CreatePaymentTemplate defines a method for creating a payment template.
 	CreatePaymentTemplate(context.Context, *MsgCreatePaymentTemplate) (*MsgCreatePaymentTemplateResponse, error)
@@ -971,11 +983,14 @@ type MsgServer interface {
 	CreatePaymentContract(context.Context, *MsgCreatePaymentContract) (*MsgCreatePaymentContractResponse, error)
 	// CreateSubscription defines a method for creating a subscription.
 	CreateSubscription(context.Context, *MsgCreateSubscription) (*MsgCreateSubscriptionResponse, error)
-	// GrantDiscount defines a method for granting a discount to a payer on a specific payment contract.
+	// GrantDiscount defines a method for granting a discount to a payer on a
+	// specific payment contract.
 	GrantDiscount(context.Context, *MsgGrantDiscount) (*MsgGrantDiscountResponse, error)
-	// RevokeDiscount defines a method for revoking a discount previously granted to a payer.
+	// RevokeDiscount defines a method for revoking a discount previously granted
+	// to a payer.
 	RevokeDiscount(context.Context, *MsgRevokeDiscount) (*MsgRevokeDiscountResponse, error)
-	// EffectPayment defines a method for putting a specific payment contract into effect.
+	// EffectPayment defines a method for putting a specific payment contract into
+	// effect.
 	EffectPayment(context.Context, *MsgEffectPayment) (*MsgEffectPaymentResponse, error)
 }
 
@@ -2133,7 +2148,7 @@ func (m *MsgSetPaymentContractAuthorisation) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.PayerDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.PayerDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
 			if wireType != 0 {
@@ -2317,7 +2332,7 @@ func (m *MsgCreatePaymentTemplate) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CreatorDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.CreatorDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -2514,7 +2529,7 @@ func (m *MsgCreatePaymentContract) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CreatorDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.CreatorDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -2862,7 +2877,7 @@ func (m *MsgCreateSubscription) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CreatorDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.CreatorDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3160,7 +3175,7 @@ func (m *MsgGrantDiscount) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.SenderDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.SenderDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3422,7 +3437,7 @@ func (m *MsgRevokeDiscount) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.SenderDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.SenderDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3650,7 +3665,7 @@ func (m *MsgEffectPayment) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.SenderDid = github_com_kaijufoundation_kaiju_blockchain_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
+			m.SenderDid = github_com_tessornetwork_kaiju_x_iid_types.DIDFragment(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
