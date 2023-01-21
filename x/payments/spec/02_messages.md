@@ -42,7 +42,7 @@ Refer to [01_state.md](./01_state.md) for information about payment contracts.
 | CreatorDid        | `did.Did`        | DID of the contract creator (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentTemplateId | `string`         | ID of the payment template on which this contract is based (e.g. `payment:template:template1`)
 | PaymentContractId | `string`         | ID of this payment contract (e.g. `payment:contract:contract1`)
-| Payer             | `sdk.AccAddress` | Address from where tokens will be deducted (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
+| Payer             | `sdk.AccAddress` | Address from where tokens will be deducted (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eaeg6jde`)
 | Recipients        | `Distribution`   | List of token recipients with percentage shares
 | CanDeauthorise    | `bool`           | Whether or not this contract can be de-authorised
 | DiscountId        | `sdk.Uint`       | Any discount assigned to this contract (discounts defined in the template) (e.g. `0`)
@@ -164,7 +164,7 @@ This message grants a discount to a recipient for a particular payment contract.
 | SenderDid         | `did.Did`        | DID of the discount granter (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentContractId | `string`         | ID of the contract for which the discount is being granted (e.g. `payment:contract:contract1`)
 | DiscountId        | `sdk.Uint`       | ID of the discount being granted (e.g. `0`)
-| Recipient         | `sdk.AccAddress` | The recipient of the discount (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
+| Recipient         | `sdk.AccAddress` | The recipient of the discount (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eaeg6jde`)
 
 ```go
 type MsgGrantDiscount struct {
@@ -195,7 +195,7 @@ contract.
 |:------------------|:-----------------|:----------------|
 | SenderDid         | `did.Did`        | DID of the discount revoker (e.g. `did:kaiju:4XJLBfGtWSGKSz4BeRxdun`)
 | PaymentContractId | `string`         | ID of the contract from which the discount is being revoked (e.g. `payment:contract:contract1`)
-| Holder            | `sdk.AccAddress` | The current holder of the discount (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes`)
+| Holder            | `sdk.AccAddress` | The current holder of the discount (e.g. `kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eaeg6jde`)
 
 ```go
 type MsgRevokeDiscount struct {

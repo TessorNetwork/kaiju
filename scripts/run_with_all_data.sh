@@ -30,15 +30,15 @@ yes $PASSWORD | kaijud add-genesis-account "$(kaijud keys show francesco -a)" 10
 yes $PASSWORD | kaijud add-genesis-account "$(kaijud keys show shaun -a)" 1000000000000ukaiju,1000000000000res,1000000000000rez
 
 # Add pubkey-based genesis accounts
-MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"    # address from did:kaiju:4XJLBfGtWSGKSz4BeRxdun's pubkey
-FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes" # address from did:kaiju:UKzkhVSHc3qEFva5EY2XHt's pubkey
-SHAUN_ADDR="kaiju10uqnjz60h3lkxxsgnlvxql3yfpkgv6gc6wuz4c"     # address from did:kaiju:U4tSpzzv91HHqWW1YmFkHJ's pubkey
+MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2g3wfakx"    # address from did:kaiju:4XJLBfGtWSGKSz4BeRxdun's pubkey
+FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eaeg6jde" # address from did:kaiju:UKzkhVSHc3qEFva5EY2XHt's pubkey
+SHAUN_ADDR="kaiju10uqnjz60h3lkxxsgnlvxql3yfpkgv6gcgk6rp3"     # address from did:kaiju:U4tSpzzv91HHqWW1YmFkHJ's pubkey
 yes $PASSWORD | kaijud add-genesis-account "$MIGUEL_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
 yes $PASSWORD | kaijud add-genesis-account "$FRANCESCO_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
 yes $PASSWORD | kaijud add-genesis-account "$SHAUN_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
-yes $PASSWORD | kaijud add-genesis-account "kaiju14zqgpctk6hnnms77427gyahpawnmj5ajxtdc0c" 1000000000000ukaiju,1000000000000res,1000000000000rez
-yes $PASSWORD | kaijud add-genesis-account "kaiju1ry6cr975sttlzxptakxs2tsygh2z56vgle88jc" 1000000000000ukaiju,1000000000000res,1000000000000rez
-yes $PASSWORD | kaijud add-genesis-account "kaiju1ky7wad4d7gjtcy5yklc83geev76cudcevmnhhn" 1000000000000ukaiju,1000000000000res,1000000000000rez
+yes $PASSWORD | kaijud add-genesis-account "kaiju14zqgpctk6hnnms77427gyahpawnmj5aj5ntem3" 1000000000000ukaiju,1000000000000res,1000000000000rez
+yes $PASSWORD | kaijud add-genesis-account "kaiju1ry6cr975sttlzxptakxs2tsygh2z56vgr7a6tq" 1000000000000ukaiju,1000000000000res,1000000000000rez
+yes $PASSWORD | kaijud add-genesis-account "kaiju1ky7wad4d7gjtcy5yklc83geev76cudcesuf2wt" 1000000000000ukaiju,1000000000000res,1000000000000rez
 
 # Add kaiju did
 KAIJU_DID="did:kaiju:U4tSpzzv91HHqWW1YmFkHJ"

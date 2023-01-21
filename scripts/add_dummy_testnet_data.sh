@@ -180,7 +180,7 @@ SHAUN_DID_FULL='{
 
 PAYMENT_RECIPIENTS='[
   {
-    "address": "kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0",
+    "address": "kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2g3wfakx",
     "percentage": "100"
   }
 ]'

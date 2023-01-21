@@ -61,9 +61,9 @@ BOND_DID="did:kaiju:U7GK8p8rVhJMKhBVRCJJ8c"
 #  }
 #}'
 
-MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"
-FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes"
-SHAUN_ADDR="kaiju10uqnjz60h3lkxxsgnlvxql3yfpkgv6gc6wuz4c"
+MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2g3wfakx"
+FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eaeg6jde"
+SHAUN_ADDR="kaiju10uqnjz60h3lkxxsgnlvxql3yfpkgv6gcgk6rp3"
 MIGUEL_DID_FULL='{
   "did":"did:kaiju:4XJLBfGtWSGKSz4BeRxdun",
   "verifyKey":"2vMHhssdhrBCRFiq9vj7TxGYDybW4yYdrYh9JG56RaAt",

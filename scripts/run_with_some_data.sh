@@ -11,7 +11,7 @@ yes $PASSWORD | kaijud keys add miguel
 yes $PASSWORD | kaijud add-genesis-account "$(kaijud keys show miguel -a)" 1000000000000ukaiju,1000000000000res,1000000000000rez,1000000000000uxgbp
 
 # Add pubkey-based genesis accounts
-MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"    # address from did:kaiju:4XJLBfGtWSGKSz4BeRxdun's pubkey
+MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2g3wfakx"    # address from did:kaiju:4XJLBfGtWSGKSz4BeRxdun's pubkey
 yes $PASSWORD | kaijud add-genesis-account "$MIGUEL_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
 
 # Add kaiju did

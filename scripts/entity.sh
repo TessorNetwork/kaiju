@@ -81,7 +81,7 @@ ENTITY='{
 "entity_type": "assets",
 "entity_status": 1,
 "owner_did": "did:kaiju:4XJLBfGtWSGKSz4BeRxdun",
-"owner_address": "kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"
+"owner_address": "kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2g3wfakx"
 }'
 # echo $ENTITY | jq
 kaijud_tx entity create-entity "$(echo $ENTITY | jq -rc .)" --from miguel

@@ -36,9 +36,9 @@ yes $PASSWORD | kaijud add-genesis-account "$(kaijud keys show francesco -a)" 10
 yes $PASSWORD | kaijud add-genesis-account "$(kaijud keys show shaun -a)" 1000000000000ukaiju,1000000000000res,1000000000000rez
 
 # Add pubkey-based genesis accounts
-MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2grk0uz0"    # address from did:kaiju:4XJLBfGtWSGKSz4BeRxdun's pubkey
-FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eatsunes" # address from did:kaiju:UKzkhVSHc3qEFva5EY2XHt's pubkey
-SHAUN_ADDR="kaiju10uqnjz60h3lkxxsgnlvxql3yfpkgv6gc6wuz4c"     # address from did:kaiju:U4tSpzzv91HHqWW1YmFkHJ's pubkey
+MIGUEL_ADDR="kaiju1acltgu0kwgnuqdgewracms3nhz8c6n2g3wfakx"    # address from did:kaiju:4XJLBfGtWSGKSz4BeRxdun's pubkey
+FRANCESCO_ADDR="kaiju1zyaz6rkpxa9mdlzazc9uuch4hqc7l5eaeg6jde" # address from did:kaiju:UKzkhVSHc3qEFva5EY2XHt's pubkey
+SHAUN_ADDR="kaiju10uqnjz60h3lkxxsgnlvxql3yfpkgv6gcgk6rp3"     # address from did:kaiju:U4tSpzzv91HHqWW1YmFkHJ's pubkey
 yes $PASSWORD | kaijud add-genesis-account "$MIGUEL_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
 yes $PASSWORD | kaijud add-genesis-account "$FRANCESCO_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
 yes $PASSWORD | kaijud add-genesis-account "$SHAUN_ADDR" 1000000000000ukaiju,1000000000000res,1000000000000rez
